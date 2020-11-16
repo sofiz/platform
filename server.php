@@ -7,7 +7,7 @@ $email    = "";
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'bd');
+$db = mysqli_connect('localhost', 'root', '', 'bd',3308);
 if(mysqli_connect_errno())
 		echo"failed to connect ". mysqli_connect_error() ;
 
