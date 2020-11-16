@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
@@ -101,8 +101,6 @@ $i++;
 
   <div class="description">
     <strong>Description</strong>
-    <br>
-    <br>
     <p  id="descriptiontxt"><?php echo $description ; ?></p>
   </div>
 

@@ -22,7 +22,7 @@
 
 
     #container{
-     width: 805px;
+     width: 945px;
      margin-top:100px;
      margin-left:196px;
      border-radius:10px;
@@ -98,8 +98,13 @@
 
   }
 
+
   .infocontainer{
-    margin-top: 50px;
+    margin-top:45px;
+    margin-left: 40px;
+}
+  .infocontain2{
+    margin-top:16px;
     margin-left: 40px;
 
 
@@ -107,7 +112,7 @@
   .info{
    width:374px;
    height:20px;
-   margin-top:10px;
+   margin-top:15px;
    font-size:18px;
 
   }
@@ -137,6 +142,16 @@ font-size: 20px;
     width:402px;
     height:122px;
     margin-top:6px;
+    margin-left:25px;
+    margin-right:25px;
+    border-radius:inherit;
+  }
+
+
+  .photocontainer2{
+    width:402px;
+    height:122px;
+    margin-top:19px;
     margin-left:25px;
     margin-right:25px;
     border-radius:inherit;
@@ -184,9 +199,9 @@ color: #ffffffeb;
         height: 35px;
         margin-left: 10px;
         width: 784px;
+        padding-left: 10px;
         border: none;
         background-color: #00000000;
-        padding-left: 10px;
         border-bottom: solid;
         border-width: 2px;
         border-color: #9d9898;
@@ -197,8 +212,6 @@ outline: none;
 
   }
 
-  #input1:focus{
-  border:none;
 
 
   }
@@ -240,4 +253,229 @@ outline: none;
     top: -20px;
     left: 50px;
     font-size: 15px;
+  }
+
+
+/* edit*/
+
+  .btns{
+
+    margin-left: 690px;
+    margin-top: 15px;
+
+  }
+
+
+  .btn{
+
+  padding-top:5px;
+  padding-left:5px;
+  padding-right:5px;
+  padding-bottom:5px;
+  background: linear-gradient(135deg, #A0D0F9, #67B7FB);
+  margin-right:10px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 20px 0px #0000006b;
+    border: none;
+    text-decoration: none;
+  color: black;
+  }
+
+  #save{
+
+    padding-top:5px;
+    padding-left:22px;
+    padding-right:10px;
+    padding-bottom:5px;
+    background: linear-gradient(135deg, #A0D0F9, #67B7FB);
+    margin-right:10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 20px 0px #0000006b;
+    border: none;
+    font-size: 16px;
+    font-family: 'Quicksand';
+    cursor: pointer;
+  }
+
+  .icn{
+    padding: 0px;
+    min-width: 20px;
+    position: relative;
+    left: -75px;
+  }
+
+
+  .inputinf{
+
+        margin-top: 7px;
+        height: 25px;
+        border: none;
+        padding-left: 15px;
+        border: none;
+        background-color: #00000000;
+        border-bottom: solid;
+        border-width: 2px;
+        border-color: #9d9898;
+  }
+
+  .inputname{
+
+    margin-left: 126px;
+      margin-top: 7px;
+      height: 35px;
+      border: none;
+      padding-left: 15px;
+      border: none;
+      background-color: #00000000;
+      border-bottom: solid;
+      border-width: 2px;
+      border-color: #9d9898;
+  }
+
+  .descriptioninp{
+
+        font-size: 18px;
+        margin-top: 15px;
+        margin-right: 20px;
+        height: 122px;
+        width: 388px;
+        background: #00000000;
+        resize: none;
+        padding-top: 10px;
+        padding-left: 10px;
+        border-color: #9d9898;
+        border-width: 2px;
+  }
+
+
+  #uploadbtn{
+    font-size: 70px;
+        position: absolute;
+        width: 170px;
+        text-align: center;
+        line-height: 170px;
+        margin-top: 20px;
+        left: 368px;
+        background: #1f1f1f6e;
+        border-radius: inherit;
+        opacity: 0;
+        color:white;
+      }
+      #uploadbtn:hover{
+        opacity: 100%;
+      }
+
+  #picsbtn{
+  position: absolute;
+  width: 440px;
+  height: 210px;
+  opacity: 0;
+  font-size: large;
+  font-family: 'Quicksand';
+  border: none;
+  border-radius: inherit;
+  top:0px;
+  color:white;
+
+  }
+
+  #picsbtn:hover{
+  opacity: 1;
+  background: #1f1f1f6e;
+  }
+
+  #picsbtn:active{
+  border: white;
+  border-radius: 15px;
+  }
+
+  .piccontainer{
+
+    display: inline-block;
+  }
+
+
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #e4f7e0;
+        margin: 15% auto;
+        width: 50%;
+        border-radius: inherit;
+        padding-top: 10px;
+        padding-bottom: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 20px 0px #0000006b;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+  .photocontainermodal{
+  margin-top: 35px;
+
+  }
+
+  .deletepic{
+
+    position: absolute;
+  margin-left: -24px;
+  margin-top: 3px;
+  border-radius: 6px;
+  background: #d2dcd0;
+  border-width: 1px;
+  }
+
+  #uploadpicbtn{
+    background: #efefef;
+    border: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    padding: 5px;
+  }
+
+  #savepicbtn{
+    background: #efefef;
+        border: solid;
+        border-width: 1px;
+        border-radius: 4px;
+        padding: 5px;
+        font-family: 'Quicksand';
+        font-size: inherit;
+
+  }
+
+  .piceditbtn{
+
+    margin-left: 500px;
+  margin-top: 30px;
+
   }
