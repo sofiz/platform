@@ -100,7 +100,7 @@ $i++;
 
 
   <div class="description">
-    <strong>Description</strong>
+    <strong class="titles">Description</strong>
     <p  id="descriptiontxt"><?php echo $description ; ?></p>
   </div>
 
@@ -108,7 +108,7 @@ $i++;
 </div>
 
 <div id="square3">
-    <strong id="photostitle">Pictures</strong>
+    <strong id="photostitle" class="titles">Pictures</strong>
     <div class="photocontainer">
 
 
@@ -118,6 +118,7 @@ $i++;
 </div>
 
 <div class="square4">
+  <strong class="titles">Reviews</strong>
 <?php
 //session_start();
 //for my comment

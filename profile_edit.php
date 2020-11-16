@@ -109,7 +109,7 @@ $i++;
 
   <!-- Trigger/Open The Modal -->
 
-<strong id="photostitle">Pictures</strong>
+<strong id="photostitle" class="titles">Pictures</strong>
 
   <div class="photocontainer2">
    <img src="<?php echo $photos[1]?>" alt="" class="imgs" >
@@ -147,12 +147,12 @@ $i++;
 
       <div id="pic1" class="piccontainer">
       <img src="1.jpg" alt="" class="imgs">
-      <button id="deletepic1" type="button" name="deletepic" class="deletepic" onclick="myFunction(1)">x</button>
+      <button id="deletepic1" type="button" name="deletepic" class="closepic" onclick="myFunction(1)">&times;</button>
     </div>
 
       <div id="pic2" class="piccontainer">
       <img src="2.jpg" alt="" class="imgs">
-      <button id="deletepic2" type="button" name="deletepic" class="deletepic" onclick="myFunction(2)">x</button>
+      <button id="deletepic2" type="button" name="deletepic" class="closepic" onclick="myFunction(2)">&times;</button>
     </div>
 
     </div>

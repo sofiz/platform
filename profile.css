@@ -43,7 +43,7 @@
       width:440px;
       height:210px;
       margin-top:100px;
-      margin-left:701px;
+      margin-left:696px;
       position: absolute;
       top:0px;
       left:0px;
@@ -58,7 +58,7 @@
       width:440px;
       height:200px;
       margin-top:100px;
-      margin-left:701px;
+      margin-left:696px;
       position: absolute;
       top:230px;
       left:0px;
@@ -121,12 +121,17 @@
 
 
   font-size:18px;
-  margin-top: 20px;
+  margin-top: 13px;
   margin-left: 20px;
   margin-right: 20px;
 
   }
 
+
+.titles{
+font-size: 20px;
+
+}
 #descriptiontxt{
 margin-top: 10px;
 
@@ -136,7 +141,6 @@ margin-top: 10px;
 #photostitle{
 
   margin: 26px;
-font-size: 20px;
 }
   .photocontainer{
     width:402px;
@@ -179,6 +183,7 @@ color: #ffffffeb;
     background: #ffffffde;
     margin-left: 37px;
     margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: inherit;
     padding-top:25px;
     padding-left:25px;
@@ -318,6 +323,12 @@ outline: none;
         border-color: #9d9898;
   }
 
+    .inputinf:focus{
+
+outline: none;
+
+    }
+
   .inputname{
 
     margin-left: 126px;
@@ -331,7 +342,9 @@ outline: none;
       border-width: 2px;
       border-color: #9d9898;
   }
-
+.inputname:focus{
+  outline: none;
+}
   .descriptioninp{
 
         font-size: 18px;
@@ -345,8 +358,11 @@ outline: none;
         padding-left: 10px;
         border-color: #9d9898;
         border-width: 2px;
+        border-radius: 8px;
   }
-
+  .descriptioninp:focus{
+outline: none;
+  }
 
   #uploadbtn{
     font-size: 70px;
@@ -360,9 +376,11 @@ outline: none;
         border-radius: inherit;
         opacity: 0;
         color:white;
+
       }
       #uploadbtn:hover{
         opacity: 100%;
+        cursor: pointer;
       }
 
   #picsbtn{
@@ -382,11 +400,12 @@ outline: none;
   #picsbtn:hover{
   opacity: 1;
   background: #1f1f1f6e;
+  cursor: pointer;
   }
 
-  #picsbtn:active{
-  border: white;
-  border-radius: 15px;
+  #picsbtn:focus{
+  border-radius: 10px;
+  outline: none;
   }
 
   .piccontainer{
@@ -438,6 +457,24 @@ outline: none;
     cursor: pointer;
   }
 
+  .closepic {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    background: transparent;
+    border:none;
+    position: absolute;
+    margin-left: -37px;
+  }
+
+  .closepic:hover,
+  .closepic:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+  }
 
   .photocontainermodal{
   margin-top: 35px;
@@ -455,23 +492,28 @@ outline: none;
   }
 
   #uploadpicbtn{
-    background: #efefef;
-    border: solid;
-    border-width: 1px;
+    background: linear-gradient(135deg, #A0D0F9, #67B7FB);
     border-radius: 4px;
     padding: 5px;
+    cursor: pointer;
   }
 
   #savepicbtn{
-    background: #efefef;
-        border: solid;
-        border-width: 1px;
+    background: linear-gradient(135deg, #A0D0F9, #67B7FB);
+        border:none;
         border-radius: 4px;
         padding: 5px;
         font-family: 'Quicksand';
         font-size: inherit;
+        cursor: pointer;
 
   }
+
+
+  #savepicbtn:focus{
+outline-width: 1px;
+}
+
 
   .piceditbtn{
 
