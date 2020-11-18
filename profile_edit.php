@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
   <link rel="stylesheet" href="profile.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -160,17 +161,55 @@ $i++;
 
       <input type="file" name="uploadpic" id="uploadpic" hidden>
       <label for="uploadpic" id="uploadpicbtn" >Upload</label>
-      <input type="submit" name="savepics" value="save" id="savepicbtn">
+      <input type="button" name="savepics" value="save" id="savepicbtn" onclick="send()">
 
     </div>
   </div>
 
+
 </div>
 
+<div id="results"></div>
 <script>
+
+
+
+
+var ids =[];
 function myFunction(x) {
   var myobj = document.getElementById("pic"+x);
   myobj.remove();
+  ids.push(x);
+  /*$(document).ready(function(){
+          $.ajax({
+          type:"POST",
+          url:"page.php",
+          data:{ids:x},
+          success:function(result){
+          $("#results").html(result);
+          }
+          });
+     });
+     */
+}
+
+function send(){
+
+$(document).ready(function(){
+ids = JSON.stringify(ids);
+$.ajax({
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    type: "POST",
+    url: "page.php",
+    data: ids,
+    traditional: true,
+    success: function () {
+        $('#results').html('"PassThings()" successfully called.');
+    },
+
+});
+});
 }
 
 // Get the modal
@@ -196,8 +235,13 @@ span.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+
   }
 }
+
+
+
+
 </script>
 
 </form>
