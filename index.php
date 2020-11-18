@@ -1,7 +1,6 @@
 <?php
 
 
-//salaaam
-// waa 3alikom salam
+//hedi jdida
 header('Location: profile.php');
  ?>
