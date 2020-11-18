@@ -1,3 +1,3 @@
 git add -A
-git commit -m "riyadh"
-git push origin
+git commit -m "sofiz"
+git push repos
