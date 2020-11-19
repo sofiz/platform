@@ -1,2 +1,2 @@
-git fetch repos
-git merge repos/master
+git fetch origin
+git merge origin/master
