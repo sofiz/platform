@@ -1,21 +1,21 @@
- 
+
 <?php include('conn.php'); ?>
-	<?php 
-	session_start(); 
+	<?php
+	session_start();
 	if (!isset($_SESSION['Username'])) {
   	header('location: signin.php');
               }
- 
+
   $Username=$_SESSION['Username'];
-  
-  
+
+
 if (isset($_POST['save'])){
 	//------- get id -----------------------------
 	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
 	mysqli_query($db, $re);
 	while($row=mysqli_fetch_array($re))
   {$id=$row['id']; }
-	
+
   $First_Name =  $_POST['First_Name'];
   //$Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
   $Email = $_POST['Email'];
@@ -24,9 +24,9 @@ if (isset($_POST['save'])){
   $Location = $_POST['Location'];
   $Description = $_POST['Description'];
   $Birthday = $_POST['Birthday'];
-  
-	
-	
+
+
+
   if (empty($First_Name )) { array_push($errors, "First Name is required"); }
   // if (empty($Last_Name)) { array_push($errors, "Last Name is required"); }
   if (empty($Email)) { array_push($errors, "Email is required"); }
@@ -35,25 +35,26 @@ if (isset($_POST['save'])){
   if (empty($Location)) { array_push($errors, "Location is required"); }
   if (empty($Birthday)) { array_push($errors, "Birthday is required"); }
   if (empty($Description)) { array_push($errors, "Description is required"); }
-  
-  
+
+
   $tar="imgs/";
   $tar=$tar.basename($_FILES['fileToUpload']['name']);
   $pic=($_FILES['fileToUpload']['name']) ;
-  $queryi = "INSERT INTO users (Profile_Pic) VALUES ('$pic') where id ='$id' ";
-			mysqli_query($db, $queryi); 
+  $queryi = "UPDATE users SET Profile_Pic='$pic' where id ='$id' ";
+		if ($pic!=""){
+			mysqli_query($db, $queryi);
 			move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
-			  
-	$query = "UPDATE users 
-	SET  First_Name='$First_Name', Email='$Email',Phone='$Phone',Job='$Job',Location='$Location',Birthday='$Birthday',Profile_Pic='$pic ',Description='$Description'  WHERE id='$id'" ;
+}
+	$query = "UPDATE users
+	SET  First_Name='$First_Name', Email='$Email',Phone='$Phone',Job='$Job',Location='$Location',Birthday='$Birthday',Description='$Description'  WHERE id='$id'" ;
   	mysqli_query($db, $query);
-	
+
 	header('location:profile_edit.php');
 }
 
 ///-------------------------------------------------------------------------------------------------------
 if (isset($_POST['savepics'])){
-	
+
 	/////-------------------- Get id -------------------
 	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
 	mysqli_query($db, $re);
@@ -62,21 +63,20 @@ if (isset($_POST['savepics'])){
 
 
 
-	if (!empty($_FILES['fileToUpload']['name'])) {  }
-	else {
+
   $tar="imgs/";
   $tar=$tar.basename($_FILES['uploadpic']['name']) ;
-  
+
   $pic=($_FILES['uploadpic']['name']) ;
-  
-  $query = "INSERT INTO photos (Photo_Path,User_id)
-  			  VALUES('$pic', '$id') ";
+
+  $query = "INSERT INTO photos (Photo_Path,User_id) VALUES('$pic', '$id') ";
+	if ($pic!=""){
   mysqli_query($db, $query);
-			  move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);
-			  
+			  move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);}
+
 	header('location:profile_edit.php');
-	mysqli_close ( $db );}
-	
+	mysqli_close ( $db );
+
 }
 
 
@@ -124,15 +124,15 @@ if (isset($_POST['savepics'])){
 	  $Job=$row['Job'];
 	  $Type=$row['Type'];
 	  $id=$row['id'];
-	  
+
   }
   //--------------- select photos and save (photo_path) , (photo_id) in same index $i ===> tow array------------------------------------------
   $Photo=array();
   $Photo_id=array();
     $ress=mysqli_query($db,"SELECT * FROM photos WHERE 	User_id='$id'");
-	
+
     $nphotos = mysqli_num_rows($ress) ;
-	
+
 	 if (!$ress) {
                    printf("Error: %s\n", mysqli_error($db));
                    exit();
@@ -141,8 +141,8 @@ if (isset($_POST['savepics'])){
                    {
      array_push($Photo,"imgs/".$row['Photo_Path']);
 	 array_push($Photo_id,$row['Photo_id']);
-     
-                   }   
+
+                   }
 
 
 
@@ -167,7 +167,7 @@ if (isset($_POST['savepics'])){
   <label for="fileToUpload" id="uploadbtn" class="fa fa-user" ></label>
   </div>
 
-  <input type="text" name="First_Name" value="<?php echo $First_Name ; ?>" class="inputname" > 
+  <input type="text" name="First_Name" value="<?php echo $First_Name ; ?>" class="inputname" >
   <!-- <input type="text" name="info1" value="<?php //echo $Last_Name ?>" class="inputname" > -------->
 
 
@@ -213,12 +213,12 @@ if (isset($_POST['savepics'])){
 <strong id="photostitle" class="titles">Pictures</strong>
 
   <div class="photocontainer2">
-  
-   <img src="<?php echo isset($Photo[0])?>" alt="" class="imgs" >
-   <img src="<?php echo isset($Photo[1])?>" alt="" class="imgs" >
-   <img src="<?php echo isset($Photo[2])?>" alt="" class="imgs" >
+		<?php
+for($j=0;$j<$nphotos && $j<3;$j++){
+	echo '<img src="'. $Photo[$j] .'" alt="" class="imgs">';
 
-
+}
+?>
   </div>
 
 
@@ -246,7 +246,7 @@ if (isset($_POST['savepics'])){
     <span class="close">&times;</span>
     <div class="photocontainermodal">
     <?php
-	
+
 	// -------------show photos in window and save (Photos_ids) in array if user click on X -----------------------
 	for($j=0;$j<$nphotos;$j++){
       echo '<div id="pic'. $Photo_id[$j].'" class="piccontainer">';
@@ -254,7 +254,7 @@ if (isset($_POST['savepics'])){
      echo ' <button id="deletepic1" type="button" name="deletepic" class="closepic" onclick="myFunction('.$Photo_id[$j].')"> &times; </button> ';
 	 echo ' </div>';
 
-	 } 
+	 }
 	 ?>
 
     </div>
@@ -262,11 +262,11 @@ if (isset($_POST['savepics'])){
 
       <input type="file" name="uploadpic" id="uploadpic" hidden>
       <label for="uploadpic" id="uploadpicbtn" >Upload</label>
-	  
-	  
+
+
       <input type="button" name="savepics" value="savepics" id="b1" onclick="send()">
 	  <input type="submit" id="b2" name="savepics" hidden>
-	  
+
 
     </div>
   </div>
