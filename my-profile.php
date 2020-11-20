@@ -70,7 +70,7 @@ $i++;
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/ '. $Profile_Pic . ' " alt="" > '; ?>
+   <?php echo' <img id="pic"  src="imgs/'. $Profile_Pic . ' " alt="" > '; ?>
 
     <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
@@ -104,8 +104,10 @@ $i++;
     <div class="info">
       <span><?php echo $Birthday ; ?></span>
     </div>
-
     </div>
+    <div style="margin-left:321px;">
+<a class="btn" href="profile_edit.php" style="color:#ffffffeb;">Edit Profile</a>
+</div>
 </div>
 
 <div id="square2">
@@ -166,7 +168,7 @@ while($row1=mysqli_fetch_array($rest))
 mysqli_close($db);
 ?>
 </div>
-<a href='profile_edit.php' > <button> edit </button> </a>
+
 </div>
 
   </body>
