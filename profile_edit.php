@@ -3,14 +3,18 @@
 	<?php 
 	session_start(); 
 	if (!isset($_SESSION['Username'])) {
-  	header('location: login.php');
+  	header('location: signin.php');
               }
  
   $Username=$_SESSION['Username'];
   
   
 if (isset($_POST['save'])){
-	
+	//------- get id -----------------------------
+	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
+	mysqli_query($db, $re);
+	while($row=mysqli_fetch_array($re))
+  {$id=$row['id']; }
 	
   $First_Name =  $_POST['First_Name'];
   //$Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
@@ -50,6 +54,14 @@ if (isset($_POST['save'])){
 ///-------------------------------------------------------------------------------------------------------
 if (isset($_POST['savepics'])){
 	
+	/////-------------------- Get id -------------------
+	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
+	mysqli_query($db, $re);
+	while($row=mysqli_fetch_array($re))
+  {$id=$row['id']; }
+
+
+
 	if (!empty($_FILES['fileToUpload']['name'])) {  }
 	else {
   $tar="imgs/";
