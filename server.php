@@ -2,74 +2,74 @@
 session_start();
 
 // initializing variables
-$username = "";
-$email    = "";
+$Username = "";
+$Email    = "";
 $errors = array();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'bd');
-if(mysqli_connect_errno())
-		echo"failed to connect ". mysqli_connect_error() ;
+<?php include('conn.php') ?>
 
 // REGISTER USER
 if (isset($_POST['SIGNUP'])) {
   // receive all input values from the form
-  $fname = mysqli_real_escape_string($db, $_POST['fname']);
-  $lname = mysqli_real_escape_string($db, $_POST['lname']);
+  $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
+  $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
 
-  $username = mysqli_real_escape_string($db, $_POST['username']);
-  $email = mysqli_real_escape_string($db, $_POST['email']);
-  $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
-  $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
-  $phone = mysqli_real_escape_string($db, $_POST['phone']);
-  $work = mysqli_real_escape_string($db, $_POST['work']);
-  $position = mysqli_real_escape_string($db, $_POST['position']);
-  $birthday = mysqli_real_escape_string($db, $_POST['birthday']);
-
+  $Username = mysqli_real_escape_string($db, $_POST['Username']);
+  $Email = mysqli_real_escape_string($db, $_POST['Email']);
+  $Password_1 = mysqli_real_escape_string($db, $_POST['Password_1']);
+  $Password_2 = mysqli_real_escape_string($db, $_POST['Password_2']);
+  $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
+  $Job = mysqli_real_escape_string($db, $_POST['Job']);
+  $Location = mysqli_real_escape_string($db, $_POST['Location']);
+  $Birthday = mysqli_real_escape_string($db, $_POST['Birthday']);
+  $Type=mysqli_real_escape_string($db, $_POST['Type']);
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
-  if (empty($fname)) { array_push($errors, "First Name is required"); }
-  if (empty($lname)) { array_push($errors, "Last Name is required"); }
+  if (empty($First_Name )) { array_push($errors, "First Name is required"); }
+  if (empty($Last_Name)) { array_push($errors, "Last Name is required"); }
 
-  if (empty($username)) { array_push($errors, "Username is required"); }
-  if (empty($email)) { array_push($errors, "Email is required"); }
-  if (empty($phone)) { array_push($errors, "Phone is required"); }
-  if (empty($work)) { array_push($errors, "Work is required"); }
-  if (empty($position)) { array_push($errors, "Position is required"); }
-  if (empty($birthday)) { array_push($errors, "Birthday is required"); }
-  if (empty($password_1)) { array_push($errors, "Password is required"); }
-  if ($password_1 != $password_2) {
+  if (empty($Username)) { array_push($errors, "Username is required"); }
+  if (empty($Email)) { array_push($errors, "Email is required"); }
+  if (empty($Phone)) { array_push($errors, "Phone is required"); }
+  if (empty($Job)) { array_push($errors, "Job is required"); }
+  if (empty($Location)) { array_push($errors, "Location is required"); }
+  if (empty($Birthday)) { array_push($errors, "Birthday is required"); }
+  if (empty($Type)) { array_push($errors, "Type is required"); }
+  if (empty($Password_1)) { array_push($errors, "Password is required"); }
+  if ($Password_1 != $Password_2) {
 	array_push($errors, "The two passwords do not match");
   }
 
   // first check the database to make sure
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT * FROM worker WHERE username='$username' OR email='$email' LIMIT 1";
+  $user_check_query = "SELECT * FROM Users WHERE ((Username='$Username') OR (Email='$Email')) LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
-  $user = mysqli_fetch_assoc($result);
+   
 
-  if ($user) { // if user exists
-    if ($user['username'] === $username) {
+  if (mysqli_fetch_assoc($result)) { // if user exists
+    if ($user['Username'] === $Username) {
       array_push($errors, "Username already exists");
     }
 
-    if ($user['email'] === $email) {
+    if ($user['Email'] === $Email) {
       array_push($errors, "email already exists");
     }
   }
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$password =  md5($password_1);//encrypt the password before saving in the database
+  	$Password =  md5($Password_1);//encrypt the password before saving in the database
     ///$password =password_hash($password, PASSWORD_DEFAULT);
-  	$query = "INSERT INTO worker (fname,lname,username, email, password,phone,work,position,birthday)
-  			  VALUES('$fname','$lname','$username', '$email', '$password','$phone','$work','$position','$birthday')";
+  	$query = "INSERT INTO Users (First_Name,Last_Name,Username, Email, Password,Phone,Job,Location,Birthday,Type)
+  			  VALUES('$First_Name','$Last_Name','$Username', '$Email', '$Password','$Phone','$Job','$Location','$Birthday','$Type')";
   	mysqli_query($db, $query);
-  	$_SESSION['username'] = $username;
+  	$_SESSION['Username'] = $Username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: search.html');
+  	header('location: search.php');
   }
+  mysqli_close ( $db );
 }
 
 
@@ -81,13 +81,13 @@ if (isset($_POST['SIGNUP'])) {
 
 // LOGIN USER
 if (isset($_POST['login'])) {
-  $username = mysqli_real_escape_string($db, $_POST['username']);
-  $password = mysqli_real_escape_string($db, $_POST['password']);
+  $Username = mysqli_real_escape_string($db, $_POST['Username']);
+  $Password = mysqli_real_escape_string($db, $_POST['Password']);
 
-  if (empty($username)) {
+  if (empty($Username)) {
   	array_push($errors, "Username is required");
   }
-  if (empty($password)) {
+  if (empty($Password)) {
   	array_push($errors, "Password is required");
   }
 
@@ -110,21 +110,22 @@ if (isset($_POST['login'])) {
 					     */
 
 
-  	$password =  md5($password);
+  	$Password =  md5($Password);
 	//$password =password_hash($password, PASSWORD_DEFAULT);
 
-  	$query = "SELECT * FROM worker WHERE username='$username' AND password='$password'";
+  	$query = "SELECT * FROM Users WHERE Username='$Username' AND Password='$Password'";
 
   	$results = mysqli_query($db, $query);
-	//if(password_verify($password, $results['password']) && $username==$results['username'])
+	//if(password_verify($password, $results['Password']) && $username==$results['username'])
   	if (mysqli_num_rows($results) == 1) {
-  	  $_SESSION['username'] = $username;
+  	  $_SESSION['Username'] = $Username;
   	 $_SESSION['success'] = "You are now logged in";
-  	 header('location: search.html');
+  	 header('location: search.php');
   	} else {
   		array_push($errors, "Wrong username/password combination");
   	}
   }
+  mysqli_close ( $db );
 }
 
 ?>

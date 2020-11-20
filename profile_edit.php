@@ -1,3 +1,71 @@
+ 
+<?php include('conn.php') ?>
+	<?php 
+ //$id=$_GET['id'];
+  $id=1;
+  
+  
+if (isset($_POST['save'])){
+	
+	
+  $First_Name =  $_POST['First_Name'];
+  //$Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
+  $Email = $_POST['Email'];
+  $Phone =  $_POST['Phone'];
+  $Job = $_POST['Job'];
+  $Location = $_POST['Location'];
+  $Description = $_POST['Description'];
+  
+	
+	
+  if (empty($First_Name )) { array_push($errors, "First Name is required"); }
+  // if (empty($Last_Name)) { array_push($errors, "Last Name is required"); }
+  if (empty($Email)) { array_push($errors, "Email is required"); }
+  if (empty($Phone)) { array_push($errors, "Phone is required"); }
+  if (empty($Job)) { array_push($errors, "Job is required"); }
+  if (empty($Location)) { array_push($errors, "Location is required"); }
+  if (empty($Birthday)) { array_push($errors, "Birthday is required"); }
+  if (empty($Description)) { array_push($errors, "Description is required"); }
+  
+  
+  $tar="imgs/";
+  $tar=$tar.basename($_FILES['fileToUpload']['name']);
+  $pic=($_FILES['fileToUpload']['name']) ;
+  $queryi = "INSERT INTO users (Profile_Pic) VALUES ('$pic') where id ='$id' ";
+			mysqli_query($db, $queryi); 
+			move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
+			  
+	$query = "UPDATE users 
+	SET  First_Name='$First_Name', Email='$Email',Phone='$Phone',Job='$Job',Location='$Location',Birthday='$Birthday',Profile_Pic='$pic ',Description='$Description'  WHERE id='$id'" ;
+  	mysqli_query($db, $query);
+	
+	header('location:profile_edit.php');
+}
+
+///-------------------------------------------------------------------------------------------------------
+if (isset($_POST['savepics'])){
+	
+	if (!empty($_FILES['fileToUpload']['name'])) {  }
+	else {
+  $tar="imgs/";
+  $tar=$tar.basename($_FILES['uploadpic']['name']) ;
+  
+  $pic=($_FILES['uploadpic']['name']) ;
+  
+  $query = "INSERT INTO photos (Photo_Path,User_id)
+  			  VALUES('$pic', '$id') ";
+  mysqli_query($db, $query);
+			  move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);
+			  
+	header('location:profile_edit.php');
+	mysqli_close ( $db );}
+	
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -14,52 +82,61 @@
 
 <body>
 <?php
-$con = mysqli_connect('localhost', 'root', '', 'bd');
-if(mysqli_connect_errno())
-		echo"failed to connect ". mysqli_connect_error() ;
- //$id=$_GET['id'];
-  $id=23;
 
 
-  $res=mysqli_query($con,"SELECT * FROM WORKER WHERE 	id='$id'");
+//-----------------select data --------------------------
 
+
+
+  $res=mysqli_query($db,"SELECT * FROM users WHERE 	id='$id'");
   while($row=mysqli_fetch_array($res))
   {
-	  $username=$row['username'];
-	  $position=$row['position'];
-	  $email=$row['email'];
-	  $phone=$row['phone'];
-	  $birthday=$row['birthday'];
-	  $description=$row['description'];
-	  $profile=$row['pprofile'];
-	   $fname=$row['fname'];
-	    $lname=$row['lname'];
-		 $work=$row['work'];
-
-
-
-
+	  $Username=$row['Username'];
+	  $Location=$row['Location'];
+	  $Email=$row['Email'];
+	  $Phone=$row['Phone'];
+	  $Birthday=$row['Birthday'];
+	  $Description=$row['Description'];
+	  $Profile_Pic=$row['Profile_Pic'];
+	  $First_Name=$row['First_Name'];
+	  $Last_Name=$row['Last_Name'];
+	  $Job=$row['Job'];
+	  $Type=$row['Type'];
+	  
   }
-  $res=mysqli_query($con,"SELECT * FROM photos WHERE id='$id'");
-    $nphotos =mysqli_num_rows($res) ;
-	$i=0;
-while($row=mysqli_fetch_array($res))
-  {
-$photos[$i]=$row['photo'];
-$i++;
-}    ?>
+  //--------------- select photos and save (photo_path) , (photo_id) in same index $i ===> tow array------------------------------------------
+  $Photo=array();
+  $Photo_id=array();
+    $ress=mysqli_query($db,"SELECT * FROM photos WHERE 	User_id='$id'");
+	
+    $nphotos = mysqli_num_rows($ress) ;
+	
+	 if (!$ress) {
+                   printf("Error: %s\n", mysqli_error($db));
+                   exit();
+                 }
+    while($row=mysqli_fetch_array($ress))
+                   {
+     array_push($Photo,"imgs/".$row['Photo_Path']);
+	 array_push($Photo_id,$row['Photo_id']);
+     
+                   }   
+
+
+
+ ?>
 <div class="topbar">
 
 </div>
 
-<form class="" action="" method="post">
+<form class="" action="profile_edit.php" method="post"  enctype="multipart/form-data" >
 
 
 <div id="container" >
 <div id="square1">
 
 <div class="" style="border-radius: inherit;">
-  <img id="pic"  src="<?php echo $profile ?>" alt="" >
+  <img id="pic"  src="imgs/<?php   echo  $Profile_Pic; ?> " alt="" >
 
 
 
@@ -68,26 +145,27 @@ $i++;
   <label for="fileToUpload" id="uploadbtn" class="fa fa-user" ></label>
   </div>
 
-  <input type="text" name="info1" value="<?php echo $fname." ".$lname ?>" class="inputname" >
+  <input type="text" name="First_Name" value="<?php echo $First_Name ?>" class="inputname" > 
+  <!-- <input type="text" name="info1" value="<?php //echo $Last_Name ?>" class="inputname" > -------->
 
 
   <div class="infocontain2">
 
 
   <div class="info">
-    <input type="text" name="info1" value="<?php echo $email ?>" class="inputinf">
+    <input type="text" name="Email" value="<?php echo $Email ?>" class="inputinf">
   </div>
   <div class="info">
-    <input type="text" name="info1" value="<?php echo $phone ?>" class="inputinf">
+    <input type="text" name="Phone" value="<?php echo $Phone ?>" class="inputinf">
   </div>
   <div class="info">
-    <input type="text" name="info1" value="<?php echo $position ?>" class="inputinf">
+    <input type="text" name="Location" value="<?php echo $Location ?>" class="inputinf">
   </div>
   <div class="info">
-    <input type="text" name="info1" value="<?php echo $birthday ?>" class="inputinf">
+    <input type="text" name="Birthday" value="<?php echo $Birthday ?>" class="inputinf">
   </div>
   <div class="info">
-    <input type="text" name="info1" value="<?php echo $work ?>" class="inputinf">
+    <input type="text" name="Job" value="<?php echo $Job ?>" class="inputinf">
   </div>
 
   </div>
@@ -99,7 +177,7 @@ $i++;
 <div class="description">
   <strong>Description</strong>
   <br>
-  <textarea type="text" name="" value="" class="descriptioninp"> <?php echo $description  ?> </textarea>
+  <textarea type="text" name="Description" value="" class="descriptioninp"> <?php echo $Description  ?> </textarea>
 </div>
 
 
@@ -113,10 +191,9 @@ $i++;
 <strong id="photostitle" class="titles">Pictures</strong>
 
   <div class="photocontainer2">
-   <img src="<?php echo $photos[1]?>" alt="" class="imgs" >
-   <img src="<?php echo $photos[1]?>" alt="" class="imgs">
-   <img src="<?php echo $photos[1]?>" alt="" class="imgs">
-
+   <img src="<?php echo $Photo[0]?>" alt="" class="imgs" >
+   <img src="<?php echo $Photo[1]?>" alt="" class="imgs" >
+   <img src="<?php echo $Photo[2]?>" alt="" class="imgs" >
 
 
   </div>
@@ -133,7 +210,7 @@ $i++;
 
 
 
-<input type="submit" value="save" id="save">
+<input type="submit" value="save" name="save" id="save">
 <i class="fa fa-save icn"></i>
 
 </div>
@@ -145,23 +222,28 @@ $i++;
   <div class="modal-content">
     <span class="close">&times;</span>
     <div class="photocontainermodal">
+    <?php
+	
+	// -------------show photos in window and save (Photos_ids) in array if user click on X -----------------------
+	for($j=0;$j<$nphotos;$j++){
+      echo '<div id="pic'. $Photo_id[$j].'" class="piccontainer">';
+       echo '<img src="'. $Photo[$j] .'" alt="" class="imgs">';
+     echo ' <button id="deletepic1" type="button" name="deletepic" class="closepic" onclick="myFunction('.$Photo_id[$j].')"> &times; </button> ';
+	 echo ' </div>';
 
-      <div id="pic1" class="piccontainer">
-      <img src="1.jpg" alt="" class="imgs">
-      <button id="deletepic1" type="button" name="deletepic" class="closepic" onclick="myFunction(1)">&times;</button>
-    </div>
-
-      <div id="pic2" class="piccontainer">
-      <img src="2.jpg" alt="" class="imgs">
-      <button id="deletepic2" type="button" name="deletepic" class="closepic" onclick="myFunction(2)">&times;</button>
-    </div>
+	 } 
+	 ?>
 
     </div>
     <div class="piceditbtn">
 
       <input type="file" name="uploadpic" id="uploadpic" hidden>
       <label for="uploadpic" id="uploadpicbtn" >Upload</label>
-      <input type="button" name="savepics" value="save" id="savepicbtn" onclick="send()">
+	  
+	  
+      <input type="button" name="savepics" value="savepics" id="b1" onclick="send()">
+	  <input type="submit" id="b2" name="savepics" hidden>
+	  
 
     </div>
   </div>
@@ -239,7 +321,10 @@ window.onclick = function(event) {
   }
 }
 
+$("#b1").click(function(){
+    $("#b2").trigger('click');
 
+})
 
 
 </script>

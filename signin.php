@@ -25,11 +25,11 @@
 	
     <form class="login-form" action="signin.php" method="post" >
 	<?php include('errors.php'); ?>
-      <input type="text" name="username" placeholder="username" required="" >
-      <input type="password" name="password"  placeholder="password"  >
+      <input type="text" name="Username" placeholder="username" required="" >
+      <input type="password" name="Password"  placeholder="password"  >
       <input type="submit" value="login" name="login">
 	  </form>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
+      <p class="message">Not registered? <a href="signup.php">Create an account</a></p>
     
 	
 	

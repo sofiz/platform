@@ -149,9 +149,7 @@ font-weight:bold;
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'bd');
-if(mysqli_connect_errno())
-		echo"failed to connect ". mysqli_connect_error() ;
+<?php include('conn.php') ?>
 
 // REGISTER USER
 

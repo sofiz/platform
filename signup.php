@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Creative Colorlib SignUp Form</title>
+<title>SignUp Form</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -21,35 +21,35 @@
 			<div class="agileits-top">
 				<form action="signup.php" method="post">
 				<?php include('errors.php'); ?>
-				   <input class="text" type="text" name="username" placeholder="Username" required="">
-                    <input class="text" type="text" name="fname" placeholder="First Name" required="">
-				    <input class="text" type="text" name="lname" placeholder="Last Name" required="">
+				   <input class="text" type="text" name="Username" placeholder="Username" required="">
+                    <input class="text" type="text" name="First_Name" placeholder="First Name" required="">
+				    <input class="text" type="text" name="Last_Name" placeholder="Last Name" required="">
 					
-					<input class="text email" type="email" name="email" placeholder="Email" required="">
-					<input class="text" type="password" name="password_1" placeholder="Password" required="">
-					<input class="text w3lpass" type="password" name="password_2" placeholder="Confirm Password" required="">
+					<input class="text email" type="email" name="Email" placeholder="Email" required="">
+					<input class="text" type="password" name="Password_1" placeholder="Password" required="">
+					<input class="text w3lpass" type="password" name="Password_2" placeholder="Confirm Password" required="">
 					
-					<input class="text" type="text" name="phone" placeholder="phone" required="">
-					<select name="work">
-<option value="00"  >  se 00</option>
-<option value="01" >  se 01</option>
-<option value="10" >  se 10</option>
-<option value="11" >  se 11</option>
+					<input class="text" type="text" name="Phone" placeholder="phone" required="">
+					<select name="Job">
+<option value="00"  > 00 </option>
+<option value="01" > 01 </option>
+<option value="10" > 10 </option>
+<option value="11" > 11 </option>
 
 					</select>
-					<select name="position" >
-<option value="00"  > po 00</option>
-<option value="01" >  po 01</option>
-<option value="10" >  po 10</option>
-<option value="11" >  po 11</option>
+					<select name="Location" >
+<option value="00"  >  00</option>
+<option value="01" >   01</option>
+<option value="10" >   10</option>
+<option value="11" >   11</option>
 
-					</select>
-					<select  >
+					</select >
+					<select name="Type" >
 <option value="00"  > worker</option>
 <option value="00"  > client</option>
 
 					</select>
-					<input type="date" id="birthday" name="birthday">
+					<input type="date" id="birthday" name="Birthday">
 					
 					<div class="wthree-text">
 						<label class="anim">
@@ -60,12 +60,12 @@
 					</div>
 					<input type="submit" name="SIGNUP"  value="SIGNUP">
 				</form>
-				<p>Don't have an Account? <a href="#"> Login Now!</a></p>
+				<p>Don't have an Account? <a href="signin.php"> Login Now!</a></p>
 			</div>
 		</div>
 		<!-- copyright -->
 		<div class="colorlibcopy-agile">
-			<p>© 2020 riyadh Signup Form All rights reserved | developed  by riyadh</p>
+			<p>  </p>
 		</div>
 		<!-- //copyright -->
 		<ul class="colorlib-bubbles">

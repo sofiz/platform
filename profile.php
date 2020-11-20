@@ -10,11 +10,9 @@
   </head>
 
   <body>
-  <?php
+  
 
-  $con=mysqli_connect("localhost","root","","bd");
-	if(mysqli_connect_errno())
-		echo"failed to connect ". mysqli_connect_error() ;
+ <?php include('conn.php') ?>
 
   //$id=$_GET['id'];
 
