@@ -1,4 +1,19 @@
+<?php 
+session_start(); 
+if(isset($_POST['logout'])) {
+  //Unset cookies and other things you want to
+  session_destroy();
+  header('Location: search.php'); //Dont forget to redirect
+  exit;
+}
+if(isset($_POST['login'])) {
+  
+  header('Location: signin.php'); //Dont forget to redirect
+  exit;
+}
 
+
+?>
   
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -110,17 +125,20 @@ font-weight:bold;
 </style>
   <body>
     <div class="topbar">
-	<?php 
-  session_start(); 
-
+	
+  <form action="search.php" method="post">
+<?php 
   if (isset($_SESSION['Username'])) {
-  	echo  "<h1> hena dir icon ta3 logout w icon ta3 profile  </h1>";
-	echo  '<a href="my-profile.php">  <button>  my profile </button> </a> ';
+  
+	echo  '<a href="my-profile.php">   my profile  </a> ';
+	echo '<input type="submit" name="logout" value="logout" >';
   	
   }
-  else {  echo  "<h1> hena dir button ta3 log in   </h1>";   }  
-  ?>  </div>
-  <form action="search.php" method="post">
+  
+  else {    echo '<input type="submit" name="login" value="login" >';   }  
+  ?> 
+  <a href="profile.php?id=1" > profile </a> </div>
+  
     <div class="searchbar">
     <input type="text" name="name" placeholder="search" class="searchinput">
     <div >
@@ -142,7 +160,8 @@ font-weight:bold;
       </select>
     </div>
     </div>
-	<input type="submit" name="search"  value="SIGNUP">
+	<input type="submit" name="search"  value="search">
+	 
 	
 	 <?php /* include('errors.php'); */  ?>  
 				</form>
@@ -172,7 +191,7 @@ if (isset($_POST['search'])) {
 if (mysqli_num_rows($query) == 0) {
 	echo '<div class="resultcontainer"> ';
     echo ' <p id="noresult">no result found!</p>  </div> '; 
-	echo ' nkmk00 ';
+	
 	} 
   else {
 while($row=mysqli_fetch_array($query))
@@ -183,22 +202,14 @@ while($row=mysqli_fetch_array($query))
       echo'<a href="" class="name">  '. $row['fname'].$row['lname'] . ' </a>  ';
       echo'<p class="info"> ' .$row['phone'] .  '</p> ';
      echo' <p class="info">'. $row['position']. '</p>  </div> </div>   ';
-	 echo " nkmk10 ";
+	 
 					  }
 
 }
 }
 
 ?>
-   <!-- <div class="resultcontainer">
-      <a href="" ><img src="jake.jpg" alt="" class="resimg" ></a>
-      <div class="infocontainer">
-      <a href="" class="name">Name Name</a>
-      <p class="info">info 1</p>
-      <p class="info">info 2</p>
-      <p class="info">info 3</p>
-      </div>
-    </div> -->
+  
 	
   </body>
 </html>

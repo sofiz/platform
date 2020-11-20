@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<?php session_start();  ?>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -14,8 +14,8 @@
 
 <?php include('conn.php') ?>
 <?php 
-//$id=$_GET['id'];
-$id=2;
+$id=$_GET['id'];
+
 
 //------------------------------------select profile data--------------------------------------------------
   $res=mysqli_query($db,"SELECT * FROM users WHERE 	id='$id'");
