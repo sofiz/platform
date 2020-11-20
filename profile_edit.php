@@ -226,7 +226,7 @@ for($j=0;$j<$nphotos && $j<3;$j++){
 
 <div class="btns">
 
-<a  href="profile.html" class="btn">
+<a  href="my-profile.php" class="btn">
 <i class="fa fa-times "></i>
 <span>cancel</span>
 </a>

@@ -70,11 +70,13 @@
 
     #pic{
     height:170px;
+    width:170px;
     left: 135px;
     position: relative;
     border-radius:inherit;
     box-shadow: 0px 4px 14px #1c4e009e;
     margin-top:20px;
+        object-fit: cover;
     }
 
     #name{
@@ -385,7 +387,7 @@ outline: none;
         text-align: center;
         line-height: 170px;
         margin-top: 20px;
-        left: 368px;
+        left: 376px;
         background: #1f1f1f6e;
         border-radius: inherit;
         opacity: 0;
@@ -512,7 +514,7 @@ outline: none;
     cursor: pointer;
   }
 
-  #savepicbtn{
+  #b1{
     background: linear-gradient(135deg, #A0D0F9, #67B7FB);
         border:none;
         border-radius: 4px;

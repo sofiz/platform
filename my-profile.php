@@ -136,6 +136,7 @@ $i++;
 </div>
 
 <div class="square4">
+  <strong class="titles">Reviews</strong>
 <?php
 
   //for show all comments
