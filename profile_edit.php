@@ -1,8 +1,12 @@
  
-<?php include('conn.php') ?>
+<?php include('conn.php'); ?>
 	<?php 
- //$id=$_GET['id'];
-  $id=1;
+	session_start(); 
+	if (!isset($_SESSION['Username'])) {
+  	header('location: login.php');
+              }
+ 
+  $Username=$_SESSION['Username'];
   
   
 if (isset($_POST['save'])){
@@ -15,6 +19,7 @@ if (isset($_POST['save'])){
   $Job = $_POST['Job'];
   $Location = $_POST['Location'];
   $Description = $_POST['Description'];
+  $Birthday = $_POST['Birthday'];
   
 	
 	
@@ -88,7 +93,11 @@ if (isset($_POST['savepics'])){
 
 
 
-  $res=mysqli_query($db,"SELECT * FROM users WHERE 	id='$id'");
+  $res=mysqli_query($db,"SELECT * FROM users WHERE 	Username='$Username'");
+  if (!$res) {
+    printf("Error: %s\n", mysqli_error($db));
+    exit();
+}
   while($row=mysqli_fetch_array($res))
   {
 	  $Username=$row['Username'];
@@ -102,6 +111,7 @@ if (isset($_POST['savepics'])){
 	  $Last_Name=$row['Last_Name'];
 	  $Job=$row['Job'];
 	  $Type=$row['Type'];
+	  $id=$row['id'];
 	  
   }
   //--------------- select photos and save (photo_path) , (photo_id) in same index $i ===> tow array------------------------------------------
@@ -145,7 +155,7 @@ if (isset($_POST['savepics'])){
   <label for="fileToUpload" id="uploadbtn" class="fa fa-user" ></label>
   </div>
 
-  <input type="text" name="First_Name" value="<?php echo $First_Name ?>" class="inputname" > 
+  <input type="text" name="First_Name" value="<?php echo $First_Name ; ?>" class="inputname" > 
   <!-- <input type="text" name="info1" value="<?php //echo $Last_Name ?>" class="inputname" > -------->
 
 

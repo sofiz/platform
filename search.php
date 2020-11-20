@@ -113,8 +113,9 @@ font-weight:bold;
 	<?php 
   session_start(); 
 
-  if (isset($_SESSION['username'])) {
+  if (isset($_SESSION['Username'])) {
   	echo  "<h1> hena dir icon ta3 logout w icon ta3 profile  </h1>";
+	echo  '<a href="my-profile.php">  <button>  my profile </button> </a> ';
   	
   }
   else {  echo  "<h1> hena dir button ta3 log in   </h1>";   }  
@@ -149,7 +150,7 @@ font-weight:bold;
 $errors = array(); 
 
 // connect to the database
-<?php include('conn.php') ?>
+ include('conn.php');
 
 // REGISTER USER
 

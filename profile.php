@@ -12,35 +12,40 @@
   <body>
   
 
- <?php include('conn.php') ?>
+<?php include('conn.php') ?>
+<?php 
+//$id=$_GET['id'];
+$id=2;
 
-  //$id=$_GET['id'];
-
-
-
-  $res=mysqli_query($con,"SELECT * FROM WORKER WHERE 	id=23");
+//------------------------------------select profile data--------------------------------------------------
+  $res=mysqli_query($db,"SELECT * FROM users WHERE 	id='$id'");
 
   while($row=mysqli_fetch_array($res))
   {
-	  $username=$row['username'];
-	  $position=$row['position'];
-	  $email=$row['email'];
-	  $phone=$row['phone'];
-	  $birthday=$row['birthday'];
-	  $description=$row['description'];
-	  $profile=$row['pprofile'];
-	   $fname=$row['fname'];
-	    $lname=$row['lname'];
+  $First_Name = mysqli_real_escape_string($db,$row['First_Name']);
+  $Last_Name = mysqli_real_escape_string($db,$row['Last_Name'] );
+  
+  
+	  $Profile_Pic=$row['Profile_Pic'];
+	  $Username=$row['Username'];
+	  $Location=$row['Location'];
+	  $Email=$row['Email'];
+	  $Phone=$row['Phone'];
+	  $Birthday=$row['Birthday'];
+	  $Description=$row['Description'];
+	 
 
 
 
   }
-  $res=mysqli_query($con,"SELECT * FROM photos WHERE id=23");
+  
+  //--------------select photos -----------------------
+  $res=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
     $nphotos =mysqli_num_rows($res) ;
 	$i=0;
 while($row=mysqli_fetch_array($res))
   {
-$photos[$i]=$row['photo'];
+$photo[$i]=$row['Photo_Path'];
 $i++;
 }
 
@@ -56,9 +61,9 @@ $i++;
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src=" '. $profile . ' " alt="" > '; ?>
+   <?php echo' <img id="pic"  src="imgs/'. $Profile_Pic . ' " alt="" > '; ?>
 
-    <strong id="name" ><?php echo $fname .' '. $lname ; ?> </strong>
+    <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
     <div class="rating">
 
@@ -75,20 +80,20 @@ $i++;
 
 
     <div class="info">
-      <span><?php echo $email ; ?></span>
+      <span><?php echo $Email ; ?></span>
     </div>
 
 
     <div class="info">
-      <span><?php echo $phone ; ?></span>
+      <span><?php echo $Phone ; ?></span>
     </div>
 
     <div class="info">
-      <span><?php echo $position ; ?></span>
+      <span><?php echo $Location ; ?></span>
     </div>
 
     <div class="info">
-      <span><?php echo $birthday ; ?></span>
+      <span><?php echo $Birthday ; ?></span>
     </div>
 
     </div>
@@ -99,7 +104,7 @@ $i++;
 
   <div class="description">
     <strong class="titles">Description</strong>
-    <p  id="descriptiontxt"><?php echo $description ; ?></p>
+    <p  id="descriptiontxt"><?php echo $Description ; ?></p>
   </div>
 
 
@@ -109,8 +114,16 @@ $i++;
     <strong id="photostitle" class="titles">Pictures</strong>
     <div class="photocontainer">
 
-
-     <?php echo'<img src=" '.    $photos[0]       .' " alt="" class="imgs" > ';  ?>
+      
+     <?php 
+	 //for($j;$j<=$i;j++)
+	 
+	 echo'<img src="imgs/ '.    isset($photo[0] )      .' " alt="" class="imgs" > ';  
+	 echo'<img src="imgs/ '.   isset($photo[1] )      .' " alt="" class="imgs" > ';
+	 echo'<img src="imgs/ '.   isset( $photo[2] )      .' " alt="" class="imgs" > ';
+	 
+	 
+	 ?>
     </div>
     <button id="viewallpic" type="button" name="button">See all pictures</button>
 </div>
@@ -118,18 +131,19 @@ $i++;
 <div class="square4">
   <strong class="titles">Reviews</strong>
 <?php
-//session_start();
-//for my comment
-  if (isset($_SESSION['username'])) {
-	  $user=$_SESSION['username'];
-	  $res=mysqli_query($con,"SELECT pprofile,lname,fname,id FROM worker WHERE username='$user'");
+
+//-------------for my comment-------------------------------------------
+
+  if (isset($_SESSION['Username'])) {
+	  $user=$_SESSION['Username'];
+	  $res=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name FROM users WHERE Username='$user'");
   while($row=mysqli_fetch_array($res)) {
-  	  $profile=$row['pprofile'] ;
-		 		 $lname=$row['lname'] ;
-				 		 $fname=$row['fname'] ;
+  	  $Profile_Pic=$row['Profile_Pic'] ;
+		 		 $Last_Name=$row['Last_Name'] ;
+				 		 $First_Name=$row['First_Name'] ;
 
    echo' <div class="yourcomment"> ';
-  echo'  <img src=" '.   $profile     .' " alt="" id="yourcommentpic"> ';
+  echo'  <img src="imgs/ '.   $Profile_Pic    .' " alt="" id="yourcommentpic"> ';
    echo'    <form action="profile.php" method="post">   ';
   echo' <input type="text" name="" value="" id="input1">     ';
   echo' <input type="submit" name="commenter" value="" id="input1">   </div>  ';
@@ -138,72 +152,40 @@ $i++;
 				}
   }
 
-  //for show all comments
-$res=mysqli_query($con,"SELECT * FROM comments WHERE id=23");
+  //------------------------------for show all comments------------------
+$User_id=$id ;
+$res=mysqli_query($db,"SELECT * FROM comments WHERE User_id='$id'");
 
-while($row1=mysqli_fetch_array($res))
+while($row=mysqli_fetch_array($res))
   {
-$userid=$row1['user_id'];
 
-$rest=mysqli_query($con,"SELECT pprofile,lname,fname FROM worker WHERE id='$userid' ");
+$Commentor_id=$row['Commentor_id'] ;
+$rest=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name FROM users WHERE id='$Commentor_id' ");
 
-while($row=mysqli_fetch_array($rest)){
+while($row1=mysqli_fetch_array($rest))
+       {
 
-		 $profile=$row['pprofile'] ;
-		 		 $lname=$row['lname'] ;
-				 		 $fname=$row['fname'] ;
+		 $Profile_Pic1=$row1['Profile_Pic'] ;
+		 $Last_Name1=$row1['Last_Name'] ;
+		 $First_Name1=$row1['First_Name'] ;
 
-}
+              }
 
 
    echo ' <div class="commentsection"> ';
-        echo ' <div class="comment"> ' ;
-    echo '<img class="commentimg" src="'.   $profile    .' " alt=""> ' ;
-   echo ' <span class="cousername">'. $lname.'  '.$fname  . '</span> ' ;
+   echo ' <div class="comment"> ' ;
+   echo '<img class="commentimg" src="'.   $Profile_Pic1    .' " alt=""> ' ;
+   echo ' <span class="cousername">'. $First_Name1.'  '.$Last_Name1  . '</span> ' ;
    echo ' <br> ' ;
-   echo ' <span class="commenttxt">  ' .  $row1['comment']  .'       </span> </div> </div> ' ;
+   
+   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
 
 
 
 }
-mysqli_close($con);
+mysqli_close($db);
 ?>
-
-<!--
-<div class="yourcomment">
-  <img src="my pic.jpg" alt="" id="yourcommentpic">
-  <input type="text" name="" value="" id="input1">
-
-</div>
-
-
-
-<div class="commentsection">
-  <div class="comment">
-    <img class="commentimg" src="my pic.jpg" alt="">
-    <span class="cousername">Sofi Oussama</span>
-    <br>
-    <span class="commenttxt">this is a comment for this profile</span>
-  </div>
-
-  <div class="comment">
-    <img class="commentimg" src="jake.jpg" alt="">
-    <span class="cousername">jake the dog</span>
-    <br>
-    <span class="commenttxt">this is a comment for this profile but it is so long to test the page I don't what would happen but I trying so I will be repeating words,Test test this is a comment for this profile but it is so long to test the page I don't what would happen but I trying so I will be repeating words,Test test this is a comment for this profile but it is so long to test the page I don't what would happen but I trying so I will be repeating words,Test test this is a comment for this profile but it is so long to test the page I don't what would happen but I trying so I will be repeating words,Test test</span>
-  </div>
-
-
-  <div class="comment">
-    <img class="commentimg" src="hannibal.jpg" alt="">
-    <span class="cousername">hannibal lecter</span>
-    <br>
-    <span class="commenttxt">can I eat your brain please?</span>
-  </div>
-</div>  -->
-
 </div>
 </div>
-
-  </body>
+ </body>
 </html>

@@ -1,14 +1,14 @@
 <?php 
   session_start(); 
 
-  if (!isset($_SESSION['id'])) {
+    if (!isset($_SESSION['Username'])) {
   	header('location: login.php');
-  }
- /* if (isset($_GET['logout'])) {
+              }
+ if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['username']);
   	header("location: login.php");
-  }  */
+  } 
 ?>
 
 
@@ -241,39 +241,38 @@
     50%  {background-position: 100%;}
   </style>
   <body>
-  
+ 
   <?php 
-  session_start(); 
+  
 
-  if (isset($_SESSION['id'])) {
-  $con=mysqli_connect("localhost","root","","bd");
-	if(mysqli_connect_errno())
-		echo"failed to connect ". mysqli_connect_error() ;  
-	$id=$_SESSION['id'];
+  if (isset($_SESSION['Username'])) {
+    include('conn.php') ;
+	$Username=$_SESSION['Username'];
 	
-  $res=mysqli_query($con,"SELECT * FROM WORKER WHERE id='$id'"); 
+  $res=mysqli_query($db,"SELECT * FROM users WHERE Username='$Username'"); 
   
   while($row=mysqli_fetch_array($res))
   {
-	  $username=$row['username'];
-	  $position=$row['position'];
-	  $email=$row['email'];
-	  $phone=$row['phone'];
-	  $birthday=$row['birthday'];
-	  $description=$row['description'];
-	  $profile=$row['pprofile'];
-	   $fname=$row['fname'];
-	    $lname=$row['lname'];
+	  $Username=$row['Username'];
+	  $Location=$row['Location'];
+	  $Email=$row['Email'];
+	  $Phone=$row['Phone'];
+	  $Birthday=$row['Birthday'];
+	  $Description=$row['Description'];
+	  $Profile_Pic=$row['Profile_Pic'];
+	  $First_Name=$row['First_Name'];
+	  $Last_Name=$row['Last_Name'];
+	  $id=$row['id'];
 	  
 	  
 	  
   }
-  $res=mysqli_query($con,"SELECT * FROM photos WHERE id='$id'");
+  $res=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
     $nphotos =mysqli_num_rows($res) ;
 	$i=0;
 while($row=mysqli_fetch_array($res))
   {     
-$photos[$i]=$row['photo'];
+$photo[$i]=$row['Photo_Path'];
 $i++;
 }
   }
@@ -287,9 +286,9 @@ $i++;
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src=" '. $profile . ' " alt="" > '; ?> 
+   <?php echo' <img id="pic"  src="imgs/ '. $Profile_Pic . ' " alt="" > '; ?> 
 
-    <strong id="name" ><?php echo $fname .' '. $lname ; ?> </strong>
+    <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
     <div class="rating">
 
@@ -306,20 +305,20 @@ $i++;
 
    
     <div class="info">
-      <span><?php echo $email ; ?></span>
+      <span><?php echo $Email ; ?></span>
     </div>
 	
 	
     <div class="info">
-      <span><?php echo $phone ; ?></span>
+      <span><?php echo $Phone ; ?></span>
     </div>
 	
     <div class="info">
-      <span><?php echo $position ; ?></span>
+      <span><?php echo $Location ; ?></span>
     </div>
 	
     <div class="info">
-      <span><?php echo $birthday ; ?></span>
+      <span><?php echo $Birthday ; ?></span>
     </div>
 
     </div>
@@ -332,7 +331,7 @@ $i++;
     <strong>Description</strong>
     <br>
     <br>
-    <span><?php echo $description ; ?></span>
+    <span><?php echo $Description ; ?></span>
   </div>
 
 
@@ -340,107 +339,49 @@ $i++;
 
 <div id="square3">
     <div class="photocontainer">
-	
-     <?php echo'<img src=" '.    $photos[0]       .' " alt="" class="imgs" style="border-top-left-radius:inherit;" > ';  ?>
-    <?php echo' <img src="  ' . $photos[1] .'" alt="" class="imgs"> '; ?>
-    <?php echo' <img src=" ' . $photos[2] .'" alt="" class="imgs" style="border-top-right-radius:inherit;"> '; ?>
-    <?php echo' <img src=" '   . $photos[3]  .' " alt="" class="imgs" style="border-bottom-left-radius:inherit;"> '; ?>
-    <?php echo' <img src=" '.  $photos[4]  .     ' " alt="" class="imgs"> '; ?>
-    <?php echo' <img src=" ' . $photos[5] .'" alt="" class="imgs" style="border-bottom-right-radius:inherit;"> ';  ?> 
-
+	<?php
+     echo'<img src="imgs/ '.    isset($photo[0] )      .' " alt="" class="imgs" > ';  
+	 echo'<img src="imgs/ '.   isset($photo[1] )      .' " alt="" class="imgs" > ';
+	 echo'<img src="imgs/ '.   isset( $photo[2] )      .' " alt="" class="imgs" > ';
+?>
     </div>
 
 </div>
 
 <div class="square4">
 <?php 
-//session_start(); 
-//for my comment
- /* if (isset($_SESSION['username'])) {
-	  $user=$_SESSION['username'];
-	  $res=mysqli_query($con,"SELECT pprofile,lname,fname,id FROM worker WHERE username='$user'");
-  while($row=mysqli_fetch_array($res)) { 
-  	  $profile=$row['pprofile'] ;
-		 		 $lname=$row['lname'] ;
-				 		 $fname=$row['fname'] ;
-						      
-   echo' <div class="yourcomment"> ';
-  echo'  <img src=" '.   $profile     .' " alt="" id="yourcommentpic"> '; 
-   echo'    <form action="profile.php" method="post">   '; 
-  echo' <input type="text" name="" value="" id="input1">     ';  
-  echo' <input type="submit" name="commenter" value="" id="input1">   </div>  ';
-                echo'   </form>    '; 
-				
-				}
-  } */
-  
-  //for show all comments 
-$res=mysqli_query($con,"SELECT * FROM comments WHERE id='$id'");
-    
-while($row1=mysqli_fetch_array($res))
-  {     
-$userid=$row1['user_id'];
 
-$rest=mysqli_query($con,"SELECT pprofile,lname,fname FROM worker WHERE id='$userid' ");
-    
-while($row=mysqli_fetch_array($rest)){ 
-	 
-		 $profile=$row['pprofile'] ;
-		 		 $lname=$row['lname'] ;
-				 		 $fname=$row['fname'] ;
-	 
-}
+  //for show all comments 
+
+$res=mysqli_query($db,"SELECT * FROM comments WHERE User_id='$id'");
+
+while($row=mysqli_fetch_array($res))
+  {
+
+$Commentor_id=$row['Commentor_id'] ;
+$rest=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name FROM users WHERE id='$Commentor_id' ");
+
+while($row1=mysqli_fetch_array($rest))
+       {
+
+		 $Profile_Pic1=$row1['Profile_Pic'] ;
+		 $Last_Name1=$row1['Last_Name'] ;
+		 $First_Name1=$row1['First_Name'] ;
+
+              }
 
 
    echo ' <div class="commentsection"> ';
-        echo ' <div class="comment"> ' ; 
-    echo '<img class="commentimg" src="'.   $profile    .' " alt=""> ' ; 
-   echo ' <span class="cousername">'. $lname.'  '.$fname  . '</span> ' ; 
+   echo ' <div class="comment"> ' ;
+   echo '<img class="commentimg" src="'.   $Profile_Pic1    .' " alt=""> ' ;
+   echo ' <span class="cousername">'. $First_Name1.'  '.$Last_Name1  . '</span> ' ;
    echo ' <br> ' ;
-   echo ' <span class="commenttxt">  ' .  $row1['comment']  .'       </span> </div> </div> ' ;
-
-   
-
-}
-mysqli_close($con);
+   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
+   }
+mysqli_close($db);
 ?>
-
-<!--
-<div class="yourcomment">
-  <img src="my pic.jpg" alt="" id="yourcommentpic">
-  <input type="text" name="" value="" id="input1">
-
 </div>
-
-
-
-<div class="commentsection">
-  <div class="comment">
-    <img class="commentimg" src="my pic.jpg" alt="">
-    <span class="cousername">Sofi Oussama</span>
-    <br>
-    <span class="commenttxt">this is a comment for this profile</span>
-  </div>
-
-  <div class="comment">
-    <img class="commentimg" src="jake.jpg" alt="">
-    <span class="cousername">jake the dog</span>
-    <br>
-    <span class="commenttxt">this is a comment for this profile but it is so long to test the page I don't what would happen but I trying so I will be repeating words,Test test this is a comment for this profile but it is so long to test the page I don't what would happen but I trying so I will be repeating words,Test test this is a comment for this profile but it is so long to test the page I don't what would happen but I trying so I will be repeating words,Test test this is a comment for this profile but it is so long to test the page I don't what would happen but I trying so I will be repeating words,Test test</span>
-  </div>
-
-
-  <div class="comment">
-    <img class="commentimg" src="hannibal.jpg" alt="">
-    <span class="cousername">hannibal lecter</span>
-    <br>
-    <span class="commenttxt">can I eat your brain please?</span>
-  </div>
-</div>  -->
-
-
-</div>
-<a src > <button> edit </button> </a>
+<a href='profile_edit.php' > <button> edit </button> </a>
 </div>
 
   </body>

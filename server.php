@@ -7,14 +7,13 @@ $Email    = "";
 $errors = array();
 
 // connect to the database
-<?php include('conn.php') ?>
+ include('conn.php') ;
 
 // REGISTER USER
 if (isset($_POST['SIGNUP'])) {
   // receive all input values from the form
   $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
   $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
-
   $Username = mysqli_real_escape_string($db, $_POST['Username']);
   $Email = mysqli_real_escape_string($db, $_POST['Email']);
   $Password_1 = mysqli_real_escape_string($db, $_POST['Password_1']);
