@@ -213,9 +213,10 @@ if (isset($_POST['savepics'])){
 <strong id="photostitle" class="titles">Pictures</strong>
 
   <div class="photocontainer2">
-   <img src="<?php echo $Photo[0]?>" alt="" class="imgs" >
-   <img src="<?php echo $Photo[1]?>" alt="" class="imgs" >
-   <img src="<?php echo $Photo[2]?>" alt="" class="imgs" >
+  
+   <img src="<?php echo isset($Photo[0])?>" alt="" class="imgs" >
+   <img src="<?php echo isset($Photo[1])?>" alt="" class="imgs" >
+   <img src="<?php echo isset($Photo[2])?>" alt="" class="imgs" >
 
 
   </div>
