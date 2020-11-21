@@ -168,7 +168,7 @@ if (isset($_POST['savepics'])){
   </div>
 
   <input type="text" name="First_Name" value="<?php echo $First_Name ; ?>" class="inputname" >
-  <!-- <input type="text" name="info1" value="<?php //echo $Last_Name ?>" class="inputname" > -------->
+  <input type="text" name="info1" value="<?php echo $Last_Name ?>" class="inputname" id="inputname2">
 
 
   <div class="infocontain2">
@@ -199,7 +199,7 @@ if (isset($_POST['savepics'])){
 <div class="description">
   <strong>Description</strong>
   <br>
-  <textarea type="text" name="Description" value="" class="descriptioninp"> <?php echo $Description  ?> </textarea>
+  <textarea type="text" name="Description" value="" class="descriptioninp"><?php echo $Description  ?></textarea>
 </div>
 
 
