@@ -158,12 +158,12 @@ if (isset($_POST['savepics'])){
 <div id="square1">
 
 <div class="" style="border-radius: inherit;">
-  <img id="pic"  src="imgs/<?php   echo  $Profile_Pic; ?> " alt="" >
+  <img id="pic"  src="imgs/<?php   echo  $Profile_Pic; ?>" alt="" >
 
 
 
 
-  <input type="file" name="fileToUpload" id="fileToUpload" hidden>
+  <input type="file" name="fileToUpload" id="fileToUpload" onchange="readURL1(this);" hidden>
   <label for="fileToUpload" id="uploadbtn" class="fa fa-user" ></label>
   </div>
 
@@ -255,12 +255,13 @@ for($j=0;$j<$nphotos && $j<3;$j++){
 	 echo ' </div>';
 
 	 }
+	 		 echo '<img src="#" alt="" class="imgs" id="blah" style="object-fit: cover;">';
 	 ?>
 
     </div>
     <div class="piceditbtn">
 
-      <input type="file" name="uploadpic" id="uploadpic" hidden>
+      <input type="file" name="uploadpic" id="uploadpic" onchange="readURL(this);"  hidden>
       <label for="uploadpic" id="uploadpicbtn" >Upload</label>
 
 
@@ -349,6 +350,32 @@ $("#b1").click(function(){
 
 })
 
+
+function readURL(input) {
+			 if (input.files && input.files[0]) {
+					 var reader = new FileReader();
+
+					 reader.onload = function (e) {
+							 $('#blah')
+									 .attr('src', e.target.result)
+					 };
+
+					 reader.readAsDataURL(input.files[0]);
+			 }
+	 }
+
+	 function readURL1(input) {
+	 			 if (input.files && input.files[0]) {
+	 					 var reader = new FileReader();
+
+	 					 reader.onload = function (e) {
+	 							 $('#pic')
+	 									 .attr('src', e.target.result)
+	 					 };
+
+	 					 reader.readAsDataURL(input.files[0]);
+	 			 }
+	 	 }
 
 </script>
 
