@@ -15,8 +15,8 @@
 
 <?php include('conn.php') ?>
 <?php
-$id=$_GET['id'];
-
+//$id=$_GET['id'];
+$id=2;
 
 //------------------------------------select profile data--------------------------------------------------
   $res=mysqli_query($db,"SELECT * FROM users WHERE 	id='$id'");
@@ -41,13 +41,15 @@ $id=$_GET['id'];
   }
 
   //--------------select photos -----------------------
-  $res=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
-    $nphotos =mysqli_num_rows($res) ;
-	$i=0;
-while($row=mysqli_fetch_array($res))
+  
+    $photo = array();
+    
+	$ress=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
+	$nphotos =mysqli_num_rows($ress) ;
+while($row1=mysqli_fetch_array($ress))
   {
-$photo[$i]=$row['Photo_Path'];
-$i++;
+	   array_push($photo,$row1['Photo_Path']);
+
 }
 
 
@@ -62,7 +64,7 @@ $i++;
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/'. $Profile_Pic . ' " alt="" > '; ?>
+   <?php echo' <img id="pic"  src="imgs/'.$Profile_Pic.'" alt="" > '; ?>
 
     <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
@@ -117,13 +119,16 @@ $i++;
 
 
      <?php
-	 //for($j;$j<=$i;j++)
+	 if($nphotos>3){for($j=0;$j<3;$j++){
+	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs">';
 
-	 echo'<img src="imgs/ '.    isset($photo[0] )      .' " alt="" class="imgs" > ';
-	 echo'<img src="imgs/ '.   isset($photo[1] )      .' " alt="" class="imgs" > ';
-	 echo'<img src="imgs/ '.   isset( $photo[2] )      .' " alt="" class="imgs" > ';
+}
+	}
+else if(($nphotos<3) && ($nphotos>0)){
+	for($j=0;$j<$nphotos;$j++){
+	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs">';
 
-
+}}
 	 ?>
     </div>
     <button id="viewallpic" type="button" name="button">See all pictures</button>
@@ -137,12 +142,13 @@ $i++;
     <span class="close">&times;</span>
     <div class="photocontainermodal">
     <?php
-
-	// -------------show photos in window and save (Photos_ids) in array if user click on X -----------------------
+	
+	
+	
 	for($j=0;$j<$nphotos;$j++){
-      echo '<div id="pic'. $Photo_id[$j].'" class="piccontainer">';
-       echo '<img src="'. $Photo[$j] .'" alt="" class="imgs">';
-	 echo ' </div>';
+      echo '<div id="pic " class="piccontainer">';
+      echo '<img src="imgs/'.$photo[$j] .'" alt="" class="imgs">';
+	  echo ' </div>';
 
 	 }
 	 ?>
@@ -195,17 +201,17 @@ $rest=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name FROM users WHERE
 while($row1=mysqli_fetch_array($rest))
        {
 
-		 $Profile_Pic1=$row1['Profile_Pic'] ;
-		 $Last_Name1=$row1['Last_Name'] ;
-		 $First_Name1=$row1['First_Name'] ;
+		 $Profile_Pic=$row1['Profile_Pic'] ;
+		 $Last_Name=$row1['Last_Name'] ;
+		 $First_Name=$row1['First_Name'] ;
 
               }
 
 
    echo ' <div class="commentsection"> ';
    echo ' <div class="comment"> ' ;
-   echo '<img class="commentimg" src="'.   $Profile_Pic1    .' " alt=""> ' ;
-   echo ' <span class="cousername">'. $First_Name1.'  '.$Last_Name1  . '</span> ' ;
+   echo '<img class="commentimg" src="imgs/'.   $Profile_Pic   .' " alt=""> ' ;
+   echo ' <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> ' ;
    echo ' <br> ' ;
 
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;

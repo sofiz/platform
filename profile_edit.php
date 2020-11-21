@@ -17,7 +17,7 @@ if (isset($_POST['save'])){
   {$id=$row['id']; }
 
   $First_Name =  $_POST['First_Name'];
-  //$Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
+  $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
   $Email = $_POST['Email'];
   $Phone =  $_POST['Phone'];
   $Job = $_POST['Job'];
@@ -28,7 +28,7 @@ if (isset($_POST['save'])){
 
 
   if (empty($First_Name )) { array_push($errors, "First Name is required"); }
-  // if (empty($Last_Name)) { array_push($errors, "Last Name is required"); }
+  if (empty($Last_Name)) { array_push($errors, "Last Name is required"); }
   if (empty($Email)) { array_push($errors, "Email is required"); }
   if (empty($Phone)) { array_push($errors, "Phone is required"); }
   if (empty($Job)) { array_push($errors, "Job is required"); }
@@ -46,7 +46,7 @@ if (isset($_POST['save'])){
 			move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
 }
 	$query = "UPDATE users
-	SET  First_Name='$First_Name', Email='$Email',Phone='$Phone',Job='$Job',Location='$Location',Birthday='$Birthday',Description='$Description'  WHERE id='$id'" ;
+	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Location='$Location',Birthday='$Birthday',Description='$Description'  WHERE id='$id'" ;
   	mysqli_query($db, $query);
 
 	header('location:profile_edit.php');
@@ -168,7 +168,7 @@ if (isset($_POST['savepics'])){
   </div>
 
   <input type="text" name="First_Name" value="<?php echo $First_Name ; ?>" class="inputname" >
-  <input type="text" name="info1" value="<?php echo $Last_Name ?>" class="inputname" id="inputname2">
+  <input type="text" name="Last_Name" value="<?php echo $Last_Name ;?>" class="inputname" id="inputname2">
 
 
   <div class="infocontain2">

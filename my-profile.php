@@ -51,14 +51,16 @@
 
 
   }
-  $res=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
-    $nphotos =mysqli_num_rows($res) ;
-	$i=0;
-while($row=mysqli_fetch_array($res))
+      $photo = array();
+    
+	$ress=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
+	$nphotos =mysqli_num_rows($ress) ;
+while($row1=mysqli_fetch_array($ress))
   {
-$photo[$i]=$row['Photo_Path'];
-$i++;
-}
+	   array_push($photo,$row1['Photo_Path']);
+
+
+  }
   }
   ?>
 
@@ -127,8 +129,17 @@ $i++;
     <strong id="photostitle" class="titles">Pictures</strong>
     <div class="photocontainer">
 	<?php
-     echo'<img src="imgs/ '.    isset($photo[0] )      .' " alt="" class="imgs" > ';
-?>
+	 if($nphotos>3){for($j=0;$j<3;$j++){
+	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs">';
+
+}
+	}
+else if(($nphotos<=3) && ($nphotos>0)){
+	for($j=0;$j<$nphotos;$j++){
+	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs">';
+
+}}
+	 ?>
     </div>
     <button id="viewallpic" type="button" name="button">See all pictures</button>
 </div>
@@ -142,11 +153,11 @@ $i++;
     <div class="photocontainermodal">
     <?php
 
-	// -------------show photos in window and save (Photos_ids) in array if user click on X -----------------------
+	
 	for($j=0;$j<$nphotos;$j++){
-      echo '<div id="pic'. $Photo_id[$j].'" class="piccontainer">';
-       echo '<img src="'. $Photo[$j] .'" alt="" class="imgs">';
-	 echo ' </div>';
+      echo '<div id="pic " class="piccontainer">';
+      echo '<img src="imgs/'.$photo[$j] .'" alt="" class="imgs">';
+	  echo ' </div>';
 
 	 }
 	 ?>
