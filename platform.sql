@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2020 at 04:30 AM
+-- Generation Time: Nov 21, 2020 at 05:24 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -34,6 +34,15 @@ CREATE TABLE `comments` (
   `Comment_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`Comment`, `User_id`, `Commentor_id`, `Comment_id`) VALUES
+('ccomment for riyadh', 2, 1, 1),
+('comment 01 riyadh', 2, 1, 2),
+('comment for  oussama', 1, 2, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -51,12 +60,8 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`Photo_Path`, `User_id`, `Photo_id`) VALUES
-('la liga.png', 1, 34),
-('my pic.jpg', 1, 35),
-('', 1, 41),
-('', 1, 42),
-('', 1, 43),
-('', 1, 44);
+('20200430_235849.jpg', 8, 57),
+('20200430_195906.jpg', 8, 58);
 
 -- --------------------------------------------------------
 
@@ -65,6 +70,7 @@ INSERT INTO `photos` (`Photo_Path`, `User_id`, `Photo_id`) VALUES
 --
 
 CREATE TABLE `users` (
+  `indexing` text COLLATE utf8_bin NOT NULL,
   `id` int(11) NOT NULL,
   `First_Name` varchar(20) COLLATE utf8_bin NOT NULL,
   `Last_Name` varchar(20) COLLATE utf8_bin NOT NULL,
@@ -88,9 +94,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `First_Name`, `Last_Name`, `Username`, `Password`, `Email`, `Phone`, `Job`, `Location`, `Type`, `Birthday`, `Profile_Pic`, `Rating`, `Description`, `Facebook`, `Instagram`, `Gender`) VALUES
-(1, 'aaa', 'derbale', 'riyadh99', '4a7d1ed414474e4033ac29ccb8653d9b', 'aaa', 'aaa', 'aaa', 'aaa', '00', '0000-00-00', 'my pic.jpg ', 0, '   aaa ', '', '', ''),
-(2, '00000', 'oussama', 'sofiz', 'b59c67bf196a4758191e42f76670ceba', 'sofiousama0@gmail.com', '0', '1100', '0', '00', '0000-00-00', '', 0, '', '', '', '');
+INSERT INTO `users` (`indexing`, `id`, `First_Name`, `Last_Name`, `Username`, `Password`, `Email`, `Phone`, `Job`, `Location`, `Type`, `Birthday`, `Profile_Pic`, `Rating`, `Description`, `Facebook`, `Instagram`, `Gender`) VALUES
+(' RYT  TRBL RYT RYT   ', 2, 'riyadh  derbale', 'riyadh', 'riyadh01', 'b59c67bf196a4758191e42f76670ceba', 'sofiousama0@gmail.com', '0', '1100', '0', '00', '0000-00-00', '1.jpg', 0, '', '', '', ''),
+(' R R R   ', 8, 'rr', 'rr', 'rr', '4a7d1ed414474e4033ac29ccb8653d9b', '0000', '0000', '0000', '0000', '00', '0000-00-00', '20200430_195924.jpg', 0, '0000000', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -122,19 +128,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `Comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `Photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `Photo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
