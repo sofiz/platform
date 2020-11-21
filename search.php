@@ -55,7 +55,7 @@ else {    echo '<input type="submit" name="login" value="login"  id="login" hidd
 </div>
 
     <div class="searchbar">
-    <input type="text" name="name" placeholder="search" class="searchinput">
+    <input type="text" name="search" placeholder="search" class="searchinput">
     <div >
   <select class="dropdown" value="location" name="location" id="location">
       <option value="" selected disabled hidden>select location</option>
@@ -74,7 +74,7 @@ else {    echo '<input type="submit" name="login" value="login"  id="login" hidd
           <option value="11">11</option>
       </select>
     </div>
-    <input type="submit" name="search"  value= "search" class="searchbtn">
+    <input type="submit" name="recherche"  value= "recherche" class="searchbtn">
     </div>
 
 
@@ -89,43 +89,156 @@ $errors = array();
 // connect to the database
  include('conn.php');
 
-// REGISTER USER
+  
+  
+  if (isset($_POST['search'])) {
+	  
+	  
+//----------------------- get colomun -------------------------
+     $sql1="select * from users ";
+	 $res1=mysqli_query($db,$sql1);
+  if(!$res1){
+	  echo "error".mysqli_error($db);
+            } 
+//---------------------- update indexing colomun by row ---------------
+  while($row=mysqli_fetch_assoc($res1)){
+	  $sound=" " ;
+	  
+        //-------------------------------
+	  if($row['First_Name']!=null){
+		  $words=explode(" ",$row['First_Name']);
+		  foreach ($words as $word) {
+			  $sound .= metaphone($word)." " ;
+			  
+		                           }
+	                    }
+	   //---------------------------------
+	  if($row['Last_Name']!=null){
+		  $words=explode(" ",$row['Last_Name']);
+		  foreach ($words as $word) {
+			  $sound .= metaphone($word)." " ;
+			  
+		                           }
+	                    }
+	  //---------------------------------
+	  if($row['Username']!=null){
+		  $words=explode(" ",$row['Username']);
+		  foreach ($words as $word) {
+			  $sound .= metaphone($word)." " ;
+			  
+		                           }
+	                    }
+	  //---------------------------------
+	  if($row['Location']!=null){
+		  $words=explode(" ",$row['Location']);
+		  foreach ($words as $word) {
+			  $sound .= metaphone($word)." " ;
+			  
+		                           }
+	                    }
+	  //---------------------------------
+	   if($row['Job']!=null){
+		  $words=explode(" ",$row['Job']);
+		  foreach ($words as $word) {
+			  $sound .= metaphone($word)." " ;
+			  
+		                           }
+	                    }
+	  
+	  
+	 $id=$row['id'];
+	 $sql2="UPDATE users SET indexing='$sound' where id=$id";
+	 $res2=mysqli_query($db,$sql2);
+	 if(!$res2){
+	 echo "error".mysqli_error($db);
+               } 
+  }
+	  
+	  
+	  
+	  
+	
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	 
+	  $query = $_POST['search'];
+	  
+	  //*-------get value of search ------------
+	 
+	  
+	  //----------from word to metaphone ( *****all**** )and select from table -----------
+	  $search = explode(" ",$query);
+	  $search_string=" ";
+	   foreach ($search as $word) {
+			  $search_string = $search_string.metaphone($word)." " ;
+		
+		                        }
+	$sql="SELECT * FROM users WHERE indexing like '%$search_string%'";
+	$res=mysqli_query($db,$sql);
+	
+			if(!$res){
+	               echo "error".mysqli_error($db);
+                    } 			
 
-if (isset($_POST['search'])) {
-  // receive all input values from the form
-  $name = mysqli_real_escape_string($db, $_POST['name']);
-  $location = mysqli_real_escape_string($db, $_POST['location']);
-  $category = mysqli_real_escape_string($db, $_POST['category']);
 
-  //if (empty($category)) { array_push($errors, "Please enter ccategory ! "); }
-    //  else  if (empty($location)) {  $query = mysql_query("select fname,lname,position,id,phone  from worker where (fname like '%{$search}%') || (lname like '%{$search}%') && (work='$category')");  }
-	          //else  if (empty($name)) { $query = mysql_query("select fname,lname,position,id,phone  from worker where (work='$category')  &&  (position='$location')");  }
-
-			        // else {
-					 $query = mysqli_query($db,"SELECT fname,lname,position,id,phone  FROM worker WHERE ((fname LIKE '%{$name}%') || (lname LIKE '%{$name}%' ) ) &&  (work='$category') &&  (position='$location')");
-//					 }
-
-
-if (mysqli_num_rows($query) == 0) {
-	echo '<div class="resultcontainer"> ';
-    echo ' <p id="noresult">no result found!</p>  </div> ';
-
-	}
-  else {
-while($row=mysqli_fetch_array($query))
+		//---------------- to wirte the results ------------
+	  
+	  if(mysqli_num_rows($res)>0){
+			  while($row1=mysqli_fetch_array($res))
 					  {
+						  
 						echo'  <div class="resultcontainer">  ';
       echo'<a href="" ><img src="jake.jpg" alt="" class="resimg" ></a> ';
       echo'<div class="infocontainer"> ';
-      echo'<a href="" class="name">  '. $row['fname'].$row['lname'] . ' </a>  ';
-      echo'<p class="info"> ' .$row['phone'] .  '</p> ';
-     echo' <p class="info">'. $row['position']. '</p>  </div> </div>   ';
+      echo'<a href="" class="name">  '. $row1['First_Name']." ".$row1['Last_Name'] . ' </a>  ';
+      echo'<p class="info"> ' .$row1['Phone'] .  '</p> ';
+      echo' <p class="info">'. $row1['Location']. '</p>  </div> </div>   ';
+	 
 
 					  }
 
-}
-}
-
+                                 }
+	     //----------------			from word to metaphone ( *****single**** )and select from table  and write the results  -------------		 
+								 
+        if(mysqli_num_rows($res)==0){	
+              $count=0;
+			  $words=explode(" ",$query);
+			  
+        foreach ($words as $word ){
+			  $mword= metaphone($word);
+			  
+		                        
+	$sql="SELECT * FROM users WHERE indexing LIKE '%$mword%'";
+	$res=mysqli_query($db,$sql);
+	
+			if(!$res){
+	               echo "error".mysqli_error($db);
+                    } 
+		if(mysqli_num_rows($res)>0){
+			
+			while($row2=mysqli_fetch_assoc($res))
+					  {
+						  $count++; 
+						echo'  <div class="resultcontainer">  ';
+      echo'<a href="" ><img src="jake.jpg" alt="" class="resimg" ></a> ';
+      echo'<div class="infocontainer"> ';
+      echo'<a href="" class="name">  '. $row2['First_Name']." ".$row2['Last_Name'] . ' </a>  ';
+      echo'<p class="info"> ' .$row2['Phone'] .  '</p> ';
+      echo' <p class="info">'. $row2['Location']. '</p>  </div> </div>   ';
+            
+					  }
+		               }     }
+					   if($count==0){
+						   echo '<div class="resultcontainer"> ';
+                           echo ' <p id="noresult">no result found!</p>  </div> ';  }
+		         } 
+	  }
+	  
 ?>
 
 
