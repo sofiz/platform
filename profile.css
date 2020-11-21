@@ -220,7 +220,17 @@ outline: none;
 
   }
 
+#submitreview2{
 
+  top: -17px;
+      left: 813px;
+      position: relative;
+      background: linear-gradient(135deg, #A0D0F9, #67B7FB);
+      padding: 8px;
+      color: #eeeefb;
+      border-radius: 5px;
+      cursor: pointer;
+}
 
   }
   #yourcommentpic{
@@ -347,20 +357,27 @@ outline: none;
 
   .inputname{
 
-    margin-left: 126px;
-      margin-top: 7px;
-      height: 35px;
-      border: none;
-      padding-left: 15px;
-      border: none;
-      background-color: #00000000;
-      border-bottom: solid;
-      border-width: 2px;
-      border-color: #9d9898;
+    margin-left: 133px;
+    margin-top: 7px;
+    height: 35px;
+    border: none;
+    width: 65px;
+    padding-left: 15px;
+    border: none;
+    background-color: #00000000;
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: #9d9898;
   }
 .inputname:focus{
   outline: none;
 }
+
+#inputname2{
+position: absolute;
+    left: 328px;
+
+  }
   .descriptioninp{
 
         font-size: 18px;
@@ -536,4 +553,12 @@ outline-width: 1px;
     margin-left: 500px;
   margin-top: 30px;
 
+  }
+
+  img[src="#"] {
+     display: none;
+  }
+  
+  img[src=""] {
+     display: none;
   }
