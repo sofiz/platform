@@ -8,15 +8,40 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
+    <script src="index.js"></script>
   </head>
+<style media="screen">
 
+
+.star-rating {
+  width: 0;
+  position: relative;
+  display:inline-block;
+  background-image: url(star_0.svg);
+  background-position: 0 0;
+  background-repeat: repeat-x;
+}
+
+.star-rating .star-value {
+position: absolute;
+height: 100%;
+width: 100%;
+background: url('star_1.svg') ;
+background-repeat: repeat-x;
+}
+#rater{
+  margin-left: 721px;
+      top: 12px;
+  }
+</style>
   <body>
 
+<style media="screen">
 
+</style>
 <?php include('conn.php') ?>
 <?php
-//$id=$_GET['id'];
-$id=2;
+$id=$_GET['id'];
 
 //------------------------------------select profile data--------------------------------------------------
   $res=mysqli_query($db,"SELECT * FROM users WHERE 	id='$id'");
@@ -41,9 +66,9 @@ $id=2;
   }
 
   //--------------select photos -----------------------
-  
+
     $photo = array();
-    
+
 	$ress=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
 	$nphotos =mysqli_num_rows($ress) ;
 while($row1=mysqli_fetch_array($ress))
@@ -64,7 +89,7 @@ while($row1=mysqli_fetch_array($ress))
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/'.$Profile_Pic.'" alt="" > '; ?>
+   <?php echo' <img id="pic"  src="imgs/'.$Profile_Pic.'" alt="" onclick="openmodal(this.src)" class="pictures" > '; ?>
 
     <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
@@ -73,8 +98,8 @@ while($row1=mysqli_fetch_array($ress))
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
+      <span class="fa fa-star" unchecked></span>
+      <span class="fa fa-star" unchecked></span>
 
     </div>
 
@@ -120,11 +145,11 @@ while($row1=mysqli_fetch_array($ress))
 
      <?php
 	 if($nphotos>3){for($j=0;$j<3;$j++){
-	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs">';
+	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs pictures" onclick="openmodal(this.src)">';
 
 }
 	}
-else if(($nphotos<3) && ($nphotos>0)){
+else if(($nphotos<=3) && ($nphotos>0)){
 	for($j=0;$j<$nphotos;$j++){
 	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs">';
 
@@ -142,12 +167,12 @@ else if(($nphotos<3) && ($nphotos>0)){
     <span class="close">&times;</span>
     <div class="photocontainermodal">
     <?php
-	
-	
-	
+
+
+
 	for($j=0;$j<$nphotos;$j++){
       echo '<div id="pic " class="piccontainer">';
-      echo '<img src="imgs/'.$photo[$j] .'" alt="" class="imgs">';
+      echo '<img src="imgs/'.$photo[$j] .'" id="'.$photo[$j] .'" alt="" class="imgs pictures" onclick="openmodal(this.src)" >';
 	  echo ' </div>';
 
 	 }
@@ -159,9 +184,32 @@ else if(($nphotos<3) && ($nphotos>0)){
 
 </div>
 
+<!-- Trigger the Modal -->
+<img id="myImgx" src="" alt="" hidden>
+
+<!-- The Modal -->
+<div id="myModalx" class="modalx">
+
+  <!-- The Close Button -->
+  <span class="closex">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-contentx" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+<a class="prev" onclick="//chouf kidirliha">&#10094;</a>
+<a class="next" onclick="//chouf kidirliha">&#10095;</a>
+</div>
+
 
 <div class="square4">
   <strong class="titles">Reviews</strong>
+
+
+
+
+
 <?php
 
 //-------------for my comment-------------------------------------------
@@ -178,6 +226,7 @@ else if(($nphotos<3) && ($nphotos>0)){
   echo'  <img src="imgs/ '.   $Profile_Pic    .' " alt="" id="yourcommentpic"> ';
    echo'    <form action="profile.php" method="post">   ';
   echo' <input type="text" name="" value="" id="input1">     ';
+     echo '  <div id="rater"></div> ';
   echo' <input type="submit" name="commenter" value="post" id="submitreview" hidden></div>
 <label for="submitreview" class="fa fa-send" id="submitreview2"></label>
 
@@ -227,6 +276,15 @@ mysqli_close($db);
 
  <script type="text/javascript">
 
+
+ var imgs_path = "http://localhost/platforme/imgs/"
+
+ var a = document.getElementById("pic").src ;
+  if (a==imgs_path) {
+    document.getElementById("pic").src = "imgs/default.png";
+  }
+
+
  // Get the modal
  var modal = document.getElementById("myModal");
 
@@ -253,6 +311,74 @@ mysqli_close($db);
 
    }
  }
+
+
+
+ // Get the modal
+ var modalx = document.getElementById("myModalx");
+
+ // Get the image and insert it inside the modal - use its "alt" text as a caption
+ var img = document.getElementById("myImgx");
+ var modalImg = document.getElementById("img01");
+ var captionText = document.getElementById("caption");
+ img.onclick = function(){
+   modalx.style.display = "block";
+   modalImg.src = this.src;
+   captionText.innerHTML = this.alt;
+ }
+
+ // Get the <span> element that closes the modal
+ var span = document.getElementsByClassName("closex")[0];
+
+ // When the user clicks on <span> (x), close the modal
+ span.onclick = function() {
+   modalx.style.display = "none";
+ }
+ // When the user clicks anywhere outside of the modal, close it
+ window.onclick = function(event) {
+   if (event.target == modalx) {
+     modalx.style.display = "none";
+
+   }
+ }
+
+
+ var myRating = raterJs( {
+    element:document.querySelector("#rater"),
+    rateCallback:function rateCallback(rating, done) {
+      this.setRating(rating);
+      done();
+    }
+});
+
+//heda howa l variable te3 rating chouf kidir terssleh
+// var rating= myRating.getRating();
+
+
+
+
+
+
+//function slide(e){
+//  var pictures = document.getElementsByClassName("pictures");
+//  var arr = Array.prototype.slice.call( pictures );
+//  var n = arr.indexOf("#pic");
+//var picsrc = pictures[n].src;
+//var x = n;
+//function openmodal(x){
+//document.getElementById("myImgx").src = x;
+//document.getElementById("myImgx").click();
+//}
+
+//}
+
+
+function openmodal(x){
+document.getElementById("myImgx").src = x;
+document.getElementById("myImgx").click();
+}
+
+
 
  </script>
 </html>

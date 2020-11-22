@@ -77,13 +77,15 @@
     box-shadow: 0px 4px 14px #1c4e009e;
     margin-top:20px;
         object-fit: cover;
+        cursor: pointer;
     }
 
     #name{
     position: relative;
-    top:30px;
+    top:19px;
     font-size:20px;
-    right:21px;
+    display: flex;
+    justify-content: center;
     color: #313131;
     font-family: "Quicksand"
     }
@@ -92,11 +94,18 @@
     .checked {
   color: #67B7FB;
   }
+
+  .unchecked{
+    color: #929292;
+  }
+
+
   .rating{
 
     position: relative;
-    top: 40px;
-    left: 170px;
+        top: 34px;
+        display: flex;
+        justify-content: center;
 
   }
 
@@ -170,6 +179,7 @@ margin-top: 10px;
     border-radius: 10px;
     border:none;
     object-fit: cover;
+    cursor: pointer;
   }
 #viewallpic{
 
@@ -206,13 +216,14 @@ color: #ffffffeb;
     position: absolute;
         height: 35px;
         margin-left: 10px;
-        width: 784px;
+        width: 700px;
         padding-left: 10px;
         border: none;
         background-color: #00000000;
         border-bottom: solid;
         border-width: 2px;
         border-color: #9d9898;
+        padding-right: 82px;
   }
 
   #input1:focus{
@@ -458,7 +469,8 @@ outline: none;
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    backdrop-filter: blur(5px);
   }
 
   /* Modal Content/Box */
@@ -474,6 +486,9 @@ outline: none;
         border-radius: 15px;
         box-shadow: 0px 4px 20px 0px #0000006b;
   }
+
+
+
 
   /* The Close Button */
   .close {
@@ -513,6 +528,119 @@ outline: none;
   margin-top: 35px;
 
   }
+
+
+
+
+  /* Style the Image Used to Trigger the Modal */
+  #myImgx {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  #myImgx:hover {opacity: 0.7;}
+
+  /* The Modal (background) */
+  .modalx {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+  }
+
+  /* Modal Content (Image) */
+  .modal-contentx {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 15px;
+  }
+
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+
+  /* Add Animation - Zoom in the Modal */
+  .modal-contentx, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  .closex {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .closex:hover,
+  .closex:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 35px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+
+  /* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+
+
+
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+    .modal-content1 {
+      width: 100%;
+    }
+  }
+
+
 
   .deletepic{
 
@@ -558,7 +686,7 @@ outline-width: 1px;
   img[src="#"] {
      display: none;
   }
-  
+
   img[src=""] {
      display: none;
   }

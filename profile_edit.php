@@ -278,7 +278,12 @@ for($j=0;$j<$nphotos && $j<3;$j++){
 <div id="results"></div>
 <script>
 
+var imgs_path = "http://localhost/platforme/imgs/"
 
+var a = document.getElementById("pic").src ;
+ if (a==imgs_path) {
+   document.getElementById("pic").src = "imgs/default.png";
+ }
 
 
 var ids =[];

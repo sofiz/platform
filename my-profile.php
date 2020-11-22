@@ -52,7 +52,7 @@
 
   }
       $photo = array();
-    
+
 	$ress=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
 	$nphotos =mysqli_num_rows($ress) ;
 while($row1=mysqli_fetch_array($ress))
@@ -72,7 +72,7 @@ while($row1=mysqli_fetch_array($ress))
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/'. $Profile_Pic . ' " alt="" > '; ?>
+   <?php echo' <img id="pic"  src="imgs/'. $Profile_Pic . ' " alt=""  onclick="openmodal(this.src)" > '; ?>
 
     <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
@@ -130,13 +130,13 @@ while($row1=mysqli_fetch_array($ress))
     <div class="photocontainer">
 	<?php
 	 if($nphotos>3){for($j=0;$j<3;$j++){
-	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs">';
+	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs" onclick="openmodal(this.src)" >';
 
 }
 	}
 else if(($nphotos<=3) && ($nphotos>0)){
 	for($j=0;$j<$nphotos;$j++){
-	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs">';
+	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs" onclick="openmodal(this.src)" >';
 
 }}
 	 ?>
@@ -153,10 +153,10 @@ else if(($nphotos<=3) && ($nphotos>0)){
     <div class="photocontainermodal">
     <?php
 
-	
+
 	for($j=0;$j<$nphotos;$j++){
       echo '<div id="pic " class="piccontainer">';
-      echo '<img src="imgs/'.$photo[$j] .'" alt="" class="imgs">';
+      echo '<img src="imgs/'.$photo[$j] .'" alt="" class="imgs" onclick="openmodal(this.src)" >';
 	  echo ' </div>';
 
 	 }
@@ -167,6 +167,26 @@ else if(($nphotos<=3) && ($nphotos>0)){
 
 
 </div>
+
+
+<!-- Trigger the Modal -->
+<img id="myImgx" src="" alt="" hidden>
+
+<!-- The Modal -->
+<div id="myModalx" class="modalx">
+
+  <!-- The Close Button -->
+  <span class="closex">&times;</span>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-contentx" id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+  <a class="prev" onclick="//chouf kidirliha">&#10094;</a>
+  <a class="next" onclick="//chouf kidirliha">&#10095;</a>
+</div>
+
 
 <div class="square4">
   <strong class="titles">Reviews</strong>
@@ -208,7 +228,18 @@ mysqli_close($db);
   </body>
 
 
+
   <script type="text/javascript">
+
+  var imgs_path = "http://localhost/platforme/imgs/"
+
+  var a = document.getElementById("pic").src ;
+   if (a==imgs_path) {
+     document.getElementById("pic").src = "imgs/default.png";
+   }
+
+
+
   // Get the modal
   var modal = document.getElementById("myModal");
 
@@ -235,5 +266,41 @@ mysqli_close($db);
 
     }
   }
+
+
+
+  // Get the modal
+  var modalx = document.getElementById("myModalx");
+
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("myImgx");
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+  img.onclick = function(){
+    modalx.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+  }
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("closex")[0];
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modalx.style.display = "none";
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modalx) {
+      modalx.style.display = "none";
+
+    }
+  }
+
+  function openmodal(x){
+  document.getElementById("myImgx").src = x;
+  document.getElementById("myImgx").click();
+  }
+
   </script>
 </html>
