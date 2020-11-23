@@ -12,10 +12,6 @@
   </head>
 <style media="screen">
 
-#prev{
-  display: block;
-}
-
 .star-rating {
   width: 0;
   position: relative;
@@ -348,16 +344,7 @@ mysqli_close($db);
  }
 
 
- var myRating = raterJs( {
-    element:document.querySelector("#rater"),
-    rateCallback:function rateCallback(rating, done) {
-      this.setRating(rating);
-      done();
-    }
-});
 
-//heda howa l variable te3 rating chouf kidir terssleh
-// var rating= myRating.getRating();
 
 Array.prototype.remove = function() {
     var what, a = arguments, L = a.length, ax;
@@ -434,14 +421,16 @@ function prev(){
 
 
 
-/*
+var myRating = raterJs( {
+   element:document.querySelector("#rater"),
+   rateCallback:function rateCallback(rating, done) {
+     this.setRating(rating);
+     done();
+   }
+});
 
-function slide(x){
-document.getElementById("myImgx").src = x;
-document.getElementById("myImgx").click();
-}
-*/
-
+//heda howa l variable te3 rating chouf kidir terssleh
+// var rating= myRating.getRating();
 
  </script>
 </html>
