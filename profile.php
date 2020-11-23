@@ -12,6 +12,9 @@
   </head>
 <style media="screen">
 
+#prev{
+  display: block;
+}
 
 .star-rating {
   width: 0;
@@ -89,7 +92,7 @@ while($row1=mysqli_fetch_array($ress))
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/'.$Profile_Pic.'" alt="" onclick="openmodal(this.src)" class="pictures" > '; ?>
+   <?php echo' <img id="pic"  src="imgs/'.$Profile_Pic.'" alt="" onclick="slide(this.src)" class="pictures" > '; ?>
 
     <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
@@ -145,7 +148,7 @@ while($row1=mysqli_fetch_array($ress))
 
      <?php
 	 if($nphotos>3){for($j=0;$j<3;$j++){
-	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs pictures" onclick="openmodal(this.src)">';
+	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs" onclick="slide(this.src)">';
 
 }
 	}
@@ -172,7 +175,7 @@ else if(($nphotos<=3) && ($nphotos>0)){
 
 	for($j=0;$j<$nphotos;$j++){
       echo '<div id="pic " class="piccontainer">';
-      echo '<img src="imgs/'.$photo[$j] .'" id="'.$photo[$j] .'" alt="" class="imgs pictures" onclick="openmodal(this.src)" >';
+      echo '<img src="imgs/'.$photo[$j] .'" id="'.$photo[$j] .'" alt="" class="imgs pictures" onclick="slide(this.src)" >';
 	  echo ' </div>';
 
 	 }
@@ -198,8 +201,8 @@ else if(($nphotos<=3) && ($nphotos>0)){
 
   <!-- Modal Caption (Image Text) -->
   <div id="caption"></div>
-<a class="prev" onclick="//chouf kidirliha">&#10094;</a>
-<a class="next" onclick="//chouf kidirliha">&#10095;</a>
+<a class="prev" id="prev" onclick="prev()">&#10094;</a>
+<a class="next" id="next" onclick="next()">&#10095;</a>
 </div>
 
 
@@ -277,12 +280,14 @@ mysqli_close($db);
  <script type="text/javascript">
 
 
+
  var imgs_path = "http://localhost/platforme/imgs/"
 
  var a = document.getElementById("pic").src ;
   if (a==imgs_path) {
     document.getElementById("pic").src = "imgs/default.png";
   }
+
 
 
  // Get the modal
@@ -354,30 +359,88 @@ mysqli_close($db);
 //heda howa l variable te3 rating chouf kidir terssleh
 // var rating= myRating.getRating();
 
+Array.prototype.remove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};
 
 
 
+var n ;
 
 
-//function slide(e){
-//  var pictures = document.getElementsByClassName("pictures");
-//  var arr = Array.prototype.slice.call( pictures );
-//  var n = arr.indexOf("#pic");
-//var picsrc = pictures[n].src;
-//var x = n;
-//function openmodal(x){
-//document.getElementById("myImgx").src = x;
-//document.getElementById("myImgx").click();
-//}
+var pictures = document.getElementsByClassName("pictures");
 
-//}
+function slide(e){
+
+pictures = document.getElementsByClassName("pictures");
+s=[];
+for (p in pictures){
+s.push(pictures[p].src)
+}
+s.remove(undefined);
+n = s.indexOf(e);
+n= Number(n);
+console.log(n);
+console.log(e);
+
+function op(){
+n= Number(n);
+var x = pictures[n].src;
+document.getElementById("myImgx").src = x;
+document.getElementById("myImgx").click();}
+
+op()
+
+var d=document.getElementById("prev");
+var nx=document.getElementById("next");
+
+l = s.length - 1;
+console.log(l);
+if (n==0){
+
+  d.style.display = "none";
+}
+
+else if (n==l){
+  nx.style.display = "none";
+}
+
+else {
+  d.style.display = "block";
+  nx.style.display = "block";
+
+}
+
+}
+
+//slide()
+
+function next(){
+  n=n+1;
+  slide(pictures[n].src);
+}
+
+function prev(){
+  n=n-1;
+  slide(pictures[n].src);
+}
 
 
-function openmodal(x){
+
+/*
+
+function slide(x){
 document.getElementById("myImgx").src = x;
 document.getElementById("myImgx").click();
 }
-
+*/
 
 
  </script>
