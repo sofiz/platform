@@ -1,5 +1,48 @@
+<?php include('conn.php') ?>
+<?php
+session_start();
+//----------------------------------------
+
+$id=$_GET['id'];
+//------id exist in our system or not -----------
+
+$res=mysqli_query($db,"SELECT id FROM users ");
+$flag = false ;
+while($row=mysqli_fetch_array($res)){
+	if($row['id']==$id) $flag=true;
+}
+
+if(!$flag) header("Location: search.php" );
+
+//-------------------------------------------------------------
+ if (isset($_SESSION['Username'])) {
+	  $user=$_SESSION['Username'];
+	  $res=mysqli_query($db,"SELECT id FROM users WHERE Username='$user'");
+  while($row=mysqli_fetch_array($res)) {
+
+  $idp=$row['id'] ; }
+  if($idp==$id){header("Location: my-profile.php");}
+  }
+  //******************************************
+if(isset($_POST['commenter'])){
+
+	$User_id=$_POST['User_id'];
+	$Commentor_id=$_POST['Commentor_id'];
+	$Comment=$_POST['Comment'];
+  $rating=$_POST['rating'];
+	include('conn.php');
+	if (!empty($Comment)) {
+	$query = "INSERT INTO comments (Comment,User_id,Commentor_id,rating) VALUES('$Comment', '$User_id','$Commentor_id','$rating') ";
+	mysqli_query($db, $query);
+	mysqli_close($db);
+	}
+	header("Location: profile.php?id=".$User_id );
+
+
+}
+?>
 <!DOCTYPE html>
-<?php session_start();  ?>
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -8,41 +51,41 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
-    <script src="index.js"></script>
+		    <script src="index.js"></script>
   </head>
-<style media="screen">
+	<style media="screen">
 
-.star-rating {
-  width: 0;
-  position: relative;
-  display:inline-block;
-  background-image: url(star_0.svg);
-  background-position: 0 0;
-  background-repeat: repeat-x;
-}
+	.star-rating {
+	  width: 0;
+	  position: relative;
+	  display:inline-block;
+	  background-image: url(star_0.svg);
+	  background-position: 0 0;
+	  background-repeat: repeat-x;
+	}
 
-.star-rating .star-value {
-position: absolute;
-height: 100%;
-width: 100%;
-background: url('star_1.svg') ;
-background-repeat: repeat-x;
-}
-#rater{
-  margin-left: 721px;
-      top: 12px;
-  }
-</style>
+	.star-rating .star-value {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: url('star_1.svg') ;
+	background-repeat: repeat-x;
+	}
+	#rater{
+	  margin-left: 721px;
+	      top: 12px;
+	  }
+	</style>
+
   <body>
 
-<style media="screen">
 
-</style>
-<?php include('conn.php') ?>
+
 <?php
 $id=$_GET['id'];
+//---------------------------------------id exist or not --------------------------------------------------
 
-//------------------------------------select profile data--------------------------------------------------
+//--------------------------------------select profile data--------------------------------------------------
   $res=mysqli_query($db,"SELECT * FROM users WHERE 	id='$id'");
 
   while($row=mysqli_fetch_array($res))
@@ -97,8 +140,8 @@ while($row1=mysqli_fetch_array($ress))
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
-      <span class="fa fa-star" unchecked></span>
-      <span class="fa fa-star" unchecked></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
 
     </div>
 
@@ -183,6 +226,7 @@ else if(($nphotos<=3) && ($nphotos>0)){
 
 </div>
 
+
 <!-- Trigger the Modal -->
 <img id="myImgx" src="" alt="" hidden>
 
@@ -202,35 +246,35 @@ else if(($nphotos<=3) && ($nphotos>0)){
 </div>
 
 
+
+
 <div class="square4">
   <strong class="titles">Reviews</strong>
-
-
-
-
-
 <?php
 
 //-------------for my comment-------------------------------------------
 
   if (isset($_SESSION['Username'])) {
 	  $user=$_SESSION['Username'];
-	  $res=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name FROM users WHERE Username='$user'");
+	  $res=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name,id FROM users WHERE Username='$user'");
   while($row=mysqli_fetch_array($res)) {
-  	  $Profile_Pic=$row['Profile_Pic'] ;
+  	            $Profile_Pic=$row['Profile_Pic'] ;
 		 		 $Last_Name=$row['Last_Name'] ;
-				 		 $First_Name=$row['First_Name'] ;}
+				 $First_Name=$row['First_Name'] ;
+				 $Commentor_id=$row['id'];
+
+				 }
 
    echo' <div class="yourcomment"> ';
-  echo'  <img src="imgs/ '.   $Profile_Pic    .' " alt="" id="yourcommentpic"> ';
+  echo'  <img src="imgs/'.  $Profile_Pic    .'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;"> ';
    echo'    <form action="profile.php" method="post">   ';
-  echo' <input type="text" name="" value="" id="input1">     ';
-     echo '  <div id="rater"></div> ';
-  echo' <input type="submit" name="commenter" value="post" id="submitreview" hidden></div>
-<label for="submitreview" class="fa fa-send" id="submitreview2"></label>
-
-
-   ';
+  echo' <input type="text" name="Comment"  id="input1">';
+	echo '  <div id="rater"></div> ';
+  echo '<input type= "hidden"  name="Commentor_id"  value="'.$Commentor_id.'" >   ';
+  echo '<input type= "hidden"  name="User_id"  value="'.$id.'" >   ';
+  echo '<input type= "hidden"  name="rating"  value="" id="ratings" >   ';
+  echo' <input type="submit" name="commenter" value="commenter" id="submitreview" hidden></div>
+<label for="submitreview" class="fa fa-send" id="submitreview2"></label>';
                 echo'   </form>    ';
 
 
@@ -244,6 +288,7 @@ while($row=mysqli_fetch_array($res))
   {
 
 $Commentor_id=$row['Commentor_id'] ;
+$rating=$row['rating'];
 $rest=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name FROM users WHERE id='$Commentor_id' ");
 
 while($row1=mysqli_fetch_array($rest))
@@ -253,13 +298,15 @@ while($row1=mysqli_fetch_array($rest))
 		 $Last_Name=$row1['Last_Name'] ;
 		 $First_Name=$row1['First_Name'] ;
 
+
               }
 
 
    echo ' <div class="commentsection"> ';
    echo ' <div class="comment"> ' ;
-   echo '<img class="commentimg" src="imgs/'.   $Profile_Pic   .' " alt=""> ' ;
-   echo ' <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> ' ;
+   echo '<a href="profile.php?id='.$Commentor_id.'">   <img class="commentimg" src="imgs/'.   $Profile_Pic   .' " alt=""> </a>' ;
+   echo '<a href="profile.php?id='.$Commentor_id.'">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
+     echo ' <span class="commenttxt">  ' .  $row['rating']  .'       </span> ' ;
    echo ' <br> ' ;
 
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
@@ -277,160 +324,161 @@ mysqli_close($db);
 
 
 
- var imgs_path = "http://localhost/platforme/imgs/"
+  var imgs_path = "http://localhost/platforme/imgs/"
 
- var a = document.getElementById("pic").src ;
-  if (a==imgs_path) {
-    document.getElementById("pic").src = "imgs/default.png";
+  var a = document.getElementById("pic").src ;
+   if (a==imgs_path) {
+     document.getElementById("pic").src = "imgs/default.png";
+   }
+
+
+
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("viewallpic");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+
+    }
   }
 
 
 
- // Get the modal
- var modal = document.getElementById("myModal");
+  // Get the modal
+  var modalx = document.getElementById("myModalx");
 
- // Get the button that opens the modal
- var btn = document.getElementById("viewallpic");
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("myImgx");
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+  img.onclick = function(){
+    modalx.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+  }
 
- // Get the <span> element that closes the modal
- var span = document.getElementsByClassName("close")[0];
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("closex")[0];
 
- // When the user clicks the button, open the modal
- btn.onclick = function() {
-   modal.style.display = "block";
- }
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modalx.style.display = "none";
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modalx) {
+      modalx.style.display = "none";
 
- // When the user clicks on <span> (x), close the modal
- span.onclick = function() {
-   modal.style.display = "none";
- }
-
- // When the user clicks anywhere outside of the modal, close it
- window.onclick = function(event) {
-   if (event.target == modal) {
-     modal.style.display = "none";
-
-   }
- }
-
-
-
- // Get the modal
- var modalx = document.getElementById("myModalx");
-
- // Get the image and insert it inside the modal - use its "alt" text as a caption
- var img = document.getElementById("myImgx");
- var modalImg = document.getElementById("img01");
- var captionText = document.getElementById("caption");
- img.onclick = function(){
-   modalx.style.display = "block";
-   modalImg.src = this.src;
-   captionText.innerHTML = this.alt;
- }
-
- // Get the <span> element that closes the modal
- var span = document.getElementsByClassName("closex")[0];
-
- // When the user clicks on <span> (x), close the modal
- span.onclick = function() {
-   modalx.style.display = "none";
- }
- // When the user clicks anywhere outside of the modal, close it
- window.onclick = function(event) {
-   if (event.target == modalx) {
-     modalx.style.display = "none";
-
-   }
- }
-
-
-
-
-Array.prototype.remove = function() {
-    var what, a = arguments, L = a.length, ax;
-    while (L && this.length) {
-        what = a[--L];
-        while ((ax = this.indexOf(what)) !== -1) {
-            this.splice(ax, 1);
-        }
     }
-    return this;
-};
+  }
 
 
 
-var n ;
 
-
-var pictures = document.getElementsByClassName("pictures");
-
-function slide(e){
-
-pictures = document.getElementsByClassName("pictures");
-s=[];
-for (p in pictures){
-s.push(pictures[p].src)
-}
-s.remove(undefined);
-n = s.indexOf(e);
-n= Number(n);
-console.log(n);
-console.log(e);
-
-function op(){
-n= Number(n);
-var x = pictures[n].src;
-document.getElementById("myImgx").src = x;
-document.getElementById("myImgx").click();}
-
-op()
-
-var d=document.getElementById("prev");
-var nx=document.getElementById("next");
-
-l = s.length - 1;
-console.log(l);
-if (n==0){
-
-  d.style.display = "none";
-}
-
-else if (n==l){
-  nx.style.display = "none";
-}
-
-else {
-  d.style.display = "block";
-  nx.style.display = "block";
-
-}
-
-}
-
-//slide()
-
-function next(){
-  n=n+1;
-  slide(pictures[n].src);
-}
-
-function prev(){
-  n=n-1;
-  slide(pictures[n].src);
-}
+ Array.prototype.remove = function() {
+     var what, a = arguments, L = a.length, ax;
+     while (L && this.length) {
+         what = a[--L];
+         while ((ax = this.indexOf(what)) !== -1) {
+             this.splice(ax, 1);
+         }
+     }
+     return this;
+ };
 
 
 
-var myRating = raterJs( {
-   element:document.querySelector("#rater"),
-   rateCallback:function rateCallback(rating, done) {
-     this.setRating(rating);
-     done();
-   }
-});
+ var n ;
 
-//heda howa l variable te3 rating chouf kidir terssleh
-// var rating= myRating.getRating();
+
+ var pictures = document.getElementsByClassName("pictures");
+
+ function slide(e){
+
+ pictures = document.getElementsByClassName("pictures");
+ s=[];
+ for (p in pictures){
+ s.push(pictures[p].src)
+ }
+ s.remove(undefined);
+ n = s.indexOf(e);
+ n= Number(n);
+ console.log(n);
+ console.log(e);
+
+ function op(){
+ n= Number(n);
+ var x = pictures[n].src;
+ document.getElementById("myImgx").src = x;
+ document.getElementById("myImgx").click();}
+
+ op()
+
+ var d=document.getElementById("prev");
+ var nx=document.getElementById("next");
+
+ l = s.length - 1;
+ console.log(l);
+ if (n==0){
+
+   d.style.display = "none";
+ }
+
+ else if (n==l){
+   nx.style.display = "none";
+ }
+
+ else {
+   d.style.display = "block";
+   nx.style.display = "block";
+
+ }
+
+ }
+
+ //slide()
+
+ function next(){
+   n=n+1;
+   slide(pictures[n].src);
+ }
+
+ function prev(){
+   n=n-1;
+   slide(pictures[n].src);
+ }
+
+
+
+ var myRating = raterJs( {
+    element:document.querySelector("#rater"),
+    rateCallback:function rateCallback(rating, done) {
+      this.setRating(rating);
+      document.getElementById("ratings").value= myRating.getRating();
+      done();
+    }
+ });
+
+
+
 
  </script>
 </html>

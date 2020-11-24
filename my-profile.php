@@ -9,6 +9,25 @@
   	unset($_SESSION['username']);
   	header("location: signin.php");
   }
+
+  if(isset($_POST['commenter'])){
+
+  $User_id=$_POST['User_id'];
+  $Commentor_id=$_POST['Commentor_id'];
+  $Comment=$_POST['Comment'];
+
+   include('conn.php');
+
+  if (!empty($Comment)) {
+  $query = "INSERT INTO comments (Comment,User_id,Commentor_id) VALUES('$Comment', '$User_id','$Commentor_id') ";
+  mysqli_query($db, $query);
+  mysqli_close($db);
+  }
+
+  header("Location: profile.php?id=$User_id");
+}
+
+
 ?>
 
 
@@ -192,6 +211,31 @@ else if(($nphotos<=3) && ($nphotos>0)){
   <strong class="titles">Reviews</strong>
 <?php
 
+//-------------for my comment-------------------------------------------
+
+  if (isset($_SESSION['Username'])) {
+	  $user=$_SESSION['Username'];
+	  $res=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name,id FROM users WHERE Username='$user'");
+  while($row=mysqli_fetch_array($res)) {
+  	            $Profile_Pic=$row['Profile_Pic'] ;
+		 		 $Last_Name=$row['Last_Name'] ;
+				 $First_Name=$row['First_Name'] ;
+				 $Commentor_id=$row['id'];
+				 }
+
+   echo' <div class="yourcomment"> ';
+   echo'  <img src="imgs/'.  $Profile_Pic    .'" class="commentimg"  alt="" id="yourcommentpic"> ';
+   echo'    <form action="profile.php" method="post">   ';
+  echo' <input type="text" name="Comment"  id="input1">';
+  echo '<input type= "hidden"  name="Commentor_id"  value="'.$Commentor_id.'" >   ';
+  echo '<input type= "hidden"  name="User_id"  value="'.$id.'" >   ';
+  echo' <input type="submit" name="commenter" value="commenter" id="submitreview" hidden></div>
+<label for="submitreview" class="fa fa-send" id="submitreview2"></label>';
+                echo'   </form>    ';
+
+
+  }
+
   //for show all comments
 
 $res=mysqli_query($db,"SELECT * FROM comments WHERE User_id='$id'");
@@ -214,8 +258,8 @@ while($row1=mysqli_fetch_array($rest))
 
    echo ' <div class="commentsection"> ';
    echo ' <div class="comment"> ' ;
-   echo '<img class="commentimg" src="'.   $Profile_Pic1    .' " alt=""> ' ;
-   echo ' <span class="cousername">'. $First_Name1.'  '.$Last_Name1  . '</span> ' ;
+   echo '<a href="profile.php?id='.$Commentor_id.'"> <img class="commentimg" src="imgs/'.   $Profile_Pic1    .' " alt=""> </a>' ;
+   echo ' <a href="profile.php?id='.$Commentor_id.'"> <span class="cousername">'. $First_Name1.'  '.$Last_Name1  . '</span> </a>' ;
    echo ' <br> ' ;
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
    }

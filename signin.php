@@ -29,6 +29,7 @@
       <input type="password" name="Password"  placeholder="password"  >
       <input type="submit" value="login" name="login">
 	  </form>
+	  <p><a href="enter_email.php">Forgot your password?</a></p>
       <p class="message">Not registered? <a href="signup.php">Create an account</a></p>
     
 	

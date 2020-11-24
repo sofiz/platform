@@ -215,8 +215,8 @@ color: #ffffffeb;
   #input1{
     position: absolute;
         height: 35px;
-        margin-left: 10px;
-        width: 700px;
+        margin-left: 40px;
+        width: 668px;
         padding-left: 10px;
         border: none;
         background-color: #00000000;
@@ -233,9 +233,9 @@ outline: none;
 
 #submitreview2{
 
-  top: -17px;
+  top: -38px;
       left: 813px;
-      position: relative;
+      position: absolute;
       background: linear-gradient(135deg, #A0D0F9, #67B7FB);
       padding: 8px;
       color: #eeeefb;
@@ -250,6 +250,7 @@ outline: none;
    background:black;
    border-radius:6px;
    object-fit: cover;
+   position: absolute;
   }
 
   .commentsection{
