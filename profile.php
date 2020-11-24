@@ -32,7 +32,10 @@ if(isset($_POST['commenter'])){
   $rating=$_POST['rating'];
 	include('conn.php');
 	if (!empty($Comment)) {
+		//insert new comment 
 	$query = "INSERT INTO comments (Comment,User_id,Commentor_id,rating) VALUES('$Comment', '$User_id','$Commentor_id','$rating') ";
+	//update rating 
+	$query ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
 	mysqli_query($db, $query);
 	mysqli_close($db);
 	}
@@ -304,7 +307,15 @@ while($row1=mysqli_fetch_array($rest))
    echo ' <div class="comment"> ' ;
    echo '<a href="profile.php?id='.$Commentor_id.'">   <img class="commentimg" src="imgs/'.   $Profile_Pic   .' " alt=""> </a>' ;
    echo '<a href="profile.php?id='.$Commentor_id.'">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
-     echo ' <span class="commenttxt">  ' .  $row['rating']  .'       </span> ' ;
+   
+     
+	 
+	 for ($j=1;$j<=$row['rating'];$j++)
+	 echo '<span class="fa fa-star checked"></span>' ;
+      if ($row['rating']<5)
+      for($j=$row['rating'];$j<5;$j++)
+     echo ' <span class="fa fa-star"></span>' ;
+	  
    echo ' <br> ' ;
 
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;

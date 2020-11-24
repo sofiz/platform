@@ -258,6 +258,15 @@ while($row1=mysqli_fetch_array($rest))
    echo ' <div class="comment"> ' ;
    echo '<a href="profile.php?id='.$Commentor_id.'"> <img class="commentimg" src="imgs/'.   $Profile_Pic1    .' " alt=""> </a>' ;
    echo ' <a href="profile.php?id='.$Commentor_id.'"> <span class="cousername">'. $First_Name1.'  '.$Last_Name1  . '</span> </a>' ;
+   
+   
+    for ($j=1;$j<=$row['rating'];$j++)
+	 echo '<span class="fa fa-star checked"></span>' ;
+      if ($row['rating']<5)
+      for($j=$row['rating'];$j<5;$j++)
+     echo ' <span class="fa fa-star"></span>' ;
+	 
+	 
    echo ' <br> ' ;
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
    }
