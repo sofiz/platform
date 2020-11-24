@@ -1,28 +1,24 @@
 <?php
-<div class="topbar">
+
+echo '<div class="topbar">  <div class="nav">';
 
 
 
-<div class="nav">
-
-
-<?php
 if (isset($_SESSION['Username'])) {
 
 echo  '<a href="my-profile.php" id="my-profilebtn" class="fa fa-user"></a>
 
 
 ';
-echo '<input type="submit" name="logout" value="logout" id="logout" hidden>
-<label for="logout" id="logoutbtn" class="fa fa-sign-out" ></label>
+echo '<a href="logout.php" > <label for="logout" id="logoutbtn" class="fa fa-sign-out" >  </label>  </a>
 ';
 
 }
 
-else {    echo '<input type="submit" name="login" value="login"  id="login" hidden>
-<label for="login" id="logoutbtn" class="fa fa-sign-in" ></label>';   }
-?>
+else {    echo '<a href="signin.php">  
+<label for="login" id="logoutbtn" class="fa fa-sign-in" ></label> </a>  ';   }
 
-</div>
-</div>
+echo"<a href='search.php'> search  </a> "; 
+
+echo '</div> </div>';
 ?>

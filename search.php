@@ -1,19 +1,5 @@
 <?php
-session_start();
-if(isset($_POST['logout'])) {
-  //Unset cookies and other things you want to
-  session_destroy();
-  header('Location: search.php'); //Dont forget to redirect
-  exit;
-}
-if(isset($_POST['login'])) {
-
-  header('Location: signin.php'); //Dont forget to redirect
-  exit;
-}
-
-
-?>
+session_start();?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -26,6 +12,7 @@ if(isset($_POST['login'])) {
   </head>
 
   <body>
+  <?php include('topbar.php'); ?>
 <form action="search.php" method="post">
 
 

@@ -94,10 +94,11 @@ if (isset($_POST['savepics'])){
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
   <link rel="stylesheet" href="profile.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<link rel="stylesheet" href="search.css">
 </head>
 
 <body>
+ 
 <?php
 
 
@@ -147,10 +148,7 @@ if (isset($_POST['savepics'])){
 
 
  ?>
-<div class="topbar">
-
-</div>
-
+ <?php include('topbar.php'); ?>
 <form class="" action="profile_edit.php" method="post"  enctype="multipart/form-data" >
 
 
