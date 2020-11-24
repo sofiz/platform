@@ -51,7 +51,6 @@ if(isset($_POST['commenter'])){
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
-	<link rel="stylesheet" href="search.css">
 		    <script src="index.js"></script>
   </head>
 	<style media="screen">
@@ -80,7 +79,7 @@ if(isset($_POST['commenter'])){
 
   <body>
 
- 
+
 
 <?php
 $id=$_GET['id'];

@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="topbar.css">
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+</html>
 <?php
 
 echo '<div class="topbar">  <div class="nav">';
@@ -15,10 +26,10 @@ echo '<a href="logout.php" > <label for="logout" id="logoutbtn" class="fa fa-sig
 
 }
 
-else {    echo '<a href="signin.php">  
+else {    echo '<a href="signin.php">
 <label for="login" id="logoutbtn" class="fa fa-sign-in" ></label> </a>  ';   }
 
-echo"<a href='search.php'> search  </a> "; 
+echo"<a href='search.php' id='searchnav'> search  </a> ";
 
 echo '</div> </div>';
 ?>
