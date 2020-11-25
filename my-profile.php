@@ -89,7 +89,7 @@ while($row1=mysqli_fetch_array($ress))
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/'. $Profile_Pic . ' " alt="" class="pictures" onclick="slide(this.src)" > '; ?>
+   <?php echo' <img id="pic"  src="imgs/'. $Profile_Pic . ' " alt="" class="pictures" onclick="slide(this.src)" onerror="this.src='imgs/default.png';" > '; ?>
 
     <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
@@ -220,15 +220,15 @@ else if(($nphotos<=3) && ($nphotos>0)){
 				 $First_Name=$row['First_Name'] ;
 				 $Commentor_id=$row['id'];
 				 }
-
+  echo'    <form action="profile.php" method="post">   ';
    echo' <div class="yourcomment"> ';
-   echo'  <img src="imgs/'.  $Profile_Pic    .'" class="commentimg"  alt="" id="yourcommentpic"> ';
-   echo'    <form action="profile.php" method="post">   ';
-  echo' <input type="text" name="Comment"  id="input1">';
+   echo'  <img src="imgs/'.  $Profile_Pic    .'" class="commentimg"  alt="" id="yourcommentpic" style="position: absolute;" onerror="this.src='imgs/default.png';"> ';
+
+  echo' <input type="text" name="Comment"  id="input2">';
   echo '<input type= "hidden"  name="Commentor_id"  value="'.$Commentor_id.'" >   ';
   echo '<input type= "hidden"  name="User_id"  value="'.$id.'" >   ';
-  echo' <input type="submit" name="commenter" value="commenter" id="submitreview" hidden></div>
-<label for="submitreview" class="fa fa-send" id="submitreview2"></label>';
+  echo' <input type="submit" name="commenter" value="commenter" id="submitreview" hidden>
+<label for="submitreview" class="fa fa-send" id="submitreview3"></label></div>';
                 echo'   </form>    ';
 
 
@@ -256,17 +256,17 @@ while($row1=mysqli_fetch_array($rest))
 
    echo ' <div class="commentsection"> ';
    echo ' <div class="comment"> ' ;
-   echo '<a href="profile.php?id='.$Commentor_id.'"> <img class="commentimg" src="imgs/'.   $Profile_Pic1    .' " alt=""> </a>' ;
+   echo '<a href="profile.php?id='.$Commentor_id.'"> <img class="commentimg" src="imgs/'.   $Profile_Pic1    .' " alt="" onerror="this.src='imgs/default.png';"> </a>' ;
    echo ' <a href="profile.php?id='.$Commentor_id.'"> <span class="cousername">'. $First_Name1.'  '.$Last_Name1  . '</span> </a>' ;
-   
-   
+
+
     for ($j=1;$j<=$row['rating'];$j++)
 	 echo '<span class="fa fa-star checked"></span>' ;
       if ($row['rating']<5)
       for($j=$row['rating'];$j<5;$j++)
      echo ' <span class="fa fa-star"></span>' ;
-	 
-	 
+
+
    echo ' <br> ' ;
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
    }

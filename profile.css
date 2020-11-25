@@ -102,10 +102,10 @@
 
   .rating{
 
-    position: relative;
-        top: 34px;
-        display: flex;
-        justify-content: center;
+    width: 21%;
+        margin: 0 auto;
+        position: relative;
+        top: 30px;
 
   }
 
@@ -208,6 +208,7 @@ color: #ffffffeb;
 
   .yourcomment{
    height:45px;
+   display: inline-block;
 
 
   }
@@ -231,11 +232,41 @@ outline: none;
 
   }
 
-#submitreview2{
 
-  top: -38px;
-      left: 813px;
-      position: absolute;
+  #input2{
+    position: absolute;
+    height: 35px;
+    margin-left: 47px;
+    width: 720px;
+    padding-left: 10px;
+    border: none;
+    background-color: #00000000;
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: #9d9898;
+  }
+
+
+    #input2:focus{
+  outline: none;
+
+    }
+
+#submitreview2{
+position: relative;
+top : 13px;
+      background: linear-gradient(135deg, #A0D0F9, #67B7FB);
+      padding: 8px;
+      color: #eeeefb;
+      border-radius: 5px;
+      cursor: pointer;
+}
+
+
+#submitreview3{
+  position: relative;
+      top: 7px;
+      left: 790px;
       background: linear-gradient(135deg, #A0D0F9, #67B7FB);
       padding: 8px;
       color: #eeeefb;
@@ -280,7 +311,6 @@ outline: none;
   }
   .commenttxt{
     position: relative;
-    top: -20px;
     left: 50px;
     font-size: 15px;
   }
@@ -691,3 +721,10 @@ outline-width: 1px;
   img[src=""] {
      display: none;
   }
+
+.ratingcontain{
+  position: absolute;
+    margin-top: -17px;
+    margin-left: 50px;
+    display:flex;
+}
