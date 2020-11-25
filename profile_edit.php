@@ -99,7 +99,7 @@ if (isset($_POST['savepics'])){
 </head>
 
 <body>
- 
+
 <?php
 
 
@@ -279,10 +279,8 @@ for($j=0;$j<$nphotos && $j<3;$j++){
 
 var imgs_path = "http://localhost/platforme/imgs/"
 
-var a = document.getElementById("pic").src ;
- if (a==imgs_path) {
-   document.getElementById("pic").src = "imgs/default.png";
- }
+document.getElementById('pic').onerror = function() {
+	document.getElementById('pic').src = "imgs/default.png";}
 
 
 var ids =[];
