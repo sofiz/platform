@@ -158,7 +158,7 @@ else if(($nphotos<=3) && ($nphotos>0)){
 }}
 	 ?>
     </div>
-    <button id="viewallpic" type="button" name="button">See all pictures</button>
+    <button id="viewallpic" type="button" name="button">See all</button>
 </div>
 
 
@@ -256,7 +256,7 @@ while($row1=mysqli_fetch_array($rest))
 
    echo ' <div class="commentsection"> ';
    echo ' <div class="comment"> ' ;
-   echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;"> <img class="commentimg" src="imgs/'.   $Profile_Pic1    .' " alt=""> </a>' ;
+   echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;"> <img class="commentimg" src="imgs/'.   $Profile_Pic1    .' " alt="" onerror="error(this)"> </a>' ;
    echo ' <a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;"> <span class="cousername">'. $First_Name1.'  '.$Last_Name1  . '</span> </a>' ;
 
 
@@ -284,11 +284,15 @@ mysqli_close($db);
 
   var imgs_path = "http://localhost/platforme/imgs/"
 
-  var a = document.getElementById("pic").src ;
-   if (a==imgs_path) {
-     document.getElementById("pic").src = "imgs/default.png";
-   }
-
+  document.getElementById('pic').onerror = function() {
+    document.getElementById('pic').src = "imgs/default.png";
+  }
+	document.getElementById('yourcommentpic').onerror = function() {
+    document.getElementById('yourcommentpic').src = "imgs/default.png";
+  }
+ function error(v){
+	 v.src="imgs/default.png";
+ }
 
 
   // Get the modal

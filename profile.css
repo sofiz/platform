@@ -111,7 +111,7 @@
 
 
   .infocontainer{
-    margin-top:45px;
+    margin-top:41px;
     margin-left: 40px;
 }
   .infocontain2{
@@ -184,13 +184,14 @@ margin-top: 10px;
 #viewallpic{
 
   margin-top: 8px;
-margin-left: 169px;
-padding: 7px;
-border-radius: inherit;
-border: none;
-background: linear-gradient(135deg, #A0D0F9, #67B7FB);
-color: #ffffffeb;
-  box-shadow: 0px 4px 12px 0px #00000059;
+      margin-left: 194px;
+      padding: 7px;
+      border-radius: inherit;
+      border: none;
+      background: linear-gradient(135deg, #A0D0F9, #67B7FB);
+      color: #ffffffeb;
+      box-shadow: 0px 4px 12px 0px #00000059;
+      font-size: 16px;
 }
   .square4{
     background: #ffffffde;
@@ -209,6 +210,7 @@ color: #ffffffeb;
   .yourcomment{
    height:45px;
    display: inline-block;
+   margin-top: 20px;
 
 
   }
