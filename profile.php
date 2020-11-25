@@ -309,14 +309,15 @@ while($row1=mysqli_fetch_array($rest))
    echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/'.   $Profile_Pic   .' " alt="" onerror="error(this)"> </a>' ;
    echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
 
-
+if($Commentor_id != $id)
+  { 
 echo "<div class='ratingcontain'>";
 	 for ($j=1;$j<=$row['rating'];$j++)
 	 echo '<span class="fa fa-star checked"></span>' ;
       if ($row['rating']<5)
       for($j=$row['rating'];$j<5;$j++)
      echo ' <span class="fa fa-star"></span>' ;
-echo "</div>";
+  echo "</div>";  }
    echo ' <br> ' ;
 
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
