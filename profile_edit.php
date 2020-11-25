@@ -47,7 +47,7 @@ if (isset($_POST['save'])){
 }
 	$query = "UPDATE users
 	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Location='$Location',Birthday='$Birthday',Description='$Description'  WHERE id='$id'" ;
-  	$query ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
+  	//$query ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
 	mysqli_query($db, $query);
 
 	header('location:profile_edit.php');

@@ -35,8 +35,9 @@ if(isset($_POST['commenter'])){
 		//insert new comment
 	$query = "INSERT INTO comments (Comment,User_id,Commentor_id,rating) VALUES('$Comment', '$User_id','$Commentor_id','$rating') ";
 	//update rating
-	$query ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
+	$query1 ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
 	mysqli_query($db, $query);
+	mysqli_query($db, $query1);
 	mysqli_close($db);
 	}
 	header("Location: profile.php?id=".$User_id );

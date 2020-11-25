@@ -220,10 +220,10 @@ else if(($nphotos<=3) && ($nphotos>0)){
 				 $First_Name=$row['First_Name'] ;
 				 $Commentor_id=$row['id'];
 				 }
-  echo'    <form action="profile.php" method="post">   ';
+ echo'    <form action="my-profile.php" method="post">   ';
    echo' <div class="yourcomment"> ';
    echo'  <img src="imgs/'.  $Profile_Pic    .'" class="commentimg"  alt="" id="yourcommentpic" style="position: absolute;" > ';
-
+  
   echo' <input type="text" name="Comment"  id="input2">';
   echo '<input type= "hidden"  name="Commentor_id"  value="'.$Commentor_id.'" >   ';
   echo '<input type= "hidden"  name="User_id"  value="'.$id.'" >   ';
@@ -259,13 +259,13 @@ while($row1=mysqli_fetch_array($rest))
    echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;"> <img class="commentimg" src="imgs/'.   $Profile_Pic1    .' " alt="" onerror="error(this)"> </a>' ;
    echo ' <a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;"> <span class="cousername">'. $First_Name1.'  '.$Last_Name1  . '</span> </a>' ;
 
-
-    for ($j=1;$j<=$row['rating'];$j++)
+    if($Commentor_id != $id)
+  {  for ($j=1;$j<=$row['rating'];$j++)
 	 echo '<span class="fa fa-star checked"></span>' ;
       if ($row['rating']<5)
       for($j=$row['rating'];$j<5;$j++)
      echo ' <span class="fa fa-star"></span>' ;
-
+  }
 
    echo ' <br> ' ;
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
