@@ -4,11 +4,7 @@
     if (!isset($_SESSION['Username'])) {
   	header('location: signin.php');
               }
- if (isset($_GET['logout'])) {
-  	session_destroy();
-  	unset($_SESSION['username']);
-  	header("location: signin.php");
-  }
+ 
 
   if(isset($_POST['commenter'])){
 
@@ -19,8 +15,8 @@
    include('conn.php');
 
   if (!empty($Comment)) {
-  $query = "INSERT INTO comments (Comment,User_id,Commentor_id) VALUES('$Comment', '$User_id','$Commentor_id') ";
-  mysqli_query($db, $query);
+  
+  mysqli_query($db,"INSERT INTO comments (Comment,User_id,Commentor_id) VALUES('$Comment', '$User_id','$Commentor_id') " );
   mysqli_close($db);
   }
 
