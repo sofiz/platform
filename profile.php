@@ -305,8 +305,8 @@ while($row1=mysqli_fetch_array($rest))
 
    echo ' <div class="commentsection"> ';
    echo ' <div class="comment"> ' ;
-   echo '<a href="profile.php?id='.$Commentor_id.'">   <img class="commentimg" src="imgs/'.   $Profile_Pic   .' " alt=""> </a>' ;
-   echo '<a href="profile.php?id='.$Commentor_id.'">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
+   echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/'.   $Profile_Pic   .' " alt=""> </a>' ;
+   echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
 
 
 echo "<div class='ratingcontain'>";
