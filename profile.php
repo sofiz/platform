@@ -142,8 +142,8 @@ while($row1=mysqli_fetch_array($ress))
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
+      <span class="fa fa-star unchecked"></span>
+      <span class="fa fa-star unchecked"></span>
 
     </div>
 
@@ -195,7 +195,7 @@ while($row1=mysqli_fetch_array($ress))
 	}
 else if(($nphotos<=3) && ($nphotos>0)){
 	for($j=0;$j<$nphotos;$j++){
-	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs">';
+	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs" onclick="slide(this.src)">';
 
 }}
 	 ?>
@@ -310,13 +310,13 @@ while($row1=mysqli_fetch_array($rest))
    echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
 
 if($Commentor_id != $id)
-  { 
+  {
 echo "<div class='ratingcontain'>";
 	 for ($j=1;$j<=$row['rating'];$j++)
 	 echo '<span class="fa fa-star checked"></span>' ;
       if ($row['rating']<5)
       for($j=$row['rating'];$j<5;$j++)
-     echo ' <span class="fa fa-star"></span>' ;
+     echo ' <span class="fa fa-star unchecked"></span>' ;
   echo "</div>";  }
    echo ' <br> ' ;
 

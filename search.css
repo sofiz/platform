@@ -1,8 +1,8 @@
 body{
   padding-top: 0px;
 
-  font-family: 'Segoe UI', sans-serif;
-  background: #F2EEEE;
+  font-family: 'Roboto', sans-serif;
+  background: #eeeef2;
 
 }
 
@@ -33,6 +33,7 @@ form{
   font-size: 18px;
   font-family: 'Roboto';
   border-bottom: 2px solid #9d9898;
+  outline: none;
   }
 
 .dropdown{
@@ -48,14 +49,30 @@ box-shadow: 0px 3px 8px 0px #00000047;
 .searchbtn{
   margin-left: 10px;
       border: none;
-      background: linear-gradient(135deg, #5aaaef, #0077B6);
+      background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
       border-radius: 5px;
       box-shadow: 0px 3px 8px 0px #00000047;
       color:#ffffffeb;
       padding: 9px;
       font-family: 'Roboto';
+      cursor: pointer;
+
+      background-size: 300% 100%;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
 
 }
+
+.searchbtn:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
 .resimg{
 height:60px;
 margin:15px;

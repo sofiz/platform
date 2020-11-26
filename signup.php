@@ -16,7 +16,7 @@
 <body>
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
-		<h1>SignUp</h1>
+
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="signup.php" method="post">
@@ -24,11 +24,11 @@
 				   <input class="text" type="text" name="Username" placeholder="Username" required="">
                     <input class="text" type="text" name="First_Name" placeholder="First Name" required="">
 				    <input class="text" type="text" name="Last_Name" placeholder="Last Name" required="">
-					
+
 					<input class="text email" type="email" name="Email" placeholder="Email" required="">
 					<input class="text" type="password" name="Password_1" placeholder="Password" required="">
 					<input class="text w3lpass" type="password" name="Password_2" placeholder="Confirm Password" required="">
-					
+
 					<input class="text" type="text" name="Phone" placeholder="phone" required="">
 					<select name="Job">
 <option value="00"  > 00 </option>
@@ -50,7 +50,7 @@
 
 					</select>
 					<input type="date" id="birthday" name="Birthday">
-					
+
 					<div class="wthree-text">
 						<label class="anim">
 							<input type="checkbox" class="checkbox" required="">

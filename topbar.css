@@ -26,32 +26,33 @@
 #logoutbtn{
 
   font-size: 26px;
-      padding: 5px;
+      padding: 10px;
       margin-top: 10px;
       cursor: pointer;
       color: #edf6fc;
-      border-bottom: 1px solid #edf6fc;
-      width: 95%;
+      border-bottom: 1px solid #bcbcbd;
+      width: 90%;
 
 }
 
 #logoutbtn:hover{
   background: #0000002b;
-  border-radius: 10px;
+  border-radius: 6px;
+  border : none;
 }
 
 #logintbtn{
 
   font-size: 23px;
-  padding: 5px;
+  padding: 10px;
 }
 
 #my-profilebtn{
   font-size: 26px;
-  padding: 5px;
+  padding: 10px;
   color: #edf6fc;
   text-decoration: none;
-  border-bottom: 1px solid #edf6fc;
+  border-bottom: 1px solid #bcbcbd;
 
 
 }
@@ -59,11 +60,12 @@
 
 #my-profilebtn:hover{
   background: #0000002b;
-  border-radius: 10px;
+  border-radius: 6px;
+  border : none;
 }
 .nav{
   display: grid;
-  padding-left: 6px;
+  padding-left: 0px;
   margin-top: 60px;
 
 }
@@ -90,12 +92,13 @@
   cursor: pointer;
   color: #edf6fc;
   margin-top: 10px;
-  border-bottom: 1px solid #edf6fc;
-  padding: 5px;
+  border-bottom: 1px solid #bcbcbd;;
+  padding: 10px;
 
 }
 
 #searchnav2:hover{
   background: #0000002b;
-  border-radius: 10px;
+  border : none;
+  border-radius: 6px;
 }
