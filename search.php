@@ -18,16 +18,16 @@ session_start();?>
 
     <div class="searchbar">
     <input type="text" name="search" placeholder="search" class="searchinput">
-	
-	
-    
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
 	<?php
 	$arr  = array(
 		'wilayas' => array(
@@ -14058,92 +14058,92 @@ session_start();?>
 		),
 	);
 
-	
-	
-	
-	
+
+
+
+
 	?>
-	
-	
-	
-	
-	
 
 
-	
-	
+
+
+
+
+
+
+
     <div>
         <select class="dropdown" name="Job" id="category">
           <option  value="" hidden> select wilaya </option>
-		  <?php 
+		  <?php
 	$array_keys = array_keys($arr['wilayas']);
 foreach($array_keys as $key){
-	echo '<option value="'.$arr['wilayas'][$key].'">'. $arr['wilayas'][$key]['name'] .'</option><br />'; 
-	
+	echo '<option value="'.$arr['wilayas'][$key].'">'. $arr['wilayas'][$key]['name'] .'</option><br />';
+
 }
 ?>
       </select>
     </div>
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	<div>
         <select class="dropdown" name="Job" id="category">
           <option  value="" hidden> select daira </option>
-		  <?php 
+		  <?php
 		  //----- hadak L '1' ki ykhayer L user lwilaya .....fe had exemple raha adrar  ----------------
 	$array_keys = array_keys($arr['wilayas']['1']['dairas']);
 foreach($array_keys as $key){
-	echo '<option value="'.$arr['wilayas']['1']['dairas'][$key].'">'. $arr['wilayas'][1]['dairas'][$key]['name'] .'</option><br />'; 
-	
+	echo '<option value="'.$arr['wilayas']['1']['dairas'][$key].'">'. $arr['wilayas'][1]['dairas'][$key]['name'] .'</option><br />';
+
 }
 ?>
       </select>
     </div>
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	<div>
         <select class="dropdown" name="Job" id="category">
           <option  value="" hidden> select commune </option>
-		  <?php 
+		  <?php
 		  //---- wz hna haadak L '1' ta3 lwilaya w '101' , te3 daira normalment L user ykhayreh  -------------------------
 	$array_keys = array_keys($arr['wilayas']['1']['dairas']['101']['communes']);
 foreach($array_keys as $key){
-	echo '<option value="'.$arr['wilayas']['1']['dairas']['101']['communes'][$key]['name'].'">'. $arr['wilayas']['1']['dairas']['101']['communes'][$key]['name'] .'</option><br />'; 
-	
+	echo '<option value="'.$arr['wilayas']['1']['dairas']['101']['communes'][$key]['name'].'">'. $arr['wilayas']['1']['dairas']['101']['communes'][$key]['name'] .'</option><br />';
+
 }
 ?>
       </select>
     </div>
-	
-	
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <input type="submit" name="recherche"  value= "recherche" class="searchbtn">
     </div>
 
@@ -14152,7 +14152,7 @@ foreach($array_keys as $key){
 	 <?php $id=10;  ?>
 				</form>
 
-<?php   echo " " ;           
+<?php   echo " " ;
 
 
 ?>
