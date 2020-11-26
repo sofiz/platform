@@ -85,28 +85,3 @@ margin:15px;
 font-weight:bold;
 
 }
-
-#logoutbtn{
-
-  font-size: 30px;
-      padding: 5px;
-      margin-top: 10px;
-      cursor: pointer;
-}
-
-#logintbtn{
-
-  font-size: 23px;
-  padding: 5px;
-}
-
-#my-profilebtn{
-  font-size: 30px;
-      padding: 5px;
-      margin-top: 10px;
-      color:black;
-}
-.nav{
-margin-left: 1260px;
-
-}
