@@ -7,23 +7,33 @@ body{
 }
 
 
+form{
+
+  margin-top: 100px;
+    margin-left: 25%;
+}
+
+#myDIV{
+  display: inline;
+}
 
 .searchbar{
-margin-top:100px;
-margin-left:300px;
-display:flex;
+  margin-top: 100px;
+      margin-left: 33px;
+      display: inline;
 
 }
 
 .searchinput {
-    height: 30px;
-    width: 50%;
-    background: #ffffff00;
-    padding-left: 10px;
-    border: none;
-    font-size: 18px;
-    font-family: 'Quicksand';
-    border-bottom: 2px solid #9d9898;}
+  height: 30px;
+  width: 28%;
+  background: #ffffff00;
+  padding-left: 10px;
+  border: none;
+  font-size: 18px;
+  font-family: 'Quicksand';
+  border-bottom: 2px solid #9d9898;
+  }
 
 .dropdown{
 
@@ -42,6 +52,7 @@ box-shadow: 0px 3px 8px 0px #00000047;
       border-radius: 5px;
       box-shadow: 0px 3px 8px 0px #00000047;
       color:#ffffffeb;
+      padding: 9px;
 
 }
 .resimg{
@@ -83,5 +94,17 @@ color: black;
 #noresult{
 margin:15px;
 font-weight:bold;
+
+}
+
+#mySelectwilaya{
+
+}
+
+#mySelectdaira{
+  width: 100px;
+}
+
+#mySelectcommune{
 
 }
