@@ -3,7 +3,7 @@
  include('conn.php') ;
  
 if (isset($_POST['reset-password'])) {
-	$errors =array();
+  $errors =array();
   $email = mysqli_real_escape_string($db, $_POST['email']);
   // ensure that the user exists on our system
   $query = "SELECT Email FROM users WHERE Email='$email'";
@@ -24,10 +24,12 @@ if (isset($_POST['reset-password'])) {
 
     // Send email to user with the token in a link they can click on
     $to = $email;
-    $subject = "Reset your password on examplesite.com";
+    $subject = "Reset your password on oursite.com";
     $msg = "Hi there, click on this <a href=\"new_password.php?token=" . $token . "\">link</a> to reset your password on our site";
     $msg = wordwrap($msg,70);
-    $headers = "From: riyadh.derbale99@gmail.com";
+    $headers = "From: riyadh.derbale99@gmail.com". "\r\n" .
+"CC:".$email;
+
     mail($to, $subject, $msg, $headers);
     header("location: pending.php?email=".$email);
   }
