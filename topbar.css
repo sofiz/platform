@@ -1,3 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+
+
 .topbar{
 
   background: linear-gradient(135deg, #0096C7, #0077B6);
@@ -8,12 +12,32 @@
       left: 0;
       box-shadow: 1px 3px 16px 0px #00000047;
     }
+
+    .fa-user:before {
+    content: "\f007";
+    margin-right: 6px;}
+
+
+    .fa-search:before {
+      content: "\f002";
+      margin-right: 0px;
+      }
+
 #logoutbtn{
 
-  font-size: 30px;
+  font-size: 26px;
       padding: 5px;
       margin-top: 10px;
       cursor: pointer;
+      color: #edf6fc;
+      border-bottom: 1px solid #edf6fc;
+      width: 95%;
+
+}
+
+#logoutbtn:hover{
+  background: #0000002b;
+  border-radius: 10px;
 }
 
 #logintbtn{
@@ -23,17 +47,55 @@
 }
 
 #my-profilebtn{
-  font-size: 30px;
-      padding: 5px;
-      margin-top: 10px;
-      color:black;
+  font-size: 26px;
+  padding: 5px;
+  color: #edf6fc;
+  text-decoration: none;
+  border-bottom: 1px solid #edf6fc;
+
+
+}
+
+
+#my-profilebtn:hover{
+  background: #0000002b;
+  border-radius: 10px;
 }
 .nav{
-display: grid;
+  display: grid;
+  padding-left: 6px;
+  margin-top: 60px;
 
 }
 #searchnav{
 
   position: relative;
-  display: inline;
+      display: inline;
+      font-size: 26px;
+      cursor: pointer;
+}
+
+.navbartxt{
+
+  color: #edf6fc;
+      font-size: 20px;
+      font-family: 'Roboto';
+      margin-left: 15px;
+      text-decoration: none;
+}
+
+
+#searchnav2{
+  text-decoration: none;
+  cursor: pointer;
+  color: #edf6fc;
+  margin-top: 10px;
+  border-bottom: 1px solid #edf6fc;
+  padding: 5px;
+
+}
+
+#searchnav2:hover{
+  background: #0000002b;
+  border-radius: 10px;
 }

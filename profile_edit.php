@@ -150,10 +150,10 @@ if (isset($_POST['savepics'])){
 
  ?>
  <?php include('topbar.php'); ?>
-<form class="" action="profile_edit.php" method="post"  enctype="multipart/form-data" >
+<form class="f" action="profile_edit.php" method="post"  enctype="multipart/form-data" >
 
 
-<div id="container" >
+<div id="container1" >
 <div id="square1">
 
 <div class="" style="border-radius: inherit;">
@@ -173,19 +173,19 @@ if (isset($_POST['savepics'])){
   <div class="infocontain2">
 
 
-  <div class="info">
+  <div class="info2">
     <input type="text" name="Email" value="<?php echo $Email ?>" class="inputinf">
   </div>
-  <div class="info">
+  <div class="info2">
     <input type="text" name="Phone" value="<?php echo $Phone ?>" class="inputinf">
   </div>
-  <div class="info">
+  <div class="info2">
     <input type="text" name="Location" value="<?php echo $Location ?>" class="inputinf">
   </div>
-  <div class="info">
+  <div class="info2">
     <input type="text" name="Birthday" value="<?php echo $Birthday ?>" class="inputinf">
   </div>
-  <div class="info">
+  <div class="info2">
     <input type="text" name="Job" value="<?php echo $Job ?>" class="inputinf">
   </div>
 
@@ -233,7 +233,7 @@ for($j=0;$j<$nphotos && $j<3;$j++){
 
 
 <input type="submit" value="save" name="save" id="save">
-<i class="fa fa-save icn"></i>
+<i class="fa fa-check icn"></i>
 
 </div>
 
