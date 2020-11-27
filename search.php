@@ -142,7 +142,7 @@ var option = document.createElement("option");
 		//********* set value of wilaya in input ********
 
 		 document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
-
+        // document.getElementById("Wilayacode").value= wilayacode ;
         //alert("You have selected wilaya - " + wilayacode);
 
         $('#mySelectdaira').find('option:not(:first)').remove();
