@@ -57,7 +57,7 @@ background: #eeeef2;
 .login-btn{
 
   margin-top: 20px;
-    background: linear-gradient(135deg, #5aaaef, #0077B6);
+    background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
     border: none;
     border-radius: 10px;
     color: #ffffffeb;
@@ -67,8 +67,21 @@ background: #eeeef2;
     -webkit-font-smoothing: antialiased;
     font-size: medium;
     text-decoration: none;
+    cursor: pointer;
+    background-size: 300% 100%;
+moz-transition: all .4s ease-in-out;
+-o-transition: all .4s ease-in-out;
+-webkit-transition: all .4s ease-in-out;
+transition: all .4s ease-in-out;
 }
+.login-btn:hover{
 
+  background-position: 100% 0;
+moz-transition: all .4s ease-in-out;
+-o-transition: all .4s ease-in-out;
+-webkit-transition: all .4s ease-in-out;
+transition: all .4s ease-in-out;
+}
 #message{
 
 
