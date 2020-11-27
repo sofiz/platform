@@ -140,7 +140,7 @@ var option = document.createElement("option");
         wilayacode = $(this).children("option:selected").val();
 		//********* set value of wilaya in input ********
 
-		 document.getElementById("wilaya").value= arr.wilayas[wilayacode].name;
+		 document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name;
 
         //alert("You have selected wilaya - " + wilayacode);
 
@@ -181,7 +181,7 @@ var option = document.createElement("option");
         //alert("You have selected wilaya - " + dairacode);
 		//********* set value of wilaya in input ********
 
-		 document.getElementById("daira").value= arr.wilayas[wilayacode].dairas[dairacode].name;
+		 document.getElementById("Daira").value= arr.wilayas[wilayacode].dairas[dairacode].name;
 
 
         $('#mySelectcommune').find('option:not(:first)').remove();
@@ -206,15 +206,15 @@ var option = document.createElement("option");
 
 		//********* set value of wilaya in input ********
 
-		 document.getElementById("commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name;
+		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name;
 
 
 });   });
 
 	</script>
-	<input type="text" name="wilaya"  value= "" class="searchbtn" id="wilaya" hidden>
-	<input type="text" name="daira"  value= "" class="searchbtn" id="daira"  hidden>
-	<input type="text" name="commune"  value= "" class="searchbtn" id="commune"   hidden>
+	<input type="text" name="Wilaya"  value= "" class="searchbtn" id="Wilaya" hidden>
+	<input type="text" name="Daira"  value= "" class="searchbtn" id="Daira"  hidden>
+	<input type="text" name="Commune"  value= "" class="searchbtn" id="Commune"   hidden>
 
 
 

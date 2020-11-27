@@ -20,20 +20,24 @@ if (isset($_POST['SIGNUP'])) {
   $Password_2 = mysqli_real_escape_string($db, $_POST['Password_2']);
   $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
   $Job = mysqli_real_escape_string($db, $_POST['Job']);
-  $Location = mysqli_real_escape_string($db, $_POST['Location']);
+  $Wilaya = mysqli_real_escape_string($db, $_POST['Wilaya']);
+  $Daira = mysqli_real_escape_string($db, $_POST['Daira']);
+  $Commune = mysqli_real_escape_string($db, $_POST['Commune']);
   $Birthday = mysqli_real_escape_string($db, $_POST['Birthday']);
   $Type=mysqli_real_escape_string($db, $_POST['Type']);
+  $Profile_Pic="default.png";
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($First_Name )) { array_push($errors, "First Name is required"); }
   if (empty($Last_Name)) { array_push($errors, "Last Name is required"); }
-
   if (empty($Username)) { array_push($errors, "Username is required"); }
   if (empty($Email)) { array_push($errors, "Email is required"); }
   if (empty($Phone)) { array_push($errors, "Phone is required"); }
   if (empty($Job)) { array_push($errors, "Job is required"); }
-  if (empty($Location)) { array_push($errors, "Location is required"); }
+  if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }
+  if (empty($Daira)) { array_push($errors, "Daira is required"); }
+  if (empty($Commune)) { array_push($errors, "Commune is required"); }
   if (empty($Birthday)) { array_push($errors, "Birthday is required"); }
   if (empty($Type)) { array_push($errors, "Type is required"); }
   if (empty($Password_1)) { array_push($errors, "Password is required"); }
@@ -47,7 +51,7 @@ if (isset($_POST['SIGNUP'])) {
   $result = mysqli_query($db, $user_check_query);
    
 
-  if (mysqli_fetch_assoc($result)) { // if user exists
+  if ($User = mysqli_fetch_assoc($result)) { // if user exists
     if ($user['Username'] === $Username) {
       array_push($errors, "Username already exists");
     }
@@ -61,8 +65,8 @@ if (isset($_POST['SIGNUP'])) {
   if (count($errors) == 0) {
   	$Password =  md5($Password_1);//encrypt the password before saving in the database
     ///$password =password_hash($password, PASSWORD_DEFAULT);
-  	$query = "INSERT INTO Users (First_Name,Last_Name,Username, Email, Password,Phone,Job,Location,Birthday,Type)
-  			  VALUES('$First_Name','$Last_Name','$Username', '$Email', '$Password','$Phone','$Job','$Location','$Birthday','$Type')";
+  	$query = "INSERT INTO Users (First_Name,Last_Name,Username, Email, Password,Phone,Job,Wilaya,Daira,Commune,Birthday,Type,Profile_Pic)
+  			  VALUES('$First_Name','$Last_Name','$Username', '$Email', '$Password','$Phone','$Job','$Wilaya','$Daira','$Commune','$Birthday','$Type','$Profile_Pic')";
   	mysqli_query($db, $query);
   	$_SESSION['Username'] = $Username;
   	$_SESSION['success'] = "You are now logged in";

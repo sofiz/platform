@@ -20,7 +20,8 @@ if(!$flag) header("Location: search.php" );
 	  $res=mysqli_query($db,"SELECT id FROM users WHERE Username='$user'");
   while($row=mysqli_fetch_array($res)) {
 
-  $idp=$row['id'] ; }
+  $idp=$row['id'] ;
+  }
   if($idp==$id){header("Location: my-profile.php");}
   }
   //******************************************
@@ -100,7 +101,9 @@ $id=$_GET['id'];
 
 	  $Profile_Pic=$row['Profile_Pic'];
 	  $Username=$row['Username'];
-	  $Location=$row['Location'];
+	  $Wilaya=$row['Wilaya'];
+	  $Daira=$row['Daira'];
+	  $Commune=$row['Commune'];
 	  $Email=$row['Email'];
 	  $Phone=$row['Phone'];
 	  $Birthday=$row['Birthday'];
@@ -161,7 +164,7 @@ while($row1=mysqli_fetch_array($ress))
     </div>
 
     <div class="info">
-      <span><?php echo $Location ; ?></span>
+      <span><?php echo $Wilaya.", ".$Daira.", ".$Commune ; ?></span>
     </div>
 
     <div class="info">

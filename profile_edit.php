@@ -21,7 +21,9 @@ if (isset($_POST['save'])){
   $Email = $_POST['Email'];
   $Phone =  $_POST['Phone'];
   $Job = $_POST['Job'];
-  $Location = $_POST['Location'];
+  $Wilaya = $_POST['Wilaya'];
+  $Daira = $_POST['Daira'];
+  $Commune = $_POST['Commune'];
   $Description = $_POST['Description'];
   $Birthday = $_POST['Birthday'];
 
@@ -32,7 +34,9 @@ if (isset($_POST['save'])){
   if (empty($Email)) { array_push($errors, "Email is required"); }
   if (empty($Phone)) { array_push($errors, "Phone is required"); }
   if (empty($Job)) { array_push($errors, "Job is required"); }
-  if (empty($Location)) { array_push($errors, "Location is required"); }
+  if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }
+  if (empty($Daira)) { array_push($errors, "Daira is required"); }
+  if (empty($Commune)) { array_push($errors, "Commune is required"); }
   if (empty($Birthday)) { array_push($errors, "Birthday is required"); }
   if (empty($Description)) { array_push($errors, "Description is required"); }
 
@@ -46,7 +50,7 @@ if (isset($_POST['save'])){
 			move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
 }
 	$query = "UPDATE users
-	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Location='$Location',Birthday='$Birthday',Description='$Description'  WHERE id='$id'" ;
+	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Wilaya='$Wilaya',Daira='$Daira',Commune='$Commune',Birthday='$Birthday',Description='$Description'  WHERE id='$id'" ;
   	//$query ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
 	mysqli_query($db, $query);
 
@@ -115,7 +119,9 @@ if (isset($_POST['savepics'])){
   while($row=mysqli_fetch_array($res))
   {
 	  $Username=$row['Username'];
-	  $Location=$row['Location'];
+	  $Wilaya=$row['Wilaya'];
+	  $Daira=$row['Daira'];
+	  $Commune=$row['Commune'];
 	  $Email=$row['Email'];
 	  $Phone=$row['Phone'];
 	  $Birthday=$row['Birthday'];
@@ -180,7 +186,13 @@ if (isset($_POST['savepics'])){
     <input type="text" name="Phone" value="<?php echo $Phone ?>" class="inputinf">
   </div>
   <div class="info2">
-    <input type="text" name="Location" value="<?php echo $Location ?>" class="inputinf">
+    <input type="text" name="Wilaya" value="<?php echo $Wilaya ?>" class="inputinf">
+  </div>
+  <div class="info2">
+    <input type="text" name="Daira" value="<?php echo $Daira ?>" class="inputinf">
+  </div>
+  <div class="info2">
+    <input type="text" name="Commune" value="<?php echo $Commune ?>" class="inputinf">
   </div>
   <div class="info2">
     <input type="text" name="Birthday" value="<?php echo $Birthday ?>" class="inputinf">

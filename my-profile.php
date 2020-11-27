@@ -53,7 +53,9 @@
   while($row=mysqli_fetch_array($res))
   {
 	  $Username=$row['Username'];
-	  $Location=$row['Location'];
+	  $Wilaya=$row['Wilaya'];
+	  $Daira=$row['Daira'];
+	  $Commune=$row['Commune'];
 	  $Email=$row['Email'];
 	  $Phone=$row['Phone'];
 	  $Birthday=$row['Birthday'];
@@ -113,7 +115,7 @@ while($row1=mysqli_fetch_array($ress))
     </div>
 
     <div class="info">
-      <span><?php echo $Location ; ?></span>
+      <span><?php echo $Wilaya.", ".$Daira.", ".$Commune ; ?></span>
     </div>
 
     <div class="info">
