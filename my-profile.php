@@ -1,18 +1,18 @@
 <?php
   session_start();
-
+include('conn.php');
     if (!isset($_SESSION['Username'])) {
   	header('location: signin.php');
               }
-
-
+ 
+//*************************** Insert comments into table comments *****************************
   if(isset($_POST['commenter'])){
 
   $User_id=$_POST['User_id'];
   $Commentor_id=$_POST['Commentor_id'];
   $Comment=$_POST['Comment'];
 
-   include('conn.php');
+   
 
   if (!empty($Comment)) {
 
@@ -22,29 +22,8 @@
 
   header("Location: profile.php?id=$User_id");
 }
-
-
-?>
-
-
-
-<!DOCTYPE html>
-
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>My Profile</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
-    <link rel="stylesheet" href="profile.css">
-  </head>
-
-  <body>
-
-  <?php
-
-
-  if (isset($_SESSION['Username'])) {
+///**********************************Get information of profile **********************
+ if (isset($_SESSION['Username'])) {
     include('conn.php') ;
 	$Username=$_SESSION['Username'];
 
@@ -66,8 +45,6 @@
 	  $id=$row['id'];
 	  $Job=$row['Job'];
 
-
-
   }
       $photo = array();
 
@@ -80,6 +57,39 @@ while($row1=mysqli_fetch_array($ress))
 
   }
   }
+ 
+////*************************** Get Rating profile ********************
+$res=mysqli_query($db,"SELECT rating FROM comments where (User_id='$id') AND (Commentor_id!='$id')");
+$Nc=0;
+$Nrating=0;
+while($row=mysqli_fetch_array($res))
+  {
+	  $Nrating=$Nrating+$row['rating'];
+      $Nc++;
+  }
+  if($Nc>0)
+  $Mrating = (int)($Nrating/$Nc) ;
+  else $Mrating =0 ;
+?>
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="profile.css">
+  </head>
+
+  <body>
+
+  <?php
+
+
   ?>
 
  <?php include('topbar.php'); ?>
@@ -93,13 +103,18 @@ while($row1=mysqli_fetch_array($ress))
     <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
     <div class="rating">
+ <?php 
+ echo "<div class='ratingcontain'>";
+     for ($j=1;$j<=$Mrating;$j++)
+	 echo '<span class="fa fa-star checked"></span>' ;
+      if ($Mrating<5)
+      for($j=$Mrating;$j<5;$j++)
+     echo ' <span class="fa fa-star"></span>' ;
+       echo "</div>";
+?>
 
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-
+  
+      
     </div>
 
     <div class="infocontainer">
@@ -277,8 +292,12 @@ while($row1=mysqli_fetch_array($rest))
       for($j=$row['rating'];$j<5;$j++)
      echo ' <span class="fa fa-star"></span>' ;
        echo "</div>";
-  }
 
+
+  }
+   
+   
+   
    echo ' <br> ' ;
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
    }

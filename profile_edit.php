@@ -185,14 +185,19 @@ if (isset($_POST['savepics'])){
   <div class="info2">
     <input type="text" name="Phone" value="<?php echo $Phone ?>" class="inputinf">
   </div>
-  <div class="info2">
-    <input type="text" name="Wilaya" value="<?php echo $Wilaya ?>" class="inputinf">
+  
+  <div id="dropdowns" > 
+  
+  </div>
+  <div class="info2" >
+  
+    <input type="text" name="Wilaya" id="Wilaya"  value="<?php echo $Wilaya ?>" class="inputinf" hidden>
   </div>
   <div class="info2">
-    <input type="text" name="Daira" value="<?php echo $Daira ?>" class="inputinf">
+    <input type="text" name="Daira" id="Daira" value="<?php echo $Daira ?>" class="inputinf" hidden>
   </div>
   <div class="info2">
-    <input type="text" name="Commune" value="<?php echo $Commune ?>" class="inputinf">
+    <input type="text" name="Commune"  id="Commune" value="<?php echo $Commune ?>" class="inputinf" hidden>
   </div>
   <div class="info2">
     <input type="text" name="Birthday" value="<?php echo $Birthday ?>" class="inputinf">

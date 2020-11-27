@@ -45,6 +45,59 @@ if(isset($_POST['commenter'])){
 
 
 }
+//--------------------------------------select profile data ($id) FROM URL--------------------------------------------------
+  $res=mysqli_query($db,"SELECT * FROM users WHERE 	id='$id'");
+
+  while($row=mysqli_fetch_array($res))
+  {
+  $First_Name = mysqli_real_escape_string($db,$row['First_Name']);
+  $Last_Name = mysqli_real_escape_string($db,$row['Last_Name'] );
+
+
+	  $Profile_Pic=$row['Profile_Pic'];
+	  $Username=$row['Username'];
+	  $Wilaya=$row['Wilaya'];
+	  $Daira=$row['Daira'];
+	  $Commune=$row['Commune'];
+	  $Email=$row['Email'];
+	  $Phone=$row['Phone'];
+	  $Birthday=$row['Birthday'];
+	  $Description=$row['Description'];
+	  $Job=$row['Job'];
+
+
+
+
+  }
+
+  //--------------select photos -----------------------
+
+    $photo = array();
+
+	$ress=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
+	$nphotos =mysqli_num_rows($ress) ;
+while($row1=mysqli_fetch_array($ress))
+  {
+	   array_push($photo,$row1['Photo_Path']);
+
+}
+
+
+
+
+////*************************** Get Rating profile ($id) from URL  ********************
+$res=mysqli_query($db,"SELECT rating FROM comments where (User_id= '$id') AND (Commentor_id!='$id')");
+$Nc=0;
+$Nrating=0;
+while($row=mysqli_fetch_array($res))
+  {
+	  $Nrating=$Nrating+$row['rating'];
+      $Nc++;
+  }
+  if($Nc>0)
+  $Mrating = (int)($Nrating/$Nc) ;
+  else {$Mrating =0 ;}
+
 ?>
 <!DOCTYPE html>
 
@@ -85,53 +138,6 @@ if(isset($_POST['commenter'])){
   <body>
 
 
-
-<?php
-$id=$_GET['id'];
-//---------------------------------------id exist or not --------------------------------------------------
-
-//--------------------------------------select profile data--------------------------------------------------
-  $res=mysqli_query($db,"SELECT * FROM users WHERE 	id='$id'");
-
-  while($row=mysqli_fetch_array($res))
-  {
-  $First_Name = mysqli_real_escape_string($db,$row['First_Name']);
-  $Last_Name = mysqli_real_escape_string($db,$row['Last_Name'] );
-
-
-	  $Profile_Pic=$row['Profile_Pic'];
-	  $Username=$row['Username'];
-	  $Wilaya=$row['Wilaya'];
-	  $Daira=$row['Daira'];
-	  $Commune=$row['Commune'];
-	  $Email=$row['Email'];
-	  $Phone=$row['Phone'];
-	  $Birthday=$row['Birthday'];
-	  $Description=$row['Description'];
-	  $Job=$row['Job'];
-
-
-
-
-  }
-
-  //--------------select photos -----------------------
-
-    $photo = array();
-
-	$ress=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
-	$nphotos =mysqli_num_rows($ress) ;
-while($row1=mysqli_fetch_array($ress))
-  {
-	   array_push($photo,$row1['Photo_Path']);
-
-}
-
-
-
-  ?>
-
-
  <?php include('topbar.php'); ?>
 <div id="container" >
 <div id="square1">
@@ -142,13 +148,16 @@ while($row1=mysqli_fetch_array($ress))
     <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
     <div class="rating">
-
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star unchecked"></span>
-      <span class="fa fa-star unchecked"></span>
-
+<?php 
+ echo "<div class='ratingcontain'>";
+     for ($j=1;$j<=$Mrating;$j++)
+	 echo '<span class="fa fa-star checked"></span>' ;
+      if ($Mrating<5)
+      for($j=$Mrating;$j<5;$j++)
+     echo ' <span class="fa fa-star"></span>' ;
+       echo "</div>";
+?>
+     
     </div>
 
     <div class="infocontainer">
