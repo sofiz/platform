@@ -26,7 +26,8 @@ include('update indexing.php');
     <input type="text" name="search" placeholder="search" class="searchinput">
     <div id="myDIV">
       <select class="dropdown" name="job" >
-       
+	  <option value="" disabled selected>ابحث عن</option>
+      
 	   <option value="">بناء</option>
 	   <option value="">لحام</option>
 	   <option value="">ميكانيك السيارات</option>
@@ -95,7 +96,7 @@ document.getElementById("mySelectwilaya").classList.add('dropdown');
 //*************** default ********
 var option = document.createElement("option");
     option.value = "" ;
-    option.text = "enter wilaya" ;
+    option.text = "اختر ولاية" ;
 	selectList.appendChild(option);
 //Create and append the options
 
@@ -106,7 +107,7 @@ for (i in arr.wilayas) {
 
    var option = document.createElement("option");
     option.value = i ;
-    option.text = arr.wilayas[i].name;
+    option.text = arr.wilayas[i].name_ar;
     selectList.appendChild(option);
 
 
@@ -124,7 +125,7 @@ document.getElementById("mySelectdaira").classList.add('dropdown');
 //*************** default ********
 var option = document.createElement("option");
     option.value = "" ;
-    option.text = "enter daira" ;
+    option.text = "اختر دائرة" ;
 	selectList2.appendChild(option);
 
 
@@ -140,7 +141,7 @@ var option = document.createElement("option");
         wilayacode = $(this).children("option:selected").val();
 		//********* set value of wilaya in input ********
 
-		 document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name;
+		 document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
 
         //alert("You have selected wilaya - " + wilayacode);
 
@@ -150,7 +151,7 @@ var option = document.createElement("option");
 		for (j in arr.wilayas[wilayacode].dairas) {
 		var option = document.createElement("option");
 	option.value = j ;
-    option.text = arr.wilayas[wilayacode].dairas[j].name ;
+    option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
     selectList2.appendChild(option);
            }
 
@@ -169,7 +170,7 @@ document.getElementById("mySelectcommune").classList.add('dropdown');
 //*************** default ********
 var option = document.createElement("option");
     option.value = "" ;
-    option.text = "enter commune" ;
+    option.text = "اختر بلدية" ;
 	selectList3.appendChild(option);
 
 
@@ -181,7 +182,7 @@ var option = document.createElement("option");
         //alert("You have selected wilaya - " + dairacode);
 		//********* set value of wilaya in input ********
 
-		 document.getElementById("Daira").value= arr.wilayas[wilayacode].dairas[dairacode].name;
+		 document.getElementById("Daira").value= arr.wilayas[wilayacode].dairas[dairacode].name_ar;
 
 
         $('#mySelectcommune').find('option:not(:first)').remove();
@@ -189,7 +190,7 @@ var option = document.createElement("option");
 		for (k in arr.wilayas[wilayacode].dairas[dairacode].communes) {
 		var option = document.createElement("option");
 	option.value = k ;
-    option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name ;
+    option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ;
     selectList3.appendChild(option);
            }
 
@@ -206,7 +207,7 @@ var option = document.createElement("option");
 
 		//********* set value of wilaya in input ********
 
-		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name;
+		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name_ar;
 
 
 });   });
