@@ -1,7 +1,8 @@
 
 <?php
+
  include('conn.php') ;
- 
+
 if (isset($_POST['reset-password'])) {
   $errors =array();
   $email = mysqli_real_escape_string($db, $_POST['email']);
@@ -33,7 +34,7 @@ if (isset($_POST['reset-password'])) {
     mail($to, $subject, $msg, $headers);
     header("location: pending.php?email=".$email);
   }
-  
+
 }
 
 // ENTER A NEW PASSWORD
