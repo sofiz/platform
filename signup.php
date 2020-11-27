@@ -184,10 +184,7 @@ var option = document.createElement("option");
     selectList3.appendChild(option);
            }
 
- 
-		   });   });
-
-$(document).ready(function(){
+ $(document).ready(function(){
 
 
     $("#mySelectcommune").change(function(){
@@ -199,6 +196,21 @@ $(document).ready(function(){
 
 
 });   });
+
+		   });   });
+/*
+$(document).ready(function(){
+
+
+    $("#mySelectcommune").change(function(){
+        var communecode = $(this).children("option:selected").val();
+
+		//********* set value of commune in input ********
+
+		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name;
+
+
+});   });  */
 
 		  
 

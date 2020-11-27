@@ -108,6 +108,7 @@ $id=$_GET['id'];
 	  $Phone=$row['Phone'];
 	  $Birthday=$row['Birthday'];
 	  $Description=$row['Description'];
+	  $Job=$row['Job'];
 
 
 
@@ -161,6 +162,9 @@ while($row1=mysqli_fetch_array($ress))
 
     <div class="info">
       <span><?php echo $Phone ; ?></span>
+    </div>
+<div class="info">
+      <span><?php echo $Job ; ?></span>
     </div>
 
     <div class="info">
