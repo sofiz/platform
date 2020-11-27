@@ -191,7 +191,7 @@ if (isset($_POST['savepics'])){
 
   <div class="info2" >
   
-   <?php echo ' <input type="text" name="Wilayaa" id="Wilaya"  value="'.$Wilaya.'" class="inputinf" hidden>'; ?>
+   <?php echo ' <input type="text" name="Wilaya" id="Wilaya"  value="'.$Wilaya.'" class="inputinf" hidden>'; ?>
   </div>
   <div class="info2">
     <?php echo ' <input type="text" name="Daira" id="Daira"  value="'.$Daira.'" class="inputinf" hidden>'; ?>
@@ -200,10 +200,10 @@ if (isset($_POST['savepics'])){
     <?php echo ' <input type="text" name="Commune" id="Commune"  value="'.$Commune.'" class="inputinf" hidden>'; ?>
   </div>
   <div class="info2">
-    <input type="text" name="Birthday" value="<?php  $Birthday ?>" class="inputinf">
+    <input type="text" name="Birthday" value="<?php echo $Birthday ; ?>" class="inputinf">
   </div>
   <div class="info2">
-    <input type="text" name="Job" value="<?php  $Job ?>" class="inputinf">
+    <input type="text" name="Job" value="<?php  echo $Job ;?>" class="inputinf">
   </div>
 
   </div>
@@ -267,6 +267,7 @@ var option = document.createElement("option");
 
  var wilayacode;
  var dairacode ;
+ var communecode ;
 
 
   $(document).ready(function(){
@@ -276,7 +277,7 @@ var option = document.createElement("option");
         wilayacode = $(this).children("option:selected").val();
 		//********* set value of wilaya in input ********
 
-		//document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
+		document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
 
         //alert("You have selected wilaya - " + wilayacode);
 
@@ -334,11 +335,10 @@ var option = document.createElement("option");
            }
 
 document.getElementById("mySelectcommune").options[0].disabled = true;
-		   });   });
 
 
 
-		   $(document).ready(function(){
+$(document).ready(function(){
 
 
     $("#mySelectcommune").change(function(){
@@ -350,6 +350,21 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 
 
 });   });
+
+
+
+
+
+
+
+		   });  
+
+
+
+});
+
+
+		   
 
 	</script>
   </div>
