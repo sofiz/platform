@@ -1,7 +1,9 @@
 <?php
 session_start();
-if(isset($_POST['data']))
-$wilayacode = $_POST['data'];
+include('update indexing.php');
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -23,9 +25,44 @@ $wilayacode = $_POST['data'];
     <div class="searchbar">
     <input type="text" name="search" placeholder="search" class="searchinput">
     <div id="myDIV">
-     <select class="dropdown" name="category">
-       <option value="">test</option>
+      <select class="dropdown" name="job" >
+       
+	   <option value="">بناء</option>
+	   <option value="">لحام</option>
+	   <option value="">ميكانيك السيارات</option>
+	   <option value="">دهان</option>
+	   <option value="">خياطة</option>
+	   <option value="">تصليح الاحدية </option>
+	   <option value="">ةنجار</option>
+	   <option value="">حلاقة رجال</option>
+	   <option value="">كهرباء معماربة  </option>
+	   <option value="">الحدادة</option>
+	   <option value="">التركيب الصحي والغاز</option>
+	   <option value="">التدفئة المركزية</option>
+	   <option value="">نجارة الالمنيوم و المواد البلاستيكية </option>
+	   <option value="">المطالة هياكل السيارات</option>
+	    <option value="">التجهيز و التأثيث الداخلي للمركبات</option>
+		 <option value="">كهرباء السيارات</option>
+		  <option value="">الكهرباء الصناعية</option>
+		   <option value="">تركيب و صيانة أجهزة التبريد و التكييف</option>
+		    <option value="">الكهروميكانيكية</option>
+			 <option value="">صيانة المصاعد</option>
+			  <option value="">تركيب الألواح الشمسية، الضوئية و الحرارية</option>
+			   <option value="">تركيب وصيانة أنظمة الإنذار والمراقبة بالفيديو</option>
+			    <option value="">صناعة الحلويات</option>
+				
+				 <option value="">الخبازة و والفطائر</option>
+				  <option value="">الجزارة و منتجات اللحوم</option>
+				   <option value="">إنتاج أغذية الحيوانات</option>
+				    <option value="">تصليح الهواتف الثابتة و النقالة</option>
+					 <option value="">ِلاقة النساء</option>
+					  <option value="">تركيب و تصليح الـنظارات</option>
+					   <option value="">التجميل</option>
+					    <option value="">ميكانيك تصليح قوارب الصيد واليخت</option>
+						 <option value="">ميكانيك تصليح مركبات الوزن الخفيف</option>
+						  <option value="">922</option>
      </select>
+
     </div>
 
 
@@ -206,74 +243,11 @@ $errors = array();
 
 
   if (isset($_POST['search'])) {
+	  
+	  
+		   
 
-
-//----------------------- get colomun -------------------------
-     $sql1="select * from users ";
-	 $res1=mysqli_query($db,$sql1);
-  if(!$res1){
-	  echo "error".mysqli_error($db);
-            }
-//---------------------- update indexing colomun by row ---------------
-  while($row=mysqli_fetch_assoc($res1)){
-	  $sound=" " ;
-
-        //-------------------------------
-	  if($row['First_Name']!=null){
-		  $words=explode(" ",$row['First_Name']);
-		  foreach ($words as $word) {
-			  $sound .= metaphone($word)." " ;
-
-		                           }
-	                    }
-	   //---------------------------------
-	  if($row['Last_Name']!=null){
-		  $words=explode(" ",$row['Last_Name']);
-		  foreach ($words as $word) {
-			  $sound .= metaphone($word)." " ;
-
-		                           }
-	                    }
-	  //---------------------------------
-	  if($row['Username']!=null){
-		  $words=explode(" ",$row['Username']);
-		  foreach ($words as $word) {
-			  $sound .= metaphone($word)." " ;
-
-		                           }
-	                    }
-	  //---------------------------------
-	  if($row['Location']!=null){
-		  $words=explode(" ",$row['Location']);
-		  foreach ($words as $word) {
-			  $sound .= metaphone($word)." " ;
-
-		                           }
-	                    }
-	  //---------------------------------
-	   if($row['Job']!=null){
-		  $words=explode(" ",$row['Job']);
-		  foreach ($words as $word) {
-			  $sound .= metaphone($word)." " ;
-
-		                           }
-	                    }
-
-
-	 $id=$row['id'];
-	 $sql2="UPDATE users SET indexing='$sound' where id=$id";
-	 $res2=mysqli_query($db,$sql2);
-	 if(!$res2){
-	 echo "error".mysqli_error($db);
-               }
-  }
-
-
-
-
-
-
-	  $query =$_POST['search'].$_POST['Job'].$_POST['Location'];
+	  $query =$_POST['search'];
 
 
 
