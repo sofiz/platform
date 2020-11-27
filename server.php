@@ -52,11 +52,11 @@ if (isset($_POST['SIGNUP'])) {
    
 
   if ($User = mysqli_fetch_assoc($result)) { // if user exists
-    if ($user['Username'] === $Username) {
+    if ($User['Username'] === $Username) {
       array_push($errors, "Username already exists");
     }
 
-    if ($user['Email'] === $Email) {
+    if ($User['Email'] === $Email) {
       array_push($errors, "email already exists");
     }
   }

@@ -284,7 +284,7 @@ $errors = array();
       echo'<div class="infocontainer"> ';
       echo'<a href="profile.php?id='.$row1['id'].'" class="name">  '. $row1['First_Name']." ".$row1['Last_Name'] . ' </a>  ';
       echo'<p class="info"> ' .$row1['Phone'] .  '</p> ';
-      echo' <p class="info">'. $row1['Location']. '</p>  </div> </div>   ';
+      echo"<p class='info'>". $row1['Wilaya'].", ".$row1['Daira'].", ".$row1['Commune'] ."</p>  </div> </div> ";
 	       array_push($arr,$row1['id']);
 
 					  }}
@@ -320,7 +320,7 @@ $errors = array();
       echo'<div class="infocontainer"> ';
       echo'<a href="profile.php?id='.$row2['id'].'" class="name">  '. $row2['First_Name']." ".$row2['Last_Name'] . ' </a>  ';
       echo'<p class="info"> ' .$row2['Phone'] .  '</p> ';
-      echo' <p class="info">'. $row2['Location']. '</p>  </div> </div>   ';
+      echo' <p class="info">'. $row2['Wilaya'].', '.$row2['Daira'].', '.$row2['Commune'].'</p>  </div> </div>   ';
       array_push($arr,$row2['id']);
 					  }}
 		               }     }
