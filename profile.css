@@ -896,7 +896,8 @@ outline-width: 1px;
 
 .ratingcontain{
   position: absolute;
-    margin-top: -17px;
-    margin-left: 50px;
-    display:flex;
+      margin-top: -6px;
+      margin-left: 10px;
+      display: flex;
+  
 }
