@@ -42,6 +42,21 @@
 
 		                           }
 	                    }
+						if($row['Daira']!=null){
+		  $words=explode(" ",$row['Daira']);
+		  foreach ($words as $word) {
+			  $sound .= metaphone($word)." " ;
+
+		                           }
+	                    }
+			if($row['Commune']!=null){
+		  $words=explode(" ",$row['Commune']);
+		  foreach ($words as $word) {
+			  $sound .= metaphone($word)." " ;
+
+		                           }
+	                    }
+			
 	  //---------------------------------
 	   if($row['Job']!=null){
 		  $words=explode(" ",$row['Job']);

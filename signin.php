@@ -1,7 +1,7 @@
 ﻿<?php include('server.php') ?>
 <html>
 <head>
-
+<title> Sign in </title>
 <link href="style.css" rel="stylesheet" type="text/css" media="all" />
 
  </head>
