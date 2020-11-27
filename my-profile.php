@@ -104,29 +104,36 @@ while($row1=mysqli_fetch_array($ress))
 
     <div class="infocontainer">
 
+			<div class="info">
+				<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
+			      <span><?php echo $Job ; ?></span>
+			    </div>
 
+			    <div class="info">
+						<span class="fas fa-map-marker" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
+			      <span><?php echo $Wilaya.", ".$Daira.", ".$Commune ; ?></span>
+			    </div>
+
+					<div class="info">
+						<span class="fas fa-phone" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
+			      <span><?php echo $Phone ; ?></span>
+			    </div>
 
     <div class="info">
+			<span class="fas fa-envelope" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
       <span><?php echo $Email ; ?></span>
     </div>
 
 
-    <div class="info">
-      <span><?php echo $Phone ; ?></span>
-    </div>
-<div class="info">
-      <span><?php echo $Job ; ?></span>
-    </div>
+
 
     <div class="info">
-      <span><?php echo $Wilaya.", ".$Daira.", ".$Commune ; ?></span>
-    </div>
-
-    <div class="info">
+			<span class="fas fa-birthday-cake" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
       <span><?php echo $Birthday ; ?></span>
     </div>
+
     </div>
-    <div style="margin-left:321px;">
+    <div style="margin-left:321px;margin-top:-10px;">
 <a class="btn1" href="profile_edit.php" style="color:#ffffffeb;">Edit Profile</a>
 </div>
 </div>
