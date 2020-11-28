@@ -86,13 +86,20 @@ while($row1=mysqli_fetch_array($ress))
 
 
 ////*************************** Get Rating profile ($id) from URL  ********************
-$res=mysqli_query($db,"SELECT rating FROM comments where (User_id= '$id') AND (Commentor_id!='$id')");
+$res=mysqli_query($db,"SELECT rating,Commentor_id FROM comments where (User_id= '$id') AND (Commentor_id!='$id')");
 $Nc=0;
 $Nrating=0;
+$arr =  array("-1","-2");
 while($row=mysqli_fetch_array($res))
   {
+	  $flag=true ;
+						  for($j=0;$j<count($arr);$j++)
+						  if($arr[$j]==$row['Commentor_id']) { $flag=false ; }
+						  if($flag){
 	  $Nrating=$Nrating+$row['rating'];
       $Nc++;
+	  array_push($arr,$row['Commentor_id']);
+ }
   }
   if($Nc>0)
   $Mrating = (int)($Nrating/$Nc) ;
