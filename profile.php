@@ -148,7 +148,7 @@ while($row=mysqli_fetch_array($res))
     <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
     <div class="rating">
-<?php 
+<?php
  echo "<div class='ratingcontain'>";
      for ($j=1;$j<=$Mrating;$j++)
 	 echo '<span class="fa fa-star checked"></span>' ;
@@ -157,7 +157,7 @@ while($row=mysqli_fetch_array($res))
      echo ' <span class="fa fa-star"></span>' ;
        echo "</div>";
 ?>
-     
+
     </div>
 
     <div class="infocontainer">
@@ -333,7 +333,7 @@ while($row1=mysqli_fetch_array($rest))
 
 if($Commentor_id != $id)
   {
-echo "<div class='ratingcontain'>";
+echo "<div class='ratingcontain3'>";
 	 for ($j=1;$j<=$row['rating'];$j++)
 	 echo '<span class="fa fa-star checked"></span>' ;
       if ($row['rating']<5)
