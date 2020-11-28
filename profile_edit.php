@@ -180,8 +180,12 @@ if (isset($_POST['savepics'])){
   <div class="infocontain2">
 
 		<div class="info2">
-	    <input type="text" name="Job" style="margin-top: 1px;
-    margin-bottom: 16px;" value="<?php  echo$Job ?>" class="inputinf">
+	    <select type="text" name="Job" style="margin-top: -4px;
+    margin-bottom: 16px;
+    margin-left: 0;"  class="dropdown">
+<option value="<?php  echo$Job ?>"><?php  echo$Job ?></option>
+
+	</select>
 	  </div>
 
  <div id="dropdowns" style="position: relative;

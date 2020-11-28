@@ -70,10 +70,10 @@ while($row=mysqli_fetch_array($res))
 						  if($arr[$j]==$row['Commentor_id']) { $flag=false ; }
 						  if($flag){
 	  $Nrating=$Nrating+$row['rating'];
-						  $Nc++; 
+						  $Nc++;
 						  array_push($arr,$row['Commentor_id']);
  }
-						  
+
   }
   if($Nc>0)
   $Mrating = (int)($Nrating/$Nc) ;
@@ -117,7 +117,7 @@ while($row=mysqli_fetch_array($res))
 	 echo '<span class="fa fa-star checked"></span>' ;
       if ($Mrating<5)
       for($j=$Mrating;$j<5;$j++)
-     echo ' <span class="fa fa-star"></span>' ;
+     echo ' <span class="fa fa-star unchecked" ></span>' ;
        echo "</div>";
 ?>
 
@@ -127,14 +127,14 @@ while($row=mysqli_fetch_array($res))
 
     <div class="infocontainer">
 
-			<div class="info">
+      <div class="info">
 				<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
-			      <span><?php echo $Job ; ?></span>
+			      <span style="font-size: 15px;"><?php echo $Job ; ?></span>
 			    </div>
 
 			    <div class="info">
 						<span class="fas fa-map-marker" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
-			      <span><?php echo $Wilaya.", ".$Daira.", ".$Commune ; ?></span>
+			      <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;"><?php echo $Wilaya.", ".$Daira.", ".$Commune ; ?></span>
 			    </div>
 
 					<div class="info">
@@ -156,7 +156,7 @@ while($row=mysqli_fetch_array($res))
     </div>
 
     </div>
-    <div style="margin-left:321px;margin-top:-10px;">
+    <div style="margin-left: 176px;;margin-top:7px;">
 <a class="btn1" href="profile_edit.php" style="color:#ffffffeb;">Edit Profile</a>
 </div>
 </div>
@@ -289,6 +289,7 @@ while($row1=mysqli_fetch_array($rest))
    echo ' <div class="commentsection"> ';
    echo ' <div class="comment"> ' ;
    echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;"> <img class="commentimg" src="imgs/'.   $Profile_Pic1    .' " alt="" onerror="error(this)"> </a>' ;
+   echo '<div style="    display: inline-grid;">';
    echo ' <a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;"> <span class="cousername">'. $First_Name1.'  '.$Last_Name1  . '</span> </a>' ;
 
     if($Commentor_id != $id)
@@ -298,7 +299,7 @@ while($row1=mysqli_fetch_array($rest))
 	 echo '<span class="fa fa-star checked"></span>' ;
       if ($row['rating']<5)
       for($j=$row['rating'];$j<5;$j++)
-     echo ' <span class="fa fa-star"></span>' ;
+     echo ' <span class="fa fa-star unchecked"></span>' ;
        echo "</div>";
 
 
@@ -306,8 +307,8 @@ while($row1=mysqli_fetch_array($rest))
 
 
 
-   echo ' <br> ' ;
-   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
+
+   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;echo '</div>';
    }
 mysqli_close($db);
 ?>

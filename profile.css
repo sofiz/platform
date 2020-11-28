@@ -344,6 +344,7 @@ transition: all .4s ease-in-out;
   .comment{
 
   padding-right: 60px;
+  display: flex;
   }
 
   .commentimg{
@@ -357,14 +358,12 @@ transition: all .4s ease-in-out;
   }
 
   .cousername{
-    top: -20px;
-    position: relative;
+
     font-weight: bold;
     font-size: 16px;
   }
   .commenttxt{
-    position: relative;
-    left: 50px;
+
     font-size: 15px;
   }
 
@@ -436,13 +435,13 @@ transition: all .4s ease-in-out;
 
   .btn1{
 
-  padding-top:5px;
-  padding-left:5px;
-  padding-right:5px;
-  padding-bottom:5px;
+  padding-top:7px;
+  padding-left:7px;
+  padding-right:7px;
+  padding-bottom:7px;
   background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
   margin-right:10px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0px 4px 12px 0px #00000059;
     border: none;
     text-decoration: none;
@@ -897,8 +896,7 @@ outline-width: 1px;
 .ratingcontain{
   position: absolute;
       margin-top: -6px;
-      margin-left: 10px;
-      display: flex;
+
 
 }
 

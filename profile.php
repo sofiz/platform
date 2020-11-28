@@ -102,12 +102,12 @@ while($row=mysqli_fetch_array($res))
       $Nc++;
 	  array_push($arr,$row['Commentor_id']);
  }
-						 
- }
-			 
-									  
 
-  
+ }
+
+
+
+
   if($Nc>0)
   $Mrating = (int)($Nrating/$Nc) ;
   else {$Mrating =0 ;}
@@ -168,7 +168,7 @@ while($row=mysqli_fetch_array($res))
 	 echo '<span class="fa fa-star checked"></span>' ;
       if ($Mrating<5)
       for($j=$Mrating;$j<5;$j++)
-     echo ' <span class="fa fa-star"></span>' ;
+     echo ' <span class="fa fa-star unchecked"></span>' ;
        echo "</div>";
 ?>
 
@@ -178,12 +178,12 @@ while($row=mysqli_fetch_array($res))
 
 			<div class="info">
 				<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
-			      <span><?php echo $Job ; ?></span>
+			      <span style="font-size: 15px;"><?php echo $Job ; ?></span>
 			    </div>
 
 			    <div class="info">
 						<span class="fas fa-map-marker" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
-			      <span><?php echo $Wilaya.", ".$Daira.", ".$Commune ; ?></span>
+			      <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;"><?php echo $Wilaya.", ".$Daira.", ".$Commune ; ?></span>
 			    </div>
 
 					<div class="info">
@@ -343,7 +343,8 @@ while($row1=mysqli_fetch_array($rest))
    echo ' <div class="commentsection"> ';
    echo ' <div class="comment"> ' ;
    echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/'.   $Profile_Pic   .' " alt="" onerror="error(this)"> </a>' ;
-   echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
+   echo '<div style="    display: inline-grid;">';
+	 echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
 
 if($Commentor_id != $id)
   {
@@ -354,9 +355,9 @@ echo "<div class='ratingcontain3'>";
       for($j=$row['rating'];$j<5;$j++)
      echo ' <span class="fa fa-star unchecked"></span>' ;
   echo "</div>";  }
-   echo ' <br> ' ;
 
-   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
+
+   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ; echo '</div>';
 
 
 

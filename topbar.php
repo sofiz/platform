@@ -33,7 +33,10 @@ echo '<a href="logout.php" id ="logoutbtn2"> <label for="logout" id="logoutbtn" 
 else { echo '<a href="search.php"id ="searchnav2" > <label for="search" id="searchnav" class="fa fa-search" ><span class ="navbartxt">Search</span></label>   </a>
 ';
    echo '<a href="signin.php">
-<label for="login" id="logoutbtn" class="fa fa-sign-in" ><span class="navbartxt" >Signin</span></label></a>  ';   }
+<label for="login" id="logoutbtn" class="fa fa-sign-in" ><span class="navbartxt" >Signin</span></label></a>  ';
+echo '<a href="signup.php">
+
+<label for="login" id="logoutbtn" class="fa fa-user-plus" ><span class="navbartxt" >Signup</span></label></a>  ';   }
 
 
 
