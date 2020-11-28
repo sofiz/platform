@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Password Reset PHP</title>
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="resetpass.css">
 </head>
 <body>
 	<form class="login-form" action="new_password.php" method="post">
@@ -12,11 +12,11 @@
 		<?php //include('messages.php'); ?>
 		<div class="form-group">
 			<label>New password</label>
-			<input type="password" name="new_pass">
+			<input class ="input3" type="password" name="new_pass">
 		</div>
 		<div class="form-group">
 			<label>Confirm new password</label>
-			<input type="password" name="new_pass_c">
+			<input class ="input3" type="password" name="new_pass_c">
 		</div>
 		<div class="form-group">
 			<button type="submit" name="new_password" class="login-btn">Submit</button>
