@@ -86,7 +86,7 @@ while($row1=mysqli_fetch_array($ress))
 
 
 ////*************************** Get Rating profile ($id) from URL  ********************
-$res=mysqli_query($db,"SELECT rating FROM comments where (User_id= '$id') AND (Commentor_id!='$id')");
+$res=mysqli_query($db,"SELECT rating,Commentor_id FROM comments where (User_id= '$id') AND (Commentor_id!='$id')");
 $Nc=0;
 $Nrating=0;
   $arr =  array("-1","-2");
