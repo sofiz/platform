@@ -4,7 +4,7 @@ include('conn.php');
     if (!isset($_SESSION['Username'])) {
   	header('location: signin.php');
               }
- 
+
 //*************************** Insert comments into table comments *****************************
   if(isset($_POST['commenter'])){
 
@@ -12,7 +12,7 @@ include('conn.php');
   $Commentor_id=$_POST['Commentor_id'];
   $Comment=$_POST['Comment'];
 
-   
+
 
   if (!empty($Comment)) {
 
@@ -57,7 +57,7 @@ while($row1=mysqli_fetch_array($ress))
 
   }
   }
- 
+
 ////*************************** Get Rating profile ********************
 $res=mysqli_query($db,"SELECT rating,Commentor_id FROM comments where (User_id='$id') AND (Commentor_id!='$id')");
 $Nc=0;
@@ -111,7 +111,7 @@ while($row=mysqli_fetch_array($res))
     <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
 
     <div class="rating">
- <?php 
+ <?php
  echo "<div class='ratingcontain'>";
      for ($j=1;$j<=$Mrating;$j++)
 	 echo '<span class="fa fa-star checked"></span>' ;
@@ -121,8 +121,8 @@ while($row=mysqli_fetch_array($res))
        echo "</div>";
 ?>
 
-  
-      
+
+
     </div>
 
     <div class="infocontainer">
@@ -293,7 +293,7 @@ while($row1=mysqli_fetch_array($rest))
 
     if($Commentor_id != $id)
   {
- echo "<div class='ratingcontain'>";
+ echo "<div class='ratingcontain3'>";
      for ($j=1;$j<=$row['rating'];$j++)
 	 echo '<span class="fa fa-star checked"></span>' ;
       if ($row['rating']<5)
@@ -303,9 +303,9 @@ while($row1=mysqli_fetch_array($rest))
 
 
   }
-   
-   
-   
+
+
+
    echo ' <br> ' ;
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;
    }
