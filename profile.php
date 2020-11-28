@@ -90,16 +90,10 @@ $res=mysqli_query($db,"SELECT rating,Commentor_id FROM comments where (User_id= 
 $Nc=0;
 $Nrating=0;
 
-$arr =  array("-1","-2");
-while($row=mysqli_fetch_array($res))
-  {
-	  $flag=true ;
-
   $arr =  array("-1","-2");
 while($row=mysqli_fetch_array($res))
   {
 	                      $flag=true ;
-
 						  for($j=0;$j<count($arr);$j++)
 						  if($arr[$j]==$row['Commentor_id']) { $flag=false ; }
 						  if($flag){
@@ -108,12 +102,12 @@ while($row=mysqli_fetch_array($res))
       $Nc++;
 	  array_push($arr,$row['Commentor_id']);
  }
-						  $Nc++; 
-						  array_push($arr,$row['Commentor_id']);
+						 
  }
-						  
+			 
+									  
 
-  }
+  
   if($Nc>0)
   $Mrating = (int)($Nrating/$Nc) ;
   else {$Mrating =0 ;}
