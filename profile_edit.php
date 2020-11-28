@@ -182,7 +182,8 @@ if (isset($_POST['savepics'])){
 		<div class="info2">
 	    <select type="text" name="Job" style="margin-top: -4px;
     margin-bottom: 16px;
-    margin-left: 0;"  class="dropdown">
+    margin-left: 0;
+    width: max-content;"  class="dropdown2">
 <option value="<?php  echo$Job ?>"><?php  echo$Job ?></option>
 
 	</select>
@@ -234,7 +235,7 @@ var myParent = document.getElementById("dropdowns")
 var selectList = document.createElement("select");
 selectList.id = "mySelectwilaya";
 myParent.appendChild(selectList);
-document.getElementById("mySelectwilaya").classList.add('dropdown');
+document.getElementById("mySelectwilaya").classList.add('dropdown2');
 
 //*************** default ********
 var option = document.createElement("option");
@@ -264,7 +265,7 @@ var myParent2 = document.getElementById("dropdowns")
 var selectList2 = document.createElement("select");
 selectList2.id = "mySelectdaira";
 myParent2.appendChild(selectList2);
-document.getElementById("mySelectdaira").classList.add('dropdown');
+document.getElementById("mySelectdaira").classList.add('dropdown2');
 
 
 
@@ -313,7 +314,7 @@ document.getElementById("mySelectdaira").options[0].disabled = true;
 var selectList3 = document.createElement("select");
 selectList3.id = "mySelectcommune";
 myParent3.appendChild(selectList3);
-document.getElementById("mySelectcommune").classList.add('dropdown');
+document.getElementById("mySelectcommune").classList.add('dropdown2');
 
 
 //*************** default ********

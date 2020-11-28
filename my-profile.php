@@ -156,7 +156,7 @@ while($row=mysqli_fetch_array($res))
     </div>
 
     </div>
-    <div style="margin-left: 176px;;margin-top:7px;">
+    <div style="margin-left: 176px;;margin-top:19px;">
 <a class="btn1" href="profile_edit.php" style="color:#ffffffeb;">Edit Profile</a>
 </div>
 </div>

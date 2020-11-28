@@ -59,6 +59,18 @@ box-shadow: 0px 3px 8px 0px #00000047;
 color : white;
 }
 
+.dropdown2 {
+    height: 33px;
+    background: #eeeef200;
+    border: none;
+    margin-left: 10px;
+    width: 117px;
+    font-family: 'jf flat';
+    color: #000000;
+    border-bottom: 2px solid #9d9898;
+    padding-left: 12px;
+}
+
 option {
     color: black;
     background: #fafafa;

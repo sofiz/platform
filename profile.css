@@ -26,7 +26,7 @@
     #square1{
       background:#FAFAFA;
       width:440px;
-      height:440px;
+      height:460px;
       margin-left:37px;
       border-radius:inherit;
       box-shadow: 1px 3px 16px 0px #00000047;
@@ -49,7 +49,7 @@
     #square3{
       background: #FAFAFA;
       width: 440px;
-      height: 200px;
+      height: 220px;
       margin-top: 55px;
       margin-left: 760px;
       position: absolute;
@@ -187,9 +187,9 @@ margin-top: 10px;
   }
 #viewallpic{
 
-  margin-top: 8px;
+  margin-top: 18px;
       margin-left: 194px;
-      padding: 7px;
+      padding: 10px;
       border-radius: inherit;
       border: none;
       background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
@@ -435,10 +435,7 @@ transition: all .4s ease-in-out;
 
   .btn1{
 
-  padding-top:7px;
-  padding-left:7px;
-  padding-right:7px;
-  padding-bottom:7px;
+padding: 10px;
   background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
   margin-right:10px;
   border-radius: 10px;
@@ -595,7 +592,7 @@ outline: none;
   #picsbtn{
   position: absolute;
   width: 440px;
-  height: 210px;
+  height: 230px;
   opacity: 0;
   font-size: large;
   font-family: 'Quicksand';
