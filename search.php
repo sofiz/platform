@@ -97,6 +97,7 @@ document.getElementById("mySelectwilaya").classList.add('dropdown');
 var option = document.createElement("option");
     option.value = "" ;
     option.text = "اختر ولاية" ;
+	option.selected = "selected";
 	selectList.appendChild(option);
 //Create and append the options
 
@@ -112,6 +113,7 @@ for (i in arr.wilayas) {
 
 
 }
+document.getElementById("mySelectwilaya").options[0].disabled = true;
 /////****************************** for daira ***************
 var myParent2 = document.getElementById("myDIV")
 //Create and append select list
@@ -126,6 +128,7 @@ document.getElementById("mySelectdaira").classList.add('dropdown');
 var option = document.createElement("option");
     option.value = "" ;
     option.text = "اختر دائرة" ;
+	option.selected = "selected";
 	selectList2.appendChild(option);
 
 
@@ -157,7 +160,7 @@ var option = document.createElement("option");
 
 
 		   });   });
-
+document.getElementById("mySelectdaira").options[0].disabled = true;
 		   //****************************** for communes *******************
 		   var myParent3 = document.getElementById("myDIV")
 //Create and append select list
@@ -171,6 +174,7 @@ document.getElementById("mySelectcommune").classList.add('dropdown');
 var option = document.createElement("option");
     option.value = "" ;
     option.text = "اختر بلدية" ;
+	option.selected = "selected";
 	selectList3.appendChild(option);
 
 
@@ -197,7 +201,7 @@ var option = document.createElement("option");
 
 		   });   });
 
-
+document.getElementById("mySelectcommune").options[0].disabled = true;
 
 		   $(document).ready(function(){
 
@@ -245,6 +249,9 @@ $errors = array();
 
   if (isset($_POST['search'])) {
 
+        $query =$_POST['search'];
+
+      
 
 
 

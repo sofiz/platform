@@ -14,7 +14,7 @@
 	  if($row['First_Name']!=null){
 		  $words=explode(" ",$row['First_Name']);
 		  foreach ($words as $word) {
-			  $sound .= metaphone($word)." " ;
+			  $sound .= soundex($word)." " ;
 
 		                           }
 	                    }
@@ -22,7 +22,7 @@
 	  if($row['Last_Name']!=null){
 		  $words=explode(" ",$row['Last_Name']);
 		  foreach ($words as $word) {
-			  $sound .= metaphone($word)." " ;
+			  $sound .= soundex($word)." " ;
 
 		                           }
 	                    }
@@ -30,7 +30,7 @@
 	  if($row['Username']!=null){
 		  $words=explode(" ",$row['Username']);
 		  foreach ($words as $word) {
-			  $sound .= metaphone($word)." " ;
+			  $sound .= soundex($word)." " ;
 
 		                           }
 	                    }
