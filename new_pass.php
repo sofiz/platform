@@ -1,3 +1,4 @@
+<?php include('app_logic.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
 	<link rel="stylesheet" href="resetpass.css">
 </head>
 <body>
-	<form class="login-form" action="new_password.php" method="post">
+	<form class="login-form" action="new_pass.php" method="post">
 		<h2 class="form-title">New password</h2>
 		<!-- form validation messages -->
 		<?php //include('messages.php'); ?>

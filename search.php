@@ -1,6 +1,12 @@
 <?php
 session_start();
+require 'vendor/autoload.php';
 include('update indexing.php');
+
+
+
+
+
 
 
 
@@ -19,19 +25,18 @@ include('update indexing.php');
   </head>
 
   <body>
-  <?php include('topbar.php'); ?>
+  <?php //include('topbar.php'); ?>
 <form action="search.php" method="post">
 
 
     <div class="searchbar">
     <input type="text" name="search" placeholder="search" class="searchinput">
     <div id="myDIV">
-      <select class="dropdown" name="job" >
-	  <option value="" disabled selected>ابحث عن</option>
-
-	   <option value="">بناء</option>
-	   <option value="">لحام</option>
-	   <option value="">ميكانيك السيارات</option>
+      <select class="dropdown" name="Job" >
+	  <option value="" selected>ابحث عن</option>
+	   <option value="بناء">بناء</option>
+	   <option value="لحام">لحام</option>
+	   <option value="ميكانيك السيارات">ميكانيك السيارات</option>
 	   <option value="">دهان</option>
 	   <option value="">خياطة</option>
 	   <option value="">تصليح الاحدية </option>
@@ -197,10 +202,6 @@ var option = document.createElement("option");
     option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ;
     selectList3.appendChild(option);
            }
-
-
-		   });   });
-
 document.getElementById("mySelectcommune").options[0].disabled = true;
 
 		   $(document).ready(function(){
@@ -215,6 +216,10 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 
 
 });   });
+
+		   });   });
+
+
 
 	</script>
 	<input type="text" name="Wilaya"  value= "" class="searchbtn" id="Wilaya" hidden>
@@ -237,16 +242,158 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 
 
 
-
        <?php echo'<a href="profile.php?id='.$id.'"> profile</a>';  ?>
 <?php
 $errors = array();
+$obj = new \ArPHP\I18N\Arabic();
 
 // connect to the database
  include('conn.php');
+ 
+  $x="اااااا" ;
+ echo '<h1>'.ord($x).'</h1>';
+ 
+ 
+ 
+ if (isset($_POST['recherche'])) {
+ $Name =$_POST['search'];
+ $Job = mysqli_real_escape_string($db,$_POST['Job']);
+ $Wilaya =$_POST['Wilaya'];
+ $Daira =$_POST['Daira'];
+ $Commune =$_POST['Commune'];  
+
+ 
+ echo '<h1>'.$Name.'</h1>';
+ echo '<h1>'.$Job.'</h1>';
+ echo '<h1>'.$Wilaya.'</h1>';
+ echo '<h1>'.$Daira.'</h1>';
+ echo '<h1>'.$Commune.'</h1>';
+ if(empty($Wilaya)) echo '<h1> please enter location </h1>';
+    else if(empty($Job)) echo '<h1> please enter Job </h1>';
+	       else if (empty($Name)){
+	        //********************************* Empty Name ****************************************
+	             if(empty($Name) && !empty($Daira) &&  !empty($Commune))  
+			     $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira' AND Commune='$Commune' ";
+				 
+			          else if(empty($Name) && !empty($Daira) &&  empty($Commune))
+				        $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira'  ";
+				              else if(empty($Name) && empty($Daira) &&  empty($Commune))
+						        $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' ";
+						 
+						 
+						 
+						 
+						 
+						 
+	                                  $res0=mysqli_query($db,$sql0);
+                                       $arr = array();
+		                            	if(!$res0){
+	                                  echo "error".mysqli_error($db);
+                                       }
+		                              if(mysqli_num_rows($res0)>0){
+
+			                          while($row0=mysqli_fetch_assoc($res))
+				                      	  {
+						              
+						              $flag=true ;
+						              for($j=0;$j<count($arr);$j++)
+						              if($arr[$j]==$row0['id']){ $flag=false ; }
+						              if($flag){
+	                                  echo'  <div class="resultcontainer">  ';
+                                      echo'<a href="profile.php?id='.$row0['id'].'" ><img src="imgs/'.$row0['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+                                      echo'<div class="infocontainer"> ';
+                                      echo'<a href="profile.php?id='.$row0['id'].'" class="name">  '. $row0['First_Name']." ".$row0['Last_Name'] . ' </a>  ';
+                                      echo'<p class="info"> ' .$row0['Phone'] .  '</p> ';
+                                      echo' <p class="info">'. $row0['Wilaya'].', '.$row0['Daira'].', '.$row0['Commune'].'</p>  </div> </div>   ';
+                                      array_push($arr,$row0['id']);
+				                 	  }}
+		                                }     
+					                 if(mysqli_num_rows($res0)==0){
+						             echo '<div class="resultcontainer"> ';
+                                      echo ' <p id="noresult">no result found!</p>  </div> ';       
+	                                 }     
+							        
+
+						 
+		   }
+						 
+		 
+						 
+						 
+			        else if(!empty($Name)){			 
 
 
+									 $words=explode(" ",$Name);
+									 $count=0;
+                                     foreach ($words as $word ){
+										   
+									  if(ord($word)==216 || ord($word)==217)
+									  $soundex = $obj->soundex($word);
+									  else $soundex = soundex($word);
+									  
+									  $soundex = substr($soundex, 1);
+			                         
+	                                //*********************** NAME EXIST // name andd daira andd ccommune exissts ************************************
+if(!empty($Name) && !empty($Daira) &&  !empty($Commune))
+$sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira' AND Commune='$Commune' ";
+//************************************* Name andd ddaira exxist .... and commune not exxist 
+		else if(!empty($Name) && !empty($Daira) &&  empty($Commune))
+               $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira' ";	
+               //********************************* name exxist .... dadira and commune not exissts 
+				else if(!empty($Name) && empty($Daira) &&  empty($Commune))
+                        $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' ";
+						
 
+	                                  $res=mysqli_query($db,$sql3);
+                                          $arr=array();
+										  
+		                            	if(!$res){
+	                                  echo "error".mysqli_error($db);
+                                       }
+		                              if(mysqli_num_rows($res)>0){
+
+			                          while($row2=mysqli_fetch_assoc($res))
+				                      	  {
+						              $count++;
+						              $flag=true ;
+						              for($j=0;$j<count($arr);$j++)
+						              if($arr[$j]==$row2['id']){ $flag=false ; }
+						              if($flag){
+	                                  echo'  <div class="resultcontainer">  ';
+                                      echo'<a href="profile.php?id='.$row2['id'].'" ><img src="imgs/'.$row2['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+                                      echo'<div class="infocontainer"> ';
+                                      echo'<a href="profile.php?id='.$row2['id'].'" class="name">  '. $row2['First_Name']." ".$row2['Last_Name'] . ' </a>  ';
+                                      echo'<p class="info"> ' .$row2['Phone'] .  '</p> ';
+                                      echo' <p class="info">'. $row2['Wilaya'].', '.$row2['Daira'].', '.$row2['Commune'].'</p>  </div> </div>   ';
+                                      array_push($arr,$row2['id']);
+				                 	  }}
+		                                }     }
+					                 if($count==0){
+						             echo '<div class="resultcontainer"> ';
+                                      echo ' <p id="noresult">no result found!</p>  </div> ';  }
+		                                    
+	                                 }     
+							        
+
+}
+ /*
+$ar_word_1 = $obj->en2ar('omar');
+$soundex3 = $obj->soundex($ar_word_1);
+
+$soundex2 = soundex('omar');
+
+
+$soundex = $obj->soundex('عمر');
+
+
+echo '<h1>'.$ar_word_1.'</h1>';
+
+
+echo '<h1>'.$soundex2.'</h1>';
+
+echo '<h1>'.$soundex.'</h1>'; 
+*/
+/*
   if (isset($_POST['search'])) {
 
         $query =$_POST['search'];
@@ -336,7 +483,7 @@ $errors = array();
                            echo ' <p id="noresult">no result found!</p>  </div> ';  }
 		         }
 	  }
-
+*/
 ?>
 
 
