@@ -231,7 +231,6 @@ else if(($nphotos<=3) && ($nphotos>0)){
   <img class="modal-contentx" id="img01">
 
   <!-- Modal Caption (Image Text) -->
-  <div id="caption"></div>
   <a class="prev" id ="prev" onclick="prev()">&#10094;</a>
   <a class="next" id = "next" onclick="next()">&#10095;</a>
 </div>
@@ -372,7 +371,7 @@ mysqli_close($db);
   var modalImg = document.getElementById("img01");
   var captionText = document.getElementById("caption");
   img.onclick = function(){
-    modalx.style.display = "block";
+    modalx.style.display = "flex";
     modalImg.src = this.src;
     captionText.innerHTML = this.alt;
   }
