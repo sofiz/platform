@@ -1,5 +1,6 @@
 {
     "require": {
-        "khaled.alshamaa/ar-php": "^5.1"
+        "khaled.alshamaa/ar-php": "^5.1",
+        "guzzlehttp/guzzle": "^6.5"
     }
 }
