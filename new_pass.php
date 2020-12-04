@@ -7,21 +7,23 @@
 	<link rel="stylesheet" href="resetpass.css">
 </head>
 <body>
-	<form class="login-form" action="new_pass.php" method="post">
+<?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+	<form class="login-form" action="<?php $actual_link ?>" method="post">
 		<h2 class="form-title">New password</h2>
 		<!-- form validation messages -->
 		<?php //include('messages.php'); ?>
 		<div class="form-group">
 			<label>New password</label>
-			<input class ="input3" type="password" name="new_pass">
+			<input type="password" name="new_pass">
 		</div>
 		<div class="form-group">
 			<label>Confirm new password</label>
-			<input class ="input3" type="password" name="new_pass_c">
+			<input type="password" name="new_pass_c">
 		</div>
 		<div class="form-group">
 			<button type="submit" name="new_password" class="login-btn">Submit</button>
 		</div>
 	</form>
+
 </body>
 </html>

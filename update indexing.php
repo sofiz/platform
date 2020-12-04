@@ -1,5 +1,6 @@
 <?php
  include('conn.php');
+ error_reporting(E_ERROR);
  require 'vendor/autoload.php';
  $obj = new \ArPHP\I18N\Arabic();
 //----------------------- get colomun -------------------------
@@ -19,7 +20,7 @@
 			   if(ord($word)==216 || ord($word)==217)
 									  $soundex .= " ".$obj->soundex($word);
 									  else $soundex .= " ".soundex($word);
-			  
+
 
 		                           }
 	                    }
@@ -82,7 +83,7 @@
 
 		                           }
 	                    }
-	  
+
 
 	 $id=$row['id'];
 	 $sql2="UPDATE users SET indexing='$soundex' where id=$id";

@@ -44,17 +44,10 @@ if (isset($_POST['save'])){
   $tar="imgs/";
   $tar=$tar.basename($_FILES['fileToUpload']['name']);
   $pic=($_FILES['fileToUpload']['name']) ;
- 
-	
-$allowedTypes = array(  IMAGETYPE_GIF,	IMAGETYPE_JPEG ,IMAGETYPE_PNG ,IMAGETYPE_SWF ,IMAGETYPE_PSD ,IMAGETYPE_BMP ,IMAGETYPE_TIFF_II ,IMAGETYPE_TIFF_MM ,IMAGETYPE_JPC
- 	,IMAGETYPE_JP2
- 	,IMAGETYPE_JPX
- 	,IMAGETYPE_JB2
-	,IMAGETYPE_SWC
- 	,IMAGETYPE_IFF
- 	,IMAGETYPE_WBMP
- 	,IMAGETYPE_XBM
- 	,IMAGETYPE_ICO
+
+
+$allowedTypes = array(  IMAGETYPE_JPG,	IMAGETYPE_JPEG ,IMAGETYPE_PNG
+
  	);
 
 $detectedType = exif_imagetype($_FILES['fileToUpload']['tmp_name']);
@@ -64,7 +57,7 @@ $in = in_array($detectedType, $allowedTypes);
   $queryi = "UPDATE users SET Profile_Pic='$pic' where id ='$id' ";
 		if ($pic!=""){
 			mysqli_query($db, $queryi);
-			
+
 			move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
 }
 }
@@ -95,18 +88,9 @@ if (isset($_POST['savepics'])){
   $tar=$tar.basename($_FILES['uploadpic']['name']) ;
 
   $pic=($_FILES['uploadpic']['name']) ;
- 
-  $allowedTypes = array(  IMAGETYPE_GIF,	IMAGETYPE_JPEG ,IMAGETYPE_PNG ,IMAGETYPE_SWF ,IMAGETYPE_PSD ,IMAGETYPE_BMP ,IMAGETYPE_TIFF_II ,IMAGETYPE_TIFF_MM ,IMAGETYPE_JPC
- 	,IMAGETYPE_JP2
- 	,IMAGETYPE_JPX
- 	,IMAGETYPE_JB2
-	,IMAGETYPE_SWC
- 	,IMAGETYPE_IFF
- 	,IMAGETYPE_WBMP
- 	,IMAGETYPE_XBM
- 	,IMAGETYPE_ICO
- 	);
-	
+
+  $allowedTypes = array(  IMAGETYPE_JPG,	IMAGETYPE_JPEG ,IMAGETYPE_PNG );
+
 $detectedType = exif_imagetype($_FILES['uploadpic']['tmp_name']);
 $in = in_array($detectedType, $allowedTypes);
   if($in){
@@ -139,6 +123,8 @@ $in = in_array($detectedType, $allowedTypes);
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="data.js"></script>
 <link rel="stylesheet" href="search.css">
+<link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
 
 <body>
@@ -223,8 +209,24 @@ $in = in_array($detectedType, $allowedTypes);
     margin-left: 0;
     width: max-content;"  class="dropdown2">
 <option value="<?php  echo$Job ?>"><?php  echo$Job ?></option>
+       <option value="بناء">بناء</option>
+	   <option value="لحام">لحام</option>
+	   <option value="ميكانيك السيارات">ميكانيك السيارات</option>
+	   <option value="دهان">دهان</option>
+	   <option value="خياطة">خياطة</option>
+	   <option value="تصليح الاحدية">تصليح الاحدية </option>
+	   <option value="نجار">ةنجار</option>
+	   <option value="حلاقة رجال">حلاقة رجال</option>
+	   <option value="كهرباء عماربة">كهرباء معماربة  </option>
+	   <option value="حدادة">الحدادة</option>
+	   <option value="تركيب الصحي والغاز">التركيب الصحي والغاز</option>
+	   <option value="التدفئة المركزية">التدفئة المركزية</option>
+<option value="المنيوم و المواد البلاستيكية">نجارة الالمنيوم و المواد البلاستيكية </option>
+<option value="المطالة هياكل السيارات">المطالة هياكل السيارات</option>
+<option value=" التأثيث الداخلي للمركبات">التجهيز و التأثيث الداخلي للمركبات</option>
+<option value="كهرباء السيارات">كهرباء السيارات</option>
 
-	</select>
+</select>
 	  </div>
 
  <div id="dropdowns" style="position: relative;

@@ -3,7 +3,7 @@ session_start();
 require 'vendor/autoload.php';
 include('update indexing.php');
 
-
+error_reporting(E_ERROR);
 
 
 
@@ -21,6 +21,8 @@ include('update indexing.php');
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="search.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   	<script src="data.js"></script>
   </head>
 
@@ -237,57 +239,56 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 
 
 
-	 <?php $id=10;  ?>
+
 				</form>
 
 
 
-       <?php echo'<a href="profile.php?id='.$id.'"> profile</a>';  ?>
 <?php
 $errors = array();
 $obj = new \ArPHP\I18N\Arabic();
 
 // connect to the database
  include('conn.php');
- 
-  $x="اااااا" ;
- echo '<h1>'.ord($x).'</h1>';
- 
- 
- 
+
+//  $x="اااااا" ;
+ //echo '<h1>'.ord($x).'</h1>';
+
+
+
  if (isset($_POST['recherche'])) {
  $Name =$_POST['search'];
  $Job = mysqli_real_escape_string($db,$_POST['Job']);
  $Wilaya =$_POST['Wilaya'];
  $Daira =$_POST['Daira'];
- $Commune =$_POST['Commune'];  
- 
- 
+ $Commune =$_POST['Commune'];
+
+
  $count=0;
  $arr=array();
- 
- echo '<h1>'.$Name.'</h1>';
+
+/* echo '<h1>'.$Name.'</h1>';
  echo '<h1>'.$Job.'</h1>';
  echo '<h1>'.$Wilaya.'</h1>';
  echo '<h1>'.$Daira.'</h1>';
- echo '<h1>'.$Commune.'</h1>';
-  if(empty($Job)&& (empty($Wilaya)) )echo '<h1> please enter Job and wilaya  for better result </h1>';
-      else if(empty($Wilaya)) echo '<h1> please enter location for better result </h1>';
-             else if(empty($Job)) echo '<h1> please enter Job for better result </h1>';
+ echo '<h1>'.$Commune.'</h1>';*/
+  if(empty($Job)&& (empty($Wilaya)) )echo '<h1></h1>';
+      else if(empty($Wilaya)) echo '<h1></h1>';
+             else if(empty($Job)) echo '<h1></h1>';
 	               else if (empty($Name)){
 	        //********************************* Empty Name ****************************************
-	             if(empty($Name) && !empty($Daira) &&  !empty($Commune))  
+	             if(empty($Name) && !empty($Daira) &&  !empty($Commune))
 			     $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira' AND Commune='$Commune' ";
-				 
+
 			          else if(empty($Name) && !empty($Daira) &&  empty($Commune))
 				        $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira'  ";
 				              else if(empty($Name) && empty($Daira) &&  empty($Commune))
 						        $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' ";
-						 
-						 
-						 
-						               
-						 
+
+
+
+
+
 	                                  $res0=mysqli_query($db,$sql0);
 
 		                            	if(!$res0){
@@ -297,7 +298,7 @@ $obj = new \ArPHP\I18N\Arabic();
 
 			                          while($row0=mysqli_fetch_assoc($res0))
 				                      	  {
-						              
+
 						              $flag=true ;
 						              for($j=0;$j<count($arr);$j++)
 						              if($arr[$j]==$row0['id']){ $flag=false ; }
@@ -311,44 +312,44 @@ $obj = new \ArPHP\I18N\Arabic();
                                       echo' <p class="info">'. $row0['Wilaya'].', '.$row0['Daira'].', '.$row0['Commune'].'</p>  </div> </div>   ';
                                       array_push($arr,$row0['id']);
 				                 	  }}
-		                                }     
+		                                }
 					                 if(mysqli_num_rows($res0)==0){
 						             echo '<div class="resultcontainer"> ';
-                                      echo ' <p id="noresult">no result found!</p>  </div> ';       
-	                                 }     
-							        
+                                      echo ' <p id="noresult">no result found!</p>  </div> ';
+	                                 }
 
-						 
+
+
 		   }
-						 
-			              else if(!empty($Name)){		
-					
+
+			              else if(!empty($Name)){
+
 
 
 									 $words=explode(" ",$Name);
-									 
+
                                      foreach ($words as $word ){
-										   
+
 									  if(ord($word)==216 || ord($word)==217)
 									  $soundex = $obj->soundex($word);
 									  else $soundex = soundex($word);
-									  
+
 									  $soundex = substr($soundex, 1);
-			                         
+
 //*********************** NAME EXIST // name andd daira andd ccommune exissts ************************************
 if(!empty($Name) && !empty($Daira) &&  !empty($Commune))
 $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira' AND Commune='$Commune' ";
-//************************************* Name andd ddaira exxist .... and commune not exxist 
+//************************************* Name andd ddaira exxist .... and commune not exxist
 		else if(!empty($Name) && !empty($Daira) &&  empty($Commune))
-               $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira' ";	
-               //********************************* name exxist .... dadira and commune not exissts 
+               $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira' ";
+               //********************************* name exxist .... dadira and commune not exissts
 				else if(!empty($Name) && empty($Daira) &&  empty($Commune))
                         $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' ";
-						        
+
 
 	                                  $res=mysqli_query($db,$sql3);
-                                          
-										  
+
+
 		                            	if(!$res){
 	                                  echo "error".mysqli_error($db);
                                        }
@@ -356,7 +357,7 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 
 			                          while($row2=mysqli_fetch_assoc($res))
 				                      	  {
-						              
+
 						              $flag=true ;
 						              for($j=0;$j<count($arr);$j++)
 						              if($arr[$j]==$row2['id']){ $flag=false ; }
@@ -371,33 +372,33 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
                                       array_push($arr,$row2['id']);
 				                 	  }}
 		                                }     }
-										
-			  
-							        
+
+
+
 
 }
-//******************************************* if no results ****************************************************** 
+//******************************************* if no results ******************************************************
 					                 if($count==0&&!empty($Name)){
 										 $words=explode(" ",$Name);
-									 
+
                                      foreach ($words as $word ){
-										   
+
 									  if(ord($word)==216 || ord($word)==217)
 									 { $soundex = $obj->soundex($word);
 									  }
-									  
+
 									  else $soundex = soundex($word);
-									  
+
 									  $soundex = substr($soundex, 1);
-			                         
+
 //*********************** NAME EXIST // name andd daira andd ccommune exissts ************************************
 
                    $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
-//************************************* Name andd ddaira exxist .... and commune not exxist 
-		
+//************************************* Name andd ddaira exxist .... and commune not exxist
+
 	                                  $res=mysqli_query($db,$sql4);
-                                          
-										  
+
+
 		                            	if(!$res){
 	                                  echo "error".mysqli_error($db);
                                        }
@@ -405,7 +406,7 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 
 			                          while($row2=mysqli_fetch_assoc($res))
 				                      	  {
-						              
+
 						              $flag=true ;
 						              for($j=0;$j<count($arr);$j++)
 						              if($arr[$j]==$row2['id']){ $flag=false ; }
@@ -421,11 +422,11 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 				                 	  }}
 		                                }     }
                                       if($count==0){
-									
+
 						             echo '<div class="resultcontainer"> ';
                                       echo ' <p id="noresult">no result found!</p>  </div> ';  }
-		                                    
-	                                 }   
+
+	                                 }
 
  }
 
@@ -444,14 +445,14 @@ echo '<h1>'.$ar_word_1.'</h1>';
 
 echo '<h1>'.$soundex2.'</h1>';
 
-echo '<h1>'.$soundex.'</h1>'; 
+echo '<h1>'.$soundex.'</h1>';
 */
 /*
   if (isset($_POST['search'])) {
 
         $query =$_POST['search'];
 
-      
+
 
 
 

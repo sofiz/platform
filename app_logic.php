@@ -1,13 +1,17 @@
 
 <?php
 
+ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
  include('conn.php') ;
+use GuzzleHttp\Client;
+require_once 'vendor/autoload.php';
+$errors =array();
 
 if (isset($_POST['reset-password'])) {
-  $errors =array();
+
   $email = mysqli_real_escape_string($db, $_POST['email']);
   // ensure that the user exists on our system
-  $query = "SELECT Email FROM users WHERE Email='$email'";
+ $query = "SELECT Email FROM users WHERE Email='$email'";
   $results = mysqli_query($db, $query);
 
   if (empty($email)) {
@@ -23,7 +27,33 @@ if (isset($_POST['reset-password'])) {
     $sql = "INSERT INTO password_resets(email, token) VALUES ('$email', '$token')";
     $results = mysqli_query($db, $sql);
 
+
+
+
+$client = new Client();
+
+$options = [
+    'json' => [
+        'task' => "Hi there, click on this <a href=\"https://dmbplatform.azurewebsites.net/new_pass.php?token=". $token ."\">link</a> to reset your password on our site",
+        'due' => 'now',
+        'email' => $email
+
+    ]
+];
+
+$promise = $client-> post("https://prod-12.francecentral.logic.azure.com:443/workflows/f833a55e56a8400a9a6088a5d972dabc/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=QHPu16-ilv9l_KNP8ksEjv9nYTmh1238FNxiGnKm-Iw", $options);/*->then(
+    function ($response) {
+        return $response->getStatusCode();
+    }, function ($exception) {
+        return $exception->getResponse();
+    }
+);
+
+$response = $promise->wait();*/
+// Requires Laravel to run Log::info(). Check the documentation of your preferred framework for logging instructions.
+//Log::info(print_r($response, TRUE));
     // Send email to user with the token in a link they can click on
+    /*
     $to = $email;
     $subject = "Reset your password on oursite.com";
     $msg = "Hi there, click on this <a href=\"new_password.php?token=" . $token . "\">link</a> to reset your password on our site";
@@ -31,19 +61,20 @@ if (isset($_POST['reset-password'])) {
     $headers = "From: riyadh.derbale99@gmail.com". "\r\n" .
 "CC:".$email;
 
-    mail($to, $subject, $msg, $headers);
+    mail($to, $subject, $msg, $headers);*/
     header("location: pending.php?email=".$email);
   }
 
 }
 
 // ENTER A NEW PASSWORD
+$token = $_GET['token'];
 if (isset($_POST['new_password'])) {
   $new_pass = mysqli_real_escape_string($db, $_POST['new_pass']);
   $new_pass_c = mysqli_real_escape_string($db, $_POST['new_pass_c']);
 
   // Grab to token that came from the email link
-  $token = $_GET['token'];
+
   if (empty($new_pass) || empty($new_pass_c)) array_push($errors, "Password is required");
   if ($new_pass !== $new_pass_c) array_push($errors, "Password do not match");
   if (count($errors) == 0) {

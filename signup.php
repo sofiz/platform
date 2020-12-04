@@ -34,23 +34,23 @@
 					<input class="text" type="text" name="Phone" placeholder="phone" required="">
 					<select name="Job" >
 					<option value="" disabled selected>المهنة</option>
-       <option value="">بناء</option>
-	   <option value="">لحام</option>
+       <option value="بناء">بناء</option>
+	   <option value="لحام">لحام</option>
 	   <option value="ميكانيك السيارات">ميكانيك السيارات</option>
-	   <option value="">دهان</option>
-	   <option value="">خياطة</option>
-	   <option value="">تصليح الاحدية </option>
-	   <option value="">ةنجار</option>
-	   <option value="">حلاقة رجال</option>
-	   <option value="">كهرباء معماربة  </option>
-	   <option value="">الحدادة</option>
-	   <option value="">التركيب الصحي والغاز</option>
-	   <option value="">التدفئة المركزية</option>
-	   <option value="">نجارة الالمنيوم و المواد البلاستيكية </option>
-	   <option value="">المطالة هياكل السيارات</option>
-	    <option value="">التجهيز و التأثيث الداخلي للمركبات</option>
-		 <option value="">كهرباء السيارات</option>
-		  <option value="">الكهرباء الصناعية</option>
+	   <option value="دهان">دهان</option>
+	   <option value="خياطة">خياطة</option>
+	   <option value="تصليح الاحدية">تصليح الاحدية </option>
+	   <option value="نجارة">نجارة</option>
+	   <option value="حلاقة رجال">حلاقة رجال</option>
+	   <option value="كهرباء عماربة">كهرباء معماربة  </option>
+	   <option value="حدادة">الحدادة</option>
+	   <option value="تركيب الصحي والغاز">التركيب الصحي والغاز</option>
+	   <option value="التدفئة المركزية">التدفئة المركزية</option>
+<option value="المنيوم و المواد البلاستيكية">نجارة الالمنيوم و المواد البلاستيكية </option>
+<option value="المطالة هياكل السيارات">المطالة هياكل السيارات</option>
+<option value=" التأثيث الداخلي للمركبات">التجهيز و التأثيث الداخلي للمركبات</option>
+<option value="كهرباء السيارات">كهرباء السيارات</option>/
+<!--		  <option value="">الكهرباء الصناعية</option>
 		   <option value="">تركيب و صيانة أجهزة التبريد و التكييف</option>
 		    <option value="">الكهروميكانيكية</option>
 			 <option value="">صيانة المصاعد</option>
@@ -67,7 +67,7 @@
 					   <option value="">التجميل</option>
 					    <option value="">ميكانيك تصليح قوارب الصيد واليخت</option>
 						 <option value="">ميكانيك تصليح مركبات الوزن الخفيف</option>
-						  <option value="">922</option>
+						  <option value="">922</option> -->
 
 					</select>
 <div id="myDIV" ></div>					
@@ -123,7 +123,7 @@ var option = document.createElement("option");
 
  var wilayacode;
  var dairacode ;
-var communecode ;
+
 
   $(document).ready(function(){
 
@@ -185,7 +185,12 @@ var option = document.createElement("option");
     selectList3.appendChild(option);
            }
 
- $(document).ready(function(){
+ 
+	  
+		   });   });
+		   
+		   
+		    $(document).ready(function(){
 
 
     $("#mySelectcommune").change(function(){
@@ -197,23 +202,7 @@ var option = document.createElement("option");
 
 
 });   });
-
-		   });   });
-/*
-$(document).ready(function(){
-
-
-    $("#mySelectcommune").change(function(){
-        var communecode = $(this).children("option:selected").val();
-
-		//********* set value of commune in input ********
-
-		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name;
-
-
-});   });  */
-
-		  
+	
 
 	</script>
 					<input type="hidden" name ="Wilaya"  id="Wilaya" value=""  >

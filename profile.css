@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url(//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat);
     body{
       padding-top: 0px;
 
@@ -27,7 +28,7 @@
       background:#FAFAFA;
       width:440px;
       height:460px;
-      margin-left:37px;
+      margin-left:40px;
       border-radius:inherit;
       box-shadow: 1px 3px 16px 0px #00000047;
     }
@@ -37,7 +38,7 @@
           width: 440px;
           height: 210px;
           margin-top: 55px;
-          margin-left: 760px;
+          margin-left: 753px;
           position: absolute;
           top: 0px;
           left: 0px;
@@ -51,7 +52,7 @@
       width: 440px;
       height: 220px;
       margin-top: 55px;
-      margin-left: 760px;
+      margin-left: 753px;
       position: absolute;
       top: 230px;
       left: 0px;

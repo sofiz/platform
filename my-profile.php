@@ -91,6 +91,9 @@ while($row=mysqli_fetch_array($res))
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
+    <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   </head>
 
   <body>

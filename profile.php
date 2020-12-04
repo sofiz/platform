@@ -123,7 +123,10 @@ while($row=mysqli_fetch_array($res))
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
+		<link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
+
 		    <script src="index.js"></script>
+				<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   </head>
 	<style media="screen">
 
@@ -372,17 +375,7 @@ mysqli_close($db);
 
 
 
-  var imgs_path = "http://localhost/platforme/imgs/"
 
-	document.getElementById('pic').onerror = function() {
-    document.getElementById('pic').src = "imgs/default.png";
-  }
-	document.getElementById('yourcommentpic').onerror = function() {
-    document.getElementById('yourcommentpic').src = "imgs/default.png";
-  }
- function error(v){
-	 v.src="imgs/default.png";
- }
 
   // Get the modal
   var modal = document.getElementById("myModal");
@@ -518,6 +511,17 @@ mysqli_close($db);
  }
 
 
+ var imgs_path = "http://localhost/platforme/imgs/"
+
+ document.getElementById('pic').onerror = function() {
+	 document.getElementById('pic').src = "imgs/default.png";
+ }
+ document.getElementById('yourcommentpic').onerror = function() {
+	 document.getElementById('yourcommentpic').src = "imgs/default.png";
+ }
+function error(v){
+	v.src="imgs/default.png";
+}
 
  var myRating = raterJs( {
     element:document.querySelector("#rater"),
