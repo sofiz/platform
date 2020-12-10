@@ -24,7 +24,7 @@ if (isset($_POST['reset-password'])) {
 
   if (count($errors) == 0) {
     // store token in the password-reset database table against the user's email
-    $sql = "INSERT INTO password_resets(email, token) VALUES ('$email', '$token')";
+    $sql = "INSERT INTO password_resets(email, token) VALUES ('$email', '$token') ON DUPLICATE KEY UPDATE email = '$email', token ='$token' ";
     $results = mysqli_query($db, $sql);
 
 
@@ -68,8 +68,9 @@ $response = $promise->wait();*/
 }
 
 // ENTER A NEW PASSWORD
-$token = $_GET['token'];
+
 if (isset($_POST['new_password'])) {
+  $token = $_GET['token'];
   $new_pass = mysqli_real_escape_string($db, $_POST['new_pass']);
   $new_pass_c = mysqli_real_escape_string($db, $_POST['new_pass_c']);
 
