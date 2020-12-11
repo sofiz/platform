@@ -21,9 +21,8 @@ if (isset($_POST['SIGNUP'])) {
   $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
   $Job = mysqli_real_escape_string($db, $_POST['Job']);
   $Wilaya = mysqli_real_escape_string($db, $_POST['Wilaya']);
-  $Daira = mysqli_real_escape_string($db, $_POST['Daira']);
-  $Commune = mysqli_real_escape_string($db, $_POST['Commune']);
-  $Birthday = mysqli_real_escape_string($db, $_POST['Birthday']);
+  
+  
   $Type=mysqli_real_escape_string($db, $_POST['Type']);
   $Profile_Pic="default.png";
 
@@ -36,9 +35,8 @@ if (isset($_POST['SIGNUP'])) {
   if (empty($Phone)) { array_push($errors, "Phone is required"); }
   if (empty($Job)) { array_push($errors, "Job is required"); }
   if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }
-  if (empty($Daira)) { array_push($errors, "Daira is required"); }
-  if (empty($Commune)) { array_push($errors, "Commune is required"); }
-  if (empty($Birthday)) { array_push($errors, "Birthday is required"); }
+  
+  
   if (empty($Type)) { array_push($errors, "Type is required"); }
   if (empty($Password_1)) { array_push($errors, "Password is required"); }
   if ($Password_1 != $Password_2) {
@@ -65,8 +63,8 @@ if (isset($_POST['SIGNUP'])) {
   if (count($errors) == 0) {
   	$Password =  md5($Password_1);//encrypt the password before saving in the database
     ///$password =password_hash($password, PASSWORD_DEFAULT);
-  	$query = "INSERT INTO Users (First_Name,Last_Name,Username, Email, Password,Phone,Job,Wilaya,Daira,Commune,Birthday,Type,Profile_Pic)
-  			  VALUES('$First_Name','$Last_Name','$Username', '$Email', '$Password','$Phone','$Job','$Wilaya','$Daira','$Commune','$Birthday','$Type','$Profile_Pic')";
+  	$query = "INSERT INTO Users (First_Name,Last_Name,Username, Email, Password,Phone,Job,Wilaya,Type,Profile_Pic)
+  			  VALUES('$First_Name','$Last_Name','$Username', '$Email', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic')";
   	mysqli_query($db, $query);
   	$_SESSION['Username'] = $Username;
   	$_SESSION['success'] = "You are now logged in";

@@ -23,6 +23,12 @@
 			<div class="agileits-top" >
 				<form action="signup.php" method="post">
 				<?php include('errors.php'); ?>
+				<select name="Type" >
+<option value="woker"  > worker</option>
+<option value="client"  > client</option>
+
+					</select>
+
 				   <input class="text" type="text" name="Username" placeholder="Username" required="">
                     <input class="text" type="text" name="First_Name" placeholder="First Name" required="">
 				    <input class="text" type="text" name="Last_Name" placeholder="Last Name" required="">
@@ -103,29 +109,10 @@ for (i in arr.wilayas) {
 
 
 }
-/////****************************** for daira ***************
-var myParent2 = document.getElementById("myDIV")
-//Create and append select list
-var selectList2 = document.createElement("select");
-selectList2.id = "mySelectdaira";
-myParent2.appendChild(selectList2);
-document.getElementById("mySelectdaira").classList.add('dropdown');
 
 
 
-//*************** default ********
-var option = document.createElement("option");
-    option.value = "" ;
-    option.text = "اختر دائرة" ;
-	selectList2.appendChild(option);
-
-
-
- var wilayacode;
- var dairacode ;
-
-
-  $(document).ready(function(){
+$(document).ready(function(){
 
 
     $("#mySelectwilaya").change(function(){
@@ -134,90 +121,17 @@ var option = document.createElement("option");
 
 		 document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
 
-        //alert("You have selected wilaya - " + wilayacode);
-
-        $('#mySelectdaira').find('option:not(:first)').remove();
-		$('#mySelectcommune').find('option:not(:first)').remove();
-
-		for (j in arr.wilayas[wilayacode].dairas) {
-		var option = document.createElement("option");
-	option.value = j ;
-    option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
-    selectList2.appendChild(option);
-           }
-
-
 		   });   });
 
-		   //****************************** for communes *******************
-		   var myParent3 = document.getElementById("myDIV")
-//Create and append select list
-var selectList3 = document.createElement("select");
-selectList3.id = "mySelectcommune";
-myParent3.appendChild(selectList3);
-document.getElementById("mySelectcommune").classList.add('dropdown');
 
-
-//*************** default ********
-var option = document.createElement("option");
-    option.value = "" ;
-    option.text = "اختر بلدية" ;
-	selectList3.appendChild(option);
-
-
-	$(document).ready(function(){
-
-
-    $("#mySelectdaira").change(function(){
-        var dairacode = $(this).children("option:selected").val();
-        //alert("You have selected wilaya - " + dairacode);
-		//********* set value of daira in input ********
-
-		 document.getElementById("Daira").value= arr.wilayas[wilayacode].dairas[dairacode].name_ar;
-
-
-        $('#mySelectcommune').find('option:not(:first)').remove();
-
-		for (k in arr.wilayas[wilayacode].dairas[dairacode].communes) {
-		var option = document.createElement("option");
-	option.value =k ;
-    option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ;
-    selectList3.appendChild(option);
-           }
-
- 
-	  
-		   });   });
-		   
-		   
-		    $(document).ready(function(){
-
-
-    $("#mySelectcommune").change(function(){
-        var communecode = $(this).children("option:selected").val();
-
-		//********* set value of commune in input ********
-
-		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name_ar;
-
-
-});   });
 	
 
 	</script>
 					<input type="hidden" name ="Wilaya"  id="Wilaya" value=""  >
-					<input type="hidden" name ="Daira"  id="Daira" value=""  >
-					<input  type="hidden" name ="Commune" id="Commune"  value=""  >
 					
 					
 					
-					<select name="Type" >
-<option value="woker"  > worker</option>
-<option value="client"  > client</option>
-
-					</select>
-					<input type="date" id="birthday" name="Birthday">
-
+										
 					<div class="wthree-text">
 						<label class="anim">
 							<input type="checkbox" class="checkbox" required="">

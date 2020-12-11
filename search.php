@@ -121,30 +121,11 @@ for (i in arr.wilayas) {
 
 }
 document.getElementById("mySelectwilaya").options[0].disabled = true;
-/////****************************** for daira ***************
-var myParent2 = document.getElementById("myDIV")
-//Create and append select list
-var selectList2 = document.createElement("select");
-selectList2.id = "mySelectdaira";
-myParent2.appendChild(selectList2);
-document.getElementById("mySelectdaira").classList.add('dropdown');
 
 
 
-//*************** default ********
-var option = document.createElement("option");
-    option.value = "" ;
-    option.text = "اختر دائرة" ;
-	option.selected = "selected";
-	selectList2.appendChild(option);
 
-
-
- var wilayacode;
- var dairacode ;
-
-
-  $(document).ready(function(){
+ $(document).ready(function(){
 
 
     $("#mySelectwilaya").change(function(){
@@ -152,74 +133,13 @@ var option = document.createElement("option");
 		//********* set value of wilaya in input ********
 
 		 document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
-        // document.getElementById("Wilayacode").value= wilayacode ;
-        //alert("You have selected wilaya - " + wilayacode);
-
-        $('#mySelectdaira').find('option:not(:first)').remove();
-		$('#mySelectcommune').find('option:not(:first)').remove();
-
-		for (j in arr.wilayas[wilayacode].dairas) {
-		var option = document.createElement("option");
-	option.value = j ;
-    option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
-    selectList2.appendChild(option);
-           }
+       
 
 
 		   });   });
-document.getElementById("mySelectdaira").options[0].disabled = true;
-		   //****************************** for communes *******************
-		   var myParent3 = document.getElementById("myDIV")
-//Create and append select list
-var selectList3 = document.createElement("select");
-selectList3.id = "mySelectcommune";
-myParent3.appendChild(selectList3);
-document.getElementById("mySelectcommune").classList.add('dropdown');
 
 
-//*************** default ********
-var option = document.createElement("option");
-    option.value = "" ;
-    option.text = "اختر بلدية" ;
-	option.selected = "selected";
-	selectList3.appendChild(option);
-
-
-	$(document).ready(function(){
-
-
-    $("#mySelectdaira").change(function(){
-        var dairacode = $(this).children("option:selected").val();
-        //alert("You have selected wilaya - " + dairacode);
-		//********* set value of wilaya in input ********
-
-		 document.getElementById("Daira").value= arr.wilayas[wilayacode].dairas[dairacode].name_ar;
-
-
-        $('#mySelectcommune').find('option:not(:first)').remove();
-
-		for (k in arr.wilayas[wilayacode].dairas[dairacode].communes) {
-		var option = document.createElement("option");
-	option.value = k ;
-    option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ;
-    selectList3.appendChild(option);
-           }
-document.getElementById("mySelectcommune").options[0].disabled = true;
-
-		   $(document).ready(function(){
-
-
-    $("#mySelectcommune").change(function(){
-        var communecode = $(this).children("option:selected").val();
-
-		//********* set value of wilaya in input ********
-
-		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name_ar;
-
-
-});   });
-
-		   });   });
+		 
 
 
 
