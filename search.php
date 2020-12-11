@@ -145,9 +145,7 @@ document.getElementById("mySelectwilaya").options[0].disabled = true;
 
 	</script>
 	<input type="text" name="Wilaya"  value= "" class="searchbtn" id="Wilaya" hidden>
-	<input type="text" name="Daira"  value= "" class="searchbtn" id="Daira"  hidden>
-	<input type="text" name="Commune"  value= "" class="searchbtn" id="Commune"   hidden>
-
+	
 
 
     </div>
@@ -171,8 +169,7 @@ $obj = new \ArPHP\I18N\Arabic();
 // connect to the database
  include('conn.php');
 
-//  $x="اااااا" ;
- //echo '<h1>'.ord($x).'</h1>';
+
 
 
 
@@ -180,30 +177,22 @@ $obj = new \ArPHP\I18N\Arabic();
  $Name =$_POST['search'];
  $Job = mysqli_real_escape_string($db,$_POST['Job']);
  $Wilaya =$_POST['Wilaya'];
- $Daira =$_POST['Daira'];
- $Commune =$_POST['Commune'];
+
 
 
  $count=0;
  $arr=array();
 
-/* echo '<h1>'.$Name.'</h1>';
- echo '<h1>'.$Job.'</h1>';
- echo '<h1>'.$Wilaya.'</h1>';
- echo '<h1>'.$Daira.'</h1>';
- echo '<h1>'.$Commune.'</h1>';*/
-  if(empty($Job)&& (empty($Wilaya)) )echo '<h1></h1>';
-      else if(empty($Wilaya)) echo '<h1></h1>';
-             else if(empty($Job)) echo '<h1></h1>';
-	               else if (empty($Name)){
-	        //********************************* Empty Name ****************************************
-	             if(empty($Name) && !empty($Daira) &&  !empty($Commune))
-			     $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira' AND Commune='$Commune' ";
 
-			          else if(empty($Name) && !empty($Daira) &&  empty($Commune))
-				        $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira'  ";
-				              else if(empty($Name) && empty($Daira) &&  empty($Commune))
-						        $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' ";
+  
+	               if (empty($Name)){
+	        //********************************* Empty Name ****************************************
+	             if(empty($Name) && !empty($Job) &&  !empty($Wilaya))
+			     $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' ";
+			          else if(empty($Name) && !empty($Job) &&  empty($Wilaya))
+				        $sql0="SELECT * FROM users WHERE  Job='$Job'  ";
+				              else if(empty($Name) && empty($Job) &&  !empty($Wilaya))
+						        $sql0="SELECT * FROM users WHERE Wilaya='$Wilaya' ";
 
 
 
@@ -246,25 +235,24 @@ $obj = new \ArPHP\I18N\Arabic();
 
 
 
-									 $words=explode(" ",$Name);
-
-                                     foreach ($words as $word ){
-
-									  if(ord($word)==216 || ord($word)==217)
+									  $words=explode(" ",$Name);
+                                      foreach ($words as $word ){
+			  						  if(ord($word)==216 || ord($word)==217)
 									  $soundex = $obj->soundex($word);
 									  else $soundex = soundex($word);
-
 									  $soundex = substr($soundex, 1);
 
 //*********************** NAME EXIST // name andd daira andd ccommune exissts ************************************
-if(!empty($Name) && !empty($Daira) &&  !empty($Commune))
-$sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira' AND Commune='$Commune' ";
+if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
+$sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' ";
 //************************************* Name andd ddaira exxist .... and commune not exxist
-		else if(!empty($Name) && !empty($Daira) &&  empty($Commune))
-               $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' AND Daira='$Daira' ";
-               //********************************* name exxist .... dadira and commune not exissts
-				else if(!empty($Name) && empty($Daira) &&  empty($Commune))
-                        $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' ";
+		else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
+               $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job'  ";
+			   else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
+                      $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Wilaya='$Wilaya'  ";
+                       //********************************* name exxist .... dadira and commune not exissts
+				      else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
+                            $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
 
 
 	                                  $res=mysqli_query($db,$sql3);
@@ -299,13 +287,13 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 }
 //******************************************* if no results ******************************************************
 					                 if($count==0&&!empty($Name)){
-										 $words=explode(" ",$Name);
+									 $words=explode(" ",$Name);
 
                                      foreach ($words as $word ){
 
 									  if(ord($word)==216 || ord($word)==217)
 									 { $soundex = $obj->soundex($word);
-									  }
+									        }
 
 									  else $soundex = soundex($word);
 
@@ -347,6 +335,9 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
                                       echo ' <p id="noresult">no result found!</p>  </div> ';  }
 
 	                                 }
+									 
+									 
+									 
 
  }
 
