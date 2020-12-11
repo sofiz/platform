@@ -35,6 +35,18 @@
       margin-right: 16px;
     }
 
+    #square1a {
+    background: #FAFAFA;
+    width: 27.5em;
+    height: -webkit-fill-available;
+    border-radius: inherit;
+    box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 16px;
+    padding-bottom: 32px;
+}
+
 .s1s2{
 display: inline-block;
 border-radius: inherit;
@@ -130,13 +142,19 @@ border-radius: inherit;
   }
 
   .info2{
-   width:23.375em;
+   width:100%;
    height:1.25em;
    margin-top:0.9375em;
    font-size:1.125em;
 
   }
 
+#jobinp{
+  margin-top: -4px;
+margin-bottom: 16px;
+margin-left: 0;
+width: 88%;
+}
 
 
 
@@ -150,7 +168,15 @@ border-radius: inherit;
 
   }
 
+  .description2{
 
+
+
+  margin-top: 0.8125em;
+  margin-left: 1.25em;
+  margin-right: 1.25em;
+
+  }
 .titles{
 font-size: 1.25em;
 
@@ -541,7 +567,7 @@ outline: none;
 
   .inputname{
 
-    margin-left: 8.3125em;
+
     margin-top: 0.4375em;
     height: 2.1875em;
     border: none;
@@ -558,9 +584,12 @@ outline: none;
 }
 
 #inputname2{
-  position: absolute;
-  left: 24.4375em;
 
+
+  }
+
+  .nameinp{
+    text-align: center;
   }
   .descriptioninp{
 
@@ -568,7 +597,7 @@ outline: none;
         margin-top: 0.9375em;
         margin-right: 1.25em;
         height: 7.625em;
-        width: 24.25em;
+        width: -webkit-fill-available;
         background: #00000000;
         resize: none;
         padding-top: 0.625em;
@@ -582,18 +611,20 @@ outline: none;
   }
 
   #uploadbtn{
-    font-size: 4.375em;
-        position: absolute;
-        width: 10.625em;
+    font-size: 5.375em;
+        width: 170px;
+        position: relative;
         text-align: center;
-        line-height: 10.625em;
-        margin-top: 1.25em;
-        left: 27.25em;
+        z-index: 1;
         background: #1f1f1f6e;
         border-radius: inherit;
         opacity: 0;
         color: #ffffffeb;
-
+        display: block;
+        margin: 0 auto;
+        margin-top: -170px;
+        padding-bottom: 42px;
+        padding-top: 42px;
 
   }
 
@@ -602,19 +633,18 @@ outline: none;
         cursor: pointer;
       }
 
-  #picsbtn{
-  position: absolute;
-  width: 27.5em;
-  height: 14.375em;
-  opacity: 0;
-  font-size: large;
-  font-family: 'Quicksand';
-  border: none;
-  border-radius: inherit;
-  top:0em;
-color: #ffffffeb;
-
-  }
+      #picsbtn {
+          width: 440px;
+          height: 230px;
+          opacity: 0;
+          font-size: large;
+          font-family: 'Quicksand';
+          border: none;
+          border-radius: inherit;
+          color: #ffffffeb;
+          position: absolute;
+          margin-top: -10px;
+      }
 
   #picsbtn:hover{
   opacity: 1;
@@ -721,7 +751,7 @@ color: #ffffffeb;
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 1.5625em; /* Location of the box */
+  //  padding-top: 1.5625em; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -796,6 +826,7 @@ color: #ffffffeb;
 
 .f{
   margin-top: 3.4375em;
+      margin-left: 0;
 }
 
   /* Position the "next button" to the right */
@@ -813,7 +844,7 @@ color: #ffffffeb;
 
   /* 100% Image Width on Smaller Screens */
   @media only screen and (max-width: 43.75em){
-    .modal-content1 {
+    .modal-contentx {
       width: 100%;
     }
   }
@@ -945,6 +976,18 @@ margin-left: auto;
 margin-right: auto;
 width: 440px;
 }
+.btns{
+  margin-left: 0;
+  display: grid;
+}
+.btn{
+  text-align: center;
+  margin-right: 0;
+}
+#save{
+  margin-top: 10px;
+  margin-right: 0;
+}
     }
 
     @media only screen and (max-width: 700px) {
@@ -971,7 +1014,7 @@ width: 440px;
       margin-left: auto;
       margin-right: auto;
     }
-      #square1{
+      #square1 , #square1a{
         width: 100%;
 
       }
@@ -979,7 +1022,7 @@ width: 440px;
         width: 100%
       }
       .description {
-  font-size: 3.5vw;}
+  font-size: 3.7vw;}
       #square2{
         width: 100%;
         margin-right:20px;

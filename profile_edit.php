@@ -1,7 +1,7 @@
 
-<?php 
+<?php
 session_start();
-include('conn.php'); 
+include('conn.php');
 include('calsses and functions .php') ;
 $c = new  user();
 	if (!($c->Check_Session_Isset())) {
@@ -9,9 +9,9 @@ $c = new  user();
               }
 $c->id = $c->Get_Id_From_Session($db);
 ///**********************************Get information of profile **********************
-$c->Select_Information_Of_Profile($db); 
+$c->Select_Information_Of_Profile($db);
 //--------------select photos -----------------------
-$c->Select_Photos_Of_Profile ($db); 
+$c->Select_Photos_Of_Profile ($db);
 ?>
 
 
@@ -30,6 +30,8 @@ $c->Select_Photos_Of_Profile ($db);
 <link rel="stylesheet" href="search.css">
 <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+
 </head>
 
 <body>
@@ -38,8 +40,8 @@ $c->Select_Photos_Of_Profile ($db);
 <form class="f" action="onsbmit.php" method="post"  enctype="multipart/form-data" >
 
 
-<div id="container1" >
-<div id="square1">
+<div id="container" >
+<div id="square1a">
 
 <div class="" style="border-radius: inherit;">
   <img id="pic"  src="imgs/<?php   echo  $c->Profile_Pic; ?>" alt="" >
@@ -50,18 +52,17 @@ $c->Select_Photos_Of_Profile ($db);
   <input type="file" name="fileToUpload" id="fileToUpload" onchange="readURL1(this);" hidden>
   <label for="fileToUpload" id="uploadbtn" class="fa fa-user" ></label>
   </div>
+<div class="nameinp">
+
 
   <input type="text" name="First_Name" value="<?php echo $c->First_Name ; ?>" class="inputname" >
   <input type="text" name="Last_Name" value="<?php echo $c->Last_Name ;?>" class="inputname" id="inputname2">
-
+</div>
 
   <div class="infocontain2">
 
 		<div class="info2">
-	    <select type="text" name="Job" style="margin-top: -4px;
-    margin-bottom: 16px;
-    margin-left: 0;
-    width: max-content;"  class="dropdown2">
+	    <select type="text" name="Job" id="jobinp"  class="dropdown2">
 <option value="<?php  echo$c->Job ?>"> <?php  echo$c->Job ?></option>
        <option value="بناء">بناء</option>
 	   <option value="لحام">لحام</option>
@@ -265,11 +266,13 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 
 
 	</script>
+<div class="s1s2">
+
 
 <div id="square2">
 
 
-<div class="description">
+<div class="description2">
   <strong>Description</strong>
   <br>
   <textarea type="text" name="Description" value="" class="descriptioninp"><?php echo $c->Description  ?></textarea>
@@ -285,13 +288,14 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 
 <strong id="photostitle" class="titles">Pictures</strong>
 
-  <div class="photocontainer2">
+  <div class="photocontainer">
 		<?php
 $c->Show_Three_Photos();
 ?>
   </div>
 
 
+</div>
 </div>
 
 <div class="btns">
@@ -318,7 +322,7 @@ $c->Show_Three_Photos();
     <?php
 
 	// -------------show photos in window and save (Photos_ids) in array if user click on X -----------------------
-	$c->Show_All_Photos_In_Edit(); 
+	$c->Show_All_Photos_In_Edit();
 	 ?>
 
     </div>
