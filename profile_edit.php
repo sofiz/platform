@@ -7,7 +7,7 @@ $c = new  user();
 	if (!($c->Check_Session_Isset())) {
   	header('location: signin.php');
               }
-$c->Get_Id_From_Session($db);
+$c->id = $c->Get_Id_From_Session($db);
 ///**********************************Get information of profile **********************
 $c->Select_Information_Of_Profile($db); 
 //--------------select photos -----------------------

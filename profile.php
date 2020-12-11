@@ -60,7 +60,7 @@ $c->Get_Rating_Profile($db);
   <body>
 
 
- <?php //include('topbar.php'); ?>
+ <?php include('topbar.php'); ?>
 <div id="container" >
 <div id="square1">
 

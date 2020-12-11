@@ -51,11 +51,11 @@ function Get_Id_From_Session($db){
 	  $res1=mysqli_query($db,"SELECT id FROM users WHERE Username='$user'");
       while($row1=mysqli_fetch_array($res1)) {
 
-        $this->id=$row1['id'] ;
+        $this->ids=$row1['id'] ;
         }
  
 } 
-return $this->id;
+return $this->ids;
                                }
 
 //******************************************************************************
