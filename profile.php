@@ -1,117 +1,22 @@
-<?php include('conn.php') ?>
 <?php
 session_start();
+include('conn.php'); 
+include('calsses and functions .php') ;
+//include('onsbmit.php'); 
+$c = new  user(); 
 //----------------------------------------
-
-$id=$_GET['id'];
+$c->Get_Id_From_Url();
 //------id exist in our system or not -----------
-
-$res=mysqli_query($db,"SELECT id FROM users ");
-$flag = false ;
-while($row=mysqli_fetch_array($res)){
-	if($row['id']==$id) $flag=true;
-}
-
-if(!$flag) header("Location: search.php" );
-
+$c->Check_Id_Exist($db);
 //-------------------------------------------------------------
- if (isset($_SESSION['Username'])) {
-	  $user=$_SESSION['Username'];
-	  $res=mysqli_query($db,"SELECT id FROM users WHERE Username='$user'");
-  while($row=mysqli_fetch_array($res)) {
-
-  $idp=$row['id'] ;
-  }
-  if($idp==$id){header("Location: my-profile.php");}
-  }
-  //******************************************
-if(isset($_POST['commenter'])){
-
-	$User_id=$_POST['User_id'];
-	$Commentor_id=$_POST['Commentor_id'];
-	$Comment=$_POST['Comment'];
-  $rating=$_POST['rating'];
-	include('conn.php');
-	if (!empty($Comment)) {
-		//insert new comment
-	$query = "INSERT INTO comments (Comment,User_id,Commentor_id,rating) VALUES('$Comment', '$User_id','$Commentor_id','$rating') ";
-	//update rating
-	$query1 ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
-	mysqli_query($db, $query);
-	mysqli_query($db, $query1);
-	mysqli_close($db);
-	}
-	header("Location: profile.php?id=".$User_id );
-
-
-}
-//--------------------------------------select profile data ($id) FROM URL--------------------------------------------------
-  $res=mysqli_query($db,"SELECT * FROM users WHERE 	id='$id'");
-
-  while($row=mysqli_fetch_array($res))
-  {
-  $First_Name = mysqli_real_escape_string($db,$row['First_Name']);
-  $Last_Name = mysqli_real_escape_string($db,$row['Last_Name'] );
-
-
-	  $Profile_Pic=$row['Profile_Pic'];
-	  $Username=$row['Username'];
-	  $Wilaya=$row['Wilaya'];
-	  $Daira=$row['Daira'];
-	  $Commune=$row['Commune'];
-	  $Email=$row['Email'];
-	  $Phone=$row['Phone'];
-	  $Birthday=$row['Birthday'];
-	  $Description=$row['Description'];
-	  $Job=$row['Job'];
-
-
-
-
-  }
-
-  //--------------select photos -----------------------
-
-    $photo = array();
-
-	$ress=mysqli_query($db,"SELECT * FROM photos WHERE User_id='$id'");
-	$nphotos =mysqli_num_rows($ress) ;
-while($row1=mysqli_fetch_array($ress))
-  {
-	   array_push($photo,$row1['Photo_Path']);
-
-}
-
-
-
-
+$c->Compare_idUrl_and_idSession($db);
+//*************************************************************
+//--------------------------------------select profile data ($id) FROM URL-----------------
+$c->Select_Information_Of_Profile($db); 
+//--------------select photos -----------------------
+$c->Select_Photos_Of_Profile ($db); 
 ////*************************** Get Rating profile ($id) from URL  ********************
-$res=mysqli_query($db,"SELECT rating,Commentor_id FROM comments where (User_id= '$id') AND (Commentor_id!='$id')");
-$Nc=0;
-$Nrating=0;
-
-  $arr =  array("-1","-2");
-while($row=mysqli_fetch_array($res))
-  {
-	                      $flag=true ;
-						  for($j=0;$j<count($arr);$j++)
-						  if($arr[$j]==$row['Commentor_id']) { $flag=false ; }
-						  if($flag){
-	  $Nrating=$Nrating+$row['rating'];
-
-      $Nc++;
-	  array_push($arr,$row['Commentor_id']);
- }
-
- }
-
-
-
-
-  if($Nc>0)
-  $Mrating = (int)($Nrating/$Nc) ;
-  else {$Mrating =0 ;}
-
+$c->Get_Rating_Profile($db);
 ?>
 <!DOCTYPE html>
 
@@ -155,24 +60,18 @@ while($row=mysqli_fetch_array($res))
   <body>
 
 
- <?php include('topbar.php'); ?>
+ <?php //include('topbar.php'); ?>
 <div id="container" >
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/'.$Profile_Pic.'"  alt="" onclick="slide(this.src)" class="pictures" > '; ?>
+   <?php echo' <img id="pic"  src="imgs/'.$c->Profile_Pic.'"  alt="" onclick="slide(this.src)" class="pictures" > '; ?>
 
-    <strong id="name" ><?php echo $First_Name .' '. $Last_Name ; ?> </strong>
+    <strong id="name" ><?php echo $c->First_Name .' '. $c->Last_Name ; ?> </strong>
 
     <div class="rating">
 <?php
- echo "<div class='ratingcontain'>";
-     for ($j=1;$j<=$Mrating;$j++)
-	 echo '<span class="fa fa-star checked"></span>' ;
-      if ($Mrating<5)
-      for($j=$Mrating;$j<5;$j++)
-     echo ' <span class="fa fa-star unchecked"></span>' ;
-       echo "</div>";
+ $c->Show_Rating();
 ?>
 
     </div>
@@ -181,22 +80,22 @@ while($row=mysqli_fetch_array($res))
 
 			<div class="info">
 				<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
-			      <span style="font-size: 15px;"><?php echo $Job ; ?></span>
+			      <span style="font-size: 15px;"><?php echo $c->Job ; ?></span>
 			    </div>
 
 			    <div class="info">
 						<span class="fas fa-map-marker" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
-			      <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;"><?php echo $Wilaya.", ".$Daira.", ".$Commune ; ?></span>
+			      <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;"><?php echo $c->Wilaya.", ".$c->Daira.", ".$c->Commune ; ?></span>
 			    </div>
 
 					<div class="info">
 						<span class="fas fa-phone" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
-			      <span><?php echo $Phone ; ?></span>
+			      <span><?php echo $c->Phone ; ?></span>
 			    </div>
 
     <div class="info">
 			<span class="fas fa-envelope" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
-      <span><?php echo $Email ; ?></span>
+      <span><?php echo $c->Email ; ?></span>
     </div>
 
 
@@ -204,7 +103,7 @@ while($row=mysqli_fetch_array($res))
 
     <div class="info">
 			<span class="fas fa-birthday-cake" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
-      <span><?php echo $Birthday ; ?></span>
+      <span><?php echo $c->Birthday ; ?></span>
     </div>
 
     </div>
@@ -215,7 +114,7 @@ while($row=mysqli_fetch_array($res))
 
   <div class="description">
     <strong class="titles">Description</strong>
-    <p  id="descriptiontxt"><?php echo $Description ; ?></p>
+    <p  id="descriptiontxt"><?php echo $c->Description ; ?></p>
   </div>
 
 
@@ -227,16 +126,7 @@ while($row=mysqli_fetch_array($res))
 
 
      <?php
-	 if($nphotos>3){for($j=0;$j<3;$j++){
-	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs" onclick="slide(this.src)">';
-
-}
-	}
-else if(($nphotos<=3) && ($nphotos>0)){
-	for($j=0;$j<$nphotos;$j++){
-	echo '<img src="imgs/'.$photo[$j].'" alt="" class="imgs" onclick="slide(this.src)">';
-
-}}
+	$c->Show_Three_Photos();
 	 ?>
     </div>
     <button id="viewallpic" type="button" name="button">See all</button>
@@ -252,13 +142,9 @@ else if(($nphotos<=3) && ($nphotos>0)){
     <?php
 
 
+$c->Show_All_Photos(); 
 
-	for($j=0;$j<$nphotos;$j++){
-      echo '<div id="pic " class="piccontainer">';
-      echo '<img src="imgs/'.$photo[$j] .'" id="'.$photo[$j] .'" alt="" class="imgs pictures" onclick="slide(this.src)" >';
-	  echo ' </div>';
-
-	 }
+	 
 	 ?>
 
     </div>
@@ -294,87 +180,17 @@ else if(($nphotos<=3) && ($nphotos>0)){
 <?php
 
 //-------------for my comment-------------------------------------------
+$c->For_My_Comment ($db);
+//------------------------------for show all comments------------------
+$c->Show_All_Comments($db);
 
-  if (isset($_SESSION['Username'])) {
-	  $user=$_SESSION['Username'];
-	  $res=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name,id FROM users WHERE Username='$user'");
-  while($row=mysqli_fetch_array($res)) {
-  	            $Profile_Pic=$row['Profile_Pic'] ;
-		 		 $Last_Name=$row['Last_Name'] ;
-				 $First_Name=$row['First_Name'] ;
-				 $Commentor_id=$row['id'];
-
-				 }
-
-   echo' <div class="yourcomment"> ';
-  echo'  <img src="imgs/'.  $Profile_Pic    .'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
-   echo'    <form action="profile.php" method="post">   ';
-  echo' <input type="text" name="Comment"  id="input1">';
-	echo '  <div id="rater"></div> ';
-  echo '<input type= "hidden"  name="Commentor_id"  value="'.$Commentor_id.'" >   ';
-  echo '<input type= "hidden"  name="User_id"  value="'.$id.'" >   ';
-  echo '<input type= "hidden"  name="rating"  value="" id="ratings" >   ';
-  echo' <input type="submit" name="commenter" value="commenter" id="submitreview" hidden></div>
-<label for="submitreview" class="fa fa-send" id="submitreview2"></label>';
-                echo'   </form>    ';
-
-
-  }
-
-  //------------------------------for show all comments------------------
-$User_id=$id ;
-$res=mysqli_query($db,"SELECT * FROM comments WHERE User_id='$id'");
-
-while($row=mysqli_fetch_array($res))
-  {
-
-$Commentor_id=$row['Commentor_id'] ;
-$rating=$row['rating'];
-$rest=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name FROM users WHERE id='$Commentor_id' ");
-
-while($row1=mysqli_fetch_array($rest))
-       {
-
-		 $Profile_Pic=$row1['Profile_Pic'] ;
-		 $Last_Name=$row1['Last_Name'] ;
-		 $First_Name=$row1['First_Name'] ;
-
-
-              }
-
-
-   echo ' <div class="commentsection"> ';
-   echo ' <div class="comment"> ' ;
-   echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/'.   $Profile_Pic   .' " alt="" onerror="error(this)"> </a>' ;
-   echo '<div style="    display: inline-grid;">';
-	 echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
-
-if($Commentor_id != $id)
-  {
-echo "<div class='ratingcontain3'>";
-	 for ($j=1;$j<=$row['rating'];$j++)
-	 echo '<span class="fa fa-star checked"></span>' ;
-      if ($row['rating']<5)
-      for($j=$row['rating'];$j<5;$j++)
-     echo ' <span class="fa fa-star unchecked"></span>' ;
-  echo "</div>";  }
-
-
-   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ; echo '</div>';
-
-
-
-}
-mysqli_close($db);
+  mysqli_close($db);
 ?>
 </div>
 </div>
  </body>
 
  <script type="text/javascript">
-
-
-
 
 
   // Get the modal

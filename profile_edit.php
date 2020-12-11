@@ -1,112 +1,17 @@
 
-<?php include('conn.php'); ?>
-	<?php
-	session_start();
-	if (!isset($_SESSION['Username'])) {
+<?php 
+session_start();
+include('conn.php'); 
+include('calsses and functions .php') ;
+$c = new  user();
+	if (!($c->Check_Session_Isset())) {
   	header('location: signin.php');
               }
-
-  $Username=$_SESSION['Username'];
-
-
-if (isset($_POST['save'])){
-	//------- get id -----------------------------
-	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
-
-	while($row=mysqli_fetch_array($re))
-  {$id=$row['id']; }
-
-  $First_Name =  $_POST['First_Name'];
-  $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
-  $Email = $_POST['Email'];
-  $Phone =  $_POST['Phone'];
-  $Job = $_POST['Job'];
-  $Wilaya = $_POST['Wilaya'];
-  $Daira = $_POST['Daira'];
-  $Commune = $_POST['Commune'];
-  $Description = $_POST['Description'];
-  $Birthday = $_POST['Birthday'];
-
-
-
-  if (empty($First_Name )) { array_push($errors, "First Name is required"); }
-  if (empty($Last_Name)) { array_push($errors, "Last Name is required"); }
-  if (empty($Email)) { array_push($errors, "Email is required"); }
-  if (empty($Phone)) { array_push($errors, "Phone is required"); }
-  if (empty($Job)) { array_push($errors, "Job is required"); }
-  if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }
-  if (empty($Daira)) { array_push($errors, "Daira is required"); }
-  if (empty($Commune)) { array_push($errors, "Commune is required"); }
-  if (empty($Birthday)) { array_push($errors, "Birthday is required"); }
-  if (empty($Description)) { array_push($errors, "Description is required"); }
-
-
-  $tar="imgs/";
-  $tar=$tar.basename($_FILES['fileToUpload']['name']);
-  $pic=($_FILES['fileToUpload']['name']) ;
-
-
-$allowedTypes = array(  IMAGETYPE_JPG,	IMAGETYPE_JPEG ,IMAGETYPE_PNG
-
- 	);
-
-$detectedType = exif_imagetype($_FILES['fileToUpload']['tmp_name']);
-$in = in_array($detectedType, $allowedTypes);
-  if($in){
-	  unlink('imgs/'.$Profile_Pic);
-  $queryi = "UPDATE users SET Profile_Pic='$pic' where id ='$id' ";
-		if ($pic!=""){
-			mysqli_query($db, $queryi);
-
-			move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
-}
-}
-
-///*************** UPDATE data *********************************************
-
-	$query = "UPDATE users
-	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Wilaya='$Wilaya',Daira='$Daira',Commune='$Commune',Birthday='$Birthday',Description='$Description'  WHERE id='$id'" ;
-  	//$query ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
-	mysqli_query($db, $query);
-
-	header('location:profile_edit.php');
-}
-
-///-------------------------------------------------------------------------------------------------------
-if (isset($_POST['savepics'])){
-
-	/////-------------------- Get id -------------------
-	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
-	mysqli_query($db, $re);
-	while($row=mysqli_fetch_array($re))
-  {$id=$row['id']; }
-
-
-
-
-  $tar="imgs/";
-  $tar=$tar.basename($_FILES['uploadpic']['name']) ;
-
-  $pic=($_FILES['uploadpic']['name']) ;
-
-  $allowedTypes = array(  IMAGETYPE_JPG,	IMAGETYPE_JPEG ,IMAGETYPE_PNG );
-
-$detectedType = exif_imagetype($_FILES['uploadpic']['tmp_name']);
-$in = in_array($detectedType, $allowedTypes);
-  if($in){
-
-
-  $query = "INSERT INTO photos (Photo_Path,User_id) VALUES('$pic', '$id') ";
-	if ($pic!=""){
-  mysqli_query($db, $query);
-			  move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);}
-  }
-	header('location:profile_edit.php');
-	mysqli_close ( $db );
-
-}
-
-
+$c->Get_Id_From_Session($db);
+///**********************************Get information of profile **********************
+$c->Select_Information_Of_Profile($db); 
+//--------------select photos -----------------------
+$c->Select_Photos_Of_Profile ($db); 
 ?>
 
 
@@ -129,66 +34,15 @@ $in = in_array($detectedType, $allowedTypes);
 
 <body>
 
-<?php
-
-
-//-----------------select data --------------------------
-
-
-
-  $res=mysqli_query($db,"SELECT * FROM users WHERE 	Username='$Username'");
-  if (!$res) {
-    printf("Error: %s\n", mysqli_error($db));
-    exit();
-}
-  while($row=mysqli_fetch_array($res))
-  {
-	  $Username=$row['Username'];
-	  $Wilaya=$row['Wilaya'];
-	  $Daira=$row['Daira'];
-	  $Commune=$row['Commune'];
-	  $Email=$row['Email'];
-	  $Phone=$row['Phone'];
-	  $Birthday=$row['Birthday'];
-	  $Description=$row['Description'];
-	  $Profile_Pic=$row['Profile_Pic'];
-	  $First_Name=$row['First_Name'];
-	  $Last_Name=$row['Last_Name'];
-	  $Job=$row['Job'];
-	  $Type=$row['Type'];
-	  $id=$row['id'];
-
-  }
-  //--------------- select photos and save (photo_path) , (photo_id) in same index $i ===> tow array------------------------------------------
-  $Photo=array();
-  $Photo_id=array();
-    $ress=mysqli_query($db,"SELECT * FROM photos WHERE 	User_id='$id'");
-
-    $nphotos = mysqli_num_rows($ress) ;
-
-	 if (!$ress) {
-                   printf("Error: %s\n", mysqli_error($db));
-                   exit();
-                 }
-    while($row=mysqli_fetch_array($ress))
-                   {
-     array_push($Photo,"imgs/".$row['Photo_Path']);
-	 array_push($Photo_id,$row['Photo_id']);
-
-                   }
-
-
-
- ?>
  <?php include('topbar.php'); ?>
-<form class="f" action="profile_edit.php" method="post"  enctype="multipart/form-data" >
+<form class="f" action="onsbmit.php" method="post"  enctype="multipart/form-data" >
 
 
 <div id="container1" >
 <div id="square1">
 
 <div class="" style="border-radius: inherit;">
-  <img id="pic"  src="imgs/<?php   echo  $Profile_Pic; ?>" alt="" >
+  <img id="pic"  src="imgs/<?php   echo  $c->Profile_Pic; ?>" alt="" >
 
 
 
@@ -197,8 +51,8 @@ $in = in_array($detectedType, $allowedTypes);
   <label for="fileToUpload" id="uploadbtn" class="fa fa-user" ></label>
   </div>
 
-  <input type="text" name="First_Name" value="<?php echo $First_Name ; ?>" class="inputname" >
-  <input type="text" name="Last_Name" value="<?php echo $Last_Name ;?>" class="inputname" id="inputname2">
+  <input type="text" name="First_Name" value="<?php echo $c->First_Name ; ?>" class="inputname" >
+  <input type="text" name="Last_Name" value="<?php echo $c->Last_Name ;?>" class="inputname" id="inputname2">
 
 
   <div class="infocontain2">
@@ -208,7 +62,7 @@ $in = in_array($detectedType, $allowedTypes);
     margin-bottom: 16px;
     margin-left: 0;
     width: max-content;"  class="dropdown2">
-<option value="<?php  echo$Job ?>"><?php  echo$Job ?></option>
+<option value="<?php  echo$c->Job ?>"> <?php  echo$c->Job ?></option>
        <option value="بناء">بناء</option>
 	   <option value="لحام">لحام</option>
 	   <option value="ميكانيك السيارات">ميكانيك السيارات</option>
@@ -234,11 +88,11 @@ $in = in_array($detectedType, $allowedTypes);
     left: -10px;" ></div>
 
  <div class="info2">
-	 <input type="text" name="Phone" value="<?php echo $Phone ?>" class="inputinf">
+	 <input type="text" name="Phone" value="<?php echo $c->Phone ?>" class="inputinf">
  </div>
 
   <div class="info2">
-    <input type="text" name="Email" value="<?php echo $Email ?>" class="inputinf">
+    <input type="text" name="Email" value="<?php echo $c->Email ?>" class="inputinf">
   </div>
 
 
@@ -246,16 +100,16 @@ $in = in_array($detectedType, $allowedTypes);
 
   <div class="info2" hidden>
 
-   <?php echo ' <input type="text" name="Wilaya" id="Wilaya"  value="'.$Wilaya.'" class="inputinf" hidden>'; ?>
+   <?php echo ' <input type="text" name="Wilaya" id="Wilaya"  value="'.$c->Wilaya.'" class="inputinf" hidden>'; ?>
   </div>
   <div class="info2"hidden>
-    <?php echo ' <input type="text" name="Daira" id="Daira"  value="'.$Daira.'" class="inputinf" hidden>'; ?>
+    <?php echo ' <input type="text" name="Daira" id="Daira"  value="'.$c->Daira.'" class="inputinf" hidden>'; ?>
   </div>
   <div class="info2"hidden>
-    <?php echo ' <input type="text" name="Commune" id="Commune"  value="'.$Commune.'" class="inputinf" hidden>'; ?>
+    <?php echo ' <input type="text" name="Commune" id="Commune"  value="'.$c->Commune.'" class="inputinf" hidden>'; ?>
   </div>
   <div class="info2">
-    <input type="text" name="Birthday" value="<?php echo $Birthday ; ?>" class="inputinf">
+    <input type="text" name="Birthday" value="<?php echo $c->Birthday ; ?>" class="inputinf">
   </div>
 
 
@@ -263,9 +117,6 @@ $in = in_array($detectedType, $allowedTypes);
 </div>
 
 <script>
-
-
-
 
 //************************** for wilaya *******************
 
@@ -421,7 +272,7 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 <div class="description">
   <strong>Description</strong>
   <br>
-  <textarea type="text" name="Description" value="" class="descriptioninp"><?php echo $Description  ?></textarea>
+  <textarea type="text" name="Description" value="" class="descriptioninp"><?php echo $c->Description  ?></textarea>
 </div>
 
 
@@ -436,10 +287,7 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 
   <div class="photocontainer2">
 		<?php
-for($j=0;$j<$nphotos && $j<3;$j++){
-	echo '<img src="'. $Photo[$j] .'" alt="" class="imgs">';
-
-}
+$c->Show_Three_Photos();
 ?>
   </div>
 
@@ -470,14 +318,7 @@ for($j=0;$j<$nphotos && $j<3;$j++){
     <?php
 
 	// -------------show photos in window and save (Photos_ids) in array if user click on X -----------------------
-	for($j=0;$j<$nphotos;$j++){
-      echo '<div id="pic'. $Photo_id[$j].'" class="piccontainer">';
-       echo '<img src="'. $Photo[$j] .'" alt="" class="imgs">';
-     echo ' <button id="deletepic1" type="button" name="deletepic" class="closepic" onclick="myFunction('.$Photo_id[$j].')"> &times; </button> ';
-	 echo ' </div>';
-
-	 }
-	 		 echo '<img src="#" alt="" class="imgs" id="blah" style="object-fit: cover;">';
+	$c->Show_All_Photos_In_Edit(); 
 	 ?>
 
     </div>
