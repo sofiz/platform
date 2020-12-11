@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 @import url(//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat);
     body{
-      padding-top: 0px;
-
+      padding-top: 0em;
+      margin: 0;
       font-family: 'Roboto', 'jf flat';
       background: #eeeef2;
 
@@ -10,75 +10,78 @@
 
 
     #container{
-      width: 1007px;
-          margin-top: 55px;
-          margin-left: 256px;
-          border-radius: 10px;
+      width: 80%;
+      margin-top: 3.4375em;
+      margin-left: 16em;
+      border-radius: 0.625em;
 
     }
 
     #container1{
-      width: 985px;
-      margin-top: 5px;
-      margin-left: -14px;
-      border-radius: 10px;
+      width: 61.5625em;
+      margin-top: 0.3125em;
+      margin-left: -0.875em;
+      border-radius: 0.625em;
 
     }
 
     #square1{
-      background:#FAFAFA;
-      width:440px;
-      height:460px;
-      margin-left:40px;
-      border-radius:inherit;
-      box-shadow: 1px 3px 16px 0px #00000047;
+      background: #FAFAFA;
+      width: 27.5em;
+      height: 28.75em;
+      border-radius: inherit;
+      box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
+      display: inline-block;
+      vertical-align: top;
     }
+
+.s1s2{
+display: inline-block;
+}
 
     #square2{
       background: #FAFAFA;
-          width: 440px;
-          height: 210px;
-          margin-top: 55px;
-          margin-left: 753px;
-          position: absolute;
-          top: 0px;
-          left: 0px;
+          width: 27.5em;
+          height: 13.75em;
+        // mobile  margin-top: 1.25em;
           border-radius: inherit;
-          box-shadow: 1px 3px 16px 0px #00000047;
+          box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
+          padding-top: 0.625em;
+          vertical-align: top;
+
+
     }
 
 
     #square3{
       background: #FAFAFA;
-      width: 440px;
-      height: 220px;
-      margin-top: 55px;
-      margin-left: 753px;
-      position: absolute;
-      top: 230px;
-      left: 0px;
-      border-radius: inherit;
-      box-shadow: 1px 3px 16px 0px #00000047;
-      padding-top: 10px;
-    }
+          width: 27.5em;
+          height: 13.75em;
+          margin-top: 1.25em;
+          border-radius: inherit;
+          box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
+          padding-top: 0.625em;
+          vertical-align: top;
+      }
+
 
 
     #pic{
-    height:170px;
-    width:170px;
-    left: 135px;
+    height:10.625em;
+    width:10.625em;
+    left: 8.4375em;
     position: relative;
     border-radius:inherit;
-    box-shadow: 0px 4px 14px #1c4e009e;
-    margin-top:20px;
+    box-shadow: 0em 0.25em 0.875em #1c4e009e;
+    margin-top:1.25em;
         object-fit: cover;
         cursor: pointer;
     }
 
     #name{
     position: relative;
-    top:19px;
-    font-size:20px;
+    top:1.1875em;
+    font-size:1.25em;
     display: flex;
     justify-content: center;
     color: #313131;
@@ -100,34 +103,34 @@
     width: 21%;
         margin: 0 auto;
         position: relative;
-        top: 30px;
+        top: 1.875em;
 
   }
 
 
   .infocontainer{
-    margin-top:41px;
-    margin-left: 40px;
+    margin-top:2.5625em;
+    margin-left: 2.5em;
 }
   .infocontain2{
-    margin-top:16px;
-    margin-left: 40px;
+    margin-top:1em;
+    margin-left: 2.5em;
 
 
   }
   .info{
-   width:374px;
-   height:20px;
-   margin-top:10px;
-   font-size:16px;
+   width:23.375em;
+   height:1.25em;
+   margin-top:0.625em;
+   font-size:1em;
 
   }
 
   .info2{
-   width:374px;
-   height:20px;
-   margin-top:15px;
-   font-size:18px;
+   width:23.375em;
+   height:1.25em;
+   margin-top:0.9375em;
+   font-size:1.125em;
 
   }
 
@@ -137,68 +140,68 @@
   .description{
 
 
-  font-size:18px;
-  margin-top: 13px;
-  margin-left: 20px;
-  margin-right: 20px;
+  font-size:1.125em;
+  margin-top: 0.8125em;
+  margin-left: 1.25em;
+  margin-right: 1.25em;
 
   }
 
 
 .titles{
-font-size: 20px;
+font-size: 1.25em;
 
 }
 #descriptiontxt{
-margin-top: 10px;
+margin-top: 0.625em;
 
 }
 
 
 #photostitle{
 
-  margin: 26px;
+  margin: 1.625em;
 }
   .photocontainer{
-    width:402px;
-    height:122px;
-    margin-top:6px;
-    margin-left:25px;
-    margin-right:25px;
+    width:25.125em;
+    height:7.625em;
+    margin-top:0.375em;
+    margin-left:1.5625em;
+    margin-right:1.5625em;
     border-radius:inherit;
   }
 
 
   .photocontainer2{
-    width:402px;
-    height:122px;
-    margin-top:19px;
-    margin-left:25px;
-    margin-right:25px;
+    width:25.125em;
+    height:7.625em;
+    margin-top:1.1875em;
+    margin-left:1.5625em;
+    margin-right:1.5625em;
     border-radius:inherit;
   }
   .imgs{
-    width:122px;
-    height:122px;
-    margin-right: 9px;
-    margin-top:4px;
-    border-radius: 10px;
+    width:7.625em;
+    height:7.625em;
+    margin-right: 0.5625em;
+    margin-top:0.25em;
+    border-radius: 0.625em;
     border:none;
     object-fit: cover;
     cursor: pointer;
   }
 #viewallpic{
 
-  margin-top: 18px;
-      margin-left: 194px;
-      padding: 10px;
+  margin-top: 1.125em;
+      margin-left: 12.125em;
+      padding: 0.625em;
       border-radius: inherit;
       border: none;
       background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
       color: #ffffffeb;
       font-family: roboto ,sans-serif;
-      box-shadow: 0px 4px 12px 0px #00000059;
-      font-size: 16px;
+      box-shadow: 0em 0.25em 0.75em 0em #00000059;
+      font-size: 1em;
       background-size: 300% 100%;
       cursor: pointer;
   moz-transition: all .4s ease-in-out;
@@ -218,38 +221,38 @@ margin-top: 10px;
 }
   .square4{
     background: #ffffffde;
-    margin-left: 37px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-left: 2.3125em;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
     border-radius: inherit;
-    padding-top:25px;
-    padding-left:25px;
-    padding-right:25px;
-    padding-bottom:25px;
-    box-shadow: 1px 3px 16px 0px #00000047;
-    width: 850px;
+    padding-top:1.5625em;
+    padding-left:1.5625em;
+    padding-right:1.5625em;
+    padding-bottom:1.5625em;
+    box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
+    
   }
 
   .yourcomment{
-   height:45px;
+   height:2.8125em;
    display: inline-block;
-   margin-top: 20px;
+   margin-top: 1.25em;
 
 
   }
 
   #input1{
     position: absolute;
-        height: 35px;
-        margin-left: 40px;
-        width: 668px;
-        padding-left: 10px;
+        height: 2.1875em;
+        margin-left: 2.5em;
+        width: 41.75em;
+        padding-left: 0.625em;
         border: none;
         background-color: #00000000;
         border-bottom: solid;
-        border-width: 2px;
+        border-width: 0.125em;
         border-color: #9d9898;
-        padding-right: 82px;
+        padding-right: 5.125em;
   }
 
   #input1:focus{
@@ -260,14 +263,14 @@ outline: none;
 
   #input2{
     position: absolute;
-    height: 35px;
-    margin-left: 47px;
-    width: 720px;
-    padding-left: 10px;
+    height: 2.1875em;
+    margin-left: 2.9375em;
+    width: 45em;
+    padding-left: 0.625em;
     border: none;
     background-color: #00000000;
     border-bottom: solid;
-    border-width: 2px;
+    border-width: 0.125em;
     border-color: #9d9898;
   }
 
@@ -279,11 +282,11 @@ outline: none;
 
 #submitreview2{
 position: relative;
-top : 13px;
+top : 0.8125em;
       background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
-      padding: 8px;
+      padding: 0.5em;
       color: #eeeefb;
-      border-radius: 5px;
+      border-radius: 0.3125em;
       cursor: pointer;
       background-size: 300% 100%;
 moz-transition: all .4s ease-in-out;
@@ -306,12 +309,12 @@ transition: all .4s ease-in-out;
 
 #submitreview3{
   position: relative;
-      top: 7px;
-      left: 790px;
+      top: 0.4375em;
+      left: 49.375em;
       background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
-      padding: 8px;
+      padding: 0.5em;
       color: #eeeefb;
-      border-radius: 5px;
+      border-radius: 0.3125em;
       cursor: pointer;
       background-size: 300% 100%;
 moz-transition: all .4s ease-in-out;
@@ -331,49 +334,49 @@ transition: all .4s ease-in-out;
 }
 
   #yourcommentpic{
-   width:36px;
-   height:36px;
+   width:2.25em;
+   height:2.25em;
    background:black;
-   border-radius:6px;
+   border-radius:0.375em;
    object-fit: cover;
    position: absolute;
   }
 
   .commentsection{
-    margin-top:25px;
+    margin-top:1.5625em;
   }
 
   .comment{
 
-  padding-right: 60px;
+  padding-right: 3.75em;
   display: flex;
   }
 
   .commentimg{
 
-    width:36px;
-    height:36px;
+    width:2.25em;
+    height:2.25em;
     background:black;
-    border-radius:6px;
-    margin-right:10px;
+    border-radius:0.375em;
+    margin-right:0.625em;
     object-fit: cover;
   }
 
   .cousername{
 
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1em;
   }
   .commenttxt{
 
-    font-size: 15px;
+    font-size: 0.9375em;
   }
 
   .profileeditbtn{
     background: linear-gradient(135deg, #A0D0F9, #67B7FB);
         border:none;
-        border-radius: 4px;
-        padding: 5px;
+        border-radius: 0.25em;
+        padding: 0.3125em;
         font-family: 'Roboto', 'sans-serif';
         font-size: inherit;
         cursor: pointer;
@@ -398,22 +401,22 @@ transition: all .4s ease-in-out;
 
   .btns{
 
-    margin-left: 690px;
-    margin-top: 15px;
+    margin-left: 43.125em;
+    margin-top: 0.9375em;
 
   }
 
 
   .btn{
 
-  padding-top:5px;
-  padding-left:5px;
-  padding-right:5px;
-  padding-bottom:5px;
+  padding-top:0.3125em;
+  padding-left:0.3125em;
+  padding-right:0.3125em;
+  padding-bottom:0.3125em;
   background: linear-gradient(135deg, #C61117, #E13E3E,#C61117,#E13E3E);
-  margin-right:10px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 12px 0px #00000059;
+  margin-right:0.625em;
+  border-radius: 0.3125em;
+  box-shadow: 0em 0.25em 0.75em 0em #00000059;
     border: none;
     text-decoration: none;
 color: #ffffffeb;
@@ -437,11 +440,11 @@ transition: all .4s ease-in-out;
 
   .btn1{
 
-padding: 10px;
+padding: 0.625em;
   background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
-  margin-right:10px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px 0px #00000059;
+  margin-right:0.625em;
+  border-radius: 0.625em;
+  box-shadow: 0em 0.25em 0.75em 0em #00000059;
     border: none;
     text-decoration: none;
 color: #ffffffeb;
@@ -465,20 +468,20 @@ transition: all .4s ease-in-out;
 
 #btn2{
 
-  margin-left: 100px;
+  margin-left: 6.25em;
 }
   #save{
 
-    padding-top:5px;
-    padding-left:22px;
-    padding-right:10px;
-    padding-bottom:5px;
+    padding-top:0.3125em;
+    padding-left:1.375em;
+    padding-right:0.625em;
+    padding-bottom:0.3125em;
     background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
-    margin-right:10px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 20px 0px #0000006b;
+    margin-right:0.625em;
+    border-radius: 0.3125em;
+    box-shadow: 0em 0.25em 1.25em 0em #0000006b;
     border: none;
-    font-size: 16px;
+    font-size: 1em;
     font-family: 'Quicksand';
     cursor: pointer;
     color : #ffffffeb;
@@ -501,24 +504,24 @@ transition: all .4s ease-in-out;
   }
 
   .icn{
-    padding: 0px;
-    min-width: 20px;
+    padding: 0em;
+    min-width: 1.25em;
     position: relative;
-    left: -75px;
+    left: -4.6875em;
     color :#ffffffeb;
   }
 
 
   .inputinf{
 
-        margin-top: 7px;
-        height: 25px;
+        margin-top: 0.4375em;
+        height: 1.5625em;
         border: none;
-        padding-left: 15px;
+        padding-left: 0.9375em;
         border: none;
         background-color: #00000000;
         border-bottom: solid;
-        border-width: 2px;
+        border-width: 0.125em;
         border-color: #9d9898;
   }
 
@@ -530,16 +533,16 @@ outline: none;
 
   .inputname{
 
-    margin-left: 133px;
-    margin-top: 7px;
-    height: 35px;
+    margin-left: 8.3125em;
+    margin-top: 0.4375em;
+    height: 2.1875em;
     border: none;
-    width: 65px;
-    padding-left: 15px;
+    width: 4.0625em;
+    padding-left: 0.9375em;
     border: none;
     background-color: #00000000;
     border-bottom: solid;
-    border-width: 2px;
+    border-width: 0.125em;
     border-color: #9d9898;
   }
 .inputname:focus{
@@ -548,36 +551,36 @@ outline: none;
 
 #inputname2{
   position: absolute;
-  left: 391px;
+  left: 24.4375em;
 
   }
   .descriptioninp{
 
-        font-size: 18px;
-        margin-top: 15px;
-        margin-right: 20px;
-        height: 122px;
-        width: 388px;
+        font-size: 1.125em;
+        margin-top: 0.9375em;
+        margin-right: 1.25em;
+        height: 7.625em;
+        width: 24.25em;
         background: #00000000;
         resize: none;
-        padding-top: 10px;
-        padding-left: 10px;
+        padding-top: 0.625em;
+        padding-left: 0.625em;
         border-color: #9d9898;
-        border-width: 2px;
-        border-radius: 8px;
+        border-width: 0.125em;
+        border-radius: 0.5em;
   }
   .descriptioninp:focus{
 outline: none;
   }
 
   #uploadbtn{
-    font-size: 70px;
+    font-size: 4.375em;
         position: absolute;
-        width: 170px;
+        width: 10.625em;
         text-align: center;
-        line-height: 170px;
-        margin-top: 20px;
-        left: 436px;
+        line-height: 10.625em;
+        margin-top: 1.25em;
+        left: 27.25em;
         background: #1f1f1f6e;
         border-radius: inherit;
         opacity: 0;
@@ -593,14 +596,14 @@ outline: none;
 
   #picsbtn{
   position: absolute;
-  width: 440px;
-  height: 230px;
+  width: 27.5em;
+  height: 14.375em;
   opacity: 0;
   font-size: large;
   font-family: 'Quicksand';
   border: none;
   border-radius: inherit;
-  top:0px;
+  top:0em;
 color: #ffffffeb;
 
   }
@@ -612,7 +615,7 @@ color: #ffffffeb;
   }
 
   #picsbtn:focus{
-  border-radius: 10px;
+  border-radius: 0.625em;
   outline: none;
   }
 
@@ -643,12 +646,12 @@ color: #ffffffeb;
         margin: 15% auto;
         width: 50%;
         border-radius: inherit;
-        padding-top: 10px;
-        padding-bottom: 25px;
-        padding-left: 25px;
-        padding-right: 25px;
-        border-radius: 15px;
-        box-shadow: 0px 4px 20px 0px #0000006b;
+        padding-top: 0.625em;
+        padding-bottom: 1.5625em;
+        padding-left: 1.5625em;
+        padding-right: 1.5625em;
+        border-radius: 0.9375em;
+        box-shadow: 0em 0.25em 1.25em 0em #0000006b;
   }
 
 
@@ -658,7 +661,7 @@ color: #ffffffeb;
   .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 1.75em;
     font-weight: bold;
   }
 
@@ -672,12 +675,12 @@ color: #ffffffeb;
   .closepic {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 1.75em;
     font-weight: bold;
     background: transparent;
     border:none;
     position: absolute;
-    margin-left: -37px;
+    margin-left: -2.3125em;
   }
 
   .closepic:hover,
@@ -689,7 +692,7 @@ color: #ffffffeb;
   }
 
   .photocontainermodal{
-  margin-top: 35px;
+  margin-top: 2.1875em;
 
   }
 
@@ -698,7 +701,7 @@ color: #ffffffeb;
 
   /* Style the Image Used to Trigger the Modal */
   #myImgx {
-    border-radius: 5px;
+    border-radius: 0.3125em;
     cursor: pointer;
     transition: 0.3s;
   }
@@ -710,7 +713,7 @@ color: #ffffffeb;
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 25px; /* Location of the box */
+    padding-top: 1.5625em; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -718,16 +721,16 @@ color: #ffffffeb;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
     backdrop-filter: blur(5px);
-    border-radius: 15px;
+    border-radius: 0.9375em;
   }
 
   /* Modal Content (Image) */
   .modal-contentx {
     margin: auto;
     display: block;
-    max-width: 700px;
-    border-radius: 15px;
-    max-height: 590px;
+    max-width: 43.75em;
+    border-radius: 0.9375em;
+    max-height: 36.875em;
     object-fit: contain;
   }
 
@@ -736,11 +739,11 @@ color: #ffffffeb;
     margin: auto;
     display: block;
     width: 80%;
-    max-width: 700px;
+    max-width: 43.75em;
     text-align: center;
     color: #ccc;
-    padding: 10px 0;
-    height: 150px;
+    padding: 0.625em 0;
+    height: 9.375em;
   }
 
   /* Add Animation - Zoom in the Modal */
@@ -750,10 +753,10 @@ color: #ffffffeb;
   }
   .closex {
     position: absolute;
-    top: 15px;
-    right: 35px;
+    top: 0.9375em;
+    right: 2.1875em;
     color: #f1f1f1;
-    font-size: 40px;
+    font-size: 2.5em;
     font-weight: bold;
     transition: 0.3s;
   }
@@ -772,25 +775,25 @@ color: #ffffffeb;
     position: absolute;
     top: 50%;
     width: auto;
-    padding: 16px;
-    margin-top: -50px;
+    padding: 1em;
+    margin-top: -3.125em;
     color: white;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 2.1875em;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 0.1875em 0.1875em 0;
     user-select: none;
     -webkit-user-select: none;
   }
 
 .f{
-  margin-top: 55px;
+  margin-top: 3.4375em;
 }
 
   /* Position the "next button" to the right */
 .next {
   right: 0;
-  border-radius: 3px 0 0 3px;
+  border-radius: 0.1875em 0 0 0.1875em;
 }
 
   @keyframes zoom {
@@ -801,7 +804,7 @@ color: #ffffffeb;
 
 
   /* 100% Image Width on Smaller Screens */
-  @media only screen and (max-width: 700px){
+  @media only screen and (max-width: 43.75em){
     .modal-content1 {
       width: 100%;
     }
@@ -812,17 +815,17 @@ color: #ffffffeb;
   .deletepic{
 
     position: absolute;
-  margin-left: -24px;
-  margin-top: 3px;
-  border-radius: 6px;
+  margin-left: -1.5em;
+  margin-top: 0.1875em;
+  border-radius: 0.375em;
   background: #d2dcd0;
-  border-width: 1px;
+  border-width: 0.0625em;
   }
 
   #uploadpicbtn{
     background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
-    border-radius: 4px;
-    padding: 5px;
+    border-radius: 0.25em;
+    padding: 0.3125em;
     cursor: pointer;
     color: #ffffffeb;
     font-family: roboto ,sans-serif;
@@ -846,8 +849,8 @@ transition: all .4s ease-in-out;
   #b1{
     background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
         border:none;
-        border-radius: 4px;
-        padding: 5px;
+        border-radius: 0.25em;
+        padding: 0.3125em;
         font-family: 'Quicksand';
         font-size: inherit;
         cursor: pointer;
@@ -873,14 +876,14 @@ transition: all .4s ease-in-out;
 
 
   #savepicbtn:focus{
-outline-width: 1px;
+outline-width: 0.0625em;
 }
 
 
   .piceditbtn{
 
-    margin-left: 500px;
-  margin-top: 30px;
+    margin-left: 31.25em;
+  margin-top: 1.875em;
 
   }
 
@@ -894,7 +897,7 @@ outline-width: 1px;
 
 .ratingcontain{
   position: absolute;
-      margin-top: -6px;
+      margin-top: -0.375em;
 
 
 }
