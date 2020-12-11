@@ -66,18 +66,17 @@ border-radius: inherit;
 
       }
 
-      @media only screen and (max-width: 600px) {
 
-      }
 
     #pic{
     height:10.625em;
     width:10.625em;
-    left: 8.4375em;
-    position: relative;
     border-radius:inherit;
     box-shadow: 0em 0.25em 0.875em #1c4e009e;
     margin-top:1.25em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
         object-fit: cover;
         cursor: pointer;
     }
@@ -104,16 +103,16 @@ border-radius: inherit;
 
   .rating{
 
-    width: 21%;
         margin: 0 auto;
         position: relative;
         top: 1.875em;
+        text-align: center;
 
   }
 
 
   .infocontainer{
-    margin-top:2.5625em;
+    margin-top: 1.9625em;
     margin-left: 2.5em;
 }
   .infocontain2{
@@ -144,7 +143,7 @@ border-radius: inherit;
   .description{
 
 
-  font-size:1.125em;
+
   margin-top: 0.8125em;
   margin-left: 1.25em;
   margin-right: 1.25em;
@@ -166,14 +165,14 @@ margin-top: 0.625em;
 
   margin: 1.625em;
 }
-  .photocontainer{
-    width:25.125em;
-    height:7.625em;
-    margin-top:0.375em;
-    margin-left:1.5625em;
-    margin-right:1.5625em;
-    border-radius:inherit;
-  }
+.photocontainer {
+    width: 100%;
+    height: 7.625em;
+    margin-top: 0.375em;
+    border-radius: inherit;
+    display: flex;
+justify-content: center;
+}
 
 
   .photocontainer2{
@@ -184,16 +183,17 @@ margin-top: 0.625em;
     margin-right:1.5625em;
     border-radius:inherit;
   }
-  .imgs{
-    width:7.625em;
-    height:7.625em;
-    margin-right: 0.5625em;
-    margin-top:0.25em;
-    border-radius: 0.625em;
-    border:none;
-    object-fit: cover;
-    cursor: pointer;
-  }
+  .imgs {
+width: 26%;
+height: 7.625em;
+margin-right: 0.5625em;
+margin-top: 0.25em;
+border-radius: 0.625em;
+border: none;
+object-fit: cover;
+cursor: pointer;
+}
+
 #viewallpic{
 
   margin-top: 1.125em;
@@ -233,6 +233,7 @@ margin-top: 0.625em;
     padding-right:1.5625em;
     padding-bottom:1.5625em;
     box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
+    width: 850px;
 
   }
 
@@ -240,23 +241,27 @@ margin-top: 0.625em;
    height:2.8125em;
    display: inline-block;
    margin-top: 1.25em;
+       width: 100%;
 
 
   }
 
   #input1{
-    position: absolute;
-        height: 2.1875em;
-        margin-left: 2.5em;
-        width: 41.75em;
+    height: 2.1875em;
+        width: 57%;
         padding-left: 0.625em;
         border: none;
         background-color: #00000000;
         border-bottom: solid;
         border-width: 0.125em;
         border-color: #9d9898;
-        padding-right: 5.125em;
+    //    padding-right: 5.125em;
+        box-sizing: border-box;
+    margin-left: 50px;
   }
+  #rater {
+      top: 12px;
+      margin-left: -3px;}
 
   #input1:focus{
 outline: none;
@@ -899,13 +904,99 @@ outline-width: 0.0625em;
   }
 
 .ratingcontain{
-  position: absolute;
-      margin-top: -0.375em;
+
 
 
 }
 
 
 .ratingcontain3{
+
+}
+#profileeditbtnp{
+  margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      margin-top: 15px;
+}
+
+
+@media only screen and (min-width: 1155px){
+  #input1{
+    width: 72%
+  }
+}
+
+@media only screen and (max-width: 1155px){
+    #square2{
+      margin-top: 20px;
+    }
+    .square4{
+      width: 100%;
+      margin-right:20px;
+      -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    #container {
+margin-top: 3.4375em;
+border-radius: 0.625em;
+margin-left: auto;
+margin-right: auto;
+width: 440px;
+}
+    }
+
+    @media only screen and (max-width: 700px) {
+      #container {
+  margin-top: 3.4375em;
+  border-radius: 0.625em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 440px;
+}
+.square4{
+  width: 100%;
+  margin-right:20px;
+  -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+    }
+
+@media only screen and (max-width: 500px){
+    #container{
+      width: 84%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+      #square1{
+        width: 100%;
+
+      }
+      .s1s2{
+        width: 100%
+      }
+      .description {
+  font-size: 3.5vw;}
+      #square2{
+        width: 100%;
+        margin-right:20px;
+      }
+      #square3{
+        width: 100%;
+        margin-right:20px;
+      }
+  #input1{
+          width: calc(100% - 55px);
+       }
+  #rater{
+    margin-left: 50px;
+  }
+
+  #submitreview2{
+  float: right;
+  }
 
 }

@@ -51,10 +51,7 @@ $c->Get_Rating_Profile($db);
 	background: url('star_1.svg') ;
 	background-repeat: repeat-x;
 	}
-	#rater{
-	  margin-left: 721px;
-	      top: 12px;
-	  }
+
 	</style>
 
   <body>

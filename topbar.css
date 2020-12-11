@@ -13,6 +13,12 @@
       box-shadow: 1px 3px 16px 0px #00000047;
     }
 
+    @media only screen and (max-width: 920px) {
+.topbar{
+display: none;
+}
+    }
+
     .fa-user:before {
     content: "\f007";
     margin-right: 6px;}

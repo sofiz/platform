@@ -8,9 +8,9 @@ header('location: signin.php');
               }
 $c->id = $c->Get_Id_From_Session($db);
 ///**********************************Get information of profile **********************
-$c->Select_Information_Of_Profile($db); 
+$c->Select_Information_Of_Profile($db);
 //--------------select photos -----------------------
-$c->Select_Photos_Of_Profile ($db); 
+$c->Select_Photos_Of_Profile ($db);
 ////*************************** Get Rating profile ($id) from URL  ********************
 $c->Get_Rating_Profile($db);
 ?>
@@ -24,13 +24,14 @@ $c->Get_Rating_Profile($db);
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   </head>
 
   <body>
 
-  
+
 
  <?php include('topbar.php'); ?>
 
@@ -82,10 +83,12 @@ $c->Get_Rating_Profile($db);
     </div>
 
     </div>
-    <div style="margin-left: 176px;;margin-top:19px;">
+    <div id="profileeditbtnp">
 <a class="btn1" href="profile_edit.php" style="color:#ffffffeb;">Edit Profile</a>
 </div>
 </div>
+<div class="s1s2">
+
 
 <div id="square2">
 
@@ -109,7 +112,7 @@ $c->Get_Rating_Profile($db);
     </div>
     <button id="viewallpic" type="button" name="button">See all</button>
 </div>
-
+</div>
 
 <div id="myModal" class="modal">
 
@@ -120,7 +123,7 @@ $c->Get_Rating_Profile($db);
     <?php
 
 $c->Show_All_Photos();
-	
+
 	 ?>
 
     </div>
