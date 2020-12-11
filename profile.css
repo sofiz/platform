@@ -10,7 +10,6 @@
 
 
     #container{
-      width: 80%;
       margin-top: 3.4375em;
       margin-left: 16em;
       border-radius: 0.625em;
@@ -33,16 +32,18 @@
       box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
       display: inline-block;
       vertical-align: top;
+      margin-right: 16px;
     }
 
 .s1s2{
 display: inline-block;
+border-radius: inherit;
 }
 
     #square2{
       background: #FAFAFA;
           width: 27.5em;
-          height: 13.75em;
+          height: 200px;
         // mobile  margin-top: 1.25em;
           border-radius: inherit;
           box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
@@ -62,9 +63,12 @@ display: inline-block;
           box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
           padding-top: 0.625em;
           vertical-align: top;
+
       }
 
+      @media only screen and (max-width: 600px) {
 
+      }
 
     #pic{
     height:10.625em;
@@ -221,7 +225,6 @@ margin-top: 0.625em;
 }
   .square4{
     background: #ffffffde;
-    margin-left: 2.3125em;
     margin-top: 1.25em;
     margin-bottom: 1.25em;
     border-radius: inherit;
@@ -230,7 +233,7 @@ margin-top: 0.625em;
     padding-right:1.5625em;
     padding-bottom:1.5625em;
     box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
-    
+
   }
 
   .yourcomment{

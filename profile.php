@@ -1,9 +1,9 @@
 <?php
 session_start();
-include('conn.php'); 
+include('conn.php');
 include('calsses and functions .php') ;
-//include('onsbmit.php'); 
-$c = new  user(); 
+//include('onsbmit.php');
+$c = new  user();
 //----------------------------------------
 $c->Get_Id_From_Url();
 //------id exist in our system or not -----------
@@ -12,9 +12,9 @@ $c->Check_Id_Exist($db);
 $c->Compare_idUrl_and_idSession($db);
 //*************************************************************
 //--------------------------------------select profile data ($id) FROM URL-----------------
-$c->Select_Information_Of_Profile($db); 
+$c->Select_Information_Of_Profile($db);
 //--------------select photos -----------------------
-$c->Select_Photos_Of_Profile ($db); 
+$c->Select_Photos_Of_Profile ($db);
 ////*************************** Get Rating profile ($id) from URL  ********************
 $c->Get_Rating_Profile($db);
 ?>
@@ -29,11 +29,11 @@ $c->Get_Rating_Profile($db);
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
 		<link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
-
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 		    <script src="index.js"></script>
 				<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   </head>
-	<style media="screen">
+	<style >
 
 	.star-rating {
 	  width: 0;
@@ -108,6 +108,8 @@ $c->Get_Rating_Profile($db);
 
     </div>
 </div>
+<div class="s1s2">
+
 
 <div id="square2">
 
@@ -132,7 +134,7 @@ $c->Get_Rating_Profile($db);
     <button id="viewallpic" type="button" name="button">See all</button>
 </div>
 
-
+</div>
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -142,9 +144,9 @@ $c->Get_Rating_Profile($db);
     <?php
 
 
-$c->Show_All_Photos(); 
+$c->Show_All_Photos();
 
-	 
+
 	 ?>
 
     </div>
