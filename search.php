@@ -1,14 +1,12 @@
 <?php
 session_start();
 require 'vendor/autoload.php';
-include('update indexing.php');
-
 error_reporting(E_ERROR);
 
+$errors = array();
+$obj = new \ArPHP\I18N\Arabic();
 
-
-
-
+// connect to the database
 
 ?>
 
@@ -35,7 +33,9 @@ error_reporting(E_ERROR);
     <input type="text" name="search" placeholder="search" class="searchinput">
     <div id="myDIV">
       <select class="dropdown" name="Job" >
-	  <option value="" selected>ابحث عن</option>
+	  
+	  
+	   <option value="" selected>ابحث عن</option>
 	   <option value="بناء">بناء</option>
 	   <option value="لحام">لحام</option>
 	   <option value="ميكانيك السيارات">ميكانيك السيارات</option>
@@ -50,46 +50,29 @@ error_reporting(E_ERROR);
 	   <option value="">التدفئة المركزية</option>
 	   <option value="">نجارة الالمنيوم و المواد البلاستيكية </option>
 	   <option value="">المطالة هياكل السيارات</option>
-	    <option value="">التجهيز و التأثيث الداخلي للمركبات</option>
-		 <option value="">كهرباء السيارات</option>
-		  <option value="">الكهرباء الصناعية</option>
-		   <option value="">تركيب و صيانة أجهزة التبريد و التكييف</option>
-		    <option value="">الكهروميكانيكية</option>
-			 <option value="">صيانة المصاعد</option>
-			  <option value="">تركيب الألواح الشمسية، الضوئية و الحرارية</option>
-			   <option value="">تركيب وصيانة أنظمة الإنذار والمراقبة بالفيديو</option>
-			    <option value="">صناعة الحلويات</option>
-
-				 <option value="">الخبازة و والفطائر</option>
-				  <option value="">الجزارة و منتجات اللحوم</option>
-				   <option value="">إنتاج أغذية الحيوانات</option>
-				    <option value="">تصليح الهواتف الثابتة و النقالة</option>
-					 <option value="">ِلاقة النساء</option>
-					  <option value="">تركيب و تصليح الـنظارات</option>
-					   <option value="">التجميل</option>
-					    <option value="">ميكانيك تصليح قوارب الصيد واليخت</option>
-						 <option value="">ميكانيك تصليح مركبات الوزن الخفيف</option>
-						  <option value="">922</option>
+	   <option value="">التجهيز و التأثيث الداخلي للمركبات</option>
+	   <option value="">كهرباء السيارات</option>
+	   <option value="">الكهرباء الصناعية</option>
+	   <option value="">تركيب و صيانة أجهزة التبريد و التكييف</option>
+	   <option value="">الكهروميكانيكية</option>
+	   <option value="">صيانة المصاعد</option>
+	   <option value="">تركيب الألواح الشمسية، الضوئية و الحرارية</option>
+	   <option value="">تركيب وصيانة أنظمة الإنذار والمراقبة بالفيديو</option>
+	   <option value="">صناعة الحلويات</option>
+	   <option value="">الخبازة و والفطائر</option>
+       <option value="">الجزارة و منتجات اللحوم</option>
+       <option value="">إنتاج أغذية الحيوانات</option>
+	   <option value="">تصليح الهواتف الثابتة و النقالة</option>
+	   <option value="">ِلاقة النساء</option>
+	   <option value="">تركيب و تصليح الـنظارات</option>
+	   <option value="">التجميل</option>
+	   <option value="">ميكانيك تصليح قوارب الصيد واليخت</option>
+       <option value="">ميكانيك تصليح مركبات الوزن الخفيف</option>
+	   <option value="">922</option>
      </select>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
-
-
 
 //************************** for wilaya *******************
 
@@ -137,195 +120,13 @@ document.getElementById("mySelectwilaya").options[0].disabled = true;
 
 
 		   });   });
-
-
-		 
-
-
-
 	</script>
 	<input type="text" name="Wilaya"  value= "" class="searchbtn" id="Wilaya" hidden>
-	
-
-
     </div>
-
-
-
     <input type="submit" name="recherche"  value= "recherche" class="searchbtn">
-
-
-
-
-
 				</form>
-
-
-
-<?php
-
-
-
-$errors = array();
-$obj = new \ArPHP\I18N\Arabic();
-
-// connect to the database
- include('conn.php');
-
-
-
-
-
- if (isset($_POST['recherche'])) {
- $Name =$_POST['search'];
- $Job = mysqli_real_escape_string($db,$_POST['Job']);
- $Wilaya =$_POST['Wilaya'];
-
-
-
- $count=0;
- $arr=array();
-                       
-                       
- if(empty($Name) && empty($Job) &&  empty($Wilaya)){
-				      echo '<div class="resultcontainer"> ';
-                      echo ' <p id="noresult"> no result found! <br> Please ENter Wilaya ANd Job  <p>  </div> '; 
-					  
-					  exit ; }
-	              
-
-				  else if (empty($Name)){
-	        //********************************* Empty Name ****************************************
-	             if(empty($Name) && !empty($Job) &&  !empty($Wilaya))
-			     $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' ";
-			          else if(empty($Name) && !empty($Job) &&  empty($Wilaya))
-				        $sql0="SELECT * FROM users WHERE  Job='$Job'  ";
-				              else if(empty($Name) && empty($Job) &&  !empty($Wilaya))
-						        $sql0="SELECT * FROM users WHERE Wilaya='$Wilaya' ";
-
-	                                  $res0=mysqli_query($db,$sql0);
-
-		                            	if(!$res0){
-	                                  echo "error".mysqli_error($db);
-                                       }
-		                              if(mysqli_num_rows($res0)>0){
-
-			                          while($row0=mysqli_fetch_assoc($res0))
-				                      	  {
-
-						              $flag=true ;
-						              for($j=0;$j<count($arr);$j++)
-						              if($arr[$j]==$row0['id']){ $flag=false ; }
-						              if($flag){
-										  $count++;
-	                                  echo'  <div class="resultcontainer">  ';
-                                      echo'<a href="profile.php?id='.$row0['id'].'" ><img src="imgs/'.$row0['Profile_Pic'].'" alt="" class="resimg" ></a> ';
-                                      echo'<div class="infocontainer"> ';
-                                      echo'<a href="profile.php?id='.$row0['id'].'" class="name">  '. $row0['First_Name']." ".$row0['Last_Name'] . ' </a>  ';
-                                      echo'<p class="info"> ' .$row0['Phone'] .  '</p> ';
-                                      echo' <p class="info">'. $row0['Wilaya'].', '.$row0['Daira'].', '.$row0['Commune'].'</p>  </div> </div>   ';
-                                      array_push($arr,$row0['id']);
-				                 	  }}
-		                                }
-					                 if(mysqli_num_rows($res0)==0){
-						             echo '<div class="resultcontainer"> ';
-                                      echo ' <p id="noresult">no result found!</p>  </div> ';
-	                                 }
-
-
-				  }
-		   
-
-			              else if(!empty($Name)){
-							  
-							     
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                                      
-									  $words=explode(" ",$Name);
-									 
-                                      foreach ($words as $word ){
-			  						  if (strlen($word)>2){
-                                      $firstChar = mb_substr($word, 0, 1, "UTF-8");
-									  
-                                      if(in_array($firstChar, $ligature_map)){
-									   $en_word_2 = $obj->ar2en($word);
-									   
-                                       $soundex= metaphone($en_word_2);
-                                       }
-									  
-									  else $soundex =metaphone($word);
-									  
-									  $soundex = substr($soundex, 1);
-									  
-									  
-                                      
-//*********************** NAME EXIST // name andd daira andd ccommune exissts ************************************
-if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' ";
-//************************************* Name andd ddaira exxist .... and commune not exxist
-		else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
-               $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job'  ";
-			   else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
-                      $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Wilaya='$Wilaya'  ";
-                       //********************************* name exxist .... dadira and commune not exissts
-				         else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-                            $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
-
-
-	                                  $res=mysqli_query($db,$sql3);
-
-
-		                            	if(!$res){
-	                                  echo "error".mysqli_error($db);
-                                       }
-		                              if(mysqli_num_rows($res)>0){
-
-			                          while($row2=mysqli_fetch_assoc($res))
-				                      	  {
-
-						              $flag=true ;
-						              for($j=0;$j<count($arr);$j++)
-						              if($arr[$j]==$row2['id']){ $flag=false ; }
-						              if($flag){
-										  $count++;
-	                                  echo'  <div class="resultcontainer">  ';
-                                      echo'<a href="profile.php?id='.$row2['id'].'" ><img src="imgs/'.$row2['Profile_Pic'].'" alt="" class="resimg" ></a> ';
-                                      echo'<div class="infocontainer"> ';
-                                      echo'<a href="profile.php?id='.$row2['id'].'" class="name">  '. $row2['First_Name']." ".$row2['Last_Name'] . ' </a>  ';
-                                      echo'<p class="info"> ' .$row2['Phone'] .  '</p> ';
-                                      echo' <p class="info">'. $row2['Wilaya'].', '.$row2['Daira'].', '.$row2['Commune'].'</p>  </div> </div>   ';
-                                      array_push($arr,$row2['id']);
-				                 	  }}
-		                                }     }
-
-
-
-						  }
-						  
-						
-                          							 
-
-
-										  
-									  }
-						if($count==0){
-                                      
-						              echo '<div class="resultcontainer"> ';
-                                      echo ' <p id="noresult">no result found!</p>  </div> '; 
-									  }
-
-	                                 }
-
-
-                                     
-
-
-
-
-
- 
- 
-?>
+				
+				<?php include('update indexing.php'); ?>
 
 
   </body>

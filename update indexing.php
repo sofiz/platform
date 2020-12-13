@@ -1,5 +1,7 @@
 <?php
 
+include('conn.php');
+
 
 function unichr($u) 
 {
@@ -277,5 +279,181 @@ $ligature_map = array(
 	 echo "error".mysqli_error($db);
                }
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ if (isset($_POST['recherche'])) {
+ $Name =$_POST['search'];
+ $Job = mysqli_real_escape_string($db,$_POST['Job']);
+ $Wilaya =$_POST['Wilaya'];
+
+
+
+ $count=0;
+ $arr=array();
+                       
+                       
+ if(empty($Name) && empty($Job) &&  empty($Wilaya)){
+				      echo '<div class="resultcontainer"> ';
+                      echo ' <p id="noresult"> no result found! <br> Please ENter Wilaya ANd Job  <p>  </div> '; 
+					  
+					  exit ; }
+	              
+
+				  else if (empty($Name)){
+	        //********************************* Empty Name ****************************************
+	             if(empty($Name) && !empty($Job) &&  !empty($Wilaya))
+			     $sql0="SELECT * FROM users WHERE  Job='$Job' AND Wilaya='$Wilaya' ";
+			          else if(empty($Name) && !empty($Job) &&  empty($Wilaya))
+				        $sql0="SELECT * FROM users WHERE  Job='$Job'  ";
+				              else if(empty($Name) && empty($Job) &&  !empty($Wilaya))
+						        $sql0="SELECT * FROM users WHERE Wilaya='$Wilaya' ";
+
+	                                  $res0=mysqli_query($db,$sql0);
+
+		                            	if(!$res0){
+	                                  echo "error".mysqli_error($db);
+                                       }
+		                              if(mysqli_num_rows($res0)>0){
+
+			                          while($row0=mysqli_fetch_assoc($res0))
+				                      	  {
+
+						              $flag=true ;
+						              for($j=0;$j<count($arr);$j++)
+						              if($arr[$j]==$row0['id']){ $flag=false ; }
+						              if($flag){
+										  $count++;
+	                                  echo'  <div class="resultcontainer">  ';
+                                      echo'<a href="profile.php?id='.$row0['id'].'" ><img src="imgs/'.$row0['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+                                      echo'<div class="infocontainer"> ';
+                                      echo'<a href="profile.php?id='.$row0['id'].'" class="name">  '. $row0['First_Name']." ".$row0['Last_Name'] . ' </a>  ';
+                                      echo'<p class="info"> ' .$row0['Phone'] .  '</p> ';
+                                      echo' <p class="info">'. $row0['Wilaya'].', '.$row0['Daira'].', '.$row0['Commune'].'</p>  </div> </div>   ';
+                                      array_push($arr,$row0['id']);
+				                 	  }}
+		                                }
+					                 if(mysqli_num_rows($res0)==0){
+						             echo '<div class="resultcontainer"> ';
+                                      echo ' <p id="noresult">no result found!</p>  </div> ';
+	                                 }
+
+
+				  }
+		   
+
+			              else if(!empty($Name)){
+							  
+							     
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                      
+									  $words=explode(" ",$Name);
+									 
+                                      foreach ($words as $word ){
+			  						  if (strlen($word)>2){
+                                      $firstChar = mb_substr($word, 0, 1, "UTF-8");
+									  
+                                      if(in_array($firstChar, $ligature_map)){
+									   $en_word_2 = $obj->ar2en($word);
+									   
+                                       $soundex= metaphone($en_word_2);
+                                       }
+									  
+									  else $soundex =metaphone($word);
+									  
+									  $soundex = substr($soundex, 1);
+									  
+									  
+                                      
+//*********************** NAME EXIST // name andd daira andd ccommune exissts ************************************
+if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
+$sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' ";
+//************************************* Name andd ddaira exxist .... and commune not exxist
+		else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
+               $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job'  ";
+			   else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
+                      $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Wilaya='$Wilaya'  ";
+                       //********************************* name exxist .... dadira and commune not exissts
+				         else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
+                            $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
+
+
+	                                  $res=mysqli_query($db,$sql3);
+
+
+		                            	if(!$res){
+	                                  echo "error".mysqli_error($db);
+                                       }
+		                              if(mysqli_num_rows($res)>0){
+
+			                          while($row2=mysqli_fetch_assoc($res))
+				                      	  {
+
+						              $flag=true ;
+						              for($j=0;$j<count($arr);$j++)
+						              if($arr[$j]==$row2['id']){ $flag=false ; }
+						              if($flag){
+										  $count++;
+	                                  echo'  <div class="resultcontainer">  ';
+                                      echo'<a href="profile.php?id='.$row2['id'].'" ><img src="imgs/'.$row2['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+                                      echo'<div class="infocontainer"> ';
+                                      echo'<a href="profile.php?id='.$row2['id'].'" class="name">  '. $row2['First_Name']." ".$row2['Last_Name'] . ' </a>  ';
+                                      echo'<p class="info"> ' .$row2['Phone'] .  '</p> ';
+                                      echo' <p class="info">'. $row2['Wilaya'].', '.$row2['Daira'].', '.$row2['Commune'].'</p>  </div> </div>   ';
+                                      array_push($arr,$row2['id']);
+				                 	  }}
+		                                }     }
+
+
+
+						  }
+						  
+						
+                          							 
+
+
+										  
+									  }
+						if($count==0){
+                                      
+						              echo '<div class="resultcontainer"> ';
+                                      echo ' <p id="noresult">no result found!</p>  </div> '; 
+									  }
+
+	                                 }
+
+
+                                     
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 ?>
