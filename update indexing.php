@@ -2,7 +2,6 @@
 
 include('conn.php');
 
-
 function unichr($u) 
 {
      return mb_convert_encoding('&#' . intval($u) . ';', 'UTF-8', 'HTML-ENTITIES');
@@ -89,7 +88,7 @@ $ligature_map = array(
   while($row=mysqli_fetch_assoc($res1)){
 	  $soundex=" " ;
 
-        //-------------------------------
+ //-------------------------------
 	  if($row['First_Name']!=null){
 		  $words=explode(" ",$row['First_Name']);
 		  foreach ($words as $word) {
@@ -110,9 +109,6 @@ $ligature_map = array(
 		                           }
 	                    }
 	   
-
-
-
   //-------------------------------
 	  if($row['Last_Name']!=null){
 		  $words=explode(" ",$row['Last_Name']);
@@ -155,99 +151,18 @@ $ligature_map = array(
 
 		                           }
 	                    }
-	 
-	 
-	                    		
-						//---------------------------------
-	   //-------------------------------
+	    		
+	   //---------------------------------------------
 	  if($row['Job']!=null){
-		  $words=explode(" ",$row['Job']);
-		  foreach ($words as $word) {
-			   
-                                      $firstChar = mb_substr($word, 0, 1, "UTF-8");
-									  
-                                      if(in_array($firstChar, $ligature_map)){
-									   $en_word_2 = $obj->ar2en($word);
-									   
-                                       $soundex .=" ".metaphone($en_word_2);
-									   
-                                       }
-									  
-									  else $soundex.= " ". metaphone($word);
-									  
-									  
-									  
-
-		                           }
+		   $soundex.= " ".$row['Job'];
 	                    }
 	 
-						//---------------------------------
-	   //-------------------------------
+	   //----------------------------------------------
 	  if($row['Wilaya']!=null){
-		  $words=explode(" ",$row['Wilaya']);
-		  foreach ($words as $word) {
-			   
-                                      $firstChar = mb_substr($word, 0, 1, "UTF-8");
-									  
-                                      if(in_array($firstChar, $ligature_map)){
-									   $en_word_2 = $obj->ar2en($word);
-									   
-                                       $soundex .=" ".metaphone($en_word_2);
-                                       }
-									  
-									  else $soundex.=" ". metaphone($word);
-									  
-									  
-									  
-
-		                           }
-	                    }
+		 $soundex.= " ".$row['Wilaya'];
+		  
+  }
 	 
-	  //-------------------------------
-	  if($row['Daira']!=null){
-		  $words=explode(" ",$row['Daira']);
-		  foreach ($words as $word) {
-			   
-                                      $firstChar = mb_substr($word, 0, 1, "UTF-8");
-									  
-                                      if(in_array($firstChar, $ligature_map)){
-									   $en_word_2 = $obj->ar2en($word);
-									   
-                                       $soundex .=" ".metaphone($en_word_2);
-                                       }
-									  
-									  else $soundex.=" ". metaphone($word);
-									  
-									  
-									  
-
-		                           }
-	                    }
-	 
-						//---------------------------------
-	 
-  //-------------------------------
-	  if($row['Commune']!=null){
-		  $words=explode(" ",$row['Commune']);
-		  foreach ($words as $word) {
-			   
-                                      $firstChar = mb_substr($word, 0, 1, "UTF-8");
-									  
-                                      if(in_array($firstChar, $ligature_map)){
-									   $en_word_2 = $obj->ar2en($word);
-									   
-                                       $soundex .=" ".metaphone($en_word_2);
-                                       }
-									  
-									  else $soundex.=" ". metaphone($word);
-									  
-									  
-									  
-
-		                           }
-	                    }
-						
-						
 						  //-------------------------------
 	  if($row['Email']!=null){
 		  $words=explode(" ",$row['Email']);
@@ -270,8 +185,6 @@ $ligature_map = array(
 	                    }
 	 
 						
-	 
-
 	 $id=$row['id'];
 	 $sql2="UPDATE users SET indexing='$soundex' where id=$id";
 	 $res2=mysqli_query($db,$sql2);

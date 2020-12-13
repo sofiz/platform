@@ -121,7 +121,7 @@ document.getElementById("mySelectwilaya").options[0].disabled = true;
 
 		   });   });
 	</script>
-	<input type="text" name="Wilaya"  value= "" class="searchbtn" id="Wilaya" hidden>
+	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
     </div>
     <input type="submit" name="recherche"  value= "recherche" class="searchbtn">
 				</form>

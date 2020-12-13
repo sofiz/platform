@@ -1,11 +1,12 @@
 <?php  
     include('conn.php');
+	include('calsses and functions .php') ;
     if(isset($_POST['commenter'])){
-
+    $rating=0;
+	
 	$User_id=$_POST['User_id'];
 	$Commentor_id=$_POST['Commentor_id'];
 	$Comment=$_POST['Comment'];
-	
     $rating=$_POST['rating'];
 	
 	if (!empty($Comment)) {
