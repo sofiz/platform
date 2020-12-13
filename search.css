@@ -36,6 +36,7 @@ form{
   font-family: 'Roboto';
   border-bottom: 2px solid #9d9898;
   outline: none;
+
   }
   .searchinput:hover {
       border-bottom: 2px solid #25b2fd;
@@ -103,6 +104,41 @@ option {
     transition: all .4s ease-in-out;
 }
 
+@media only screen and (max-width: 1000px){
+  .searchbtn {
+    margin: 10px 40% 0px ;
+    margin-left: calc(-37.88px + 40%);
+}
+}
+
+
+@media only screen and (max-width: 720px){
+
+  .searchinput {
+      width: 88%;
+    }
+
+    #myDIV {
+        display: block;
+        text-align: center;
+        margin: 10px auto 0;
+    }
+form{
+  margin-left: 0;
+}
+.searchbtn{
+
+margin-left: calc(-37.88px + 50%);
+}
+}
+@media only screen and (max-width: 450px){
+.dropdown{
+  margin: 10px;
+}
+
+}
+
+
 .resimg{
 height:60px;
 margin:15px;
@@ -119,6 +155,7 @@ margin-top: 20px;
 border-radius: 10px;
 display:flex;
 box-shadow: 1px 3px 16px 0px #00000047;
+margin: 20px auto;
 }
 
 .info{

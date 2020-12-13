@@ -5,6 +5,7 @@
       margin: 0;
       font-family: 'Roboto', 'jf flat';
       background: #eeeef2;
+      transition: all .4s ease-in-out;
 
     }
 
@@ -13,6 +14,7 @@
       margin-top: 3.4375em;
       margin-left: 16em;
       border-radius: 0.625em;
+      transition: all .4s ease-in-out;
 
     }
 
@@ -33,6 +35,7 @@
       display: inline-block;
       vertical-align: top;
       margin-right: 16px;
+      transition: all .4s ease-in-out;
     }
 
     #square1a {
@@ -50,6 +53,7 @@
 .s1s2{
 display: inline-block;
 border-radius: inherit;
+transition: all .4s ease-in-out;
 }
 
     #square2{
@@ -61,6 +65,7 @@ border-radius: inherit;
           box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
           padding-top: 0.625em;
           vertical-align: top;
+          transition: all .4s ease-in-out;
 
 
     }
@@ -75,6 +80,7 @@ border-radius: inherit;
           box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
           padding-top: 0.625em;
           vertical-align: top;
+          transition: all .4s ease-in-out;
 
       }
 
@@ -219,7 +225,16 @@ border: none;
 object-fit: cover;
 cursor: pointer;
 }
-
+.imgs2{
+  width:7.625em;
+  height:7.625em;
+  margin-right: 0.5625em;
+  margin-top:0.25em;
+  border-radius: 0.625em;
+  border:none;
+  object-fit: cover;
+  cursor: pointer;
+}
 #viewallpic{
 
   margin-top: 1.125em;
@@ -731,7 +746,7 @@ outline: none;
 
   .photocontainermodal{
   margin-top: 2.1875em;
-
+ text-align: center;
   }
 
 
@@ -744,7 +759,7 @@ outline: none;
     transition: 0.3s;
   }
 
-  #myImgx:hover {opacity: 0.7;}
+
 
   /* The Modal (background) */
   .modalx {
@@ -807,21 +822,20 @@ outline: none;
   }
 
 
-  .prev,
-  .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 1em;
-    margin-top: -3.125em;
-    color: white;
-    font-weight: bold;
-    font-size: 2.1875em;
-    transition: 0.6s ease;
-    border-radius: 0 0.1875em 0.1875em 0;
-    user-select: none;
-    -webkit-user-select: none;
+  .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 1em;
+      margin-top: -58.5px;
+      color: white;
+      font-weight: bold;
+      font-size: 2.1875em;
+      transition: 0.6s ease;
+      border-radius: 0 0.1875em 0.1875em 0;
+      user-select: none;
+      -webkit-user-select: none;
   }
 
 .f{
@@ -951,7 +965,19 @@ outline-width: 0.0625em;
       margin-top: 15px;
 }
 
+@media (hover: none) {
+    #uploadbtn{
+      opacity: 1;
+    }
+      #picsbtn{
+        opacity: 1;
+        background: #1f1f1f6e;
+      }
+}
 
+@media only screen and (min-width: 1380px){
+
+}
 @media only screen and (min-width: 1155px){
   #input1{
     width: 72%
@@ -989,10 +1015,14 @@ width: 440px;
   margin-right: 0;
 }
     }
+    @media only screen and (max-width: 920px) {
+#container{
+      margin-top: 100px;
 
+    }
+}
     @media only screen and (max-width: 700px) {
       #container {
-  margin-top: 3.4375em;
   border-radius: 0.625em;
   margin-left: auto;
   margin-right: auto;
@@ -1022,7 +1052,7 @@ width: 440px;
         width: 100%
       }
       .description {
-  font-size: 3.7vw;}
+  font-size: 3.5vw;}
       #square2{
         width: 100%;
         margin-right:20px;
@@ -1041,5 +1071,21 @@ width: 440px;
   #submitreview2{
   float: right;
   }
+
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 0.5em;
+    margin-top: -41px;
+    color: white;
+    font-weight: bold;
+    font-size: 2.1875em;
+    transition: 0.6s ease;
+    border-radius: 0 0.1875em 0.1875em 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
 
 }
