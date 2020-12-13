@@ -3,6 +3,9 @@
 <head>
 <title> Sign in </title>
 <link href="style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="style_signup.css" rel="stylesheet" type="text/css" media="all" />
+
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 
  </head>
  <body>
@@ -36,5 +39,22 @@
 
   </div>
 </div>
+<!-- copyright -->
+<div class="colorlibcopy-agile">
+  <p>  </p>
+</div>
+<!-- //copyright -->
+<ul class="colorlib-bubbles">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
 </body>
 </html>
