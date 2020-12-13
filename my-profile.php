@@ -92,11 +92,9 @@ $c->Get_Rating_Profile($db);
 
 <div id="square2">
 
-
+<strong class="titles">Description</strong>
   <div class="description">
-    <strong>Description</strong>
-    <br>
-    <br>
+
     <span><?php echo $c->Description ; ?></span>
   </div>
 

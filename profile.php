@@ -110,9 +110,8 @@ $c->Get_Rating_Profile($db);
 
 <div id="square2">
 
-
-  <div class="description">
     <strong class="titles">Description</strong>
+  <div class="description">
     <p  id="descriptiontxt"><?php echo $c->Description ; ?></p>
   </div>
 

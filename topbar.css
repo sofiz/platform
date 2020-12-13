@@ -114,6 +114,7 @@
       position: fixed;
       left: 0;
       box-shadow: 1px 3px 16px 0px #00000047;
+      z-index: 5;
   }
   .nav {
 display: flex;
