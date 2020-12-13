@@ -348,12 +348,15 @@ $ligature_map = array(
                                       array_push($arr,$row0['id']);
 				                 	  }}
 		                                }
-					                 if(mysqli_num_rows($res0)==0){
-						             echo '<div class="resultcontainer"> ';
-                                      echo ' <p id="noresult">no result found!</p>  </div> ';
-	                                 }
-
-
+										
+										
+										
+										if($count==0){
+                                      
+						              echo '<div class="resultcontainer"> ';
+                                      echo ' <p id="noresult">no result found!</p>  </div> '; 
+									  }
+					               
 				  }
 		   
 
@@ -425,15 +428,16 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 						  
 						
                           							 
-
-
-										  
-									  }
-						if($count==0){
+  if($count==0){
                                       
 						              echo '<div class="resultcontainer"> ';
                                       echo ' <p id="noresult">no result found!</p>  </div> '; 
 									  }
+
+										  
+									  }
+									
+						
 
 	                                 }
 
