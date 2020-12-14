@@ -333,6 +333,7 @@ $c->Show_Three_Photos();
 
 
       <input type="button" name="savepics" value="savepics" id="b1" onclick="send()">
+	  
 	  <input type="submit" id="b2" name="savepics" hidden>
 
 
@@ -381,7 +382,7 @@ $.ajax({
     data: ids,
     traditional: true,
     success: function () {
-        $('#results').html('"PassThings()" successfully called.');
+    $('#results').html('"PassThings()" successfully called.');
     },
 
 });
@@ -417,7 +418,7 @@ window.onclick = function(event) {
 
 $("#b1").click(function(){
     $("#b2").trigger('click');
-
+      
 })
 
 

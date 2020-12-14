@@ -27,12 +27,27 @@
 	
 }
 
+function compressImage($source, $destination, $quality) {
 
+  $info = getimagesize($source);
+
+  if ($info['mime'] == 'image/jpeg') 
+    $image = imagecreatefromjpeg($source);
+
+  elseif ($info['mime'] == 'image/gif') 
+    $image = imagecreatefromgif($source);
+
+  elseif ($info['mime'] == 'image/png') 
+    $image = imagecreatefrompng($source);
+
+  imagejpeg($image, $destination, $quality);
+
+}
 
 
 session_start();
 $Username=$_SESSION['Username'];
-if (isset($_POST['save'])){
+if (isset($_POST['save'])||isset($_POST['savepics'])){
 	//------- get id -----------------------------
 	$re=mysqli_query($db,"SELECT id FROM users WHERE Username='$Username'");
 
@@ -81,7 +96,9 @@ $in = in_array($detectedType, $allowedTypes);
 		if ($pic!=""){
 			mysqli_query($db, $queryi);
 
-			move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
+			//move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
+			
+compressImage($_FILES['fileToUpload']['tmp_name'],$tar,60);
 }
 }
 
@@ -122,7 +139,11 @@ $in = in_array($detectedType, $allowedTypes);
   $query = "INSERT INTO photos (Photo_Path,User_id) VALUES('$pic', '$id') ";
 	if ($pic!=""){
   mysqli_query($db, $query);
-			  move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);}
+			  //move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);
+			  
+			  compressImage($_FILES['uploadpic']['tmp_name'],$tar,60);
+			  
+			  }
   }
 	header('location:profile_edit.php');
 	mysqli_close ( $db );
