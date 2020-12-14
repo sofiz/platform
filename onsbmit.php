@@ -4,13 +4,17 @@
 
     include('conn.php');
 	include('calsses and functions .php') ;
+	
+	
     if(isset($_POST['commenter'])){
-    $rating=0;
+   
 	
 	$User_id=mysqli_real_escape_string($db,$_POST['User_id']);
 	$Commentor_id=mysqli_real_escape_string($db,$_POST['Commentor_id']);
 	$Comment=mysqli_real_escape_string($db,$_POST['Comment']);
     $rating=mysqli_real_escape_string($db,$_POST['rating']);
+	
+	if(!isset($rating))   $rating=0; 
 	
 	if (!empty($Comment)) {
 		//insert new comment
