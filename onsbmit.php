@@ -1,13 +1,16 @@
 <?php  
+
+    $errors = array();
+
     include('conn.php');
 	include('calsses and functions .php') ;
     if(isset($_POST['commenter'])){
     $rating=0;
 	
-	$User_id=$_POST['User_id'];
-	$Commentor_id=$_POST['Commentor_id'];
-	$Comment=$_POST['Comment'];
-    $rating=$_POST['rating'];
+	$User_id=mysqli_real_escape_string($db,$_POST['User_id']);
+	$Commentor_id=mysqli_real_escape_string($db,$_POST['Commentor_id']);
+	$Comment=mysqli_real_escape_string($db,$_POST['Comment']);
+    $rating=mysqli_real_escape_string($db,$_POST['rating']);
 	
 	if (!empty($Comment)) {
 		//insert new comment
@@ -54,29 +57,24 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
 	while($row=mysqli_fetch_array($re))
     {$id=$row['id']; }
 
-  $First_Name =  $_POST['First_Name'];
+  $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
   $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
-  $Email = $_POST['Email'];
-  $Phone =  $_POST['Phone'];
-  $Job = $_POST['Job'];
-  $Wilaya = $_POST['Wilaya'];
-  $Daira = $_POST['Daira'];
-  $Commune = $_POST['Commune'];
-  $Description = $_POST['Description'];
-  $Birthday = $_POST['Birthday'];
+  $Email =mysqli_real_escape_string($db, $_POST['Email']);
+  $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
+  $Job =mysqli_real_escape_string($db, $_POST['Job']);
+  $Wilaya =mysqli_real_escape_string($db,$_POST['Wilaya']);
+  $Daira = mysqli_real_escape_string($db,$_POST['Daira']);
+  $Commune = mysqli_real_escape_string($db,$_POST['Commune']);
+  $Description = mysqli_real_escape_string($db,$_POST['Description']);
+  $Birthday =mysqli_real_escape_string($db, $_POST['Birthday']);
 
-
-
-  if (empty($First_Name )) { array_push($errors, "First Name is required"); }
+  if (empty($First_Name)) { array_push($errors, "First Name is required"); }
   if (empty($Last_Name)) { array_push($errors, "Last Name is required"); }
   if (empty($Email)) { array_push($errors, "Email is required"); }
   if (empty($Phone)) { array_push($errors, "Phone is required"); }
   if (empty($Job)) { array_push($errors, "Job is required"); }
   if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }
-  if (empty($Daira)) { array_push($errors, "Daira is required"); }
-  if (empty($Commune)) { array_push($errors, "Commune is required"); }
-  if (empty($Birthday)) { array_push($errors, "Birthday is required"); }
-  if (empty($Description)) { array_push($errors, "Description is required"); }
+  
 
 
   $tar="imgs/";
@@ -100,18 +98,17 @@ $in = in_array($detectedType, $allowedTypes);
 			
 compressImage($_FILES['fileToUpload']['tmp_name'],$tar,60);
 }
-}
-
+} 
 ///*************** UPDATE data *********************************************
-
+if(count($errors) == 0) {
 	$query = "UPDATE users
 	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Wilaya='$Wilaya',Daira='$Daira',Commune='$Commune',Birthday='$Birthday',Description='$Description'  WHERE id='$id'" ;
   	//$query ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
 	mysqli_query($db, $query);
-
-	header('location:my-profile.php');
+	
 }
-
+header('location:my-profile.php');
+}
 ///-------------------------------------------------------------------------------------------------------
 if (isset($_POST['savepics'])){
 
@@ -149,8 +146,38 @@ $in = in_array($detectedType, $allowedTypes);
 	mysqli_close ( $db );
 
 }
+//////////////delete account /////////////////
+if (isset($_POST['delete'])){
+	
+	$id=$_POST['id'];
+	
+	
+	////////////////unlink photo profile ////////////////////
 
+	$dpp=mysqli_query($db,"SELECT Profile_Pic FROM users WHERE id='$id'");
+	$row=mysqli_fetch_array($dpp);
+	
+	
+    if(strcmp($row['Profile_Pic'],"default.png")){
+	unlink('imgs/'.$row['Profile_Pic']);
+	}
+    ////////////// delete profile data /////////////////////
+	$dP=mysqli_query($db,"DELETE from  users WHERE id='$id'");
+	/////////////// delete comments ///////////////////////
+	$dC=mysqli_query($db,"DELETE from  comments WHERE User_id='$id' or Commentor_id='$id'");
+	/////////////// delete photos///////////////////////////
+	$du=mysqli_query($db,"SELECT Photo_Path FROM photos WHERE User_id='$id'");
+	
+    while($row=mysqli_fetch_array($du))
 
+	unlink('imgs/'.$row['Photo_Path']);
+
+		
+	$dPh=mysqli_query($db,"DELETE  from  photos WHERE User_id='$id'");
+
+    header('location:logout.php');
+	
+}
 
 
 ?>

@@ -37,6 +37,18 @@ $c->Select_Photos_Of_Profile ($db);
 <body>
 
  <?php include('topbar.php'); ?>
+ 
+ <form action= "onsbmit.php" method="post"  > 
+ <?php   echo '<input type="text" name="id" value="'.$c->id.'" class="inputname" >';?>
+ <input type="submit" value="delete" name="delete" id="" >
+  <a href="enter_email.php" dir="rtl" ><h1>reset pasword </h1> </a>
+ </form>
+ 
+<?php //include('errors.php'); ?>
+ 
+ 
+ 
+ 
 <form class="f" action="onsbmit.php" method="post"  enctype="multipart/form-data" >
 
 

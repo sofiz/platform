@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require 'vendor/autoload.php';
 error_reporting(E_ERROR);
 
@@ -26,8 +27,7 @@ $obj = new \ArPHP\I18N\Arabic();
 
   <body>
   <?php include('topbar.php'); ?>
-<form action="search.php" method="post">
-
+<form action="search.php" method="get">
 
     <div class="searchbar">
     <input type="text" name="search" placeholder="search" class="searchinput">

@@ -74,7 +74,7 @@ $ligature_map = array(
 );
 
 
- include('conn.php');
+ 
  error_reporting(E_ERROR);
  require 'vendor/autoload.php';
  $obj = new \ArPHP\I18N\Arabic();
@@ -210,16 +210,13 @@ $ligature_map = array(
   
   
   
- if (isset($_POST['recherche'])) {
- $Name =$_POST['search'];
- $Job = mysqli_real_escape_string($db,$_POST['Job']);
- $Wilaya =$_POST['Wilaya'];
-
-
+ if(isset($_GET['recherche'])) {
+ $Name = mysqli_real_escape_string($db,$_GET['search']);
+ $Job = mysqli_real_escape_string($db,$_GET['Job']);
+ $Wilaya =mysqli_real_escape_string($db,$_GET['Wilaya']);
 
  $count=0;
  $arr=array();
-                       
                        
  if(empty($Name) && empty($Job) &&  empty($Wilaya)){
 				      echo '<div class="resultcontainer"> ';

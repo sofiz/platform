@@ -35,8 +35,6 @@ if (isset($_POST['SIGNUP'])) {
   if (empty($Phone)) { array_push($errors, "Phone is required"); }
   if (empty($Job)) { array_push($errors, "Job is required"); }
   if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }
-  
-  
   if (empty($Type)) { array_push($errors, "Type is required"); }
   if (empty($Password_1)) { array_push($errors, "Password is required"); }
   if ($Password_1 != $Password_2) {
