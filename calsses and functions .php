@@ -1,3 +1,5 @@
+
+
 <?php include('conn.php') ?>     <?php
 
 class user {
@@ -295,7 +297,8 @@ $res=mysqli_query($db,"SELECT * FROM comments WHERE User_id='$this->id'");
 
 while($row=mysqli_fetch_array($res))
   {
-
+ 
+ 
 $Commentor_id=$row['Commentor_id'] ;
 $rating=$row['rating'];
 $rest=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name FROM users WHERE id='$Commentor_id' ");
@@ -311,7 +314,7 @@ while($row1=mysqli_fetch_array($rest))
               }
 
 
-   echo ' <div class="commentsection"> ';
+   echo ' <div class="commentsection" id="'.$row['Comment_id'].'" > ';
    echo ' <div class="comment"> ' ;
    echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/'.   $Profile_Pic   .' " alt="" onerror="error(this)"> </a>' ;
    echo '<div style="    display: inline-grid;">';
@@ -320,20 +323,28 @@ while($row1=mysqli_fetch_array($rest))
 if($Commentor_id != $this->id)
   {
 echo "<div class='ratingcontain3'>";
-	 for ($j=1;$j<=$row['rating'];$j++)
-	 echo '<span class="fa fa-star checked"></span>' ;
-      if ($row['rating']<5)
-      for($j=$row['rating'];$j<5;$j++)
-     echo ' <span class="fa fa-star unchecked"></span>' ;
-  echo "</div>";  }
-
-
-   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ; echo '</div>';
-
-
-
+   for ($j=1;$j<=$row['rating'];$j++)
+   echo '<span class="fa fa-star checked"></span>' ;
+   if ($row['rating']<5)
+   for($j=$row['rating'];$j<5;$j++)
+   echo ' <span class="fa fa-star unchecked"></span>' ;
+   echo "</div>";  }
+   
+   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;   
+   
+   // -------------------------------DELETE CCOMMENT ----------------------------------------------
+   if($this->Get_Id_From_Session($db)==$Commentor_id){
+   echo ' <form class="f" action="onsbmit.php" method="post" >   '; 
+   echo ' <input type="text" name="Comment_id" value="'.$row['Comment_id'].' " class="inputname" hidden>' ; 
+   echo ' <input type="text" name="User_id" value="'.$row['User_id'].' " class="inputname" hidden>' ;
+   echo ' <input type="submit" value="DeleteComment" name="DeleteComment" > </form> ';
+   
+   }
+  
+   //echo ' <button id="deletepic1" type="button" name="DeleteComment" class="closepic" onclick="DeleteComment('.$row['Comment_id'].')"> &times; </button> ';
+   echo '</div>';
+   
 }
-
 
 }
 

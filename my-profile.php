@@ -1,3 +1,5 @@
+
+ 
 <?php
 session_start();
 include('calsses and functions .php') ;
@@ -27,6 +29,9 @@ $c->Get_Rating_Profile($db);
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	
+	
+
   </head>
 
   <body>

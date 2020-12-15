@@ -14,7 +14,7 @@
 	$Comment=mysqli_real_escape_string($db,$_POST['Comment']);
     $rating=mysqli_real_escape_string($db,$_POST['rating']);
 	
-	if(!isset($rating))   $rating=0; 
+	if(empty($rating))   $rating=0; 
 	
 	if (!empty($Comment)) {
 		//insert new comment
@@ -182,6 +182,46 @@ if (isset($_POST['delete'])){
     header('location:logout.php');
 	
 }
+
+
+
+
+
+
+
+if (isset($_POST['DeleteComment'])){ 
+
+$Comment_id=$_POST['Comment_id'];
+$User_id=$_POST['User_id'];
+
+$D=mysqli_query($db,"DELETE  from  comments WHERE Comment_id='$Comment_id'");
+
+
+header("Location:profile.php?id=".$User_id);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ?>
