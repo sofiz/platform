@@ -48,6 +48,7 @@
     vertical-align: top;
     margin-right: 16px;
     padding-bottom: 32px;
+    min-height: 428px;
 }
 
 .s1s2{
@@ -81,6 +82,7 @@ transition: all .4s ease-in-out;
           padding-top: 0.625em;
           vertical-align: top;
           transition: all .4s ease-in-out;
+          position: relative;
 
       }
 
@@ -423,6 +425,19 @@ transition: all .4s ease-in-out;
     font-size: 0.9375em;
   }
 
+.deletecom{
+margin-left: auto;
+margin-right: -58px;
+    padding-left: 10px;
+
+}
+#deletecomlab{
+      margin-top: 78%;
+      font-size: 18px;
+      color: #288ecf;
+    cursor: pointer;
+}
+
   .profileeditbtn{
     background: linear-gradient(135deg, #A0D0F9, #67B7FB);
         border:none;
@@ -562,7 +577,10 @@ transition: all .4s ease-in-out;
     color :#ffffffeb;
   }
 
-
+.d{
+  margin-top: 0px;
+    margin-left: 0%;
+}
   .inputinf{
 
         margin-top: 0.4375em;
@@ -588,13 +606,15 @@ outline: none;
     margin-top: 0.4375em;
     height: 2.1875em;
     border: none;
-    width: 4.0625em;
-    padding-left: 0.9375em;
+    width: 5em;
+
     border: none;
     background-color: #00000000;
     border-bottom: solid;
     border-width: 0.125em;
     border-color: #9d9898;
+    text-align: center;
+    padding: 0 7px;
   }
 .inputname:focus{
   outline: none;
@@ -651,7 +671,7 @@ outline: none;
       }
 
       #picsbtn {
-          width: 440px;
+          width: 100%;
           height: 230px;
           opacity: 0;
           font-size: large;
@@ -735,7 +755,7 @@ outline: none;
     background: transparent;
     border:none;
     position: absolute;
-    margin-left: -2.3125em;
+    margin-left: -1.3125em;
   }
 
   .closepic:hover,
@@ -937,8 +957,11 @@ outline-width: 0.0625em;
 
   .piceditbtn{
 
-    margin-left: 31.25em;
-  margin-top: 1.875em;
+    margin-left: auto;
+        margin-top: 2%;
+        margin-right: auto;
+        display: block;
+        width: max-content;
 
   }
 
@@ -966,6 +989,51 @@ outline-width: 0.0625em;
       text-align: center;
       margin-top: 15px;
 }
+.settings{
+  width: inherit;
+}
+.settings2{
+  position: absolute;
+width: inherit;
+margin-top: 10px;
+}
+#settingselements{
+  display: inline-grid;
+  margin-left: 78%;
+  height: 0;
+  overflow: hidden;
+}
+
+#settingselementsclick{
+  display: inline-grid;
+  margin-left: 78%;
+  z-index: 2;
+position: relative;
+}
+
+#settingsbtn{
+  border: none;
+  font-size: 20px;
+  color: #000000;
+  padding-top: 3px;
+  border-radius: 3px;
+  background: #fafafa;
+  cursor: pointer;
+}
+#settingsbtn:focus{
+outline: none;
+}
+#resetpasslab,#deleteprofilelab{
+  padding: 3px 7px;
+    background: #eeeef2;
+    text-align: center;
+}
+
+#resetpasslab:hover,#deleteprofilelab:hover{
+      background: #b8b8e6;
+      cursor: pointer;
+}
+
 
 @media (hover: none) {
     #uploadbtn{
@@ -1051,6 +1119,9 @@ width: 440px;
     }
 
 @media only screen and (max-width: 500px){
+  #settingselements , #settingselementsclick{
+    margin-left: 58%;
+  }
     #container{
       width: 84%;
       margin-left: auto;

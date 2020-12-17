@@ -1,5 +1,5 @@
 
- 
+
 <?php
 session_start();
 include('calsses and functions .php') ;
@@ -29,8 +29,8 @@ $c->Get_Rating_Profile($db);
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-	
-	
+
+
 
   </head>
 
@@ -273,7 +273,7 @@ mysqli_close($db);
   s.remove(undefined);
   n = s.indexOf(e);
   n= Number(n);
-  console.log(n);
+  console.log("n="+n);
   console.log(e);
 
   function op(){
@@ -288,14 +288,23 @@ mysqli_close($db);
   var nx=document.getElementById("next");
 
   l = s.length - 1;
-  console.log(l);
-  if (n==0){
+  console.log("L="+l);
+  console.log("n="+n);
+
+  if (n==0 && l!=0){
 
     d.style.display = "none";
+    nx.style.display = "block";
+  }
+  else if (n==0 && l==0){
+
+    d.style.display = "none";
+    nx.style.display = "none";
   }
 
-  else if (n==l){
+  else if (n==l && n!=0){
     nx.style.display = "none";
+    d.style.display = "block";
   }
 
   else {

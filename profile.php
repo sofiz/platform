@@ -190,6 +190,9 @@ $c->Show_All_Comments($db);
 
  <script type="text/javascript">
 
+ function stoperror() {
+    return true;
+ }
 
   // Get the modal
   var modal = document.getElementById("myModal");
@@ -268,7 +271,7 @@ $c->Show_All_Comments($db);
 
 
  var pictures = document.getElementsByClassName("pictures");
-
+window.onerror = stoperror;
  function slide(e){
 
  pictures = document.getElementsByClassName("pictures");

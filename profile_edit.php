@@ -37,24 +37,38 @@ $c->Select_Photos_Of_Profile ($db);
 <body>
 
  <?php include('topbar.php'); ?>
- 
- <form action= "onsbmit.php" method="post"  > 
- <?php   echo '<input type="text" name="id" value="'.$c->id.'" class="inputname" >';?>
- <input type="submit" value="delete" name="delete" id="" >
-  <a href="enter_email.php" dir="rtl" ><h1>reset pasword </h1> </a>
+
+ <form class = "d" action= "onsbmit.php" method="post"  >
+ <?php   echo '<input type="text" name="id" value="'.$c->id.'" class="inputname" hidden>';?>
+ <input type="submit" value="delete" name="delete" id="deleteprofile" hidden>
+ <button id="resetpass" type="button"
+onclick="window.location.href = 'enter_email.php';" hidden>
+	 Click Here
+</button>
  </form>
- 
+
 <?php //include('errors.php'); ?>
- 
- 
- 
- 
+
+
+
+
 <form class="f" action="onsbmit.php" method="post"  enctype="multipart/form-data" >
 
 
 <div id="container" >
 <div id="square1a">
 
+<div class="settings" >
+	<div class="settings2">
+
+
+	<div id="settingselements">
+	<label for="resetpass" id="resetpasslab">reset</label>
+	<label for="deleteprofile" id="deleteprofilelab">delete</label>
+	</div>
+	<button type="button" name="settingsbtn" id="settingsbtn" onclick="options()"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
+	</div>
+</div>
 <div class="" style="border-radius: inherit;">
   <img id="pic"  src="imgs/<?php   echo  $c->Profile_Pic; ?>" alt="" >
 
@@ -345,7 +359,7 @@ $c->Show_Three_Photos();
 
 
       <input type="button" name="savepics" value="savepics" id="b1" onclick="send()">
-	  
+
 	  <input type="submit" id="b2" name="savepics" hidden>
 
 
@@ -430,7 +444,7 @@ window.onclick = function(event) {
 
 $("#b1").click(function(){
     $("#b2").trigger('click');
-      
+
 })
 
 
@@ -459,6 +473,16 @@ function readURL(input) {
 	 					 reader.readAsDataURL(input.files[0]);
 	 			 }
 	 	 }
+
+function options(){
+	var settingselements = document.getElementById('settingselements');
+	if (settingselements!=null) {
+			settingselements.id = "settingselementsclick";
+	}
+	else{
+	document.getElementById('settingselementsclick').id = "settingselements";
+}
+}
 
 </script>
 

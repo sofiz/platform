@@ -297,8 +297,8 @@ $res=mysqli_query($db,"SELECT * FROM comments WHERE User_id='$this->id'");
 
 while($row=mysqli_fetch_array($res))
   {
- 
- 
+
+
 $Commentor_id=$row['Commentor_id'] ;
 $rating=$row['rating'];
 $rest=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name FROM users WHERE id='$Commentor_id' ");
@@ -329,21 +329,24 @@ echo "<div class='ratingcontain3'>";
    for($j=$row['rating'];$j<5;$j++)
    echo ' <span class="fa fa-star unchecked"></span>' ;
    echo "</div>";  }
-   
-   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div> </div> ' ;   
-   
+
+   echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div>  ' ;
    // -------------------------------DELETE CCOMMENT ----------------------------------------------
    if($this->Get_Id_From_Session($db)==$Commentor_id){
-   echo ' <form class="f" action="onsbmit.php" method="post" >   '; 
-   echo ' <input type="text" name="Comment_id" value="'.$row['Comment_id'].' " class="inputname" hidden>' ; 
+   echo ' <form class="deletecom" action="onsbmit.php" method="post" >   ';
+   echo ' <input type="text" name="Comment_id" value="'.$row['Comment_id'].' " class="inputname" hidden>' ;
    echo ' <input type="text" name="User_id" value="'.$row['User_id'].' " class="inputname" hidden>' ;
-   echo ' <input type="submit" value="DeleteComment" name="DeleteComment" > </form> ';
-   
+   echo ' <input type="submit" value="DeleteComment" name="DeleteComment" id="DeleteComment'.$row['Comment_id'].'" hidden>  ';
+   echo '<label for="DeleteComment'.$row['Comment_id'].'" class="fa fa-minus-square" aria-hidden="true" id="deletecomlab"></label>';
+echo '</form>';
    }
-  
+
+echo "</div>";
+
+
    //echo ' <button id="deletepic1" type="button" name="DeleteComment" class="closepic" onclick="DeleteComment('.$row['Comment_id'].')"> &times; </button> ';
    echo '</div>';
-   
+
 }
 
 }
