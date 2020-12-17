@@ -260,7 +260,9 @@ function For_My_Comment ($db){
         echo'  <img src="imgs/'.  $Profile_Pic    .'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
          echo'    <form action="onsbmit.php" method="post">   ';
         echo' <input type="text" name="Comment"  id="input1">';
+		if($this->id !=$this->Get_Id_From_Session($db))
       	echo '  <div id="rater"></div> ';
+		
         echo '<input type= "hidden"  name="Commentor_id"  value="'.$Commentor_id.'" >   ';
         echo '<input type= "hidden"  name="User_id"  value="'.$this->id.'" > ';
         echo '<input type= "hidden"  name="rating"  value="" id="ratings" >   ';
