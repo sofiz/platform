@@ -159,7 +159,7 @@ $c->Show_All_Photos();
 <?php
 
 //-------------for my comment------------
-$c->For_My_Comment ($db);
+$c->For_My_Comment2 ($db);
 //-----------for show all comments-------
 $c->Show_All_Comments($db);
 mysqli_close($db);
