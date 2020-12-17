@@ -52,14 +52,19 @@ function compressImage($source, $destination, $quality) {
 }
 
 
+
 session_start();
 $Username=$_SESSION['Username'];
+
+
+
 if (isset($_POST['save'])||isset($_POST['savepics'])){
 	//------- get id -----------------------------
-	$re=mysqli_query($db,"SELECT id FROM users WHERE Username='$Username'");
+	$re=mysqli_query($db,"SELECT id,Profile_Pic FROM users WHERE Username='$Username'");
 
 	while($row=mysqli_fetch_array($re))
-    {$id=$row['id']; }
+    {$id=$row['id'];
+     $Profile_Pic=$row['Profile_Pic'];	}
 
   $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
   $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
@@ -82,25 +87,32 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
 
 
   $tar="imgs/";
-  $tar=$tar.basename($_FILES['fileToUpload']['name']);
-  $pic=($_FILES['fileToUpload']['name']) ;
-
+  //$tar=$tar.basename($_FILES['fileToUpload']['name']);
+ // $pic=($_FILES['fileToUpload']['name']) ;
+$extension = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
+ 
+  
+  //$pic=($_FILES['uploadpic']['name']) ;
+  $pic=$id.".".$extension; 
 
 $allowedTypes = array(  IMAGETYPE_JPG,	IMAGETYPE_JPEG ,IMAGETYPE_PNG
 
  	);
 
 $detectedType = exif_imagetype($_FILES['fileToUpload']['tmp_name']);
+
 $in = in_array($detectedType, $allowedTypes);
   if($in){
-	  unlink('imgs/'.$Profile_Pic);
-  $queryi = "UPDATE users SET Profile_Pic='$pic' where id ='$id' ";
+	  
+	  
+	  
+        $queryi = "UPDATE users SET Profile_Pic='$pic' where id ='$id' ";
 		if ($pic!=""){
 			mysqli_query($db, $queryi);
-
+            unlink('imgs/'.$Profile_Pic);
 			//move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
 			
-compressImage($_FILES['fileToUpload']['tmp_name'],$tar,60);
+compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,60);
 }
 } 
 ///*************** UPDATE data *********************************************
@@ -113,24 +125,47 @@ if(count($errors) == 0) {
 }
 header('location:my-profile.php');
 }
+
+
+
+
+
+
+
+
 ///-------------------------------------------------------------------------------------------------------
 if (isset($_POST['savepics'])){
 
 	/////-------------------- Get id -------------------
 	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
-	mysqli_query($db, $re);
+	
 	while($row=mysqli_fetch_array($re))
-  {$id=$row['id']; }
+    {$id=$row['id']; }
 
 
 
+	
+	
+	
+$getmaxid = mysqli_query($db," SELECT MAX(Photo_id) AS id FROM photos ");
+$row77 = mysqli_fetch_array($getmaxid);
+$maxid=$row77["id"];
+	
+	$maxid++; 
+	
+	$newname = strval($id).strval($maxid); 
 
   $tar="imgs/";
-  $tar=$tar.basename($_FILES['uploadpic']['name']) ;
-
-  $pic=($_FILES['uploadpic']['name']) ;
-
-  $allowedTypes = array(  IMAGETYPE_JPG,	IMAGETYPE_JPEG ,IMAGETYPE_PNG );
+  //$tar=$tar.basename($_FILES['uploadpic']['name']) ;
+  
+  $extension = pathinfo($_FILES["uploadpic"]["name"], PATHINFO_EXTENSION);
+ 
+  
+  //$pic=($_FILES['uploadpic']['name']) ;
+  $pic=$newname.".".$extension; 
+  
+  
+  $allowedTypes = array(  IMAGETYPE_JPG ,	IMAGETYPE_JPEG ,IMAGETYPE_PNG );
 
 $detectedType = exif_imagetype($_FILES['uploadpic']['tmp_name']);
 $in = in_array($detectedType, $allowedTypes);
@@ -142,9 +177,9 @@ $in = in_array($detectedType, $allowedTypes);
   mysqli_query($db, $query);
 			  //move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);
 			  
-			  compressImage($_FILES['uploadpic']['tmp_name'],$tar,60);
-			  
-			  }
+			  //compressImage($_FILES['uploadpic']['tmp_name'],$tar,60);
+			  compressImage($_FILES['uploadpic']['tmp_name'],$tar.$newname.".".$extension,60);
+			          }
   }
 	header('location:profile_edit.php');
 	mysqli_close ( $db );
