@@ -88,11 +88,13 @@ $c->Get_Rating_Profile($db);
 
 
 
-
-    <div class="info">
-			<span class="fas fa-birthday-cake" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
-      <span><?php echo $c->Birthday ; ?></span>
-    </div>
+<?php  if($c->Birthday !=  "0000-00-00")  
+    {
+	    echo ' <div class="info"> <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> '; 
+        echo '<span> سنة ' . $c->Age($c->Birthday)  .'</span> </div>'; 
+    }
+?>
+    
 
     </div>
     <div id="profileeditbtnp">

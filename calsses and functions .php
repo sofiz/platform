@@ -22,14 +22,18 @@ class user {
 	  public $Last_Name;
 	  public $id;
 	  public $Job;
-
+      
       public $ids ;
 
 
 
 
-
-
+     function Age($dateNaissance)
+{
+  $aujourdhui = date("Y-m-d");
+  $diff = date_diff(date_create($dateNaissance), date_create($aujourdhui));
+  return $diff->format('%y');
+}
 
 
 

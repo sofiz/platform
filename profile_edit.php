@@ -75,7 +75,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 
 
 
-  <input type="file" name="fileToUpload" id="fileToUpload" onchange="readURL1(this);" hidden>
+  <input type="file" name="fileToUpload" id="fileToUpload" onchange="readURL(this),Filevalidation0();" hidden>
   <label for="fileToUpload" id="uploadbtn" class="fa fa-user" ></label>
   </div>
 <div class="nameinp">
@@ -136,7 +136,11 @@ onclick="window.location.href = 'enter_email.php';" hidden>
     <?php echo ' <input type="text" name="Commune" id="Commune"  value="'.$c->Commune.'" class="inputinf" hidden>'; ?>
   </div>
   <div class="info2">
-    <input type="text" name="Birthday" value="<?php echo $c->Birthday ; ?>" class="inputinf">
+  
+  <label for="birthday"><?php echo "سنة". $c->Age($c->Birthday); ?></label>
+   <input type="date" id="birthday" name="Birthday">
+   
+   
   </div>
 
 
@@ -395,7 +399,7 @@ $c->Show_Three_Photos();
     </div>
     <div class="piceditbtn">
 
-      <input type="file" name="uploadpic[]"  id="uploadpic" onchange="readURL(this);"  hidden  multiple>
+      <input type="file" name="uploadpic[]"  id="uploadpic" onchange="readURL(this),Filevalidation1();"   hidden  multiple>
 	  
 	  
       <label for="uploadpic" id="uploadpicbtn" >تحميل</label>
@@ -521,6 +525,44 @@ function options(){
 }
 
 </script>
+
+
+<script> 
+    Filevalidation1 = () => { 
+        const fi = document.getElementById('uploadpic'); 
+        // Check if any file is selected. 
+        if (fi.files.length > 0) { 
+            for (const i = 0; i <= fi.files.length - 1; i++) { 
+  
+                const fsize = fi.files.item(i).size; 
+                const file = Math.round((fsize / 1024)); 
+                // The size of the file. 
+                if (file >= 4096) { 
+                    location.reload(); 
+                }  
+            } 
+        } 
+    } 
+	
+	
+	Filevalidation0 = () => { 
+        const fi = document.getElementById('fileToUpload'); 
+        // Check if any file is selected. 
+        if (fi.files.length > 0) { 
+            for (const i = 0; i <= fi.files.length - 1; i++) { 
+  
+                const fsize = fi.files.item(i).size; 
+                const file = Math.round((fsize / 1024)); 
+                // The size of the file. 
+                if (file >= 4096) { 
+                    location.reload(); 
+                }  
+            } 
+        } 
+    }
+</script> 
+
+
 
 </form>
 
