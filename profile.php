@@ -106,7 +106,7 @@ $c->Get_Rating_Profile($db);
 <?php  if($c->Birthday !=  "0000-00-00")  
     {
 	    echo ' <div class="info"> <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> '; 
-        echo '<span>  سنة ' . $c->Age($c->Birthday)  .'</span> </div>'; 
+        echo '<span>   ' . $c->Age($c->Birthday)  .'</span> </div>'; 
     }
 ?>
     </div>

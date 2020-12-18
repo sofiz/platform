@@ -30,9 +30,12 @@ class user {
 
      function Age($dateNaissance)
 {
+	if($dateNaissance != "0000-00-00")
+	{
   $aujourdhui = date("Y-m-d");
   $diff = date_diff(date_create($dateNaissance), date_create($aujourdhui));
-  return $diff->format('%y');
+  return $diff->format('%y')."سنة"; }
+  
 }
 
 
