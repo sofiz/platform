@@ -342,7 +342,7 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 <div class="description2">
   <strong>الوصف</strong>
   <br>
-  <textarea type="text" name="Description" value="" class="descriptioninp"><?php echo $c->Description  ?></textarea>
+  <textarea type="text" name="Description" value="" class="descriptioninp" placeholder="أيام العمل ,الأسعار ,طريقة العمل ....إلخ" ><?php echo $c->Description  ?></textarea>
 </div>
 
 
@@ -395,7 +395,9 @@ $c->Show_Three_Photos();
     </div>
     <div class="piceditbtn">
 
-      <input type="file" name="uploadpic" id="uploadpic" onchange="readURL(this);"  hidden>
+      <input type="file" name="uploadpic[]"  id="uploadpic" onchange="readURL(this);"  hidden  multiple>
+	  
+	  
       <label for="uploadpic" id="uploadpicbtn" >تحميل</label>
 
 

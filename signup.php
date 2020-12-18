@@ -1,4 +1,7 @@
-<?php include('server.php') ?>
+
+<?php 
+include('server.php') ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +19,15 @@
 <!-- //web font -->
 </head>
 <body>
-<?php include('topbar.php'); ?>
+
+
+
 	<!-- main -->
 	<div class="main-w3layouts wrapper" >
 
 		<div class="main-agileinfo" >
+		
+		<?php include('topbar.php'); ?>
 			<div style="
     width: inherit;
     height: 1009.58px;

@@ -110,7 +110,6 @@ $c->Get_Rating_Profile($db);
     <span><?php echo $c->Description ; ?></span>
   </div>
 
-
 </div>
 
 <div id="square3">

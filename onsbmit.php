@@ -129,13 +129,16 @@ header('location:my-profile.php');
 
 if (isset($_POST['savepics'])){
 	
-if ($_FILES['uploadpic']['size'] != 0 ){
-   
-	/////-------------------- Get id -------------------
-	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
 	
+	
+	foreach($_FILES['uploadpic']['name'] as $key=>$val){ 
+	if ($_FILES['uploadpic']['size'][$key] != 0 	&& $_FILES['uploadpic']['size'][$key] < 2097152 ){
+	/////-------------------- Get id -------------------
+	
+	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
 	while($row=mysqli_fetch_array($re))
     {$id=$row['id']; }
+	
 $getmaxid = mysqli_query($db," SELECT MAX(Photo_id) AS id FROM photos ");
 $row77 = mysqli_fetch_array($getmaxid);
 $maxid=$row77["id"];
@@ -147,7 +150,7 @@ $maxid=$row77["id"];
   $tar="imgs/";
   //$tar=$tar.basename($_FILES['uploadpic']['name']) ;
   
-  $extension = pathinfo($_FILES["uploadpic"]["name"], PATHINFO_EXTENSION);
+  $extension = pathinfo($_FILES["uploadpic"]["name"][$key], PATHINFO_EXTENSION);
  
   
   //$pic=($_FILES['uploadpic']['name']) ;
@@ -156,7 +159,7 @@ $maxid=$row77["id"];
   
   $allowedTypes = array(  IMAGETYPE_JPG ,	IMAGETYPE_JPEG ,IMAGETYPE_PNG );
 
-$detectedType = exif_imagetype($_FILES['uploadpic']['tmp_name']);
+$detectedType = exif_imagetype($_FILES['uploadpic']['tmp_name'][$key]);
 $in = in_array($detectedType, $allowedTypes);
   if($in){
 
@@ -167,15 +170,20 @@ $in = in_array($detectedType, $allowedTypes);
 			  //move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);
 			  
 			  //compressImage($_FILES['uploadpic']['tmp_name'],$tar,60);
-			  compressImage($_FILES['uploadpic']['tmp_name'],$tar.$newname.".".$extension,60);
+			  compressImage($_FILES['uploadpic']['tmp_name'][$key],$tar.$newname.".".$extension,60);
 			          }
+					  
+					  
+  }
+	}
   }
 	
 
 
 header('location:profile_edit.php');
 mysqli_close ( $db );
-}
+
+
 }
 //////////////delete account /////////////////
 if (isset($_POST['delete'])){

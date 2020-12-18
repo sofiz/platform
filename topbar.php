@@ -20,6 +20,20 @@
 </html>
 <?php
 
+/* <?php
+// function to get webpage title
+function getTitle($url) {
+    $page = file_get_contents($url);
+    $title = preg_match('/<title[^>]*>(.*?)<\/title>/ims', $page, $match) ? $match[1] : null;
+    return $title;
+}
+// get web page title
+echo 'Title: ' . getTitle('http://www.w3schools.com/php/');
+
+// Output:
+// Title: PHP 5 Tutorial
+?> */
+
 echo '<div class="topbar">  <div class="nav">';
 
 
@@ -39,7 +53,7 @@ echo '<a href="logout.php" id ="logoutbtn2"> <label for="logout" id="logoutbtn" 
 
 }
 
-else { echo '<a href="search.php"id ="searchnav2" > <label for="search" id="searchnav" class="fa fa-search" ><span class ="navbartxt">البحث</span></label>   </a>
+else { echo '<a href="search.php"  id="searchnav2" > <label for="search" id="searchnav" class="fa fa-search" ><span class ="navbartxt">البحث</span></label>   </a>
 ';
    echo '<a href="signin.php">
 <label for="login" id="logoutbtn" class="fa fa-sign-in" ><span class="navbartxt" >تسجيل الدخول</span></label></a>  ';

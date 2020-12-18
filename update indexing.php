@@ -255,11 +255,11 @@ $ligature_map = array(
                                       echo'<a href="profile.php?id='.$row0['id'].'" class="name">  '. $row0['First_Name']." ".$row0['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row0['Phone'] .  '</p> ';
                         if(empty($row0['Daira'])&&empty($row0['Commune']))
-         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row0['Wilaya'].'</span>';
+         echo '<p class="info"><span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row0['Wilaya'].'</span></p></div> </div>';
          if(!empty($row0['Daira'])&&empty($row0['Commune']))
-         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row0['Wilaya'].','.$row0['Daira'].'</span>';
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row0['Wilaya'].','.$row0['Daira'].'</span></p></div> </div>';
 		if(!empty($row0['Daira'])&&!empty($row0['Commune']))
-         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row0['Wilaya'].','.$row0['Daira'].','.$row0['Commune'].'</span>  </div> </div>   ';
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row0['Wilaya'].','.$row0['Daira'].','.$row0['Commune'].'</span> </p> </div> </div> ';
 		
                                       array_push($arr,$row0['id']);
 				                 	  }}
@@ -315,13 +315,13 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 	                                  $res=mysqli_query($db,$sql3);
 
 
-		                            	if(!$res){
+		                              if(!$res){
 	                                  echo "error".mysqli_error($db);
                                        }
 		                              if(mysqli_num_rows($res)>0){
 
-			                          while($row2=mysqli_fetch_assoc($res))
-				                      	  {
+			                          while($row2=mysqli_fetch_assoc($res)){
+										  
 
 						              $flag=true ;
 						              for($j=0;$j<count($arr);$j++)
@@ -333,15 +333,19 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row2['id'].'" class="name">  '. $row2['First_Name']." ".$row2['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row2['Phone'] .  '</p> ';
-                                    if(empty($row2['Daira'])&&empty($row2['Commune']))
-         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row2['Wilaya'].'</span>';
+									  
+         if(empty($row2['Daira'])&&empty($row2['Commune']))
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row2['Wilaya'].'</span></p> </div> </div>';
          if(!empty($row2['Daira'])&&empty($row2['Commune']))
-         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row2['Wilaya'].','.$row2['Daira'].'</span>';
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row2['Wilaya'].','.$row2['Daira'].'</span></p> </div> </div>';
 		if(!empty($row2['Daira'])&&!empty($row2['Commune']))
-         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row2['Wilaya'].','.$row2['Daira'].','.$row2['Commune'].'</span>  </div> </div>   ';
-                                      array_push($arr,$row2['id']);
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row2['Wilaya'].','.$row2['Daira'].','.$row2['Commune'].'</span> </p> </div> </div>';
+                                      
+									  array_push($arr,$row2['id']);
 				                 	  }}
-		                                }     }
+		                                
+										}     
+										}
 
 
 
