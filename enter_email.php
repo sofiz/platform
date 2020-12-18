@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="resetpass.css">
 </head>
 <body>
+<?php include('topbar.php'); ?>
 	<form class="login-form" action="enter_email.php" method="post">
 
 		<h2 class="form-title">Reset Password</h2>

@@ -160,7 +160,7 @@ while($row=mysqli_fetch_array($res))
 						  for($j=0;$j<count($arr);$j++)
 						  if($arr[$j]==$row['Commentor_id']) { $flag=false ; }
 						  if($flag){
-	  $Nrating=$Nrating+$row['rating'];
+	                      $Nrating=$Nrating+$row['rating'];
 						  $Nc++;
 						  array_push($arr,$row['Commentor_id']);
  }
@@ -260,6 +260,7 @@ function For_My_Comment ($db){
         echo'  <img src="imgs/'.  $Profile_Pic    .'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
          echo'    <form action="onsbmit.php" method="post">   ';
         echo' <input type="text" name="Comment"  id="input1">';
+		
 		if($this->id !=$this->Get_Id_From_Session($db))
       	echo '  <div id="rater"></div> ';
 
@@ -274,42 +275,6 @@ function For_My_Comment ($db){
   }
 
 }
-
-
-function For_My_Comment2 ($db){
-
-
-
-
-      if ($this->Check_Session_Isset()) {
-	  $user=$_SESSION['Username'];
-	  $res=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name,id FROM users WHERE Username='$user'");
-      while($row=mysqli_fetch_array($res)) {
-  	             $Profile_Pic=$row['Profile_Pic'] ;
-		 		 $Last_Name=$row['Last_Name'] ;
-				 $First_Name=$row['First_Name'] ;
-				 $Commentor_id=$row['id'];
-
-				 }
-
-         echo' <div class="yourcomment"> ';
-        echo'  <img src="imgs/'.  $Profile_Pic    .'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
-         echo'    <form action="onsbmit.php" method="post">   ';
-        echo' <input type="text" name="Comment"  id="input1">';
-		if($this->id !=$this->Get_Id_From_Session($db))
-
-        echo '<input type= "hidden"  name="Commentor_id"  value="'.$Commentor_id.'" >   ';
-        echo '<input type= "hidden"  name="User_id"  value="'.$this->id.'" > ';
-        echo '<input type= "hidden"  name="rating"  value="" id="ratings" >   ';
-        echo' <input type="submit" name="commenter" value="commenter" id="submitreview" hidden><label for="submitreview" class="fa fa-send" id="submitreview2"></label></div>
-      ';
-                      echo'   </form>    ';
-
-
-  }
-
-}
-
 
 
 
@@ -331,9 +296,11 @@ function Show_All_Comments($db){
 
 
 $res=mysqli_query($db,"SELECT * FROM comments WHERE User_id='$this->id'");
-
-while($row=mysqli_fetch_array($res))
-  {
+$fortest = mysqli_num_rows($res) ;
+if($fortest>0)
+while($row=mysqli_fetch_array($res)){
+	
+	
 
 
 $Commentor_id=$row['Commentor_id'] ;
@@ -386,6 +353,9 @@ echo "</div>";
 
 }
 
+
+else  if ($this->Check_Session_Isset()) { echo' <h1> أضف أول تقييم </h1>'; }
+       else echo '<h1> لايوجد أي تقييم  </h1>';
 }
 
 

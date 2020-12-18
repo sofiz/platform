@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="resetpass.css">
 </head>
 <body>
+<?php include('topbar.php'); ?>
 <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
 	<form class="login-form" action="<?php $actual_link ?>" method="post">
 		<h2 class="form-title">New password</h2>

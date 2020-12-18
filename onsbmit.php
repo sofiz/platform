@@ -84,7 +84,7 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
   if (empty($Job)) { array_push($errors, "Job is required"); }
   if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }
   
-
+if ($_FILES['fileToUpload']['size'] != 0 ){
 
   $tar="imgs/";
   //$tar=$tar.basename($_FILES['fileToUpload']['name']);
@@ -114,7 +114,7 @@ $in = in_array($detectedType, $allowedTypes);
 			
 compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,60);
 }
-} 
+}  }
 ///*************** UPDATE data *********************************************
 if(count($errors) == 0) {
 	$query = "UPDATE users
@@ -125,28 +125,17 @@ if(count($errors) == 0) {
 }
 header('location:my-profile.php');
 }
-
-
-
-
-
-
-
-
 ///-------------------------------------------------------------------------------------------------------
-if (isset($_POST['savepics'])){
 
+if (isset($_POST['savepics'])){
+	
+if ($_FILES['uploadpic']['size'] != 0 ){
+   
 	/////-------------------- Get id -------------------
 	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
 	
 	while($row=mysqli_fetch_array($re))
     {$id=$row['id']; }
-
-
-
-	
-	
-	
 $getmaxid = mysqli_query($db," SELECT MAX(Photo_id) AS id FROM photos ");
 $row77 = mysqli_fetch_array($getmaxid);
 $maxid=$row77["id"];
@@ -181,9 +170,12 @@ $in = in_array($detectedType, $allowedTypes);
 			  compressImage($_FILES['uploadpic']['tmp_name'],$tar.$newname.".".$extension,60);
 			          }
   }
-	header('location:profile_edit.php');
-	mysqli_close ( $db );
+	
 
+
+header('location:profile_edit.php');
+mysqli_close ( $db );
+}
 }
 //////////////delete account /////////////////
 if (isset($_POST['delete'])){
@@ -217,12 +209,6 @@ if (isset($_POST['delete'])){
     header('location:logout.php');
 	
 }
-
-
-
-
-
-
 
 if (isset($_POST['DeleteComment'])){ 
 

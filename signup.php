@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SignUp</title>
+<title>إنشاء حساب</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -16,6 +16,7 @@
 <!-- //web font -->
 </head>
 <body>
+<?php include('topbar.php'); ?>
 	<!-- main -->
 	<div class="main-w3layouts wrapper" >
 
@@ -33,20 +34,20 @@
 				<form action="signup.php" method="post">
 				<?php include('errors.php'); ?>
 				<select name="Type" >
-<option value="woker"  > worker</option>
-<option value="client"  > client</option>
+<option value="woker"  > عامل</option>
+<option value="client"  > زبون</option>
 
 					</select>
 
-				   <input class="text" type="text" name="Username" placeholder="Username" required="">
-                    <input class="text" type="text" name="First_Name" placeholder="First Name" required="">
-				    <input class="text" type="text" name="Last_Name" placeholder="Last Name" required="">
+				   <input class="text" type="text" name="Username" placeholder="إسم المستخدم" required="">
+                    <input class="text" type="text" name="First_Name" placeholder="الإسم " required="">
+				    <input class="text" type="text" name="Last_Name" placeholder="اللقب" required="">
 
-					<input class="text email" type="email" name="Email" placeholder="Email" required="">
-					<input class="text" type="password" name="Password_1" placeholder="Password" required="">
-					<input class="text w3lpass" type="password" name="Password_2" placeholder="Confirm Password" required="">
+					<input class="text email" type="email" name="Email" placeholder="الإيميل" required="">
+					<input class="text" type="password" name="Password_1" placeholder="كلمة السر" required="">
+					<input class="text w3lpass" type="password" name="Password_2" placeholder="تأكيد كلمة السر" required="">
 
-					<input class="text" type="text" name="Phone" placeholder="phone" required="">
+					<input class="text" type="text" name="Phone" placeholder="رقم الهاتف" required="">
 					<select name="Job" >
 					<option value="" disabled selected>المهنة</option>
        <option value="بناء">بناء</option>
@@ -144,13 +145,13 @@ $(document).ready(function(){
 					<div class="wthree-text">
 						<label class="anim">
 							<input type="checkbox" class="checkbox" required="">
-							<span>I Agree To The Terms & Conditions</span>
+							<span>أوافق على الأحكام والشروط</span>
 						</label>
 						<div class="clear"> </div>
 					</div>
-					<input type="submit" name="SIGNUP"  value="SIGNUP">
+					<input type="submit" name="SIGNUP"  value="إنشاء الحساب">
 				</form>
-				<p>Don't have an Account? <a href="signin.php"> Login Now!</a></p>
+				<p> لديك حساب؟ <a href="signin.php"> تسجيل الدخول </a></p>
 			</div>
 		</div>
 		<!-- copyright -->

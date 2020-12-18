@@ -23,7 +23,7 @@ $c->Get_Rating_Profile($db);
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>profile</title>
+    <title><?php echo $c->First_Name .' '. $c->Last_Name ; ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
@@ -82,7 +82,13 @@ $c->Get_Rating_Profile($db);
 
 			    <div class="info">
 						<span class="fas fa-map-marker" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
-			      <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;"><?php echo $c->Wilaya.", ".$c->Daira.", ".$c->Commune ; ?></span>
+			     <?php if(empty($c->Daira)&&empty($c->Commune))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.'</span>';
+         if(!empty($c->Daira)&&empty($c->Commune))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.'</span>';
+		if(!empty($c->Daira)&&!empty($c->Commune))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.','.$c->Commune.'</span>';
+		?>
 			    </div>
 
 					<div class="info">
@@ -110,7 +116,7 @@ $c->Get_Rating_Profile($db);
 
 <div id="square2">
 
-    <strong class="titles">Description</strong>
+    <strong class="titles">الوصف</strong>
   <div class="description">
     <p  id="descriptiontxt"><?php echo $c->Description ; ?></p>
   </div>
@@ -119,7 +125,7 @@ $c->Get_Rating_Profile($db);
 </div>
 
 <div id="square3">
-    <strong id="photostitle" class="titles">Pictures</strong>
+    <strong id="photostitle" class="titles">الصور</strong>
     <div class="photocontainer">
 
 
@@ -174,11 +180,11 @@ $c->Show_All_Photos();
 
 
 <div class="square4">
-  <strong class="titles">Reviews</strong>
+  <strong class="titles">التقييمات</strong>
 <?php
 
 //-------------for my comment-------------------------------------------
-$c->For_My_Comment ($db);
+$c->For_My_Comment($db);
 //------------------------------for show all comments------------------
 $c->Show_All_Comments($db);
 

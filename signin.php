@@ -1,7 +1,8 @@
 ﻿<?php include('server.php') ?>
+
 <html>
 <head>
-<title> Sign in </title>
+<title> تسجيل الدخول </title>
 <link href="style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="style_signup.css" rel="stylesheet" type="text/css" media="all" />
 
@@ -23,17 +24,16 @@
     </form>
 	-->
 
-
-
+<?php include('topbar.php'); ?>
 
     <form class="login-form" action="signin.php" method="post" >
 	<?php include('errors.php'); ?>
-      <input type="text" name="Username" placeholder="username" required="" >
-      <input type="password" name="Password"  placeholder="password"  >
-      <input type="submit" value="login" name="login">
+      <input type="text" name="Username" placeholder="إسم المستخدم" required="" >
+      <input type="password" name="Password"  placeholder="كلمة السر"  >
+      <input type="submit" value="دخول" name="login">
 	  </form>
-	  <p><a href="enter_email.php" style="color: #067bba;text-decoration: none;">Forgot your password?</a></p>
-      <p class="message">Not registered? <a href="signup.php" >Create an account</a></p>
+	  <p><a href="enter_email.php" style="color: #067bba;text-decoration: none;">نسيت كلمة السر؟ </a></p>
+      <p class="message"> أنت غير مسجل؟ <a href="signup.php" >إنشاء حساب</a></p>
 
 
 

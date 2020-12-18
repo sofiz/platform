@@ -21,7 +21,7 @@ $c->Get_Rating_Profile($db);
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>My Profile</title>
+    <title>حسابي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
@@ -66,7 +66,14 @@ $c->Get_Rating_Profile($db);
 
 			    <div class="info">
 						<span class="fas fa-map-marker" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
-			      <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;"><?php echo $c->Wilaya.", ".$c->Daira.", ".$c->Commune ; ?></span>
+		<?php if(empty($c->Daira)&&empty($c->Commune))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.'</span>';
+         if(!empty($c->Daira)&&empty($c->Commune))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.'</span>';
+		if(!empty($c->Daira)&&!empty($c->Commune))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.','.$c->Commune.'</span>';
+		?>
+		
 			    </div>
 
 					<div class="info">
@@ -89,7 +96,7 @@ $c->Get_Rating_Profile($db);
 
     </div>
     <div id="profileeditbtnp">
-<a class="btn1" href="profile_edit.php" style="color:#ffffffeb;">Edit Profile</a>
+<a class="btn1" href="profile_edit.php" style="color:#ffffffeb;">تعديل الحساب</a>
 </div>
 </div>
 <div class="s1s2">
@@ -97,7 +104,7 @@ $c->Get_Rating_Profile($db);
 
 <div id="square2">
 
-<strong class="titles">Description</strong>
+<strong class="titles">الوصف</strong>
   <div class="description">
 
     <span><?php echo $c->Description ; ?></span>
@@ -107,13 +114,13 @@ $c->Get_Rating_Profile($db);
 </div>
 
 <div id="square3">
-    <strong id="photostitle" class="titles">Pictures</strong>
+    <strong id="photostitle" class="titles">الصور</strong>
     <div class="photocontainer">
 	<?php
 	$c->Show_Three_Photos();
 	 ?>
     </div>
-    <button id="viewallpic" type="button" name="button">See all</button>
+    <button id="viewallpic" type="button" name="button">مشاهدة الكل </button>
 </div>
 </div>
 
@@ -155,11 +162,11 @@ $c->Show_All_Photos();
 
 
 <div class="square4">
-  <strong class="titles">Reviews</strong>
+  <strong class="titles">التقييمات</strong>
 <?php
 
 //-------------for my comment------------
-$c->For_My_Comment2 ($db);
+$c->For_My_Comment($db);
 //-----------for show all comments-------
 $c->Show_All_Comments($db);
 mysqli_close($db);

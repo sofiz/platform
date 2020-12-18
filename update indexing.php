@@ -254,7 +254,13 @@ $ligature_map = array(
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row0['id'].'" class="name">  '. $row0['First_Name']." ".$row0['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row0['Phone'] .  '</p> ';
-                                      echo' <p class="info">'. $row0['Wilaya'].', '.$row0['Daira'].', '.$row0['Commune'].'</p>  </div> </div>   ';
+                        if(empty($row0['Daira'])&&empty($row0['Commune']))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row0['Wilaya'].'</span>';
+         if(!empty($row0['Daira'])&&empty($row0['Commune']))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row0['Wilaya'].','.$row0['Daira'].'</span>';
+		if(!empty($row0['Daira'])&&!empty($row0['Commune']))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row0['Wilaya'].','.$row0['Daira'].','.$row0['Commune'].'</span>  </div> </div>   ';
+		
                                       array_push($arr,$row0['id']);
 				                 	  }}
 		                                }
@@ -327,7 +333,12 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row2['id'].'" class="name">  '. $row2['First_Name']." ".$row2['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row2['Phone'] .  '</p> ';
-                                      echo' <p class="info">'. $row2['Wilaya'].', '.$row2['Daira'].', '.$row2['Commune'].'</p>  </div> </div>   ';
+                                    if(empty($row2['Daira'])&&empty($row2['Commune']))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row2['Wilaya'].'</span>';
+         if(!empty($row2['Daira'])&&empty($row2['Commune']))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row2['Wilaya'].','.$row2['Daira'].'</span>';
+		if(!empty($row2['Daira'])&&!empty($row2['Commune']))
+         echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row2['Wilaya'].','.$row2['Daira'].','.$row2['Commune'].'</span>  </div> </div>   ';
                                       array_push($arr,$row2['id']);
 				                 	  }}
 		                                }     }

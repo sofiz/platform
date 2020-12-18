@@ -21,7 +21,7 @@ $c->Select_Photos_Of_Profile ($db);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Profile Edit</title>
+  <title>تعديل الحساب</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
   <link rel="stylesheet" href="profile.css">
@@ -63,8 +63,8 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 
 
 	<div id="settingselements">
-	<label for="resetpass" id="resetpasslab">reset</label>
-	<label for="deleteprofile" id="deleteprofilelab">delete</label>
+	<label for="resetpass" id="resetpasslab"> تحديث كلمة السر </label>
+	<label for="deleteprofile" id="deleteprofilelab">حدف الحساب</label>
 	</div>
 	<button type="button" name="settingsbtn" id="settingsbtn" onclick="options()"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
 	</div>
@@ -157,11 +157,10 @@ document.getElementById("mySelectwilaya").classList.add('dropdown2');
 
 //*************** default ********
 var option = document.createElement("option");
-    option.value = "" ;
+    option.value = "";
 	option.text = document.getElementById("Wilaya").value ;
 	selectList.appendChild(option);
 //Create and append the options
-
 
 
 
@@ -177,54 +176,78 @@ for (i in arr.wilayas) {
 
 }
 document.getElementById("mySelectwilaya").options[0].disabled = true;
+
 /////****************************** for daira ***************
 var myParent2 = document.getElementById("dropdowns")
 //Create and append select list
 var selectList2 = document.createElement("select");
 selectList2.id = "mySelectdaira";
 myParent2.appendChild(selectList2);
+
 document.getElementById("mySelectdaira").classList.add('dropdown2');
+
 
 
 
 //*************** default ********
 var option = document.createElement("option");
-    option.value = "" ;
-    option.text =document.getElementById("Daira").value ;
+  
+	if ( document.getElementById("Daira").value === ""  ) {
+		option = document.createElement("option");
+		option.text = "إختر دائرة" ;
+        option.value = "" ;  
+        option.selected = "selected";
+		selectList2.appendChild(option);
 
-	selectList2.appendChild(option);
+}
+   else { 
+          option = document.createElement("option");
+          option.text = "إختر دائرة" ;
+          option.value = "" ;  
+		  option.selected = "selected";
+		  selectList2.appendChild(option);
+		  
+		  option = document.createElement("option");
+          option.text = document.getElementById("Daira").value ;
+	      option.value = document.getElementById("Daira").value ;
+		  option.selected = "selected";
+		  selectList2.appendChild(option);
 
-
+		  }
+	
+document.getElementById("mySelectdaira").options[0].disabled = true;
 
  var wilayacode;
  var dairacode ;
 
 
   $(document).ready(function(){
-
-
     $("#mySelectwilaya").change(function(){
         wilayacode = $(this).children("option:selected").val();
 		//********* set value of wilaya in input ********
 
 		document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
-
         //alert("You have selected wilaya - " + wilayacode);
 
         $('#mySelectdaira').find('option:not(:first)').remove();
 		$('#mySelectcommune').find('option:not(:first)').remove();
-
+		
+		document.getElementById("mySelectdaira").options[0].selected = "selected";
+        document.getElementById("mySelectcommune").options[0].selected = "selected";
+		
+		document.getElementById("Daira").value="";
+		document.getElementById("Commune").value="";
+		
 		for (j in arr.wilayas[wilayacode].dairas) {
 		var option = document.createElement("option");
 	option.value = j ;
     option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
-
-
     selectList2.appendChild(option);
            }
 
-document.getElementById("mySelectdaira").options[0].disabled = true;
-		   });   });
+
+		   });   
+		   });
 
 		   //****************************** for communes *******************
 		   var myParent3 = document.getElementById("dropdowns")
@@ -237,24 +260,42 @@ document.getElementById("mySelectcommune").classList.add('dropdown2');
 
 //*************** default ********
 var option = document.createElement("option");
-    option.value = "" ;
-    option.text = document.getElementById("Commune").value ;
-	selectList3.appendChild(option);
 
+
+if ( document.getElementById("Commune").value === ""  ) {
+		option = document.createElement("option");
+		option.text = "إختر بلدية" ;
+        option.value = "" ;  
+        option.selected = "selected";
+		selectList3.appendChild(option);
+
+}
+   else { 
+          option = document.createElement("option");
+          option.text = "إختر بلدية" ;
+          option.value = "" ;  
+		  option.selected = "selected";
+		  selectList3.appendChild(option);
+		  
+		  option = document.createElement("option");
+          option.text = document.getElementById("Commune").value ;
+	      option.value = document.getElementById("Commune").value ;
+		  option.selected = "selected";
+		  selectList3.appendChild(option);
+
+		  }
+	
+document.getElementById("mySelectcommune").options[0].disabled = true;
 
 	$(document).ready(function(){
-
-
     $("#mySelectdaira").change(function(){
         var dairacode = $(this).children("option:selected").val();
         //alert("You have selected wilaya - " + dairacode);
-		//********* set value of wilaya in input ********
-
+		//********* set value of daira in input ********
 		 document.getElementById("Daira").value= arr.wilayas[wilayacode].dairas[dairacode].name_ar;
-
-
         $('#mySelectcommune').find('option:not(:first)').remove();
-
+        document.getElementById("mySelectcommune").options[0].selected = "selected";
+		document.getElementById("Commune").value="";
 		for (k in arr.wilayas[wilayacode].dairas[dairacode].communes) {
 		var option = document.createElement("option");
 	option.value = k ;
@@ -264,7 +305,7 @@ var option = document.createElement("option");
     selectList3.appendChild(option);
            }
 
-document.getElementById("mySelectcommune").options[0].disabled = true;
+
 
 
 
@@ -275,7 +316,7 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
     $("#mySelectcommune").change(function(){
         var communecode = $(this).children("option:selected").val();
 
-		//********* set value of wilaya in input ********
+		//********* set value of commne in input ********
 
 		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name_ar;
 
@@ -299,7 +340,7 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 
 
 <div class="description2">
-  <strong>Description</strong>
+  <strong>الوصف</strong>
   <br>
   <textarea type="text" name="Description" value="" class="descriptioninp"><?php echo $c->Description  ?></textarea>
 </div>
@@ -308,11 +349,11 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 </div>
 
 <div id="square3">
-<button type="button" id="picsbtn">Edit you photos</button>
+<button type="button" id="picsbtn">تعديل الصور</button>
 
   <!-- Trigger/Open The Modal -->
 
-<strong id="photostitle" class="titles">Pictures</strong>
+<strong id="photostitle" class="titles">الصور</strong>
 
   <div class="photocontainer">
 		<?php
@@ -328,12 +369,12 @@ $c->Show_Three_Photos();
 
 <a  href="my-profile.php" class="btn">
 <i class="fa fa-times "></i>
-<span>cancel</span>
+<span>الغاء</span>
 </a>
 
 
 
-<input type="submit" value="save" name="save" id="save">
+<input type="submit" value="حفظ" name="save" id="save">
 <i class="fa fa-check icn"></i>
 
 </div>
@@ -355,10 +396,10 @@ $c->Show_Three_Photos();
     <div class="piceditbtn">
 
       <input type="file" name="uploadpic" id="uploadpic" onchange="readURL(this);"  hidden>
-      <label for="uploadpic" id="uploadpicbtn" >Upload</label>
+      <label for="uploadpic" id="uploadpicbtn" >تحميل</label>
 
 
-      <input type="button" name="savepics" value="savepics" id="b1" onclick="send()">
+      <input type="button" name="savepics" value="حفظ الصور" id="b1" onclick="send()">
 
 	  <input type="submit" id="b2" name="savepics" hidden>
 
@@ -383,22 +424,12 @@ function myFunction(x) {
   var myobj = document.getElementById("pic"+x);
   myobj.remove();
   ids.push(x);
-  /*$(document).ready(function(){
-          $.ajax({
-          type:"POST",
-          url:"page.php",
-          data:{ids:x},
-          success:function(result){
-          $("#results").html(result);
-          }
-          });
-     });
-     */
 }
 
 function send(){
 
 $(document).ready(function(){
+	if(ids.length>0){
 ids = JSON.stringify(ids);
 $.ajax({
     contentType: "application/json; charset=utf-8",
@@ -412,6 +443,9 @@ $.ajax({
     },
 
 });
+
+ }
+
 });
 }
 

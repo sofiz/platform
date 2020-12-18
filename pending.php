@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="resetpass.css">
 </head>
 <body>
-
+<?php include('topbar.php'); ?>
 	<form class="login-form" action="login.php" method="post" style="text-align: center;">
 		<p class="msg">
 			We sent an email to  <b><?php echo $_GET['email'] ?></b> to help you recover your account.

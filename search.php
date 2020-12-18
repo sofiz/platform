@@ -15,7 +15,7 @@ $obj = new \ArPHP\I18N\Arabic();
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Search Page</title>
+    <title>صفحة البحث</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="search.css">
@@ -30,7 +30,7 @@ $obj = new \ArPHP\I18N\Arabic();
 <form action="search.php" method="get">
 
     <div class="searchbar">
-    <input type="text" name="search" placeholder="search" class="searchinput">
+    <input type="text" name="search" placeholder=" ابحث عن" class="searchinput">
     <div id="myDIV">
       <select class="dropdown" name="Job" >
 	  
@@ -86,7 +86,7 @@ document.getElementById("mySelectwilaya").classList.add('dropdown');
 //*************** default ********
 var option = document.createElement("option");
     option.value = "" ;
-    option.text = "اختر ولاية" ;
+    option.text = "إختر الولاية" ;
 	option.selected = "selected";
 	selectList.appendChild(option);
 //Create and append the options
@@ -123,7 +123,7 @@ document.getElementById("mySelectwilaya").options[0].disabled = true;
 	</script>
 	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
     </div>
-    <input type="submit" name="recherche"  value= "recherche" class="searchbtn">
+    <input type="submit" name="recherche"  value= "بحث" class="searchbtn">
 				</form>
 				
 				<?php include('update indexing.php'); ?>
