@@ -73,7 +73,7 @@ $c->Get_Rating_Profile($db);
 		if(!empty($c->Daira)&&!empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.','.$c->Commune.'</span>';
 		?>
-		
+
 			    </div>
 
 					<div class="info">
@@ -88,13 +88,13 @@ $c->Get_Rating_Profile($db);
 
 
 
-<?php  if($c->Birthday !=  "0000-00-00")  
+<?php  if($c->Birthday !=  "0000-00-00")
     {
-	    echo ' <div class="info"> <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> '; 
-        echo '<span>  ' . $c->Age($c->Birthday)  .'</span> </div>'; 
+	    echo ' <div class="info"> <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ';
+        echo '<span>  ' . $c->Age($c->Birthday)  .'</span> </div>';
     }
 ?>
-    
+
 
     </div>
     <div id="profileeditbtnp">
@@ -270,6 +270,16 @@ mysqli_close($db);
 
 
   var pictures = document.getElementsByClassName("pictures");
+  s=[];
+  for (p in pictures){
+  s.push(pictures[p].src)
+  }
+  s.remove(undefined);
+  number_of_pics = s.length - 1;
+
+  if (number_of_pics<=3) {
+    document.getElementById('viewallpic').style.display='none';
+  }
 
   function slide(e){
 
@@ -324,6 +334,7 @@ mysqli_close($db);
   }
 
   //slide()
+
 
   function next(){
     n=n+1;

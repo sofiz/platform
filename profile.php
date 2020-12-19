@@ -103,10 +103,10 @@ $c->Get_Rating_Profile($db);
 
 
 
-<?php  if($c->Birthday !=  "0000-00-00")  
+<?php  if($c->Birthday !=  "0000-00-00")
     {
-	    echo ' <div class="info"> <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> '; 
-        echo '<span>   ' . $c->Age($c->Birthday)  .'</span> </div>'; 
+	    echo ' <div class="info"> <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ';
+        echo '<span>   ' . $c->Age($c->Birthday)  .'</span> </div>';
     }
 ?>
     </div>
@@ -277,6 +277,17 @@ $c->Show_All_Comments($db);
 
 
  var pictures = document.getElementsByClassName("pictures");
+ s=[];
+ for (p in pictures){
+ s.push(pictures[p].src)
+ }
+ s.remove(undefined);
+ number_of_pics = s.length - 1;
+
+ if (number_of_pics<=3) {
+   document.getElementById('viewallpic').style.display='none';
+ }
+
 window.onerror = stoperror;
  function slide(e){
 
@@ -303,14 +314,23 @@ window.onerror = stoperror;
  var nx=document.getElementById("next");
 
  l = s.length - 1;
- console.log(l);
- if (n==0){
+ console.log("L="+l);
+ console.log("n="+n);
+
+ if (n==0 && l!=0){
 
    d.style.display = "none";
+   nx.style.display = "block";
+ }
+ else if (n==0 && l==0){
+
+   d.style.display = "none";
+   nx.style.display = "none";
  }
 
- else if (n==l){
+ else if (n==l && n!=0){
    nx.style.display = "none";
+   d.style.display = "block";
  }
 
  else {
@@ -318,7 +338,6 @@ window.onerror = stoperror;
    nx.style.display = "block";
 
  }
-
  }
 
  //slide()

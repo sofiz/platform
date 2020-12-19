@@ -1,10 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url(//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat);
+
 
 
 
 .topbar{
 
   background: linear-gradient(135deg, #0096C7, #0077B6);
+  font-family: 'jf flat'
       width: 200px;
       height: 100%;
       top: 0px;
@@ -33,7 +36,8 @@
       cursor: pointer;
       color: #edf6fc;
       border-bottom: 1px solid #bcbcbd;
-      width: 90%;
+      width: -webkit-fill-available;
+
 
 }
 
@@ -83,7 +87,7 @@
 
   color: #edf6fc;
       font-size: 20px;
-      font-family: 'Roboto';
+      font-family: 'jf flat';
       margin-left: 15px;
       text-decoration: none;
 }

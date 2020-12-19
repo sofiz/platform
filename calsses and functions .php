@@ -22,7 +22,7 @@ class user {
 	  public $Last_Name;
 	  public $id;
 	  public $Job;
-      
+
       public $ids ;
 
 
@@ -35,7 +35,7 @@ class user {
   $aujourdhui = date("Y-m-d");
   $diff = date_diff(date_create($dateNaissance), date_create($aujourdhui));
   return $diff->format('%y')."سنة"; }
-  
+
 }
 
 
@@ -266,7 +266,7 @@ function For_My_Comment ($db){
         echo'  <img src="imgs/'.  $Profile_Pic    .'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
          echo'    <form action="onsbmit.php" method="post">   ';
         echo' <input type="text" name="Comment"  id="input1">';
-		
+
 		if($this->id !=$this->Get_Id_From_Session($db))
       	echo '  <div id="rater"></div> ';
 
@@ -305,8 +305,8 @@ $res=mysqli_query($db,"SELECT * FROM comments WHERE User_id='$this->id'");
 $fortest = mysqli_num_rows($res) ;
 if($fortest>0)
 while($row=mysqli_fetch_array($res)){
-	
-	
+
+
 
 
 $Commentor_id=$row['Commentor_id'] ;
@@ -360,8 +360,8 @@ echo "</div>";
 }
 
 
-else  if ($this->Check_Session_Isset()) { echo' <h1> أضف أول تقييم </h1>'; }
-       else echo '<h1> لايوجد أي تقييم  </h1>';
+else  if ($this->Check_Session_Isset()) { echo' <p> أضف أول تقييم </p>'; }
+       else echo '<p> لايوجد أي تقييم  </p>';
 }
 
 
