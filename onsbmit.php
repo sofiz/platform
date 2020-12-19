@@ -85,8 +85,20 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
   if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }
   
 if ($_FILES['fileToUpload']['size'] != 0 ){
+	
+	
+	
+if (!file_exists('imgs/'.$id)) {
+	
+    mkdir('imgs/'.$id, 0777, true);
+	
+}
 
-  $tar="imgs/";
+
+  $tar= 'imgs/'.strval($id).'/';
+  
+  
+  
   //$tar=$tar.basename($_FILES['fileToUpload']['name']);
  // $pic=($_FILES['fileToUpload']['name']) ;
 $extension = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
@@ -109,7 +121,7 @@ $in = in_array($detectedType, $allowedTypes);
         $queryi = "UPDATE users SET Profile_Pic='$pic' where id ='$id' ";
 		if ($pic!=""){
 			mysqli_query($db, $queryi);
-            unlink('imgs/'.$Profile_Pic);
+            unlink('imgs/'.strval($id).'/'.$Profile_Pic);
 			//move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
 			
 compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,60);
@@ -133,6 +145,12 @@ if (isset($_POST['savepics'])){
 	
 	foreach($_FILES['uploadpic']['name'] as $key=>$val){ 
 	if ($_FILES['uploadpic']['size'][$key] != 0 	&& $_FILES['uploadpic']['size'][$key] < 2097152 ){
+		
+		if (!file_exists('imgs/'.$id)) {
+	
+    mkdir('imgs/'.$id, 0777, true);
+	
+}
 	/////-------------------- Get id -------------------
 	
 	$re=mysqli_query($db,"SELECT id FROM users WHERE 	Username='$Username'");
@@ -147,7 +165,7 @@ $maxid=$row77["id"];
 	
 	$newname = strval($id).strval($maxid); 
 
-  $tar="imgs/";
+  $tar='imgs/'.$id.'/';
   //$tar=$tar.basename($_FILES['uploadpic']['name']) ;
   
   $extension = pathinfo($_FILES["uploadpic"]["name"][$key], PATHINFO_EXTENSION);
@@ -186,6 +204,8 @@ mysqli_close ( $db );
 
 }
 //////////////delete account /////////////////
+
+
 if (isset($_POST['delete'])){
 	
 	$id=$_POST['id'];

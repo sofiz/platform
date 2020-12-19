@@ -140,14 +140,13 @@ function Select_Photos_Of_Profile ($db){
                  }
     while($row=mysqli_fetch_array($ress))
                    {
-     array_push($this->Photo,"imgs/".$row['Photo_Path']);
+     array_push($this->Photo,"imgs/".$this->id.'/'.$row['Photo_Path']);
 	 array_push($this->Photo_id,$row['Photo_id']);
 
                    }
 
 
 }
-
 
 
 

@@ -70,12 +70,12 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 	</div>
 </div>
 <div class="" style="border-radius: inherit;">
-  <img id="pic"  src="imgs/<?php   echo  $c->Profile_Pic; ?>" alt="" >
+  <img id="pic"  src="imgs/<?php echo $c->id.'/'. $c->Profile_Pic; ?>" alt="" >
 
 
 
 
-  <input type="file" name="fileToUpload" id="fileToUpload" onchange="readURL(this),Filevalidation0();" hidden>
+  <input type="file" name="fileToUpload" id="fileToUpload" onchange="readURL1(this),Filevalidation0();" hidden>
   <label for="fileToUpload" id="uploadbtn" class="fa fa-user" ></label>
   </div>
 <div class="nameinp">
@@ -129,6 +129,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 
    <?php echo ' <input type="text" name="Wilaya" id="Wilaya"  value="'.$c->Wilaya.'" class="inputinf" hidden>'; ?>
   </div>
+  
   <div class="info2"hidden>
     <?php echo ' <input type="text" name="Daira" id="Daira"  value="'.$c->Daira.'" class="inputinf" hidden>'; ?>
   </div>
@@ -137,7 +138,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
   </div>
   <div class="info2">
   
-  <label for="birthday"><?php echo $c->Age($c->Birthday); ?></label>
+  <label for="birthday"> <?php echo $c->Age($c->Birthday); ?> </label>
   
    <input type="date" id="birthday" name="Birthday">
    
