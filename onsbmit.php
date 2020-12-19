@@ -127,7 +127,7 @@ $in = in_array($detectedType, $allowedTypes);
 compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,60);
 }
 }  }
-///*************** UPDATE data *********************************************
+///***************************************** UPDATE data *********************************************
 if(count($errors) == 0) {
 	$query = "UPDATE users
 	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Wilaya='$Wilaya',Daira='$Daira',Commune='$Commune',Birthday='$Birthday',Description='$Description'  WHERE id='$id'" ;

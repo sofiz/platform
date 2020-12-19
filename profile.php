@@ -62,7 +62,7 @@ $c->Get_Rating_Profile($db);
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/'.$c->Profile_Pic.'"  alt="" onclick="slide(this.src)" class="pictures" > '; ?>
+   <?php echo' <img id="pic"  src="imgs/'.$c->id.'/'.$c->Profile_Pic.'"  alt="" onclick="slide(this.src)" class="pictures" > '; ?>
 
     <strong id="name" ><?php echo $c->First_Name .' '. $c->Last_Name ; ?> </strong>
 
@@ -184,6 +184,7 @@ $c->Show_All_Photos();
 <?php
 
 //-------------for my comment-------------------------------------------
+
 $c->For_My_Comment($db);
 //------------------------------for show all comments------------------
 $c->Show_All_Comments($db);

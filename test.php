@@ -18,6 +18,6 @@ echo $soundex ;  */
 
 
 echo __DIR__ ; 
-mkdir('imgs\riyadderbale') ;
+mkdir('imgs\') ;
 
 ?>

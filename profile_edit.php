@@ -140,7 +140,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
   
   <label for="birthday"> <?php echo $c->Age($c->Birthday); ?> </label>
   
-   <input type="date" id="birthday" name="Birthday">
+   <input type="date" id="birthday" name="Birthday" value="<?php echo $c->Birthday ; ?>" >
    
    
   </div>
