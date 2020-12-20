@@ -234,7 +234,7 @@ function  Show_All_Photos_In_Edit() {
 	// -------------show photos in window and save (Photos_ids) in array if user click on X -----------------------
 	for($j=0;$j<$this->nphotos;$j++){
      echo '<div id="pic'.$this->Photo_id[$j].'" class="piccontainer">';
-     echo '<img src="'. $this->Photo[$j] .'" alt="" class="imgs2">';
+     echo '<img src="'.$this->Photo[$j].'" alt="" class="imgs2">';
      echo ' <button id="deletepic1" type="button" name="deletepic" class="closepic" onclick="myFunction('.$this->Photo_id[$j].')"> &times; </button> ';
 	 echo ' </div>';
 
@@ -272,7 +272,6 @@ function For_My_Comment($db){
 			  echo' <input type="text" name="Comment"  id="input1">'; 
       	 echo '  <div id="rater"></div> ';
 		
-		 
           }
  
          else echo' <input type="text" name="Comment"  id="input2">';
