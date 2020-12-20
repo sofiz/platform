@@ -50,7 +50,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 <?php //include('errors.php'); ?>
 
 
-
+<button type="button" name="button" id="confirmdelete" hidden></button>
 
 <form class="f" action="onsbmit.php" method="post"  enctype="multipart/form-data" >
 
@@ -64,13 +64,13 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 
 	<div id="settingselements">
 	<label for="resetpass" id="resetpasslab"> تحديث كلمة السر </label>
-	<label for="deleteprofile" id="deleteprofilelab">حدف الحساب</label>
+	<label for="confirmdelete" id="deleteprofilelab">حدف الحساب</label>
 	</div>
 	<button type="button" name="settingsbtn" id="settingsbtn" onclick="options()"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
 	</div>
 </div>
 <div class="" style="border-radius: inherit;">
-  <img id="pic"  src="../imgs/<?php echo $c->id.'/'. $c->Profile_Pic; ?>" alt="" >
+  <img id="pic"  src="imgs/<?php echo $c->id.'/'. $c->Profile_Pic; ?>" alt="" >
 
 
 
@@ -88,6 +88,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
   <div class="infocontain2">
 
 		<div class="info2">
+			<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
 	    <select type="text" name="Job" id="jobinp"  class="dropdown2">
 <option value="<?php  echo$c->Job ?>"> <?php  echo$c->Job ?></option>
        <option value="بناء">بناء</option>
@@ -110,15 +111,17 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 </select>
 	  </div>
 
- <div id="dropdowns" style="position: relative;
+   <div id="dropdowns" style="position: relative;
     top: 15px;
-    left: -10px;" ></div>
+    left: -10px;" >	<span class="fas fa-map-marker" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;margin-left: 11px;"></span></div>
 
  <div class="info2">
+	 <span class="fas fa-phone" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
 	 <input type="text" name="Phone" value="<?php echo $c->Phone ?>" class="inputinf">
  </div>
 
   <div class="info2">
+		<span class="fas fa-envelope" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
     <input type="text" name="Email" value="<?php echo $c->Email ?>" class="inputinf">
   </div>
 
@@ -129,7 +132,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 
    <?php echo ' <input type="text" name="Wilaya" id="Wilaya"  value="'.$c->Wilaya.'" class="inputinf" hidden>'; ?>
   </div>
-  
+
   <div class="info2"hidden>
     <?php echo ' <input type="text" name="Daira" id="Daira"  value="'.$c->Daira.'" class="inputinf" hidden>'; ?>
   </div>
@@ -137,19 +140,21 @@ onclick="window.location.href = 'enter_email.php';" hidden>
     <?php echo ' <input type="text" name="Commune" id="Commune"  value="'.$c->Commune.'" class="inputinf" hidden>'; ?>
   </div>
   <div class="info2">
-  
-  <label for="birthday"> <?php echo $c->Age($c->Birthday); ?> </label>
-  
+<span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span>
+  <label for="birthday" style="font-size: 15px;"> <?php echo $c->Age($c->Birthday); ?> </label>
+
    <input type="date" id="birthday" name="Birthday" value="<?php echo $c->Birthday ; ?>" >
-   
-   
+
+
   </div>
+
 
 
   </div>
 </div>
 
 <script>
+//	<button type="button" name="button" class="uploadpicbtn">more</button>
 
 //************************** for wilaya *******************
 var wilayacode;
@@ -166,9 +171,9 @@ document.getElementById("mySelectwilaya").classList.add('dropdown2');
 var option = document.createElement("option");
 
     option.value = document.getElementById("Wilaya").value;
-	
+
 	option.text = document.getElementById("Wilaya").value ;
-	
+
 	option.selected = "selected";
 	selectList.appendChild(option);
 //Create and append the options
@@ -180,15 +185,16 @@ for (i in arr.wilayas) {
 
    var option = document.createElement("option");
     option.value = i ;
-	
+
 	if(arr.wilayas[i].name_ar===document.getElementById("Wilaya").value)
 	var k = i ;
-	
+
     option.text = arr.wilayas[i].name_ar;
     selectList.appendChild(option);
 
 
 }
+
 
 document.getElementById("mySelectwilaya").options[0].disabled = true;
 
@@ -207,91 +213,91 @@ document.getElementById("mySelectdaira").classList.add('dropdown2');
 
 //*************** default ********
 var option = document.createElement("option");
-  
+
 	if ( document.getElementById("Daira").value === ""  ) {
-		
+
 		option = document.createElement("option");
 		option.text = "إختر دائرة" ;
-        option.value = "" ;  
+        option.value = "" ;
         option.selected = "selected";
 		selectList2.appendChild(option);
-		
-		
+
+
 		wilayacode = k ;
-        
+
 		//********* set value of wilaya in input ********
 
 		document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
-		
+
         //alert("You have selected wilaya - " + wilayacode);
-		
+
 		for (j in arr.wilayas[wilayacode].dairas) {
 		var option = document.createElement("option");
 	option.value = j ;
-	
-    
+
+
     option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
-	
+
     selectList2.appendChild(option);
            }
 
 
-		   
+
 
 }
    else {
-   
+
           option = document.createElement("option");
           option.text = "إختر دائرة" ;
-          option.value = "" ;  
+          option.value = "" ;
 		  selectList2.appendChild(option);
-		  
+
 	/*	  option = document.createElement("option");
           option.text = document.getElementById("Daira").value ;
 	      option.value = document.getElementById("Daira").value ;
 		  option.selected = "selected";
-		  
+
 		  selectList2.appendChild(option);
 	*/
-		  
+
 		  wilayacode = k ;
-		 
+
 		//********* set value of wilaya in input ********
-        
+
 		document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
         //alert("You have selected wilaya - " + wilayacode);
 
-  
-		
+
+
 		for (j in arr.wilayas[wilayacode].dairas) {
 		var option = document.createElement("option");
 	option.value = j ;
-	
-	if(arr.wilayas[wilayacode].dairas[j].name_ar===document.getElementById("Daira").value){ 
+
+	if(arr.wilayas[wilayacode].dairas[j].name_ar===document.getElementById("Daira").value){
 	option.selected = "selected";
-	var l = j ;	
-	
+	var l = j ;
+
 	}
-	
+
     option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
     selectList2.appendChild(option);
            }
-		   
+
 		  }
-		  
-		  
-	
+
+
+
 document.getElementById("mySelectdaira").options[0].disabled = true;
 
- 
+
 //**********************************************************************************************************************************************
 
 //***********************************************************************************************************************************************************
 
   $(document).ready(function(){
-	  
+
     $("#mySelectwilaya").change(function(){
-		
+
         wilayacode = $(this).children("option:selected").val();
 		//********* set value of wilaya in input ********
 
@@ -300,26 +306,26 @@ document.getElementById("mySelectdaira").options[0].disabled = true;
 
         $('#mySelectdaira').find('option:not(:first)').remove();
 		$('#mySelectcommune').find('option:not(:first)').remove();
-		
+
 		document.getElementById("mySelectdaira").options[0].selected = "selected";
         document.getElementById("mySelectcommune").options[0].selected = "selected";
-		
+
 		document.getElementById("Daira").value="";
 		document.getElementById("Commune").value="";
-		
+
 		for (j in arr.wilayas[wilayacode].dairas) {
 		var option = document.createElement("option");
 	option.value = j ;
-	
+
 	if(arr.wilayas[wilayacode].dairas[j].name_ar===document.getElementById("Daira").value)
-	var l = j ;	
-	
+	var l = j ;
+
     option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
     selectList2.appendChild(option);
            }
 
 
-		   });   
+		   });
 		   });
 
 		   //****************************** for communes *******************
@@ -336,124 +342,124 @@ var option = document.createElement("option");
 
 
 if ( document.getElementById("Commune").value === "" && document.getElementById("Daira").value === "" ) {
-	
-	
+
+
 		option = document.createElement("option");
 		option.text = "إختر بلدية" ;
-        option.value = "" ;  
+        option.value = "" ;
         option.selected = "selected";
 		selectList3.appendChild(option);
-		
+
 		//document.getElementById("mySelectcommune").style.display = "none";
-				
-     }  
+
+     }
 
 else if (document.getElementById("Commune").value === "" && document.getElementById("Daira").value !== "" ){
-	
+
 	    option = document.createElement("option");
 		option.text = "إختر بلدية" ;
-        option.value = "" ;  
+        option.value = "" ;
         option.selected = "selected";
 		selectList3.appendChild(option);
-		
-		
-		 dairacode = l ; 
-		 
+
+
+		 dairacode = l ;
+
 		for (k in arr.wilayas[wilayacode].dairas[dairacode].communes) {
 		var option = document.createElement("option");
 	    option.value = k ;
         option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ;
         selectList3.appendChild(option);
-	
+
            }
 
-}  
-       
+}
+
    else {
-	   
+
           option = document.createElement("option");
           option.text = "إختر بلدية" ;
-          option.value = "" ;    
+          option.value = "" ;
 		  selectList3.appendChild(option);
-		  
-		  
-		  
 
-        var dairacode = l ; 
-		
+
+
+
+        var dairacode = l ;
+
 		for (k in arr.wilayas[wilayacode].dairas[dairacode].communes) {
 		var option = document.createElement("option");
 	option.value = k ;
-	
-	if(arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ===document.getElementById("Commune").value){ 
+
+	if(arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ===document.getElementById("Commune").value){
 	option.selected = "selected";
 	}
-	
-	
+
+
     option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ;
     selectList3.appendChild(option);
            }
 
 		  }
 
-	
+
 document.getElementById("mySelectcommune").options[0].disabled = true;
 
-	
-	
-	
-
-
-   
 
 
 
 
-	
-	
-		
+
+
+
+
+
+
+
+
+
         $("#mySelectdaira").change(function(){
          dairacode = $(this).children("option:selected").val();
-		
+
         //alert("You have selected wilaya - " + dairacode);
 		//********* set value of daira in input ********
-		
+
 		 document.getElementById("Daira").value= arr.wilayas[wilayacode].dairas[dairacode].name_ar;
-		 
-		 
+
+
         $('#mySelectcommune').find('option:not(:first)').remove();
-		
+
         document.getElementById("mySelectcommune").options[0].selected = "selected";
-		
+
 		document.getElementById("Commune").value="";
-		
+
 		for (z in arr.wilayas[wilayacode].dairas[dairacode].communes) {
 		var option = document.createElement("option");
 	    option.value = z ;
         option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[z].name_ar ;
-	
+
 	     //if(option.text==document.getElementById("Commune").value) {option.selected = "selected";}
 
         selectList3.appendChild(option);
            }
-		   
+
 		   //document.getElementById("mySelectcommune").style.display = "block";
-		 
+
 
 		 });
-	
+
 
 
 	    $("#mySelectcommune").change(function(){
-		
+
         var communecode = $(this).children("option:selected").val();
 
 		//********* set value of commne in input ********
 
 		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name_ar;
 
-        }); 
-    
+        });
+
 
 
 
@@ -500,7 +506,6 @@ $c->Show_Three_Photos();
 
 
 <input type="submit" value="حفظ" name="save" id="save">
-<i class="fa fa-check icn"></i>
 
 </div>
 
@@ -521,9 +526,9 @@ $c->Show_Three_Photos();
     <div class="piceditbtn">
 
       <input type="file" name="uploadpic[]"  id="uploadpic" onchange="readURL(this),Filevalidation1();"   hidden  multiple>
-	  
-	  
-      <label for="uploadpic" id="uploadpicbtn" >تحميل</label>
+
+
+      <label for="uploadpic" class="uploadpicbtn" >تحميل</label>
 
 
       <input type="button" name="savepics" value="حفظ الصور" id="b1" onclick="send()">
@@ -537,13 +542,39 @@ $c->Show_Three_Photos();
 
 </div>
 
+
+
+
+<!-- The Modal -->
+<div id="myModalconfirm" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="closeconfirm">&times;</span>
+
+		<div class="confirmcontainer">
+			<p>هل أنت متأكد من حذف حسابك الى الأبد ؟</p>
+			<button type="button" name="button" class="uploadpicbtn" id="confirmbtn">نعم</button>
+		</div>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
 <div id="results"></div>
 <script>
 
 var imgs_path = "http://localhost/imgs/"
 
 document.getElementById('pic').onerror = function() {
-document.getElementById('pic').src = "../imgs/default.png";}
+document.getElementById('pic').src = "imgs/default.png";}
 
 var ids =[];
 function myFunction(x) {
@@ -576,13 +607,41 @@ $.ajax({
 }
 
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal1 = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("picsbtn");
+var btn1 = document.getElementById("picsbtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var span1 = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn1.onclick = function() {
+  modal1.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span1.onclick = function() {
+  modal1.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+    modal1.style.display = "none";
+
+  }
+}
+
+
+// Get the modal
+var modal = document.getElementById("myModalconfirm");
+
+// Get the button that opens the modal
+var btn = document.getElementById("confirmdelete");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("closeconfirm")[0];
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
@@ -602,13 +661,46 @@ window.onclick = function(event) {
   }
 }
 
+
+
+
 $("#b1").click(function(){
     $("#b2").trigger('click');
 
 })
 
+$("#confirmbtn").click(function(){
+    $("#deleteprofile").trigger('click');
 
-function readURL(input) {
+})
+
+$(function() {
+    // Multiple images preview in browser
+    var imagesPreview = function(input, placeToInsertImagePreview) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $($.parseHTML('<img class="imgs2" >')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $('#uploadpic').on('change', function() {
+        imagesPreview(this, '.photocontainermodal');
+    });
+});
+
+/*
+
 			 if (input.files && input.files[0]) {
 					 var reader = new FileReader();
 
@@ -620,6 +712,7 @@ function readURL(input) {
 					 reader.readAsDataURL(input.files[0]);
 			 }
 	 }
+	 */
 
 	 function readURL1(input) {
 	 			 if (input.files && input.files[0]) {
@@ -647,40 +740,40 @@ function options(){
 </script>
 
 
-<script> 
-    Filevalidation1 = () => { 
-        const fi = document.getElementById('uploadpic'); 
-        // Check if any file is selected. 
-        if (fi.files.length > 0) { 
-            for (const i = 0; i <= fi.files.length - 1; i++) { 
-  
-                const fsize = fi.files.item(i).size; 
-                const file = Math.round((fsize / 1024)); 
-                // The size of the file. 
-                if (file >= 4096) { 
-                    location.reload(); 
-                }  
-            } 
-        } 
-    } 
-	
-	
-	Filevalidation0 = () => { 
-        const fi = document.getElementById('fileToUpload'); 
-        // Check if any file is selected. 
-        if (fi.files.length > 0) { 
-            for (const i = 0; i <= fi.files.length - 1; i++) { 
-  
-                const fsize = fi.files.item(i).size; 
-                const file = Math.round((fsize / 1024)); 
-                // The size of the file. 
-                if (file >= 4096) { 
-                    location.reload(); 
-                }  
-            } 
-        } 
+<script>
+    Filevalidation1 = () => {
+        const fi = document.getElementById('uploadpic');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    location.reload();
+                }
+            }
+        }
     }
-</script> 
+
+
+	Filevalidation0 = () => {
+        const fi = document.getElementById('fileToUpload');
+        // Check if any file is selected.
+        if (fi.files.length > 0) {
+            for (const i = 0; i <= fi.files.length - 1; i++) {
+
+                const fsize = fi.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file.
+                if (file >= 4096) {
+                    location.reload();
+                }
+            }
+        }
+    }
+</script>
 
 
 

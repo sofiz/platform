@@ -34,7 +34,7 @@ class user {
 	{
   $aujourdhui = date("Y-m-d");
   $diff = date_diff(date_create($dateNaissance), date_create($aujourdhui));
-  return $diff->format('%y')."سنة"; }
+  return $diff->format('%y')." سنة "; }
 
 }
 
@@ -140,7 +140,7 @@ function Select_Photos_Of_Profile ($db){
                  }
     while($row=mysqli_fetch_array($ress))
                    {
-     array_push($this->Photo,"../imgs/".$this->id.'/'.$row['Photo_Path']);
+     array_push($this->Photo,"imgs/".$this->id.'/'.$row['Photo_Path']);
 	 array_push($this->Photo_id,$row['Photo_id']);
 
                    }
@@ -239,7 +239,6 @@ function  Show_All_Photos_In_Edit() {
 	 echo ' </div>';
 
 	 }
-	 echo '<img src="#" alt="" class="imgs" id="blah" style="object-fit: cover;">';
 
 
 }
@@ -262,21 +261,21 @@ function For_My_Comment($db){
 				 }
 
          echo' <div class="yourcomment"> ';
-        echo'  <img src="../imgs/'.$Commentor_id.'/'.$Profile_Pic.'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
+        echo'  <img src="imgs/'.$Commentor_id.'/'.$Profile_Pic.'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
          echo'    <form action="onsbmit.php" method="post">   ';
-		 
-		 
-       
+
+
+
 
 		 if($this->id != $this->Get_Id_From_Session($db)){
-			  echo' <input type="text" name="Comment"  id="input1">'; 
+			  echo' <input type="text" name="Comment"  id="input1">';
       	 echo '  <div id="rater"></div> ';
-		
+
           }
- 
+
          else echo' <input type="text" name="Comment"  id="input2">';
- 
- 
+
+
         echo '<input type= "hidden"  name="Commentor_id"  value="'.$Commentor_id.'" >   ';
         echo '<input type= "hidden"  name="User_id"  value="'.$this->id.'" > ';
         echo '<input type= "hidden"  name="rating"  value="" id="ratings" >   ';
@@ -333,7 +332,7 @@ while($row1=mysqli_fetch_array($rest))
 
    echo ' <div class="commentsection" id="'.$row['Comment_id'].'" > ';
    echo ' <div class="comment"> ' ;
-   echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="../imgs/'.$Commentor_id.'/'.   $Profile_Pic   .' " alt="" onerror="error(this)"> </a>' ;
+   echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/'.$Commentor_id.'/'.   $Profile_Pic   .' " alt="" onerror="error(this)"> </a>' ;
    echo '<div style="    display: inline-grid;">';
 	 echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
 

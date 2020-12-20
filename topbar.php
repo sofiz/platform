@@ -48,7 +48,7 @@ echo  '<a href="my-profile.php" id="my-profilebtn" class="fa fa-user"><span clas
 echo '<a href="search.php"id ="searchnav2" > <label for="search" id="searchnav" class="fa fa-search" ><span class ="navbartxt">البحث</span></label>   </a>
 ';
 
-echo '<a href="logout.php" id ="logoutbtn2"> <label for="logout" id="logoutbtn" class="fa fa-sign-out" ><span class="navbartxt" >تسجيل الخروج</span> </label>   </a>
+echo '<a href="logout.php" id ="logoutbtn2"> <label for="logout" id="logoutbtn" class="fa fa-sign-out" ><span class="navbartxt" >خروج</span> </label>   </a>
 ';
 
 }
