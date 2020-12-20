@@ -343,6 +343,8 @@ if ( document.getElementById("Commune").value === "" && document.getElementById(
         option.value = "" ;  
         option.selected = "selected";
 		selectList3.appendChild(option);
+		
+		//document.getElementById("mySelectcommune").style.display = "none";
 				
      }  
 
@@ -434,6 +436,8 @@ document.getElementById("mySelectcommune").options[0].disabled = true;
 
         selectList3.appendChild(option);
            }
+		   
+		   //document.getElementById("mySelectcommune").style.display = "block";
 		 
 
 		 });
