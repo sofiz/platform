@@ -1,6 +1,6 @@
 
 
-<?php include('conn.php') ?>     <?php
+<?php include('../conn.php') ?>     <?php
 
 class user {
 
@@ -140,7 +140,7 @@ function Select_Photos_Of_Profile ($db){
                  }
     while($row=mysqli_fetch_array($ress))
                    {
-     array_push($this->Photo,"imgs/".$this->id.'/'.$row['Photo_Path']);
+     array_push($this->Photo,"../imgs/".$this->id.'/'.$row['Photo_Path']);
 	 array_push($this->Photo_id,$row['Photo_id']);
 
                    }
@@ -262,7 +262,7 @@ function For_My_Comment($db){
 				 }
 
          echo' <div class="yourcomment"> ';
-        echo'  <img src="imgs/'.$Commentor_id.'/'.$Profile_Pic.'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
+        echo'  <img src="../imgs/'.$Commentor_id.'/'.$Profile_Pic.'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
          echo'    <form action="onsbmit.php" method="post">   ';
         echo' <input type="text" name="Comment"  id="input1">';
 
@@ -325,7 +325,7 @@ while($row1=mysqli_fetch_array($rest))
 
    echo ' <div class="commentsection" id="'.$row['Comment_id'].'" > ';
    echo ' <div class="comment"> ' ;
-   echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/'.$Commentor_id.'/'.   $Profile_Pic   .' " alt="" onerror="error(this)"> </a>' ;
+   echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="../imgs/'.$Commentor_id.'/'.   $Profile_Pic   .' " alt="" onerror="error(this)"> </a>' ;
    echo '<div style="    display: inline-grid;">';
 	 echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
 

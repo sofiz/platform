@@ -1,6 +1,6 @@
 <?php
 
-include('conn.php');
+include('../conn.php');
 
 function unichr($u) 
 {
@@ -250,7 +250,7 @@ $ligature_map = array(
 						              if($flag){
 										  $count++;
 	                                  echo'  <div class="resultcontainer">  ';
-                                      echo'<a href="profile.php?id='.$row0['id'].'" ><img src="imgs/'.$row0['id'].'/'.$row0['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+                                      echo'<a href="profile.php?id='.$row0['id'].'" ><img src="../imgs/'.$row0['id'].'/'.$row0['Profile_Pic'].'" alt="" class="resimg" ></a> ';
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row0['id'].'" class="name">  '. $row0['First_Name']." ".$row0['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row0['Phone'] .  '</p> ';
@@ -329,7 +329,7 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 						              if($flag){
 										  $count++;
 	                                  echo'  <div class="resultcontainer">  ';
-                                      echo'<a href="profile.php?id='.$row2['id'].'" ><img src="imgs/'.$row2['id'].'/'.$row2['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+                                      echo'<a href="profile.php?id='.$row2['id'].'" ><img src="../imgs/'.$row2['id'].'/'.$row2['Profile_Pic'].'" alt="" class="resimg" ></a> ';
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row2['id'].'" class="name">  '. $row2['First_Name']." ".$row2['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row2['Phone'] .  '</p> ';

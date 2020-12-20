@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('conn.php');
+include('../conn.php');
 include('calsses and functions .php') ;
 //include('onsbmit.php');
 $c = new  user();
@@ -62,7 +62,7 @@ $c->Get_Rating_Profile($db);
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/'.$c->id.'/'.$c->Profile_Pic.'"  alt="" onclick="slide(this.src)" class="pictures" > '; ?>
+   <?php echo' <img id="pic"  src="../imgs/'.$c->id.'/'.$c->Profile_Pic.'"  alt="" onclick="slide(this.src)" class="pictures" > '; ?>
 
     <strong id="name" ><?php echo $c->First_Name .' '. $c->Last_Name ; ?> </strong>
 
@@ -354,16 +354,16 @@ window.onerror = stoperror;
  }
 
 
- var imgs_path = "http://localhost/platforme/imgs/"
+ var imgs_path = "http://localhost/imgs/"
 
  document.getElementById('pic').onerror = function() {
-	 document.getElementById('pic').src = "imgs/default.png";
+	 document.getElementById('pic').src = "../imgs/default.png";
  }
  document.getElementById('yourcommentpic').onerror = function() {
-	 document.getElementById('yourcommentpic').src = "imgs/default.png";
+	 document.getElementById('yourcommentpic').src = "../imgs/default.png";
  }
 function error(v){
-	v.src="imgs/default.png";
+	v.src="../imgs/default.png";
 }
 
  var myRating = raterJs( {

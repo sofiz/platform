@@ -3,7 +3,7 @@
 <?php
 session_start();
 include('calsses and functions .php') ;
-include('conn.php');
+include('../conn.php');
 $c = new  user();
 if (!($c->Check_Session_Isset())) {
 header('location: signin.php');
@@ -44,7 +44,7 @@ $c->Get_Rating_Profile($db);
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/'.$c->id.'/'.$c->Profile_Pic . ' " alt="" class="pictures" onclick="slide(this.src)"  > '; ?>
+   <?php echo' <img id="pic"  src="../imgs/'.$c->id.'/'.$c->Profile_Pic . ' " alt="" class="pictures" onclick="slide(this.src)"  > '; ?>
 
     <strong id="name" ><?php echo $c->First_Name .' '. $c->Last_Name ; ?> </strong>
 
@@ -183,16 +183,16 @@ mysqli_close($db);
 
   <script type="text/javascript">
 
-  var imgs_path = "http://localhost/platforme/imgs/"
+  var imgs_path = "http://localhost/imgs/"
 
   document.getElementById('pic').onerror = function() {
-    document.getElementById('pic').src = "imgs/default.png";
+    document.getElementById('pic').src = "../imgs/default.png";
   }
 	document.getElementById('yourcommentpic').onerror = function() {
-    document.getElementById('yourcommentpic').src = "imgs/default.png";
+    document.getElementById('yourcommentpic').src = "../imgs/default.png";
   }
  function error(v){
-	 v.src="imgs/default.png";
+	 v.src="../imgs/default.png";
  }
 
 

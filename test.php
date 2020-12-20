@@ -13,11 +13,15 @@ $x = $obj->en2ar('osama');
 
 echo $x ;
 
-echo $soundex ;  */
+
+echo $soundex ; 
+*/
 
 
 
 echo __DIR__ ; 
-mkdir('imgs\') ;
+
+mkdir('../ewnewwnewriyadh') ;
+
 
 ?>

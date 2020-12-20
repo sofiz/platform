@@ -2,7 +2,7 @@
 
     $errors = array();
 
-    include('conn.php');
+    include('../conn.php');
 	include('calsses and functions .php') ;
 	
 	
@@ -75,6 +75,7 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
   $Daira = mysqli_real_escape_string($db,$_POST['Daira']);
   $Commune = mysqli_real_escape_string($db,$_POST['Commune']);
   $Description = mysqli_real_escape_string($db,$_POST['Description']);
+  
   $Birthday =mysqli_real_escape_string($db, $_POST['Birthday']);
 
   if (empty($First_Name)) { array_push($errors, "First Name is required"); }
@@ -88,14 +89,14 @@ if ($_FILES['fileToUpload']['size'] != 0 ){
 	
 	
 	
-if (!file_exists('imgs/'.$id)) {
+if (!file_exists('../imgs/'.$id)) {
 	
-    mkdir('imgs/'.$id, 0777, true);
+    mkdir('../imgs/'.$id, 0777, true);
 	
 }
 
 
-  $tar= 'imgs/'.strval($id).'/';
+  $tar= '../imgs/'.strval($id).'/';
   
   
   
@@ -121,7 +122,7 @@ $in = in_array($detectedType, $allowedTypes);
         $queryi = "UPDATE users SET Profile_Pic='$pic' where id ='$id' ";
 		if ($pic!=""){
 			mysqli_query($db, $queryi);
-            unlink('imgs/'.strval($id).'/'.$Profile_Pic);
+            unlink('../imgs/'.strval($id).'/'.$Profile_Pic);
 			//move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
 			
 compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,60);
@@ -146,9 +147,9 @@ if (isset($_POST['savepics'])){
 	foreach($_FILES['uploadpic']['name'] as $key=>$val){ 
 	if ($_FILES['uploadpic']['size'][$key] != 0 	&& $_FILES['uploadpic']['size'][$key] < 2097152 ){
 		
-		if (!file_exists('imgs/'.$id)) {
+		if (!file_exists('../imgs/'.$id)) {
 	
-    mkdir('imgs/'.$id, 0777, true);
+    mkdir('../imgs/'.$id, 0777, true);
 	
 }
 	/////-------------------- Get id -------------------
@@ -165,7 +166,7 @@ $maxid=$row77["id"];
 	
 	$newname = strval($id).strval($maxid); 
 
-  $tar='imgs/'.$id.'/';
+  $tar='../imgs/'.$id.'/';
   //$tar=$tar.basename($_FILES['uploadpic']['name']) ;
   
   $extension = pathinfo($_FILES["uploadpic"]["name"][$key], PATHINFO_EXTENSION);
@@ -218,20 +219,24 @@ if (isset($_POST['delete'])){
 	
 	
     if(strcmp($row['Profile_Pic'],"default.png")){
-	unlink('imgs/'.$row['Profile_Pic']);
+	unlink('../imgs/'.$id.'/'.$row['Profile_Pic']);
 	}
     ////////////// delete profile data /////////////////////
 	$dP=mysqli_query($db,"DELETE from  users WHERE id='$id'");
 	/////////////// delete comments ///////////////////////
 	$dC=mysqli_query($db,"DELETE from  comments WHERE User_id='$id' or Commentor_id='$id'");
 	/////////////// delete photos///////////////////////////
+	
+	
+	
 	$du=mysqli_query($db,"SELECT Photo_Path FROM photos WHERE User_id='$id'");
 	
     while($row=mysqli_fetch_array($du))
 
-	unlink('imgs/'.$row['Photo_Path']);
+	unlink('../imgs/'.$id.'/'.$row['Photo_Path']);
 
-		
+    rmdir ('../imgs/'.$id );
+	
 	$dPh=mysqli_query($db,"DELETE  from  photos WHERE User_id='$id'");
 
     header('location:logout.php');

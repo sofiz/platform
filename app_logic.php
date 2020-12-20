@@ -2,7 +2,7 @@
 <?php
 
 ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
- include('conn.php') ;
+ include('../conn.php') ;
 use GuzzleHttp\Client;
 require_once 'vendor/autoload.php';
 $errors =array();

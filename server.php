@@ -7,7 +7,7 @@ $Email    = "";
 $errors = array();
 
 // connect to the database
- include('conn.php') ;
+ include('../conn.php') ;
 
 // REGISTER USER
 if (isset($_POST['SIGNUP'])) {

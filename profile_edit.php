@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-include('conn.php');
+include('../conn.php');
 include('calsses and functions .php') ;
 $c = new  user();
 	if (!($c->Check_Session_Isset())) {
@@ -70,7 +70,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 	</div>
 </div>
 <div class="" style="border-radius: inherit;">
-  <img id="pic"  src="imgs/<?php echo $c->id.'/'. $c->Profile_Pic; ?>" alt="" >
+  <img id="pic"  src="../imgs/<?php echo $c->id.'/'. $c->Profile_Pic; ?>" alt="" >
 
 
 
@@ -152,7 +152,8 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 <script>
 
 //************************** for wilaya *******************
-
+var wilayacode;
+var dairacode ;
 
 var myParent = document.getElementById("dropdowns")
 //Create and append select list
@@ -163,8 +164,12 @@ document.getElementById("mySelectwilaya").classList.add('dropdown2');
 
 //*************** default ********
 var option = document.createElement("option");
-    option.value = "";
+
+    option.value = document.getElementById("Wilaya").value;
+	
 	option.text = document.getElementById("Wilaya").value ;
+	
+	option.selected = "selected";
 	selectList.appendChild(option);
 //Create and append the options
 
@@ -175,13 +180,18 @@ for (i in arr.wilayas) {
 
    var option = document.createElement("option");
     option.value = i ;
+	
+	if(arr.wilayas[i].name_ar===document.getElementById("Wilaya").value)
+	var k = i ;
+	
     option.text = arr.wilayas[i].name_ar;
-
     selectList.appendChild(option);
 
 
 }
+
 document.getElementById("mySelectwilaya").options[0].disabled = true;
+
 
 /////****************************** for daira ***************
 var myParent2 = document.getElementById("dropdowns")
@@ -199,36 +209,89 @@ document.getElementById("mySelectdaira").classList.add('dropdown2');
 var option = document.createElement("option");
   
 	if ( document.getElementById("Daira").value === ""  ) {
+		
 		option = document.createElement("option");
 		option.text = "إختر دائرة" ;
         option.value = "" ;  
         option.selected = "selected";
 		selectList2.appendChild(option);
+		
+		
+		wilayacode = k ;
+        
+		//********* set value of wilaya in input ********
+
+		document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
+		
+        //alert("You have selected wilaya - " + wilayacode);
+		
+		for (j in arr.wilayas[wilayacode].dairas) {
+		var option = document.createElement("option");
+	option.value = j ;
+	
+    
+    option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
+	
+    selectList2.appendChild(option);
+           }
+
+
+		   
 
 }
-   else { 
+   else {
+   
           option = document.createElement("option");
           option.text = "إختر دائرة" ;
           option.value = "" ;  
-		  option.selected = "selected";
 		  selectList2.appendChild(option);
 		  
-		  option = document.createElement("option");
+	/*	  option = document.createElement("option");
           option.text = document.getElementById("Daira").value ;
 	      option.value = document.getElementById("Daira").value ;
 		  option.selected = "selected";
+		  
 		  selectList2.appendChild(option);
+	*/
+		  
+		  wilayacode = k ;
+		 
+		//********* set value of wilaya in input ********
+        
+		document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
+        //alert("You have selected wilaya - " + wilayacode);
 
+  
+		
+		for (j in arr.wilayas[wilayacode].dairas) {
+		var option = document.createElement("option");
+	option.value = j ;
+	
+	if(arr.wilayas[wilayacode].dairas[j].name_ar===document.getElementById("Daira").value){ 
+	option.selected = "selected";
+	var l = j ;	
+	
+	}
+	
+    option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
+    selectList2.appendChild(option);
+           }
+		   
 		  }
+		  
+		  
 	
 document.getElementById("mySelectdaira").options[0].disabled = true;
 
- var wilayacode;
- var dairacode ;
+ 
+//**********************************************************************************************************************************************
 
+//***********************************************************************************************************************************************************
 
   $(document).ready(function(){
+	  
     $("#mySelectwilaya").change(function(){
+		
         wilayacode = $(this).children("option:selected").val();
 		//********* set value of wilaya in input ********
 
@@ -247,6 +310,10 @@ document.getElementById("mySelectdaira").options[0].disabled = true;
 		for (j in arr.wilayas[wilayacode].dairas) {
 		var option = document.createElement("option");
 	option.value = j ;
+	
+	if(arr.wilayas[wilayacode].dairas[j].name_ar===document.getElementById("Daira").value)
+	var l = j ;	
+	
     option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
     selectList2.appendChild(option);
            }
@@ -256,7 +323,7 @@ document.getElementById("mySelectdaira").options[0].disabled = true;
 		   });
 
 		   //****************************** for communes *******************
-		   var myParent3 = document.getElementById("dropdowns")
+var myParent3 = document.getElementById("dropdowns")
 //Create and append select list
 var selectList3 = document.createElement("select");
 selectList3.id = "mySelectcommune";
@@ -268,73 +335,121 @@ document.getElementById("mySelectcommune").classList.add('dropdown2');
 var option = document.createElement("option");
 
 
-if ( document.getElementById("Commune").value === ""  ) {
+if ( document.getElementById("Commune").value === "" && document.getElementById("Daira").value === "" ) {
+	
+	
 		option = document.createElement("option");
 		option.text = "إختر بلدية" ;
         option.value = "" ;  
         option.selected = "selected";
 		selectList3.appendChild(option);
+				
+     }  
 
-}
-   else { 
+else if (document.getElementById("Commune").value === "" && document.getElementById("Daira").value !== "" ){
+	
+	    option = document.createElement("option");
+		option.text = "إختر بلدية" ;
+        option.value = "" ;  
+        option.selected = "selected";
+		selectList3.appendChild(option);
+		
+		
+		 dairacode = l ; 
+		 
+		for (k in arr.wilayas[wilayacode].dairas[dairacode].communes) {
+		var option = document.createElement("option");
+	    option.value = k ;
+        option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ;
+        selectList3.appendChild(option);
+	
+           }
+
+}  
+       
+   else {
+	   
           option = document.createElement("option");
           option.text = "إختر بلدية" ;
-          option.value = "" ;  
-		  option.selected = "selected";
+          option.value = "" ;    
 		  selectList3.appendChild(option);
 		  
-		  option = document.createElement("option");
-          option.text = document.getElementById("Commune").value ;
-	      option.value = document.getElementById("Commune").value ;
-		  option.selected = "selected";
-		  selectList3.appendChild(option);
+		  
+		  
 
-		  }
-	
-document.getElementById("mySelectcommune").options[0].disabled = true;
-
-	$(document).ready(function(){
-    $("#mySelectdaira").change(function(){
-        var dairacode = $(this).children("option:selected").val();
-        //alert("You have selected wilaya - " + dairacode);
-		//********* set value of daira in input ********
-		 document.getElementById("Daira").value= arr.wilayas[wilayacode].dairas[dairacode].name_ar;
-        $('#mySelectcommune').find('option:not(:first)').remove();
-        document.getElementById("mySelectcommune").options[0].selected = "selected";
-		document.getElementById("Commune").value="";
+        var dairacode = l ; 
+		
 		for (k in arr.wilayas[wilayacode].dairas[dairacode].communes) {
 		var option = document.createElement("option");
 	option.value = k ;
+	
+	if(arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ===document.getElementById("Commune").value){ 
+	option.selected = "selected";
+	}
+	
+	
     option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ;
-	if(option.text==document.getElementById("Commune").value) {option.selected = "selected";}
-
     selectList3.appendChild(option);
            }
 
+		  }
+
+	
+document.getElementById("mySelectcommune").options[0].disabled = true;
+
+	
+	
+	
+
+
+   
 
 
 
 
+	
+	
+		
+        $("#mySelectdaira").change(function(){
+         dairacode = $(this).children("option:selected").val();
+		
+        //alert("You have selected wilaya - " + dairacode);
+		//********* set value of daira in input ********
+		
+		 document.getElementById("Daira").value= arr.wilayas[wilayacode].dairas[dairacode].name_ar;
+		 
+		 
+        $('#mySelectcommune').find('option:not(:first)').remove();
+		
+        document.getElementById("mySelectcommune").options[0].selected = "selected";
+		
+		document.getElementById("Commune").value="";
+		
+		for (z in arr.wilayas[wilayacode].dairas[dairacode].communes) {
+		var option = document.createElement("option");
+	    option.value = z ;
+        option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[z].name_ar ;
+	
+	     //if(option.text==document.getElementById("Commune").value) {option.selected = "selected";}
 
-		   $(document).ready(function(){
+        selectList3.appendChild(option);
+           }
+		 
+
+		 });
+	
 
 
-    $("#mySelectcommune").change(function(){
+	    $("#mySelectcommune").change(function(){
+		
         var communecode = $(this).children("option:selected").val();
 
 		//********* set value of commne in input ********
 
 		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name_ar;
 
-
-});   });
-
-
-		   });
-
-
-
-		 });
+        }); 
+    
 
 
 
@@ -421,11 +536,10 @@ $c->Show_Three_Photos();
 <div id="results"></div>
 <script>
 
-var imgs_path = "http://localhost/platforme/imgs/"
+var imgs_path = "http://localhost/imgs/"
 
 document.getElementById('pic').onerror = function() {
-	document.getElementById('pic').src = "imgs/default.png";}
-
+document.getElementById('pic').src = "../imgs/default.png";}
 
 var ids =[];
 function myFunction(x) {

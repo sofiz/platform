@@ -4,7 +4,7 @@ $random = json_decode($data);
 
 
 
-include ('conn.php');
+include ('../conn.php');
 
 	$x=count($random);
 	for($i=0;$i<=$x;$i++)
@@ -17,7 +17,7 @@ include ('conn.php');
 
 	$dp=mysqli_query($db,"DELETE FROM photos WHERE Photo_id='$random[$i]'");
 
-	unlink('imgs/'.strval($row['User_id']).'/'.$row['Photo_Path']);
+	unlink('../imgs/'.strval($row['User_id']).'/'.$row['Photo_Path']);
 
 		}
 
