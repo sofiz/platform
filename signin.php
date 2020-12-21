@@ -1,4 +1,4 @@
-﻿<?php 
+﻿<?php
 
 include('server.php') ?>
 
@@ -11,6 +11,7 @@ include('server.php') ?>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 
  </head>
+ <?php include('topbar.php'); ?>
  <body>
  <div class="login-page">
   <div class="form">
@@ -26,7 +27,7 @@ include('server.php') ?>
     </form>
 	-->
 
-<?php include('topbar.php'); ?>
+
 
     <form class="login-form" action="signin.php" method="post" >
 	<?php include('errors.php'); ?>

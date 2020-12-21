@@ -241,7 +241,7 @@ cursor: pointer;
 
   margin-top: 1.125em;
 
-      padding: 0.625em;
+
       border-radius: inherit;
       border: none;
       background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
@@ -256,6 +256,8 @@ cursor: pointer;
   transition: all .4s ease-in-out;
   margin: auto;
 display: block;
+font-family: 'jf flat'
+    padding: 6px 9px;
 
 }
 
