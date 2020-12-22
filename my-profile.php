@@ -27,6 +27,7 @@ $c->Get_Rating_Profile($db);
     <link rel="stylesheet" href="profile.css">
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <script src="profile.js"></script>
 
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
@@ -188,12 +189,12 @@ mysqli_close($db);
   document.getElementById('pic').onerror = function() {
     document.getElementById('pic').src = "imgs/default.png";
   }
-	document.getElementById('yourcommentpic').onerror = function() {
+  document.getElementById('yourcommentpic').onerror = function() {
     document.getElementById('yourcommentpic').src = "imgs/default.png";
   }
- function error(v){
-	 v.src="imgs/default.png";
- }
+  function error(v){
+   v.src="imgs/default.png";
+  }
 
 
   // Get the modal
@@ -347,11 +348,26 @@ mysqli_close($db);
   }
 
 
-/*
+  /*
   function openmodal(x){
   document.getElementById("myImgx").src = x;
   document.getElementById("myImgx").click();
   }
-*/
+  */
+
+
+  function optionscom(id) {
+  var btncomid= 'DeleteCommentlab'+ id ;
+  if (document.getElementById(btncomid).style.display=='block') {
+  document.getElementById(btncomid).style.display= 'none';
+
+  }
+  else {
+  document.getElementById(btncomid).style.display= 'block';
+  }
+
+
+  }
+
   </script>
 </html>

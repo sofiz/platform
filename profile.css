@@ -433,11 +433,16 @@ margin-right: -58px;
     padding-left: 10px;
 
 }
-#deletecomlab{
-      margin-top: 78%;
-      font-size: 18px;
-      color: #288ecf;
-    cursor: pointer;
+.deletecomlab {
+  font-size: 14px;
+  color: #000000;
+  cursor: pointer;
+  position: absolute;
+  margin-left: -47px;
+  background: #eeeef2bf;
+  padding: 4px 8px;
+  margin-top: 3px;
+  display: none;
 }
 
   .profileeditbtn{
@@ -1014,7 +1019,7 @@ margin-top: 10px;
 position: relative;
 }
 
-#settingsbtn{
+.settingsbtn{
   border: none;
   font-size: 20px;
   color: #000000;
@@ -1023,7 +1028,7 @@ position: relative;
   background: #fafafa;
   cursor: pointer;
 }
-#settingsbtn:focus{
+.settingsbtn:focus{
 outline: none;
 }
 #resetpasslab,#deleteprofilelab{

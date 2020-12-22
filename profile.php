@@ -377,7 +377,18 @@ function error(v){
  });
 
 
+ function optionscom(id) {
+ var btncomid= 'DeleteCommentlab'+ id ;
+ if (document.getElementById(btncomid).style.display=='block') {
+   document.getElementById(btncomid).style.display= 'none';
 
+ }
+ else {
+   document.getElementById(btncomid).style.display= 'block';
+ }
+
+
+ }
 
  </script>
 </html>

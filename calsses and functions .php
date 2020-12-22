@@ -353,7 +353,9 @@ echo "<div class='ratingcontain3'>";
    echo ' <input type="text" name="Comment_id" value="'.$row['Comment_id'].' " class="inputname" hidden>' ;
    echo ' <input type="text" name="User_id" value="'.$row['User_id'].' " class="inputname" hidden>' ;
    echo ' <input type="submit" value="DeleteComment" name="DeleteComment" id="DeleteComment'.$row['Comment_id'].'" hidden>  ';
-   echo '<label for="DeleteComment'.$row['Comment_id'].'" class="fa fa-minus-square" aria-hidden="true" id="deletecomlab"></label>';
+
+   echo '<label for="DeleteComment'.$row['Comment_id'].'"  aria-hidden="true" class="deletecomlab" id="DeleteCommentlab'.$row['Comment_id'].'">حذف</label>';
+   echo '	<button type="button" name="settingsbtn" id="'.$row['Comment_id'].'" class="settingsbtn" onclick="optionscom(this.id)"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>';
 echo '</form>';
    }
 

@@ -47,6 +47,9 @@ function compressImage($source, $destination, $quality) {
   elseif ($info['mime'] == 'image/png')
     $image = imagecreatefrompng($source);
 
+    elseif ($info['mime'] == 'image/jpg')
+      $image = imagecreatefromjpeg($source);
+
   imagejpeg($image, $destination, $quality);
 
 }

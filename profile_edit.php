@@ -66,7 +66,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 	<label for="resetpass" id="resetpasslab"> تحديث كلمة السر </label>
 	<label for="confirmdelete" id="deleteprofilelab">حدف الحساب</label>
 	</div>
-	<button type="button" name="settingsbtn" id="settingsbtn" onclick="options()"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
+	<button type="button" name="settingsbtn"  onclick="options()" class="settingsbtn"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
 	</div>
 </div>
 <div class="" style="border-radius: inherit;">
