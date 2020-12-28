@@ -45,8 +45,12 @@ include('server.php') ?>
 					 <div class="names">
 
 
-                    <input class="text" type="text" name="First_Name" placeholder="الإسم " required="" style="width:20%;">
-				    <input class="text" type="text" name="Last_Name" placeholder="اللقب" required=""style="width:20%;">
+                    <input class="text" type="text" name="First_Name" placeholder="الإسم " required="" style="width: 46%;
+    display: inline-block;
+    margin-right: 2%;margin: 0;">
+				    <input class="text" type="text" name="Last_Name" placeholder="اللقب" required=""style="    width: 46%;
+    margin: 0;
+    display: inline-block;
 						</div>
 
 					<input class="text email" type="email" name="Email" placeholder="الإيميل" required="">

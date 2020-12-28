@@ -115,6 +115,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
     font-family: 'JF Flat';
+
 }
 
 h1 {
@@ -129,7 +130,7 @@ h1 {
 
 /*-- main --*/
 .main-w3layouts {
-  padding: 3em 0 1em;
+  padding: 2em 0 1em;
 }
 
 .main-agileinfo {
@@ -308,17 +309,17 @@ input.checkbox:before {
 
 input.checkbox:after {
   content: "";
-  position: absolute;
-  top: -3px;
-  left: 3px;
-  z-index: 1;
-  width: 1.2em;
-  height: 1.2em;
-  border: 1px solid #0a07ea;
-  -webkit-transition: .4s ease-in-out;
-  -moz-transition: .4s ease-in-out;
-  -o-transition: .4s ease-in-out;
-  transition: .4s ease-in-out;
+      position: absolute;
+      top: 1px;
+      left: 3px;
+      z-index: 1;
+      width: 1.2em;
+      height: 1.2em;
+      border: 1px solid #000000;
+      -webkit-transition: .4s ease-in-out;
+      -moz-transition: .4s ease-in-out;
+      -o-transition: .4s ease-in-out;
+      transition: .4s ease-in-out;
 }
 
 input.checkbox:checked:after {
@@ -392,6 +393,7 @@ input.checkbox:checked:after {
 .wrapper {
   position: relative;
   overflow: hidden;
+  margin-top: -27px;
 }
 
 .colorlib-bubbles {
