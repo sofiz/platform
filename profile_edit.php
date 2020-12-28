@@ -781,7 +781,7 @@ function options(){
 
 		// When the user clicks anywhere outside of the modal, close it
 		$(window).click(function() {
-			if (document.getElementById('settingselementsclick')==true) {
+			if (document.getElementById('settingselementsclick')!=null) {
 				document.getElementById('settingselementsclick').id = "settingselements";
 			}
 
@@ -792,6 +792,7 @@ function options(){
 		});
 
 </script>
+
 
 
 </form>
