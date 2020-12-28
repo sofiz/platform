@@ -140,12 +140,20 @@ onclick="window.location.href = 'enter_email.php';" hidden>
     <?php echo ' <input type="text" name="Commune" id="Commune"  value="'.$c->Commune.'" class="inputinf" hidden>'; ?>
   </div>
   <div class="info2">
-<span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span>
-  <label for="birthday" style="font-size: 15px;"> <?php echo $c->Age($c->Birthday); ?> </label>
+  
+  <?php  
+  echo '<span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span>   '   ; 
+  
+  if($c->Birthday !=  "0000-00-00" && $c->Age($c->Birthday) > 16)
+    {
+    
+    echo '  <label for="birthday" style="font-size: 15px;"> ' . $c->Age($c->Birthday) .'  </label>  '  ; 
 
-   <input type="date" id="birthday" name="Birthday" value="<?php echo $c->Birthday ; ?>" >
+   
 
-
+ }
+ echo '   <input type="date" id="birthday" name="Birthday" value="' .$c->Birthday .' " >   '  ; 
+?> 
   </div>
 
 
