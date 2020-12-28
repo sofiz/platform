@@ -140,20 +140,20 @@ onclick="window.location.href = 'enter_email.php';" hidden>
     <?php echo ' <input type="text" name="Commune" id="Commune"  value="'.$c->Commune.'" class="inputinf" hidden>'; ?>
   </div>
   <div class="info2">
-  
-  <?php  
-  echo '<span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span>   '   ; 
-  
+
+  <?php
+  echo '<span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span>   '   ;
+
   if($c->Birthday !=  "0000-00-00" && $c->Age($c->Birthday) > 16)
     {
-    
-    echo '  <label for="birthday" style="font-size: 15px;"> ' . $c->Age($c->Birthday) .'  </label>  '  ; 
 
-   
+    echo '  <label for="birthday" style="font-size: 15px;"> ' . $c->Age($c->Birthday) .'  </label>  '  ;
+
+
 
  }
- echo '   <input type="date" id="birthday" name="Birthday" value="' .$c->Birthday .' " >   '  ; 
-?> 
+ echo '   <input type="date" id="birthday" name="Birthday" value="' .$c->Birthday .' " >   '  ;
+?>
   </div>
 
 
@@ -745,19 +745,7 @@ function options(){
 	document.getElementById('settingselementsclick').id = "settingselements";
 }
 }
-// When the user clicks anywhere outside of the modal, close it
-$(window).click(function() {
-	document.getElementById('settingselementsclick').id = "settingselements";
-});
 
-$('#settings').click(function(event){
-    event.stopPropagation();
-});
-
-</script>
-
-
-<script>
     Filevalidation1 = () => {
         const fi = document.getElementById('uploadpic');
         // Check if any file is selected.
@@ -790,8 +778,20 @@ $('#settings').click(function(event){
             }
         }
     }
-</script>
 
+		// When the user clicks anywhere outside of the modal, close it
+		$(window).click(function() {
+			if (document.getElementById('settingselementsclick')==true) {
+				document.getElementById('settingselementsclick').id = "settingselements";
+			}
+
+		});
+
+		$('#settings').click(function(event){
+		    event.stopPropagation();
+		});
+
+</script>
 
 
 </form>
