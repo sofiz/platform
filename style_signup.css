@@ -270,7 +270,7 @@ input[type="submit"]:hover {
 }
 
 .agileits-top p a {
-  color: black;
+  color: #0f05b3;
   -webkit-transition: .5s all;
   -moz-transition: .5s all;
   transition: .5s all;
