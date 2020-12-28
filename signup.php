@@ -42,8 +42,12 @@ include('server.php') ?>
 				</div>
 
 				   <input class="text" type="text" name="Username" placeholder="إسم المستخدم" required="">
-                    <input class="text" type="text" name="First_Name" placeholder="الإسم " required="">
-				    <input class="text" type="text" name="Last_Name" placeholder="اللقب" required="">
+					 <div class="names">
+
+
+                    <input class="text" type="text" name="First_Name" placeholder="الإسم " required="" style="width:20%;">
+				    <input class="text" type="text" name="Last_Name" placeholder="اللقب" required=""style="width:20%;">
+						</div>
 
 					<input class="text email" type="email" name="Email" placeholder="الإيميل" required="">
 					<input class="text" type="password" name="Password_1" placeholder="كلمة السر" required="">
@@ -51,7 +55,7 @@ include('server.php') ?>
 
 					<input class="text" type="text" id="phone" name="Phone" placeholder="رقم الهاتف" required>
 
-					<select name="Job" id="jobselect">
+					<select name="Job" id="jobselect" required>
 					<option value="" disabled selected>المهنة</option>
        <option value="بناء">بناء</option>
 	   <option value="لحام">لحام</option>
@@ -99,9 +103,10 @@ var myParent = document.getElementById("myDIV")
 //Create and append select list
 var selectList = document.createElement("select");
 selectList.id = "mySelectwilaya";
+
 myParent.appendChild(selectList);
 document.getElementById("mySelectwilaya").classList.add('dropdown');
-
+document.getElementById('mySelectwilaya').required=true;
 //*************** default ********
 var option = document.createElement("option");
     option.value = "" ;
@@ -185,6 +190,10 @@ $(document).ready(function(){
 		document.getElementById('jobselect').style.display='';
 		document.getElementById('myDIV').style.display='';
 		document.getElementById('phone').style.display='';
+		document.getElementById('jobselect').required=true;
+		document.getElementById('myDIV').required=true;
+		document.getElementById('phone').required=true;
+		document.getElementById('mySelectwilaya').required=true;
 	}
 
 	function clientclick(){
@@ -193,6 +202,10 @@ $(document).ready(function(){
 		document.getElementById('jobselect').style.display='none';
 		document.getElementById('myDIV').style.display='none';
 		document.getElementById('phone').style.display='none';
+		document.getElementById('jobselect').required=false;
+		document.getElementById('myDIV').required=false;
+		document.getElementById('phone').required=false;
+		document.getElementById('mySelectwilaya').required=false;
 	}
 
 </script>

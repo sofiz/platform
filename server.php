@@ -21,13 +21,14 @@ if (isset($_POST['SIGNUP'])) {
   $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
   $Job = mysqli_real_escape_string($db, $_POST['Job']);
   $Wilaya = mysqli_real_escape_string($db, $_POST['Wilaya']);
-  
-  
+
+
   $Type=mysqli_real_escape_string($db, $_POST['Type']);
   $Profile_Pic="default.png";
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
+  /*
   if (empty($First_Name )) { array_push($errors, "First Name is required"); }
   if (empty($Last_Name)) { array_push($errors, "Last Name is required"); }
   if (empty($Username)) { array_push($errors, "Username is required"); }
@@ -37,6 +38,7 @@ if (isset($_POST['SIGNUP'])) {
   if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }
   if (empty($Type)) { array_push($errors, "Type is required"); }
   if (empty($Password_1)) { array_push($errors, "Password is required"); }
+  */
   if ($Password_1 != $Password_2) {
 	array_push($errors, "The two passwords do not match");
   }
@@ -45,7 +47,7 @@ if (isset($_POST['SIGNUP'])) {
   // a user does not already exist with the same username and/or email
   $user_check_query = "SELECT * FROM Users WHERE ((Username='$Username') OR (Email='$Email')) LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
-   
+
 
   if ($User = mysqli_fetch_assoc($result)) { // if user exists
     if ($User['Username'] === $Username) {

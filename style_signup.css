@@ -13,7 +13,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font: inherit;
   vertical-align: baseline;
 }
-
+.names{
+  display: inline;
+}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   display: block;
 }
@@ -112,7 +114,7 @@ body {
   background: #eeeef2;
   background-size: cover;
   background-attachment: fixed;
-    font-family: 'JF Flat';   
+    font-family: 'JF Flat';
 }
 
 h1 {
@@ -183,7 +185,7 @@ background:transparent;
   background-repeat: no-repeat;
   color: black;
 font-family: 'JF Flat';
-	
+
 	margin: 2em 0;
 	border-bottom:2px solid #9d9898;
 }
@@ -255,7 +257,7 @@ input[type="submit"]:hover {
   -o-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
-  
+
   }
 
 .agileits-top p {
@@ -526,7 +528,7 @@ justify-content:center;
     border: none;
     font-size: large;
     font-family: 'JF Flat';
-  
+
 }
 
 #workerbtn{

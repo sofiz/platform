@@ -1,17 +1,18 @@
 ﻿<?php
 
 include('server.php') ?>
-
+ <?php include('topbar.php'); ?>
 <html>
 <head>
 <title> تسجيل الدخول </title>
-<link href="style.css" rel="stylesheet" type="text/css" media="all" />
 <link href="style_signup.css" rel="stylesheet" type="text/css" media="all" />
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+
 
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 
  </head>
- <?php include('topbar.php'); ?>
+
  <body>
  <div class="login-page">
   <div class="form">
