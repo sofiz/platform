@@ -27,6 +27,7 @@ $c->Get_Rating_Profile($db);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="profile.css">
 		<link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
@@ -54,7 +55,7 @@ $c->Get_Rating_Profile($db);
 
 	</style>
 
-  <body>
+  <body >
 
 
  <?php include('topbar.php'); ?>
@@ -391,15 +392,15 @@ function error(v){
  }
  // When the user clicks anywhere outside of the modal, close it
 
- let elements = document.getElementsByClassName('deletecomlab');
+ var elements = document.getElementsByClassName('deletecomlab');
 
 
- $(window).click(function() {
-   for (let i = 0; i < elements.length; i++) {
-       elements[i].style.display= 'none';
-   }
+ $('body').click(function() {
+     for (let i = 0; i < elements.length; i++) {
+         elements[i].style.display= 'none';
+     }
 
-
+  
  });
 
  $('#deletecom').click(function(event){

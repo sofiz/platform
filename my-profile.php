@@ -27,6 +27,7 @@ $c->Get_Rating_Profile($db);
     <link rel="stylesheet" href="profile.css">
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="profile.js"></script>
 
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -94,12 +95,12 @@ $c->Get_Rating_Profile($db);
 	    echo ' <div class="info"> <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ';
         echo '<span>  ' . $c->Age($c->Birthday)  .'</span> </div>';
     }
-	
+
 	else {
 	    echo ' <div class="info"> ';
         echo '<span>  </span> </div>';
     }
-	
+
 ?>
 
 
@@ -374,6 +375,21 @@ mysqli_close($db);
 
 
   }
+  // When the user clicks anywhere outside of the modal, close it
 
+  var elements = document.getElementsByClassName('deletecomlab');
+
+
+  $('body').click(function() {
+      for (let i = 0; i < elements.length; i++) {
+          elements[i].style.display= 'none';
+      }
+
+
+  });
+
+  $('#deletecom').click(function(event){
+      event.stopPropagation();
+  });
   </script>
 </html>
