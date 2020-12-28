@@ -2,6 +2,9 @@
 
 include('../conn.php');
 
+
+
+
 function unichr($u) 
 {
      return mb_convert_encoding('&#' . intval($u) . ';', 'UTF-8', 'HTML-ENTITIES');
@@ -154,14 +157,45 @@ $ligature_map = array(
 	    		
 	   //---------------------------------------------
 	  if($row['Job']!=null){
-		   $soundex.= " ".$row['Job'];
+		  $words=explode(" ",$row['Job']);
+		  foreach ($words as $word) {
+			   
+                                      $firstChar = mb_substr($word, 0, 1, "UTF-8");
+									  
+                                      if(in_array($firstChar, $ligature_map)){
+									   $en_word_2 = $obj->ar2en($word);
+									   
+                                       $soundex .=" ".metaphone($en_word_2);
+                                       }
+									  
+									  else $soundex.=" ". metaphone($word);
+									  
+									  
+									  
+
+		                           }
 	                    }
 	 
 	   //----------------------------------------------
-	  if($row['Wilaya']!=null){
-		 $soundex.= " ".$row['Wilaya'];
-		  
-  }
+	   if($row['Wilaya']!=null){
+		  $words=explode(" ",$row['Wilaya']);
+		  foreach ($words as $word) {
+			   
+                                      $firstChar = mb_substr($word, 0, 1, "UTF-8");
+									  
+                                      if(in_array($firstChar, $ligature_map)){
+									   $en_word_2 = $obj->ar2en($word);
+									   
+                                       $soundex .=" ".metaphone($en_word_2);
+                                       }
+									  
+									  else $soundex.=" ". metaphone($word);
+									  
+									  
+									  
+
+		                           }
+	                    }
 	 
 						  //-------------------------------
 	  if($row['Email']!=null){
@@ -291,8 +325,88 @@ $ligature_map = array(
 			              else if(!empty($Name)){
 							  
 							     
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////
+
+
+
+
+
+
+
+                                     /* $sql1="SELECT * FROM users WHERE  First_Name LIKE '%$Name%' or Last_Name LIKE '%$Name%'  or Job LIKE '%$Name%' or Wilaya LIKE '%$Name%' or Username LIKE '%$Name%'";
+	                                   $sql1="SELECT * FROM users WHERE  First_Name LIKE '%$Name%' ";
+	     
+									  $res1=mysqli_query($db,$sql1);							  
+		                              if(!$res1){
+	                                  echo "error".mysqli_error($db);
+                                       }
+		                              if(mysqli_num_rows($res1)>0){
+
+			                          while($row1=mysqli_fetch_assoc($res1)){
+										  
+						              $flag=true ;
+						              for($j=0;$j<count($arr);$j++)
+						              if($arr[$j]==$row1['id']){ $flag=false ; }
+									  
+									  
+						              if($flag){
+										  $count++
+										  
+	                                  echo'  <div class="resultcontainer">  ';
+									  
+									  if(($row1['Profile_Pic'])!="default.png")
+                                      echo'<a href="profile.php?id='.$row1['id'].'" ><img src="imgs/'.$row1['id'].'/'.$row1['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+									  else 
+									  echo'<a href="profile.php?id='.$row1['id'].'" > <img src="imgs/default.png" alt="" class="resimg" ></a> ';
+									  
+									  
+                                      echo'<div class="infocontainer"> ';
+                                      echo'<a href="profile.php?id='.$row1['id'].'" class="name">  '. $row1['First_Name']." ".$row1['Last_Name'] . ' </a>  ';
+                                      echo'<p class="info"> ' .$row1['Phone'] .  '</p> ';
+									  echo'<p class="info"> ' .$row1['Job'] .  '</p> ';
+									  
+         if(empty($row1['Daira'])&&empty($row1['Commune']))
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row1['Wilaya'].'</span></p> </div> </div>';
+         if(!empty($row1['Daira'])&&empty($row1['Commune']))
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row1['Wilaya'].','.$row1['Daira'].'</span></p> </div> </div>';
+		if(!empty($row1['Daira'])&&!empty($row1['Commune']))
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row1['Wilaya'].','.$row1['Daira'].','.$row1['Commune'].'</span> </p> </div> </div>';
                                       
+									  array_push($arr,$row1['id']);
+				                 	  }}
+		                                
+										} 
+                                      
+									  
+									  */
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
+									  
 									  $words=explode(" ",$Name);
 									 
                                       foreach ($words as $word ){
