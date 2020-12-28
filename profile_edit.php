@@ -58,7 +58,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 <div id="container" >
 <div id="square1a">
 
-<div class="settings" >
+<div class="settings" id="settings">
 	<div class="settings2">
 
 
@@ -726,7 +726,8 @@ $(function() {
 	 					 reader.readAsDataURL(input.files[0]);
 	 			 }
 	 	 }
-
+var settingselements = document.getElementById('settingselements');
+var settingselementsclick = document.getElementById('settingselementsclick');
 function options(){
 	var settingselements = document.getElementById('settingselements');
 	if (settingselements!=null) {
@@ -736,6 +737,14 @@ function options(){
 	document.getElementById('settingselementsclick').id = "settingselements";
 }
 }
+// When the user clicks anywhere outside of the modal, close it
+$(window).click(function() {
+	document.getElementById('settingselementsclick').id = "settingselements";
+});
+
+$('#settings').click(function(event){
+    event.stopPropagation();
+});
 
 </script>
 
