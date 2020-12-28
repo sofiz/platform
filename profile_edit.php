@@ -147,15 +147,20 @@ onclick="window.location.href = 'enter_email.php';" hidden>
   if($c->Birthday !=  "0000-00-00" && $c->Age($c->Birthday) > 16)
     {
 
-    echo '  <label for="birthday" style="font-size: 15px;"> ' . $c->Age($c->Birthday) .'  </label>  '  ;
-
-
+    echo '  <label for="birthday" style="font-size: 15px;"> '.$c->Age($c->Birthday).'  </label>  '  ;
 
  }
- echo '   <input type="date" id="birthday" name="Birthday" value="' .$c->Birthday .' " >   '  ;
-?>
-  </div>
+ 
+//echo ' <input type="date" name="Birthday" id="birthday"  value="'.$c->Birthday.'"'; 
 
+
+?>
+
+<input type="date" id="birthday" name="Birthday" value="<?php echo $c->Birthday ; ?>" >
+
+
+
+  </div>
 
 
   </div>
