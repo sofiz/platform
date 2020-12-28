@@ -39,7 +39,8 @@ include('server.php') ?>
 
 <button type="button" name="button" class="btns" id="workerbtn" onclick="workerclick()">عامل</button>
 <button type="button" name="button" class="btns" id="clientbtn" onclick="clientclick()">زبون</button>
-<input  name="typeinp" value="worker" id="typeinp" hidden>
+
+<input type="hidden" name="typeinp" value="worker" id="typeinp"> 
 				</div>
 
 

@@ -17,17 +17,20 @@ if (isset($_POST['SIGNUP'])) {
   $Username = mysqli_real_escape_string($db, $_POST['Username']);
   $Password_1 = mysqli_real_escape_string($db, $_POST['Password_1']);
   $Password_2 = mysqli_real_escape_string($db, $_POST['Password_2']);
-  $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
   
-  
-  $Job = mysqli_real_escape_string($db, $_POST['Job']);
   $Email = mysqli_real_escape_string($db, $_POST['Email']);
+   
+  $Type=mysqli_real_escape_string($db, $_POST['typeinp']);
   
-  $Type=mysqli_real_escape_string($db, $_POST['Type']);
   
+  
+  if($Type=="worker") {
+	  
+  $Job = mysqli_real_escape_string($db, $_POST['Job']);
+  $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
   $Wilaya = mysqli_real_escape_string($db, $_POST['Wilaya']);
   
-
+  }
   
   $Profile_Pic="default.png";
 
