@@ -41,7 +41,9 @@
     #square1a {
     background: #FAFAFA;
     width: 27.5em;
-    height: -webkit-fill-available;
+    height: : -moz-available;          /* WebKit-based browsers will ignore this. */
+height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+height: fill-available;
     border-radius: inherit;
     box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
     display: inline-block;
