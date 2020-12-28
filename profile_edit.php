@@ -91,22 +91,9 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 			<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
 	    <select type="text" name="Job" id="jobinp"  class="dropdown2">
 <option value="<?php  echo$c->Job ?>"> <?php  echo$c->Job ?></option>
-       <option value="بناء">بناء</option>
-	   <option value="لحام">لحام</option>
-	   <option value="ميكانيك السيارات">ميكانيك السيارات</option>
-	   <option value="دهان">دهان</option>
-	   <option value="خياطة">خياطة</option>
-	   <option value="تصليح الاحدية">تصليح الاحدية </option>
-	   <option value="نجار">ةنجار</option>
-	   <option value="حلاقة رجال">حلاقة رجال</option>
-	   <option value="كهرباء عماربة">كهرباء معماربة  </option>
-	   <option value="حدادة">الحدادة</option>
-	   <option value="تركيب الصحي والغاز">التركيب الصحي والغاز</option>
-	   <option value="التدفئة المركزية">التدفئة المركزية</option>
-<option value="المنيوم و المواد البلاستيكية">نجارة الالمنيوم و المواد البلاستيكية </option>
-<option value="المطالة هياكل السيارات">المطالة هياكل السيارات</option>
-<option value=" التأثيث الداخلي للمركبات">التجهيز و التأثيث الداخلي للمركبات</option>
-<option value="كهرباء السيارات">كهرباء السيارات</option>
+
+<?php include('jobsdata.html'); ?>
+
 
 </select>
 	  </div>
@@ -150,8 +137,8 @@ onclick="window.location.href = 'enter_email.php';" hidden>
     echo '  <label for="birthday" style="font-size: 15px;"> '.$c->Age($c->Birthday).'  </label>  '  ;
 
  }
- 
-//echo ' <input type="date" name="Birthday" id="birthday"  value="'.$c->Birthday.'"'; 
+
+//echo ' <input type="date" name="Birthday" id="birthday"  value="'.$c->Birthday.'"';
 
 
 ?>
@@ -166,317 +153,9 @@ onclick="window.location.href = 'enter_email.php';" hidden>
   </div>
 </div>
 
-<script>
-//	<button type="button" name="button" class="uploadpicbtn">more</button>
+<?php include 'locationdata.html'; ?>
 
-//************************** for wilaya *******************
-var wilayacode;
-var dairacode ;
 
-var myParent = document.getElementById("dropdowns")
-//Create and append select list
-var selectList = document.createElement("select");
-selectList.id = "mySelectwilaya";
-myParent.appendChild(selectList);
-document.getElementById("mySelectwilaya").classList.add('dropdown2');
-
-//*************** default ********
-var option = document.createElement("option");
-
-    option.value = document.getElementById("Wilaya").value;
-
-	option.text = document.getElementById("Wilaya").value ;
-
-	option.selected = "selected";
-	selectList.appendChild(option);
-//Create and append the options
-
-
-
-for (i in arr.wilayas) {
-
-
-   var option = document.createElement("option");
-    option.value = i ;
-
-	if(arr.wilayas[i].name_ar===document.getElementById("Wilaya").value)
-	var k = i ;
-
-    option.text = arr.wilayas[i].name_ar;
-    selectList.appendChild(option);
-
-
-}
-
-
-document.getElementById("mySelectwilaya").options[0].disabled = true;
-
-
-/////****************************** for daira ***************
-var myParent2 = document.getElementById("dropdowns")
-//Create and append select list
-var selectList2 = document.createElement("select");
-selectList2.id = "mySelectdaira";
-myParent2.appendChild(selectList2);
-
-document.getElementById("mySelectdaira").classList.add('dropdown2');
-
-
-
-
-//*************** default ********
-var option = document.createElement("option");
-
-	if ( document.getElementById("Daira").value === ""  ) {
-
-		option = document.createElement("option");
-		option.text = "إختر دائرة" ;
-        option.value = "" ;
-        option.selected = "selected";
-		selectList2.appendChild(option);
-
-
-		wilayacode = k ;
-
-		//********* set value of wilaya in input ********
-
-		document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
-
-        //alert("You have selected wilaya - " + wilayacode);
-
-		for (j in arr.wilayas[wilayacode].dairas) {
-		var option = document.createElement("option");
-	option.value = j ;
-
-
-    option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
-
-    selectList2.appendChild(option);
-           }
-
-
-
-
-}
-   else {
-
-          option = document.createElement("option");
-          option.text = "إختر دائرة" ;
-          option.value = "" ;
-		  selectList2.appendChild(option);
-
-	/*	  option = document.createElement("option");
-          option.text = document.getElementById("Daira").value ;
-	      option.value = document.getElementById("Daira").value ;
-		  option.selected = "selected";
-
-		  selectList2.appendChild(option);
-	*/
-
-		  wilayacode = k ;
-
-		//********* set value of wilaya in input ********
-
-		document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
-        //alert("You have selected wilaya - " + wilayacode);
-
-
-
-		for (j in arr.wilayas[wilayacode].dairas) {
-		var option = document.createElement("option");
-	option.value = j ;
-
-	if(arr.wilayas[wilayacode].dairas[j].name_ar===document.getElementById("Daira").value){
-	option.selected = "selected";
-	var l = j ;
-
-	}
-
-    option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
-    selectList2.appendChild(option);
-           }
-
-		  }
-
-
-
-document.getElementById("mySelectdaira").options[0].disabled = true;
-
-
-//**********************************************************************************************************************************************
-
-//***********************************************************************************************************************************************************
-
-  $(document).ready(function(){
-
-    $("#mySelectwilaya").change(function(){
-
-        wilayacode = $(this).children("option:selected").val();
-		//********* set value of wilaya in input ********
-
-		document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
-        //alert("You have selected wilaya - " + wilayacode);
-
-        $('#mySelectdaira').find('option:not(:first)').remove();
-		$('#mySelectcommune').find('option:not(:first)').remove();
-
-		document.getElementById("mySelectdaira").options[0].selected = "selected";
-        document.getElementById("mySelectcommune").options[0].selected = "selected";
-
-		document.getElementById("Daira").value="";
-		document.getElementById("Commune").value="";
-
-		for (j in arr.wilayas[wilayacode].dairas) {
-		var option = document.createElement("option");
-	option.value = j ;
-
-	if(arr.wilayas[wilayacode].dairas[j].name_ar===document.getElementById("Daira").value)
-	var l = j ;
-
-    option.text = arr.wilayas[wilayacode].dairas[j].name_ar ;
-    selectList2.appendChild(option);
-           }
-
-
-		   });
-		   });
-
-		   //****************************** for communes *******************
-var myParent3 = document.getElementById("dropdowns")
-//Create and append select list
-var selectList3 = document.createElement("select");
-selectList3.id = "mySelectcommune";
-myParent3.appendChild(selectList3);
-document.getElementById("mySelectcommune").classList.add('dropdown2');
-
-
-//*************** default ********
-var option = document.createElement("option");
-
-
-if ( document.getElementById("Commune").value === "" && document.getElementById("Daira").value === "" ) {
-
-
-		option = document.createElement("option");
-		option.text = "إختر بلدية" ;
-        option.value = "" ;
-        option.selected = "selected";
-		selectList3.appendChild(option);
-
-		//document.getElementById("mySelectcommune").style.display = "none";
-
-     }
-
-else if (document.getElementById("Commune").value === "" && document.getElementById("Daira").value !== "" ){
-
-	    option = document.createElement("option");
-		option.text = "إختر بلدية" ;
-        option.value = "" ;
-        option.selected = "selected";
-		selectList3.appendChild(option);
-
-
-		 dairacode = l ;
-
-		for (k in arr.wilayas[wilayacode].dairas[dairacode].communes) {
-		var option = document.createElement("option");
-	    option.value = k ;
-        option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ;
-        selectList3.appendChild(option);
-
-           }
-
-}
-
-   else {
-
-          option = document.createElement("option");
-          option.text = "إختر بلدية" ;
-          option.value = "" ;
-		  selectList3.appendChild(option);
-
-
-
-
-        var dairacode = l ;
-
-		for (k in arr.wilayas[wilayacode].dairas[dairacode].communes) {
-		var option = document.createElement("option");
-	option.value = k ;
-
-	if(arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ===document.getElementById("Commune").value){
-	option.selected = "selected";
-	}
-
-
-    option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[k].name_ar ;
-    selectList3.appendChild(option);
-           }
-
-		  }
-
-
-document.getElementById("mySelectcommune").options[0].disabled = true;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $("#mySelectdaira").change(function(){
-         dairacode = $(this).children("option:selected").val();
-
-        //alert("You have selected wilaya - " + dairacode);
-		//********* set value of daira in input ********
-
-		 document.getElementById("Daira").value= arr.wilayas[wilayacode].dairas[dairacode].name_ar;
-
-
-        $('#mySelectcommune').find('option:not(:first)').remove();
-
-        document.getElementById("mySelectcommune").options[0].selected = "selected";
-
-		document.getElementById("Commune").value="";
-
-		for (z in arr.wilayas[wilayacode].dairas[dairacode].communes) {
-		var option = document.createElement("option");
-	    option.value = z ;
-        option.text = arr.wilayas[wilayacode].dairas[dairacode].communes[z].name_ar ;
-
-	     //if(option.text==document.getElementById("Commune").value) {option.selected = "selected";}
-
-        selectList3.appendChild(option);
-           }
-
-		   //document.getElementById("mySelectcommune").style.display = "block";
-
-
-		 });
-
-
-
-	    $("#mySelectcommune").change(function(){
-
-        var communecode = $(this).children("option:selected").val();
-
-		//********* set value of commne in input ********
-
-		 document.getElementById("Commune").value= arr.wilayas[wilayacode].dairas[dairacode].communes[communecode].name_ar;
-
-        });
-
-
-
-
-	</script>
 <div class="s1s2">
 
 
@@ -795,7 +474,7 @@ function options(){
 		$('#settings').click(function(event){
 		    event.stopPropagation();
 		});
-
+document.getElementById('mihna').remove();
 </script>
 
 
