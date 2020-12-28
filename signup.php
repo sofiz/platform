@@ -41,6 +41,8 @@ include('server.php') ?>
 <button type="button" name="button" class="btns" id="clientbtn" onclick="clientclick()">زبون</button>
 				</div>
 
+
+
 				   <input class="text" type="text" name="Username" placeholder="إسم المستخدم" required="">
 					 <div class="names">
 
@@ -50,10 +52,10 @@ include('server.php') ?>
     margin-right: 2%;margin: 0;">
 				    <input class="text" type="text" name="Last_Name" placeholder="اللقب" required=""style="    width: 46%;
     margin: 0;
-    display: inline-block;
+    display: inline-block; "
 						</div>
 
-					<input class="text email" type="email" name="Email" placeholder="الإيميل" required="">
+					<input class="text" type="email" name="Email" placeholder="الإيميل" required="">
 					<input class="text" type="password" name="Password_1" placeholder="كلمة السر" required="">
 					<input class="text w3lpass" type="password" name="Password_2" placeholder="تأكيد كلمة السر" required="">
 

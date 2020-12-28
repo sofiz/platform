@@ -217,7 +217,9 @@ $ligature_map = array(
 
  $count=0;
  $arr=array();
-                       
+ $carc=array("o","O","a","A","i","I","e","E");  
+
+ 
  if(empty($Name) && empty($Job) &&  empty($Wilaya)){
 				      echo '<div class="resultcontainer"> ';
                       echo ' <p id="noresult"> no result found! <br> Please ENter Wilaya ANd Job  <p>  </div> '; 
@@ -250,7 +252,7 @@ $ligature_map = array(
 						              if($flag){
 										  $count++;
 	                                  echo'  <div class="resultcontainer">  ';
-                                      echo'<a href="profile.php?id='.$row0['id'].'" ><img src="../imgs/'.$row0['id'].'/'.$row0['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+                                      echo'<a href="profile.php?id='.$row0['id'].'" ><img src="imgs/'.$row0['id'].'/'.$row0['Profile_Pic'].'" alt="" class="resimg" ></a> ';
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row0['id'].'" class="name">  '. $row0['First_Name']." ".$row0['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row0['Phone'] .  '</p> ';
@@ -286,6 +288,7 @@ $ligature_map = array(
                                       foreach ($words as $word ){
 			  						  if (strlen($word)>2){
                                       $firstChar = mb_substr($word, 0, 1, "UTF-8");
+
 									  
                                       if(in_array($firstChar, $ligature_map)){
 									   $en_word_2 = $obj->ar2en($word);
@@ -295,6 +298,8 @@ $ligature_map = array(
 									  
 									  else $soundex =metaphone($word);
 									  
+									  
+									  if(in_array($firstChar, $carc))
 									  $soundex = substr($soundex, 1);
 									  
 									  
@@ -329,7 +334,7 @@ $sql3="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 						              if($flag){
 										  $count++;
 	                                  echo'  <div class="resultcontainer">  ';
-                                      echo'<a href="profile.php?id='.$row2['id'].'" ><img src="../imgs/'.$row2['id'].'/'.$row2['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+                                      echo'<a href="profile.php?id='.$row2['id'].'" ><img src="imgs/'.$row2['id'].'/'.$row2['Profile_Pic'].'" alt="" class="resimg" ></a> ';
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row2['id'].'" class="name">  '. $row2['First_Name']." ".$row2['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row2['Phone'] .  '</p> ';

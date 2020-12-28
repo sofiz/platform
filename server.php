@@ -15,15 +15,21 @@ if (isset($_POST['SIGNUP'])) {
   $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
   $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
   $Username = mysqli_real_escape_string($db, $_POST['Username']);
-  $Email = mysqli_real_escape_string($db, $_POST['Email']);
   $Password_1 = mysqli_real_escape_string($db, $_POST['Password_1']);
   $Password_2 = mysqli_real_escape_string($db, $_POST['Password_2']);
   $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
+  
+  
   $Job = mysqli_real_escape_string($db, $_POST['Job']);
+  $Email = mysqli_real_escape_string($db, $_POST['Email']);
+  $Type=mysqli_real_escape_string($db, $_POST['Type']);
+  
   $Wilaya = mysqli_real_escape_string($db, $_POST['Wilaya']);
 
 
-  $Type=mysqli_real_escape_string($db, $_POST['Type']);
+ 
+  
+  
   $Profile_Pic="default.png";
 
   // form validation: ensure that the form is correctly filled ...
@@ -54,6 +60,7 @@ if (isset($_POST['SIGNUP'])) {
       array_push($errors, "Username already exists");
     }
 
+     
     if ($User['Email'] === $Email) {
       array_push($errors, "email already exists");
     }
