@@ -131,6 +131,9 @@ $in = in_array($detectedType, $allowedTypes);
 compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,60);
 }
 }  }
+
+
+
 ///***************************************** UPDATE data *********************************************
 if(count($errors) == 0) {
 	$query = "UPDATE users
