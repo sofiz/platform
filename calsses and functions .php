@@ -349,7 +349,7 @@ echo "<div class='ratingcontain3'>";
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div>  ' ;
    // -------------------------------DELETE CCOMMENT ----------------------------------------------
    if($this->Get_Id_From_Session($db)==$Commentor_id){
-   echo ' <form class="deletecom" action="onsbmit.php" method="post" >   ';
+   echo ' <form class="deletecom" id="deletecom" action="onsbmit.php" method="post" >   ';
    echo ' <input type="text" name="Comment_id" value="'.$row['Comment_id'].' " class="inputname" hidden>' ;
    echo ' <input type="text" name="User_id" value="'.$row['User_id'].' " class="inputname" hidden>' ;
    echo ' <input type="submit" value="DeleteComment" name="DeleteComment" id="DeleteComment'.$row['Comment_id'].'" hidden>  ';

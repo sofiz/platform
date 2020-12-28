@@ -389,6 +389,22 @@ function error(v){
 
 
  }
+ // When the user clicks anywhere outside of the modal, close it
+
+ let elements = document.getElementsByClassName('deletecomlab');
+
+
+ $(window).click(function() {
+   for (let i = 0; i < elements.length; i++) {
+       elements[i].style.display= 'none';
+   }
+
+
+ });
+
+ $('#deletecom').click(function(event){
+     event.stopPropagation();
+ });
 
  </script>
 </html>
