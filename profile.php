@@ -109,12 +109,12 @@ $c->Get_Rating_Profile($db);
 	    echo ' <div class="info"> <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ';
         echo '<span>  ' . $c->Age($c->Birthday)  .'</span> </div>';
     }
-	
+
 	else {
 	    echo ' <div class="info"> ';
         echo '<span>  </span> </div>';
     }
-	
+
 ?>
 
 <button type="button" name="button" class="uploadpicbtn">more</button>
@@ -407,10 +407,10 @@ function error(v){
          elements[i].style.display= 'none';
      }
 
-  
+
  });
 
- $('#deletecom').click(function(event){
+ $('.deletecom').click(function(event){
      event.stopPropagation();
  });
 

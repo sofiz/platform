@@ -388,7 +388,7 @@ mysqli_close($db);
 
   });
 
-  $('#deletecom').click(function(event){
+  $('.deletecom').click(function(event){
       event.stopPropagation();
   });
   </script>

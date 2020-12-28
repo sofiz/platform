@@ -39,6 +39,7 @@ include('server.php') ?>
 
 <button type="button" name="button" class="btns" id="workerbtn" onclick="workerclick()">عامل</button>
 <button type="button" name="button" class="btns" id="clientbtn" onclick="clientclick()">زبون</button>
+<input  name="typeinp" value="worker" id="typeinp" hidden>
 				</div>
 
 
@@ -200,6 +201,7 @@ $(document).ready(function(){
 		document.getElementById('myDIV').required=true;
 		document.getElementById('phone').required=true;
 		document.getElementById('mySelectwilaya').required=true;
+		document.getElementById('typeinp').value="worker";
 	}
 
 	function clientclick(){
@@ -212,6 +214,7 @@ $(document).ready(function(){
 		document.getElementById('myDIV').required=false;
 		document.getElementById('phone').required=false;
 		document.getElementById('mySelectwilaya').required=false;
+		document.getElementById('typeinp').value="client";
 	}
 
 </script>
