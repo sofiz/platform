@@ -539,14 +539,14 @@ margin-right: 44px;
 
 #workerbtnselected{
 margin-right: 44px;
-background:blue;
+background: linear-gradient(#03AFD1,#4896E4);
 }
 
 #clientbtn{
 }
 
 #clientbtnselected{
-background:blue;
+    background: linear-gradient(#03AFD1,#4896E4);
 }
 
 }

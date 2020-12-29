@@ -49,10 +49,14 @@ height: fill-available;
     display: inline-block;
     vertical-align: top;
     margin-right: 16px;
-    padding-bottom: 32px;
-    min-height: 428px;
+    padding-bottom: 5px;
+    min-height: 455px;
 }
-
+#moreedite{
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+}
 .s1s2{
 display: inline-block;
 border-radius: inherit;
@@ -732,7 +736,7 @@ outline: none;
 
 
   /* The Close Button */
-  .close , .closeconfirm{
+  .close , .closeconfirm,.closemoreedit{
     color: #aaa;
     float: right;
     font-size: 1.75em;
@@ -741,6 +745,8 @@ outline: none;
 
   .close:hover,
   .close:focus,
+  .closemoreedit:hover,
+  .closemoreedit:focus,
   .closeconfirm:hover,
   .closeconfirm:focus{
     color: black;

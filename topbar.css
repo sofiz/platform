@@ -42,6 +42,7 @@
   font-size: 18px;
   color: white;
 text-align: center;
+margin:0;
 }
 
 #logoutbtn{
@@ -141,6 +142,11 @@ text-align: center;
   .logo{
     display: none;
   }
+
+  .logo_txt{
+display: none;
+
+}
   .nav {
 display: flex;
 padding-left: 0px;

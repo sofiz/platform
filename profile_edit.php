@@ -106,12 +106,12 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 	 <span class="fas fa-phone" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
 	 <input type="text" name="Phone" value="<?php echo $c->Phone ?>" class="inputinf">
  </div>
-
+<!--
   <div class="info2">
 		<span class="fas fa-envelope" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
     <input type="text" name="Email" value="<?php echo $c->Email ?>" class="inputinf">
   </div>
-
+-->
 
 
 
@@ -150,7 +150,9 @@ onclick="window.location.href = 'enter_email.php';" hidden>
   </div>
 
 
+
   </div>
+		<button type="button" name="button" class="uploadpicbtn" id="moreedite">المزيد</button>
 </div>
 
 <?php include 'locationdata.html'; ?>
@@ -255,7 +257,24 @@ $c->Show_Three_Photos();
 </div>
 
 
+<!-- The Modal -->
+<div id="myModalmoreedit" class="modal">
 
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="closemoreedit">&times;</span>
+
+		<div class="moreeditecontainer">
+<input type="text" name="" value="">
+<input type="text" name="" value="">
+<input type="text" name="" value="">
+			<button type="button" name="button" class="uploadpicbtn" id="confirmmoreeditbtn">نعم</button>
+		</div>
+
+  </div>
+
+
+</div>
 
 
 
@@ -354,6 +373,33 @@ window.onclick = function(event) {
 }
 
 
+
+// Get the modal
+var modal2 = document.getElementById("myModalmoreedit");
+
+// Get the button that opens the modal
+var btn2 = document.getElementById("moreedite");
+
+// Get the <span> element that closes the modal
+var span2 = document.getElementsByClassName("closemoreedit")[0];
+
+// When the user clicks the button, open the modal
+btn2.onclick = function() {
+  modal2.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal2.style.display = "none";
+
+  }
+}
 
 
 $("#b1").click(function(){

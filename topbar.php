@@ -34,7 +34,7 @@ echo 'Title: ' . getTitle('http://www.w3schools.com/php/');
 
 echo '<div class="topbar">
 
-<img src="LOGO_back_white.png" class="logo" alt="">
+<img src="LOGO_back_white2.png" class="logo" alt="">
 <p class="logo_txt">Rondili</p>
 
 
