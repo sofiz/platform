@@ -448,9 +448,9 @@ $(function() {
 
                 reader.onload = function(event) {
                     $($.parseHTML('<img class="imgs2" id="'+ i +'" >')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
-					
-					
-					
+
+
+
                 }
 
                 reader.readAsDataURL(input.files[i]);
@@ -459,13 +459,13 @@ $(function() {
                 var quality = 30;
 	            i.src = jic.compress(source_image,quality,output_format).src;
 				*/
-				
-				
+
+
             }
-			
-			
-			
-			
+
+
+
+
         }
 
     };

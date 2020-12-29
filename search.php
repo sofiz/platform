@@ -23,10 +23,12 @@ $obj = new \ArPHP\I18N\Arabic();
   <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   	<script src="data.js"></script>
+    <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   </head>
 
   <body>
   <?php include('topbar.php'); ?>
+
 <form action="search.php" method="get">
 
     <div class="searchbar">
@@ -44,17 +46,23 @@ $obj = new \ArPHP\I18N\Arabic();
     <?php include 'wilayascript.html'; ?>
 <script>
        document.getElementById('mihna').remove();
-	   
-	   
-	   
+
+
+
 	</script>
 	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
     </div>
     <input type="submit" name="recherche"  value= "بحث" class="searchbtn">
-				</form>
-                
-				<?php include('update indexing.php'); ?>
 
+				</form>
+        <div class="ad1">
+            this is an ad
+          </div>
+                <div class="resultscontainer">
+
+
+				<?php include('update indexing.php'); ?>
+              </div>
 
   </body>
 </html>
