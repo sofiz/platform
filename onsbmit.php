@@ -85,6 +85,8 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
   $Description = mysqli_real_escape_string($db,$_POST['Description']);
 
   $Birthday =mysqli_real_escape_string($db, $_POST['Birthday']);
+  
+  $Type="worker";
 
 /*
   if (empty($First_Name)) { array_push($errors, "First Name is required"); }
@@ -145,7 +147,7 @@ compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,30);
 ///***************************************** UPDATE data *********************************************
 if(count($errors) == 0) {
 	$query = "UPDATE users
-	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Wilaya='$Wilaya',Daira='$Daira',Commune='$Commune',Birthday='$Birthday',Description='$Description'  WHERE id='$id'" ;
+	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Wilaya='$Wilaya',Daira='$Daira',Commune='$Commune',Birthday='$Birthday',Description='$Description',Type='$Type'  WHERE id='$id'" ;
   	//$query ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
 	mysqli_query($db, $query);
 

@@ -251,7 +251,7 @@ function For_My_Comment($db){
 
 
 
-      if ($this->Check_Session_Isset()) {
+      if ($this->Check_Session_Isset() && $this->Type=="worker") {
 	  $user=$_SESSION['Username'];
 	  $res=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name,id FROM users WHERE Username='$user'");
       while($row=mysqli_fetch_array($res)) {
@@ -262,24 +262,23 @@ function For_My_Comment($db){
 				 }
 
          echo' <div class="yourcomment"> ';
-        echo'  <img src="imgs/'.$Commentor_id.'/'.$Profile_Pic.'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
+         echo'  <img src="imgs/'.$Commentor_id.'/'.$Profile_Pic.'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
          echo'    <form action="onsbmit.php" method="post">   ';
 
 
 
 
-		 if($this->id != $this->Get_Id_From_Session($db)  ){
+		 if($this->id != $this->Get_Id_From_Session($db)){
 			  echo' <input type="text" name="Comment"  id="input1">';
       	 echo '  <div id="rater"></div> ';
 
           }
 
-         else echo' <input type="text" name="Comment"  id="input2">';
-
-
+        else echo' <input type="text" name="Comment"  id="input2">';
         echo '<input type= "hidden"  name="Commentor_id"  value="'.$Commentor_id.'" >   ';
         echo '<input type= "hidden"  name="User_id"  value="'.$this->id.'" > ';
         echo '<input type= "hidden"  name="rating"  value="" id="ratings" >   ';
+		
         echo' <input type="submit" name="commenter" value="commenter" id="submitreview" hidden><label for="submitreview" class="fa fa-send" id="submitreview2"></label></div>
       ';
                       echo'   </form>    ';
@@ -310,7 +309,7 @@ function Show_All_Comments($db){
 
 $res=mysqli_query($db,"SELECT * FROM comments WHERE User_id='$this->id'");
 $fortest = mysqli_num_rows($res) ;
-if($fortest>0)
+if($fortest>0){ 
 while($row=mysqli_fetch_array($res)){
 
 
@@ -337,16 +336,15 @@ while($row1=mysqli_fetch_array($rest))
    echo '<div style="    display: inline-grid;">';
 	 echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
 
-if($Commentor_id != $this->id)
-  {
-echo "<div class='ratingcontain3'>";
+if($Commentor_id != $this->id){
+   echo "<div class='ratingcontain3'>";
    for ($j=1;$j<=$row['rating'];$j++)
    echo '<span class="fa fa-star checked"></span>' ;
    if ($row['rating']<5)
    for($j=$row['rating'];$j<5;$j++)
    echo ' <span class="fa fa-star unchecked"></span>' ;
    echo "</div>";  }
-
+   
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div>  ' ;
    // -------------------------------DELETE CCOMMENT ----------------------------------------------
    if($this->Get_Id_From_Session($db)==$Commentor_id){
@@ -368,9 +366,10 @@ echo "</div>";
 
 }
 
-
-else  if ($this->Check_Session_Isset()) { echo' <p> أضف أول تقييم </p>'; }
-       else echo '<p> لايوجد أي تقييم  </p>';
+}
+else  if ($this->Check_Session_Isset() && $this->Type =="worker"  ) { echo' <p> أضف أول تقييم </p>'; }
+       else if ($this->Check_Session_Isset() && $this->Type !="worker"  ) echo '<p> حساب زبون  </p>';
+	       else echo '<p> لايوجد اي تقييم  </p>';
 }
 
 
