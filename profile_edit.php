@@ -80,7 +80,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 	</div>
 </div>
 <div class="" style="border-radius: inherit;">
-  <img id="pic"  src="imgs/<?php echo $c->id.'/'. $c->Profile_Pic; ?>" alt="" >
+  <?php echo '<img id="pic" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >'; ?>
 
 
 
