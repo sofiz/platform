@@ -32,7 +32,6 @@ $c->Get_Rating_Profile($db);
     <script src="profile.js"></script>
 
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 
 
