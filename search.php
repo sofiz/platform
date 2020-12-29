@@ -44,6 +44,9 @@ $obj = new \ArPHP\I18N\Arabic();
     <?php include 'wilayascript.html'; ?>
 <script>
        document.getElementById('mihna').remove();
+	   
+	   
+	   
 	</script>
 	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
     </div>
