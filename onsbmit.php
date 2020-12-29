@@ -74,7 +74,9 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
 
   $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
   $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
+  
   $Email =mysqli_real_escape_string($db, $_POST['Email']);
+  
   $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
   $Job =mysqli_real_escape_string($db, $_POST['Job']);
   $Wilaya =mysqli_real_escape_string($db,$_POST['Wilaya']);
@@ -84,12 +86,13 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
 
   $Birthday =mysqli_real_escape_string($db, $_POST['Birthday']);
 
+/*
   if (empty($First_Name)) { array_push($errors, "First Name is required"); }
   if (empty($Last_Name)) { array_push($errors, "Last Name is required"); }
   if (empty($Email)) { array_push($errors, "Email is required"); }
   if (empty($Phone)) { array_push($errors, "Phone is required"); }
   if (empty($Job)) { array_push($errors, "Job is required"); }
-  if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }
+  if (empty($Wilaya)) { array_push($errors, "Wilaya is required"); }  */
 
 if ($_FILES['fileToUpload']['size'] != 0 ){
 

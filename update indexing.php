@@ -364,15 +364,15 @@ $ligature_map = array(
 
 
 if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
-$sql2="SELECT * FROM users WHERE  Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%' AND Job='$Job' AND Wilaya='$Wilaya' ";
+$sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%') AND Job='$Job' AND Wilaya='$Wilaya' ";
 //************************************* Name andd ddaira exxist .... and commune not exxist
 		else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
-               $sql2="SELECT * FROM users WHERE  Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%' AND Job='$Job'  ";
+               $sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%' )AND Job='$Job'  ";
 			   else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
-                      $sql2="SELECT * FROM users WHERE  Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%' AND Wilaya='$Wilaya'  ";
+                      $sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%' )AND Wilaya='$Wilaya'  ";
                        //********************************* name exxist .... dadira and commune not exissts
 				         else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-                            $sql2="SELECT * FROM users WHERE  Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%' ";
+                            $sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%' )";
 							
 							
 							
@@ -430,15 +430,15 @@ $sql2="SELECT * FROM users WHERE  Username LIKE '%$Name%' || First_Name LIKE '%$
                                       foreach ($words as $word ){
 			  						 
 		if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%' AND Job='$Job' AND Wilaya='$Wilaya' ";
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%') AND Job='$Job' AND Wilaya='$Wilaya' ";
 //************************************* Name andd ddaira exxist .... and commune not exxist
 		else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
-               $sql3="SELECT * FROM users WHERE  Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%' AND Job='$Job'  ";
+               $sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%') AND Job='$Job'  ";
 			   else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
-                      $sql3="SELECT * FROM users WHERE  Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%' AND Wilaya='$Wilaya'  ";
+                      $sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%') AND Wilaya='$Wilaya'  ";
                        //********************************* name exxist .... dadira and commune not exissts
 				         else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-                            $sql3="SELECT * FROM users WHERE Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'  ";
+                            $sql3="SELECT * FROM users WHERE (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%')  ";
 
 
                                       

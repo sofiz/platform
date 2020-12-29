@@ -22,7 +22,7 @@ class user {
 	  public $Last_Name;
 	  public $id;
 	  public $Job;
-
+      public $Type;
       public $ids ;
 
 
@@ -30,7 +30,7 @@ class user {
 
      function Age($dateNaissance)
 {
-	if($dateNaissance != "0000-00-00")
+	if($dateNaissance != "0000-00-00" )
 	{
   $aujourdhui = date("Y-m-d");
   $diff = date_diff(date_create($dateNaissance), date_create($aujourdhui));
@@ -124,6 +124,7 @@ function Select_Information_Of_Profile($db){
 	  $this->Last_Name=$row['Last_Name'];
 	  $this->id=$row['id'];
 	  $this->Job=$row['Job'];
+	  $this->Type=$row['Type'];
       }
 }
 
@@ -267,7 +268,7 @@ function For_My_Comment($db){
 
 
 
-		 if($this->id != $this->Get_Id_From_Session($db)){
+		 if($this->id != $this->Get_Id_From_Session($db)  ){
 			  echo' <input type="text" name="Comment"  id="input1">';
       	 echo '  <div id="rater"></div> ';
 

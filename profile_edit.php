@@ -3,6 +3,7 @@
 session_start();
 include('../conn.php');
 include('calsses and functions .php') ;
+
 $c = new  user();
 	if (!($c->Check_Session_Isset())) {
   	header('location: signin.php');
@@ -81,15 +82,15 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 <div class="nameinp">
 
 
-  <input type="text" name="First_Name" value="<?php echo $c->First_Name ; ?>" class="inputname" >
-  <input type="text" name="Last_Name" value="<?php echo $c->Last_Name ;?>" class="inputname" id="inputname2">
+  <input type="text" name="First_Name" value="<?php echo $c->First_Name ; ?>" class="inputname" required >
+  <input type="text" name="Last_Name" value="<?php echo $c->Last_Name ;?>" class="inputname" id="inputname2" required>
 </div>
 
   <div class="infocontain2">
 
 		<div class="info2">
 			<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
-	    <select type="text" name="Job" id="jobinp"  class="dropdown2">
+	    <select type="text" name="Job" id="jobinp"  class="dropdown2" required>
 <option value="<?php  echo$c->Job ?>"> <?php  echo$c->Job ?></option>
 
 <?php include('jobsdata.html'); ?>
@@ -104,14 +105,13 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 
  <div class="info2">
 	 <span class="fas fa-phone" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
-	 <input type="text" name="Phone" value="<?php echo $c->Phone ?>" class="inputinf">
+	 <input type="text" name="Phone" value="<?php echo $c->Phone ;?>" class="inputinf" required>
  </div>
-<!--
+
   <div class="info2">
 		<span class="fas fa-envelope" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
-    <input type="text" name="Email" value="<?php echo $c->Email ?>" class="inputinf">
+    <input type="text" name="Email" value="<?php echo $c->Email ;?>" class="inputinf"  required>
   </div>
--->
 
 
 

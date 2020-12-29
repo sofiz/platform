@@ -63,12 +63,12 @@ $c->Get_Rating_Profile($db);
     <div class="infocontainer">
 
       <div class="info">
-				<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
+				<?php if ($c->Job!="") echo '<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #036fa1;"></span> ' ; ?>
 			      <span style="font-size: 15px;"><?php echo $c->Job ; ?></span>
 			    </div>
 
 			    <div class="info">
-						<span class="fas fa-map-marker" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
+						 <?php	if ($c->Wilaya!="") echo '<span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #036fa1;"></span>' ; ?>
 		<?php if(empty($c->Daira)&&empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.'</span>';
          if(!empty($c->Daira)&&empty($c->Commune))
@@ -80,7 +80,7 @@ $c->Get_Rating_Profile($db);
 			    </div>
 
 					<div class="info">
-						<span class="fas fa-phone" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
+					<?php	if ($c->Phone!="") echo ' <span class="fas fa-phone" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #036fa1;"></span>' ; ?>
 			      <span><?php echo $c->Phone ; ?></span>
 			    </div>
 

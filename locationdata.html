@@ -10,15 +10,24 @@ var myParent = document.getElementById("dropdowns")
 var selectList = document.createElement("select");
 selectList.id = "mySelectwilaya";
 myParent.appendChild(selectList);
+
 document.getElementById("mySelectwilaya").classList.add('dropdown2');
+document.getElementById('mySelectwilaya').required=true;
 
 //*************** default ********
+
+
 var option = document.createElement("option");
-
+    if (document.getElementById("Wilaya").value!="") {
     option.value = document.getElementById("Wilaya").value;
-
 	option.text = document.getElementById("Wilaya").value ;
-
+	}
+	
+else {
+    option.value ="";
+	option.text = "اختر الولاية" ;
+	}
+	
 	option.selected = "selected";
 	selectList.appendChild(option);
 //Create and append the options
@@ -58,8 +67,17 @@ document.getElementById("mySelectdaira").classList.add('dropdown2');
 
 //*************** default ********
 var option = document.createElement("option");
+if ( document.getElementById("Wilaya").value === ""  ) {
 
-	if ( document.getElementById("Daira").value === ""  ) {
+
+        option = document.createElement("option");
+		option.text = "إختر دائرة" ;
+        option.value = "" ;
+        option.selected = "selected";
+		selectList2.appendChild(option);
+
+                   }
+	else if ( document.getElementById("Daira").value === ""  ) {
 
 		option = document.createElement("option");
 		option.text = "إختر دائرة" ;
