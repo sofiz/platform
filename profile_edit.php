@@ -37,7 +37,16 @@ $c->Select_Photos_Of_Profile ($db);
 
 <body>
 
- <?php include('topbar.php'); ?>
+ <?php include('topbar.php'); 
+ 
+ if($c->Type !="worker") echo '<h1> املء المعلومات لتغيير الئ حساب عامل</h1>';
+ 
+ 
+ 
+ 
+ 
+ 
+ ?>
 
  <form class = "d" action= "onsbmit.php" method="post"  >
  <?php   echo '<input type="text" name="id" value="'.$c->id.'" class="inputname" hidden>';?>
