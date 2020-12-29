@@ -32,7 +32,13 @@ echo 'Title: ' . getTitle('http://www.w3schools.com/php/');
 // Title: PHP 5 Tutorial
 ?> */
 
-echo '<div class="topbar">  <div class="nav">';
+echo '<div class="topbar">
+
+<img src="LOGO_back_white.png" class="logo" alt="">
+<p class="logo_txt">Rondili</p>
+
+
+ <div class="nav">';
 
 
 
