@@ -44,17 +44,19 @@ $obj = new \ArPHP\I18N\Arabic();
     <?php include 'wilayascript.html'; ?>
 <script>
        document.getElementById('mihna').remove();
-	   
-	   
-	   
+
+
+
 	</script>
 	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
     </div>
     <input type="submit" name="recherche"  value= "بحث" class="searchbtn">
 				</form>
-                
-				<?php include('update indexing.php'); ?>
+                <div class="resultscontainer">
 
+
+				<?php include('update indexing.php'); ?>
+              </div>
 
   </body>
 </html>

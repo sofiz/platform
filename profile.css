@@ -584,7 +584,7 @@ transition: all .4s ease-in-out;
   margin-top: 0px;
     margin-left: 0%;
 }
-  .inputinf{
+  .inputinf, .inputinf2{
 
         margin-top: 0.4375em;
         height: 1.5625em;
@@ -595,9 +595,13 @@ transition: all .4s ease-in-out;
         border-bottom: solid;
         border-width: 0.125em;
         border-color: #9d9898;
+        font-family: 'jf flat';
+  }
+  .inputinf2{
+    width: 80%;
   }
 
-    .inputinf:focus{
+    .inputinf:focus, .inputinf2{
 
 outline: none;
 
@@ -719,7 +723,7 @@ outline: none;
   }
 
   /* Modal Content/Box */
-  .modal-content {
+  .modal-content,.modal-content2 {
     background-color: #FAFAFA;
         margin: 15% auto;
         width: 50%;
@@ -730,6 +734,9 @@ outline: none;
         padding-right: 1.5625em;
         border-radius: 0.9375em;
         box-shadow: 0em 0.25em 1.25em 0em #0000006b;
+  }
+  .modal-content2{
+    width: 30%;
   }
 
 

@@ -261,14 +261,30 @@ $c->Show_Three_Photos();
 <div id="myModalmoreedit" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
+  <div class="modal-content2">
     <span class="closemoreedit">&times;</span>
 
 		<div class="moreeditecontainer">
-<input type="text" name="" value="">
-<input type="text" name="" value="">
-<input type="text" name="" value="">
-			<button type="button" name="button" class="uploadpicbtn" id="confirmmoreeditbtn">نعم</button>
+			<div class="info2">
+
+			<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;position:relative;top:5px;"></span>
+<input type="text" name="" placeholder="ايمايل" value="" class="inputinf2">
+</div>
+
+<div class="info2">
+
+<span class="fas fa-facebook-square" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;position:relative;top:5px;"></span>
+<input type="text" name="" placeholder="رابط حساب فايسبوك" value="" class="inputinf2">
+</div>
+
+<div class="info2">
+
+<span class="fas fa-instagram" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;position:relative;top:5px;"></span>
+<input type="text" name="" placeholder="رابط حساب انستغرام" value="" class="inputinf2">
+</div>
+
+
+
 		</div>
 
   </div>
@@ -424,9 +440,9 @@ $(function() {
 
                 reader.onload = function(event) {
                     $($.parseHTML('<img class="imgs2" id="'+ i +'" >')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
-					
-					
-					
+
+
+
                 }
 
                 reader.readAsDataURL(input.files[i]);
@@ -435,13 +451,13 @@ $(function() {
                 var quality = 30;
 	            i.src = jic.compress(source_image,quality,output_format).src;
 				*/
-				
-				
+
+
             }
-			
-			
-			
-			
+
+
+
+
         }
 
     };
