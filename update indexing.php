@@ -311,7 +311,7 @@ $ligature_map = array(
 	                                  echo "error".mysqli_error($db);
                                        }
 		                              if(mysqli_num_rows($res1)>0){
-
+                                      
 			                          while($row1=mysqli_fetch_assoc($res1))
 				                      	  {
 
@@ -320,7 +320,7 @@ $ligature_map = array(
 						              if($arr[$j]==$row1['id']){ $flag=false ; }
 						              if($flag){
 										  $count++;
-	                                  echo'  <div class="resultcontainer">  ';
+	                                  echo'    <div class="resultcontainer">  ';
 									  
                                       //echo'<a href="profile.php?id='.$row0['id'].'" ><img src="imgs/'.$row0['id'].'/'.$row0['Profile_Pic'].'" alt="" class="resimg" ></a> ';
 									   
@@ -333,12 +333,14 @@ $ligature_map = array(
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row1['id'].'" class="name">  '. $row1['First_Name']." ".$row1['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row1['Phone'] .  '</p> ';
+									  echo'<p class="info"> ' .$row1['Job'] .  '</p> ';
+									  
                         if(empty($row1['Daira'])&&empty($row1['Commune']))
          echo '<p class="info"><span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row1['Wilaya'].'</span></p></div> </div>';
          if(!empty($row1['Daira'])&&empty($row1['Commune']))
          echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row1['Wilaya'].','.$row1['Daira'].'</span></p></div> </div>';
 		if(!empty($row1['Daira'])&&!empty($row1['Commune']))
-         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row1['Wilaya'].','.$row1['Daira'].','.$row1['Commune'].'</span> </p> </div> </div> ';
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top000000000000000: -2px;">'.$row1['Wilaya'].','.$row1['Daira'].','.$row1['Commune'].'</span> </p> </div> </div> ';
 		
                                       array_push($arr,$row1['id']);
 				                 	  }}
@@ -402,7 +404,7 @@ $sql2="SELECT * FROM users WHERE  Username LIKE '%$Name%' || First_Name LIKE '%$
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row2['id'].'" class="name">  '. $row2['First_Name']." ".$row2['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row2['Phone'] .  '</p> ';
-									  
+									  echo'<p class="info"> ' .$row2['Job'] .  '</p> ';
          if(empty($row2['Daira'])&&empty($row2['Commune']))
          echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row2['Wilaya'].'</span></p> </div> </div>';
          if(!empty($row2['Daira'])&&empty($row2['Commune']))
@@ -467,7 +469,7 @@ $sql3="SELECT * FROM users WHERE  Username LIKE '%$word%' || First_Name LIKE '%$
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row3['id'].'" class="name">  '. $row3['First_Name']." ".$row3['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row3['Phone'] .  '</p> ';
-									  
+									  echo'<p class="info"> ' .$row3['Job'] .  '</p> ';
          if(empty($row3['Daira'])&&empty($row3['Commune']))
          echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row3['Wilaya'].'</span></p> </div> </div>';
          if(!empty($row3['Daira'])&&empty($row3['Commune']))
@@ -527,7 +529,6 @@ $sql3="SELECT * FROM users WHERE  Username LIKE '%$word%' || First_Name LIKE '%$
 									  $soundex = substr($soundex, 1);
 									  
 									  
-                                      
 //*********************** NAME EXIST // name andd daira andd ccommune exissts ************************************
 if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
 $sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' ";
@@ -568,7 +569,7 @@ $sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row5['id'].'" class="name">  '. $row5['First_Name']." ".$row5['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row5['Phone'] .  '</p> ';
-									  
+									  echo'<p class="info"> ' .$row5['Job'] .  '</p> ';
          if(empty($row5['Daira'])&&empty($row5['Commune']))
          echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row5['Wilaya'].'</span></p> </div> </div>';
          if(!empty($row5['Daira'])&&empty($row5['Commune']))
@@ -669,7 +670,7 @@ $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
                                       echo'<div class="infocontainer"> ';
                                       echo'<a href="profile.php?id='.$row4['id'].'" class="name">  '. $row4['First_Name']." ".$row4['Last_Name'] . ' </a>  ';
                                       echo'<p class="info"> ' .$row4['Phone'] .  '</p> ';
-									  
+									  echo'<p class="info"> ' .$row4['Job'] .  '</p> ';
          if(empty($row4['Daira'])&&empty($row4['Commune']))
          echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row4['Wilaya'].'</span></p> </div> </div>';
          if(!empty($row4['Daira'])&&empty($row4['Commune']))

@@ -49,6 +49,9 @@ function compressImage($source, $destination, $quality) {
 
     elseif ($info['mime'] == 'image/jpg')
       $image = imagecreatefromjpeg($source);
+	  
+	  
+	  
 
   imagejpeg($image, $destination, $quality);
 
@@ -128,7 +131,9 @@ $in = in_array($detectedType, $allowedTypes);
             unlink('imgs/'.strval($id).'/'.$Profile_Pic);
 			//move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
 
-compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,60);
+compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,30);
+
+
 }
 }  }
 
@@ -195,7 +200,7 @@ $in = in_array($detectedType, $allowedTypes);
 			  //move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);
 
 			  //compressImage($_FILES['uploadpic']['tmp_name'],$tar,60);
-			  compressImage($_FILES['uploadpic']['tmp_name'][$key],$tar.$newname.".".$extension,60);
+			  compressImage($_FILES['uploadpic']['tmp_name'][$key],$tar.$newname.".".$extension,30);
 			          }
 
 
