@@ -423,11 +423,25 @@ $(function() {
                 var reader = new FileReader();
 
                 reader.onload = function(event) {
-                    $($.parseHTML('<img class="imgs2" >')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    $($.parseHTML('<img class="imgs2" id="'+ i +'" >')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+					
+					
+					
                 }
 
                 reader.readAsDataURL(input.files[i]);
+				/*
+				var source_image = document.getElementById(i);
+                var quality = 30;
+	            i.src = jic.compress(source_image,quality,output_format).src;
+				*/
+				
+				
             }
+			
+			
+			
+			
         }
 
     };
@@ -436,6 +450,10 @@ $(function() {
         imagesPreview(this, '.photocontainermodal');
     });
 });
+
+
+
+
 
 /*
 

@@ -52,7 +52,7 @@ $obj = new \ArPHP\I18N\Arabic();
     </div>
     <input type="submit" name="recherche"  value= "بحث" class="searchbtn">
 				</form>
-
+                
 				<?php include('update indexing.php'); ?>
 
 
