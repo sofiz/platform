@@ -17,6 +17,7 @@ include('server.php') ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="data.js"></script>
+<script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 <!-- //web font -->
 </head>
@@ -40,7 +41,7 @@ include('server.php') ?>
 <button type="button" name="button" class="btns" id="workerbtn" onclick="workerclick()">عامل</button>
 <button type="button" name="button" class="btns" id="clientbtn" onclick="clientclick()">زبون</button>
 
-<input type="hidden" name="typeinp" value="worker" id="typeinp"> 
+<input type="hidden" name="typeinp" value="worker" id="typeinp">
 				</div>
 
 
