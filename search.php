@@ -41,7 +41,7 @@ $obj = new \ArPHP\I18N\Arabic();
 
     </div>
 
-    <?php include 'wilayadatasearch.html'; ?>
+    <?php include 'wilayascript.html'; ?>
 <script>
        document.getElementById('mihna').remove();
 	</script>
