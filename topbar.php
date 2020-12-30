@@ -15,6 +15,46 @@
     <title></title>
   </head>
 
+
+
+<!-- The Modal -->
+<div id="myModalpolicy" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-contentp">
+    <span class="closepolicy">&times;</span>
+
+		<div class="policycontainer">
+<?php include 'policy.html'; ?>
+		</div>
+
+  </div>
+
+
+</div>
+
+
+<!-- The Modal -->
+<div id="myModalreport" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-contentr">
+    <span class="closereport">&times;</span>
+
+		<div class="reportcontainer">
+      <span class="fas fa-user" style="font-family: FontAwesome;color: black;font-size:20px;display:inline;vertical-align: sub;"></span>
+<input type="text" name="" value="" class="input" placeholder="الإسم" style="margin-top:30px;margin-bottom:10px;height:25px;"><br>
+<span class="fas fa-envelope" style="font-family: FontAwesome;color: black;font-size:20px;display:inline;vertical-align: sub;"></span>
+<input type="text" name="" value="" class="input" placeholder="الايمايل" style="display: inline;margin-bottom:10px;height:25px;">
+<textarea name="reportmsg" rows="8" cols="80" placeholder="إشرح ماتريد قوله"></textarea>
+<button type="submit" name="sendreport" class="btnstyle" id="sendreport">أرسل</button>
+		</div>
+
+  </div>
+
+
+</div>
+
 </html>
 <?php
 
@@ -67,5 +107,74 @@ echo '<a href="signup.php">
 
 
 
-echo '</div> </div>';
+echo '</div>
+
+<div class="foot">
+  <div class="report" id="report">
+    <span class="fas fa-bullhorn" style="font-family: FontAwesome;color: white;font-size:20px;"></span>
+  <p class="foottxt">  تواصل و إبلاغ</p>
+  </div>
+  <div class="policy" id="policy">
+  <span class="fas fa-handshake-o" style="font-family: FontAwesome;color: white;font-size:20px;"></span>
+<p class="foottxt"> سياسة الخصوصية</p>
+  </div>
+</div>
+
+ </div>';
+
 ?>
+<script type="text/javascript">
+// Get the modal
+var modal5 = document.getElementById("myModalpolicy");
+
+// Get the button that opens the modal
+var btn5 = document.getElementById("policy");
+
+// Get the <span> element that closes the modal
+var span5 = document.getElementsByClassName("closepolicy")[0];
+
+// When the user clicks the button, open the modal
+btn5.onclick = function() {
+  modal5.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span5.onclick = function() {
+  modal5.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal5) {
+    modal5.style.display = "none";
+
+  }
+}
+
+// Get the modal
+var modal6 = document.getElementById("myModalreport");
+
+// Get the button that opens the modal
+var btn6 = document.getElementById("report");
+
+// Get the <span> element that closes the modal
+var span6 = document.getElementsByClassName("closereport")[0];
+
+// When the user clicks the button, open the modal
+btn6.onclick = function() {
+  modal6.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span6.onclick = function() {
+  modal6.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal6) {
+    modal6.style.display = "none";
+
+  }
+}
+</script>

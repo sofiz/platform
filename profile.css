@@ -305,8 +305,7 @@ cursor: pointer;
         padding-left: 0.625em;
         border: none;
         background-color: #00000000;
-        border-bottom: solid;
-        border-width: 0.125em;
+        border-bottom: solid 2px grey;
         border-color: #9d9898;
         box-sizing: border-box;
     margin-left: 50px;
@@ -327,8 +326,7 @@ outline: none;
         padding-left: 0.625em;
         border: none;
         background-color: #00000000;
-        border-bottom: solid;
-        border-width: 0.125em;
+        border-bottom: solid 2px grey;
         border-color: #9d9898;
         box-sizing: border-box;
     margin-left: 50px;
@@ -592,8 +590,7 @@ transition: all .4s ease-in-out;
         padding-left: 0.9375em;
         border: none;
         background-color: #00000000;
-        border-bottom: solid;
-        border-width: 0.125em;
+        border-bottom: solid 2px grey;
         border-color: #9d9898;
         font-family: 'jf flat';
   }
@@ -617,8 +614,7 @@ outline: none;
 
     border: none;
     background-color: #00000000;
-    border-bottom: solid;
-    border-width: 0.125em;
+    border-bottom: solid 2px grey;
     border-color: #9d9898;
     text-align: center;
     padding: 0 7px;
@@ -642,13 +638,16 @@ outline: none;
         margin-right: 1.25em;
         height: 7.625em;
         width: -webkit-fill-available;
+        width: fill-available;
+        width:-moz-available; 
         background: #00000000;
         resize: none;
         padding-top: 0.625em;
         padding-left: 0.625em;
         border-color: #9d9898;
-        border-width: 0.125em;
+        border-width: 2px;
         border-radius: 0.5em;
+
   }
   .descriptioninp:focus{
 outline: none;

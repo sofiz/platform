@@ -97,7 +97,7 @@ function sugtoinput(x) {
 
   function sugtoinput(value) {
     document.getElementById('searchinput').value=value;
-    document.getElementById("livesearch").style.display="nne";
+    document.getElementById("livesearch").style.display="none";
     document.getElementById('option1').innerHTML=value;
     document.getElementById('option1').value=value;
 
