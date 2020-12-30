@@ -91,8 +91,8 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 <div class="nameinp">
 
 
-  <input type="text" name="First_Name" value="<?php echo $c->First_Name ; ?>" class="inputname" required >
-  <input type="text" name="Last_Name" value="<?php echo $c->Last_Name ;?>" class="inputname" id="inputname2" required>
+  <input type="text" name="First_Name" value="<?php echo $c->First_Name ; ?>" class="inputname" placeholder="الاسم "required >
+  <input type="text" name="Last_Name" value="<?php echo $c->Last_Name ;?>" class="inputname" placeholder="اللقب" id="inputname2" required>
 </div>
 
   <div class="infocontain2">
@@ -100,9 +100,10 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 		<div class="info2">
 			<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
 	    <select type="text" name="Job" id="jobinp"  class="dropdown2" required>
-<option value="<?php  echo$c->Job ?>"> <?php  echo$c->Job ?></option>
+       <?php if($c->Job!="") { echo '<option value="'.$c->Job.' " selected>'.   $c->Job .'</option>' ;  }
+	         else { echo '<option id="mihna" value=""  selected>المهنة</option>';   }
 
-<?php include('jobsdata.html'); ?>
+			 include('jobsdata.html'); ?>
 
 
 </select>
@@ -114,13 +115,10 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 
  <div class="info2">
 	 <span class="fas fa-phone" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;"></span>
-	 <input type="text" name="Phone" value="<?php echo $c->Phone ;?>" class="inputinf" required>
+	 <input type="text" name="Phone" value="<?php echo $c->Phone ;?>" class="inputinf" placeholder="رقم الهاتف" required>
  </div>
 
-  <div class="info2">
-		<span class="fas fa-envelope" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
-    <input type="text" name="Email" value="<?php echo $c->Email ;?>" class="inputinf"  required>
-  </div>
+  
 
 
 
@@ -140,7 +138,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
   <?php
   echo '<span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span>   '   ;
 
-  if($c->Birthday !=  "0000-00-00" && $c->Age($c->Birthday) > 16)
+  if($c->Birthday !=  "0000-00-00" && $c->Age($c->Birthday) > 16 && $c->Age($c->Birthday) < 65)
     {
 
     echo '  <label for="birthday" style="font-size: 15px;"> '.$c->Age($c->Birthday).'  </label>  '  ;
@@ -277,19 +275,19 @@ $c->Show_Three_Photos();
 			<div class="info2">
 
 			<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;position:relative;top:5px;"></span>
-<input type="text" name="" placeholder="ايمايل" value="" class="inputinf2">
+<input type="text" name="Email" placeholder="ايمايل" value="<?php echo $c->Email ;?>" class="inputinf2">
 </div>
 
 <div class="info2">
 
 <span class="fas fa-facebook-square" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;position:relative;top:5px;"></span>
-<input type="text" name="" placeholder="رابط حساب فايسبوك" value="" class="inputinf2">
+<input type="text" name="Facebook" placeholder="رابط حساب فايسبوك" value="<?php echo $c->Facebook ;?>" class="inputinf2">
 </div>
 
 <div class="info2">
 
 <span class="fas fa-instagram" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;position:relative;top:5px;"></span>
-<input type="text" name="" placeholder="رابط حساب انستغرام" value="" class="inputinf2">
+<input type="text" name="Instagram" placeholder="رابط حساب انستغرام" value="<?php echo $c->Instagram ;?>" class="inputinf2">
 </div>
 
 

@@ -24,7 +24,8 @@ class user {
 	  public $Job;
       public $Type;
       public $ids ;
-
+      public $Facebook ;
+      public $Instagram ;
 
 
 
@@ -125,6 +126,8 @@ function Select_Information_Of_Profile($db){
 	  $this->id=$row['id'];
 	  $this->Job=$row['Job'];
 	  $this->Type=$row['Type'];
+	  $this->Facebook=$row['Facebook'];
+	  $this->Instagram=$row['Instagram'];
       }
 }
 
