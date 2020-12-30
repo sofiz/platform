@@ -143,8 +143,8 @@ $c->Get_Rating_Profile($db);
 
 
 <!--<button type="button" name="button" class="uploadpicbtn">more</button> -->
-<button type="button" name="button" class="socialmedia"><span class="fas fa-facebook" style="font-family: FontAwesome ;margin-left: 15px;margin-right: 15px;color: white;font-size:20px"></span></button>
-<button type="button" name="button" id="insta" class="socialmedia"><span class="fas fa-instagram" style="font-family: FontAwesome; margin-left: 15px;margin-right: 15px;color: white;font-size:20px;"></span></button>
+<button type="button" name="button" class="socialmedia"><span class="fas fa-facebook" style="font-family: FontAwesome ;margin-left: 7px;margin-right: 7px;color: white;font-size:20px"></span></button>
+<button type="button" name="button" id="insta" class="socialmedia"><span class="fas fa-instagram" style="font-family: FontAwesome; margin-left: 7px;margin-right: 7px;color: white;font-size:20px;"></span></button>
     </div>
 </div>
 <div class="s1s2">
