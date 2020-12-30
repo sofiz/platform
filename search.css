@@ -8,7 +8,16 @@ body{
 
 }
 
-
+#livesearch{
+  background: #fafafa;
+      padding: 5px 8px;
+      position: absolute;
+      display: none;
+      left: 27.2%;
+      margin-top: 35px;
+      width: 22%;
+      z-index: 2;
+}
   .ad1 {
       width: 200px;
       height: 550px;
@@ -128,7 +137,10 @@ option {
   .searchinput {
       width: 80%;
     }
-
+#livesearch{
+  left: 9%;
+width: 79.1%;
+}
     #myDIV {
         display: block;
         text-align: center;

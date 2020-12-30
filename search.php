@@ -14,6 +14,32 @@ $obj = new \ArPHP\I18N\Arabic();
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+
+    <script>
+function showResult(str) {
+  if (str.length==0) {
+    document.getElementById("livesearch").innerHTML="";
+    document.getElementById("livesearch").style.display="none";
+    return;
+  }
+  var xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("livesearch").innerHTML=this.responseText;
+      document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+      document.getElementById("livesearch").style.display="inline";
+    }
+  }
+  xmlhttp.open("GET","livesearch.php?q="+str,true);
+  xmlhttp.send();
+}
+
+function sugtoinput(x) {
+  document.getElementById('searchinput').value=x;
+}
+</script>
+
+
     <meta charset="utf-8">
     <title>صفحة البحث</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,7 +58,8 @@ $obj = new \ArPHP\I18N\Arabic();
 <form action="search.php" method="get">
 
     <div class="searchbar">
-    <input type="text" name="search" placeholder=" ابحث عن" class="searchinput">
+    <input type="text" id="searchinput" name="search" autocomplete="off" placeholder=" ابحث عن" class="searchinput" onkeyup="showResult(this.value)">
+    <div id="livesearch"></div>
     <div id="myDIV">
       <select class="dropdown" name="Job" >
 
@@ -54,6 +81,7 @@ $obj = new \ArPHP\I18N\Arabic();
     </div>
     <input type="submit" name="recherche"  value= "بحث" class="searchbtn">
 
+
 				</form>
         <div class="ad1">
             this is an ad
@@ -65,4 +93,14 @@ $obj = new \ArPHP\I18N\Arabic();
               </div>
 
   </body>
+  <script type="text/javascript">
+
+  function sugtoinput(value) {
+    document.getElementById('searchinput').value=value;
+    document.getElementById("livesearch").style.display="none";
+
+
+
+  }
+  </script>
 </html>
