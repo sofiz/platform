@@ -71,8 +71,8 @@ if (isset($_POST['SIGNUP'])) {
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$Password =  md5($Password_1);//encrypt the password before saving in the database
-    ///$password =password_hash($password, PASSWORD_DEFAULT);
+  	$Password = password_hash($Password_1, PASSWORD_DEFAULT); //encrypt the password before saving in the database
+   
   	$query = "INSERT INTO Users (First_Name,Last_Name,Username, Email, Password,Phone,Job,Wilaya,Type,Profile_Pic)
   			  VALUES('$First_Name','$Last_Name','$Username', '$Email', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic')";
   	mysqli_query($db, $query);
@@ -104,37 +104,31 @@ if (isset($_POST['login'])) {
 
   if (count($errors) == 0) {
 
-	/*  $res=mysqli_query($db,"SELECT username , password , id FROM worker " );
 
-					  while($row=mysqli_fetch_array($res))
-					  {
-						  if((password_verify($password,$row['password']) )&& ($username==$row['username']))
-						   {
-							   $_SESSION['username'] = $username;
-  	                           $_SESSION['success'] = "You are now logged in";
-  	                          header('location: search.html');
-						  }
-						  else {
-  		                 array_push($errors, "Wrong username/password combination");
-  	}
-					  }
-					     */
-
-
-  	$Password =  md5($Password);
-	//$password =password_hash($password, PASSWORD_DEFAULT);
-
-  	$query = "SELECT * FROM Users WHERE Username='$Username' AND Password='$Password'";
-
+  	$query = "SELECT * FROM Users WHERE Username='$Username'";
+	
   	$results = mysqli_query($db, $query);
-	//if(password_verify($password, $results['Password']) && $username==$results['username'])
-  	if (mysqli_num_rows($results) == 1) {
+	
+	if(mysqli_num_rows($results) == 1 ){
+	while($row=mysqli_fetch_array($results))
+	$hassh = $row['Password'] ; 
+	
+	if(password_verify($Password,$hassh)){
   	  $_SESSION['Username'] = $Username;
-  	 $_SESSION['success'] = "You are now logged in";
+  	  $_SESSION['success'] = "You are now logged in";
   	 header('location: search.php');
   	} else {
   		array_push($errors, "Wrong username/password combination");
+  	}}
+	
+	
+	else {
+  		array_push($errors, "Wrong username/password combination");
   	}
+	
+	
+	
+	
   }
   mysqli_close ( $db );
 }
