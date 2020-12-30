@@ -1,5 +1,52 @@
 <?php
+// start at the top of the page since we start a session
+session_name('mysite_hit_counter');
 session_start();
+//
+$fn = 'test.txt';
+$hits = 0;
+// read current hits
+if (($hits = file_get_contents($fn)) === false)
+{
+	$hits = 0;
+}
+// write one more hit
+if (!isset($_SESSION['page_visited_already']))
+{
+	if (($fp = @fopen($fn, 'w')) !== false)
+	{
+		if (flock($fp, LOCK_EX))
+		{
+			$hits++;
+			fwrite($fp, $hits, strlen($hits));
+			flock($fp, LOCK_UN);
+			$_SESSION['page_visited_already'] = 1;
+		}
+		fclose($fp);
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 require 'vendor/autoload.php';
 error_reporting(E_ERROR);
