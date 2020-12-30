@@ -16,6 +16,9 @@ $c->Select_Photos_Of_Profile ($db);
 ////*************************** Get Rating profile ($id) from URL  ********************
 $c->Get_Rating_Profile($db);
 ?>
+
+
+
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">

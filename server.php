@@ -84,11 +84,6 @@ if (isset($_POST['SIGNUP'])) {
 }
 
 
-// ...
-
-
-
-
 
 // LOGIN USER
 if (isset($_POST['login'])) {
