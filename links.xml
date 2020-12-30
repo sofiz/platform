@@ -1,27 +1,640 @@
 <pages>
 <link>
-<keywords>
+<keywords>طبيب خاص
 
 
-  ميكانسيان
-  مكسيان
-  ميكانيك
 
-</keywords>
-<value>ميكانيك السيارات</value>
+ </keywords>
+<value>
+طبيب خاص
+</value>
 </link>
 <link>
-<keywords>
-  ماصو
-  بناء
-</keywords>
-<value>بناء</value>
+<keywords>محامي
+
+
+
+ </keywords>
+<value>
+محامي
+</value>
 </link>
 <link>
-<keywords>
-  بلومبي
-  plombier
-</keywords>
-<value>سباك</value>
+<keywords>موثق
+
+
+
+ </keywords>
+<value>
+موثق
+</value>
+</link>
+<link>
+<keywords>مهدنس معماري
+
+
+
+ </keywords>
+<value>
+مهدنس معماري
+</value>
+</link>
+<link>
+<keywords>طباعة
+
+
+
+ </keywords>
+<value>
+طباعة
+</value>
+</link>
+<link>
+<keywords>نجارة
+
+
+
+ </keywords>
+<value>
+نجارة
+</value>
+</link>
+<link>
+<keywords>البنــاء
+
+
+
+ </keywords>
+<value>
+البنــاء
+</value>
+</link>
+<link>
+<keywords>التركيب الصحي و الغـاز
+
+
+
+ </keywords>
+<value>
+التركيب الصحي و الغـاز
+</value>
+</link>
+<link>
+<keywords>سباكة
+
+
+
+ </keywords>
+<value>
+سباكة
+</value>
+</link>
+<link>
+<keywords>دهان
+
+
+
+ </keywords>
+<value>
+دهان
+</value>
+</link>
+<link>
+<keywords>تجصيص بلاتر
+
+
+
+ </keywords>
+<value>
+تجصيص بلاتر
+</value>
+</link>
+<link>
+<keywords>التلحيم
+
+
+
+ </keywords>
+<value>
+التلحيم
+</value>
+</link>
+<link>
+<keywords>نجارة الألومينيوم وللمواد البلاستيكية
+
+
+
+ </keywords>
+<value>
+نجارة الألومينيوم وللمواد البلاستيكية
+</value>
+</link>
+<link>
+<keywords>الكهرباء المعمارية
+
+
+
+ </keywords>
+<value>
+الكهرباء المعمارية
+</value>
+</link>
+<link>
+<keywords>ميكانيك السيارات و الشاحنات
+
+
+
+ </keywords>
+<value>
+ميكانيك السيارات و الشاحنات
+</value>
+</link>
+<link>
+<keywords>كهرباء السيارات
+
+
+
+ </keywords>
+<value>
+كهرباء السيارات
+</value>
+</link>
+<link>
+<keywords>غسل السيارات
+
+
+
+ </keywords>
+<value>
+غسل السيارات
+</value>
+</link>
+<link>
+<keywords>طلاء و تركيب زجاج السيارات
+
+
+
+ </keywords>
+<value>
+طلاء و تركيب زجاج السيارات
+</value>
+</link>
+<link>
+<keywords>التجهيز و التأثيث الداخلي للمركبات
+
+
+
+ </keywords>
+<value>
+التجهيز و التأثيث الداخلي للمركبات
+</value>
+</link>
+<link>
+<keywords>ميكانيك تصليح الدراجات العادية والنارية
+
+
+
+ </keywords>
+<value>
+ميكانيك تصليح الدراجات العادية والنارية
+</value>
+</link>
+<link>
+<keywords>تصليح وبيع العجلات
+
+
+
+ </keywords>
+<value>
+تصليح وبيع العجلات
+</value>
+</link>
+<link>
+<keywords>البلاط الخزف و الفسيفساء
+
+
+
+ </keywords>
+<value>
+البلاط الخزف و الفسيفساء
+</value>
+</link>
+<link>
+<keywords>تركيب و تصليح الـنظارات
+
+
+
+ </keywords>
+<value>
+تركيب و تصليح الـنظارات
+</value>
+</link>
+<link>
+<keywords>تصليح الساعات
+
+
+
+ </keywords>
+<value>
+تصليح الساعات
+</value>
+</link>
+<link>
+<keywords>مغسلة و التنظيف الجاف
+
+
+
+ </keywords>
+<value>
+مغسلة و التنظيف الجاف
+</value>
+</link>
+<link>
+<keywords>تجميل ومكياج
+
+
+
+ </keywords>
+<value>
+تجميل ومكياج
+</value>
+</link>
+<link>
+<keywords>تصميم ورسم
+
+
+
+ </keywords>
+<value>
+تصميم ورسم
+</value>
+</link>
+<link>
+<keywords>إعلام آلي
+
+
+
+ </keywords>
+<value>
+إعلام آلي
+</value>
+</link>
+<link>
+<keywords>تصليح الهواتف و الحواسيب
+
+
+
+ </keywords>
+<value>
+تصليح الهواتف و الحواسيب
+</value>
+</link>
+<link>
+<keywords>تقنيات السمعي البصري
+
+
+
+ </keywords>
+<value>
+تقنيات السمعي البصري
+</value>
+</link>
+<link>
+<keywords>حِلاقة النساء
+
+
+
+ </keywords>
+<value>
+حِلاقة النساء
+</value>
+</link>
+<link>
+<keywords>حِلاقة الرجال
+
+
+
+ </keywords>
+<value>
+حِلاقة الرجال
+</value>
+</link>
+<link>
+<keywords>تصليح الأحذية
+
+
+
+ </keywords>
+<value>
+تصليح الأحذية
+</value>
+</link>
+<link>
+<keywords>تركيب و صيانة أجهزة التبريد و التكييف
+
+
+
+ </keywords>
+<value>
+تركيب و صيانة أجهزة التبريد و التكييف
+</value>
+</link>
+<link>
+<keywords>تصليح الأجهزة الكهرومنزلية
+
+
+
+ </keywords>
+<value>
+تصليح الأجهزة الكهرومنزلية
+</value>
+</link>
+<link>
+<keywords>تركيب الألواح الشمسية، الضوئية و الحرارية
+
+
+
+ </keywords>
+<value>
+تركيب الألواح الشمسية، الضوئية و الحرارية
+</value>
+</link>
+<link>
+<keywords>تركيب وصيانة أنظمة الإنذار والمراقبة بالفيديو
+
+
+
+ </keywords>
+<value>
+تركيب وصيانة أنظمة الإنذار والمراقبة بالفيديو
+</value>
+</link>
+<link>
+<keywords>التسويق
+
+
+
+ </keywords>
+<value>
+التسويق
+</value>
+</link>
+<link>
+<keywords>الخـيـاطــة
+
+
+
+ </keywords>
+<value>
+الخـيـاطــة
+</value>
+</link>
+<link>
+<keywords>صناعة الحلويات
+
+
+
+ </keywords>
+<value>
+صناعة الحلويات
+</value>
+</link>
+<link>
+<keywords>الخبازة و والفطائر
+
+
+
+ </keywords>
+<value>
+الخبازة و والفطائر
+</value>
+</link>
+<link>
+<keywords>الجزارة و منتجات اللحوم
+
+
+
+ </keywords>
+<value>
+الجزارة و منتجات اللحوم
+</value>
+</link>
+<link>
+<keywords>محل خضروات
+
+
+
+ </keywords>
+<value>
+محل خضروات
+</value>
+</link>
+<link>
+<keywords>مواد غذائية عامة
+
+
+
+ </keywords>
+<value>
+مواد غذائية عامة
+</value>
+</link>
+<link>
+<keywords>تحضير المشروبات و المصبرات
+
+
+
+ </keywords>
+<value>
+تحضير المشروبات و المصبرات
+</value>
+</link>
+<link>
+<keywords>تحضير الحلويات ، الشكولاطة و البسكويت
+
+
+
+ </keywords>
+<value>
+تحضير الحلويات ، الشكولاطة و البسكويت
+</value>
+</link>
+<link>
+<keywords>مطعم ومقهى
+
+
+
+ </keywords>
+<value>
+مطعم ومقهى
+</value>
+</link>
+<link>
+<keywords>هدايا وعطور وفليكسي
+
+
+
+ </keywords>
+<value>
+هدايا وعطور وفليكسي
+</value>
+</link>
+<link>
+<keywords>محل ألبسة
+
+
+
+ </keywords>
+<value>
+محل ألبسة
+</value>
+</link>
+<link>
+<keywords>محل خردوات وأدوات
+
+
+
+ </keywords>
+<value>
+محل خردوات وأدوات
+</value>
+</link>
+<link>
+<keywords>مكتبة و أدوات
+
+
+
+ </keywords>
+<value>
+مكتبة و أدوات
+</value>
+</link>
+<link>
+<keywords>تاكسي
+
+
+
+ </keywords>
+<value>
+تاكسي
+</value>
+</link>
+<link>
+<keywords>نقل بين الولايات
+
+
+
+ </keywords>
+<value>
+نقل بين الولايات
+</value>
+</link>
+<link>
+<keywords>رياضة
+
+
+
+ </keywords>
+<value>
+رياضة
+</value>
+</link>
+<link>
+<keywords>بيع الأغطية و المفروشات
+
+
+
+ </keywords>
+<value>
+بيع الأغطية و المفروشات
+</value>
+</link>
+<link>
+<keywords>الفندقة و السياحة
+
+
+
+ </keywords>
+<value>
+الفندقة و السياحة
+</value>
+</link>
+<link>
+<keywords>البـسـتـنـة
+
+
+
+ </keywords>
+<value>
+البـسـتـنـة
+</value>
+</link>
+<link>
+<keywords>حضانة
+
+
+
+ </keywords>
+<value>
+حضانة
+</value>
+</link>
+<link>
+<keywords>صائغ
+
+
+
+ </keywords>
+<value>
+صائغ
+</value>
+</link>
+<link>
+<keywords>بيطري
+
+
+
+ </keywords>
+<value>
+بيطري
+</value>
+</link>
+<link>
+<keywords>بيع الحيوانات
+
+
+
+ </keywords>
+<value>
+بيع الحيوانات
+</value>
+</link>
+<link>
+<keywords>حراسة و رعي
+
+
+
+ </keywords>
+<value>
+حراسة و رعي
+</value>
+</link>
+<link>
+<keywords>تعبئة وتغليف
+
+
+
+ </keywords>
+<value>
+تعبئة وتغليف
+</value>
+</link>
+<link>
+<keywords>صناعة الخرسانة ومواد البناء
+
+
+ </keywords>
+<value>
+صناعة الخرسانة ومواد البناء</value>
 </link>
 </pages>
