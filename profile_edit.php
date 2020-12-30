@@ -37,15 +37,15 @@ $c->Select_Photos_Of_Profile ($db);
 
 <body>
 
- <?php include('topbar.php'); 
- 
+ <?php include('topbar.php');
+
  if($c->Type !="worker") echo '<h1> املء المعلومات لتغيير الئ حساب عامل</h1>';
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
  ?>
 
  <form class = "d" action= "onsbmit.php" method="post"  >
@@ -118,7 +118,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 	 <input type="text" name="Phone" value="<?php echo $c->Phone ;?>" class="inputinf" placeholder="رقم الهاتف" required>
  </div>
 
-  
+
 
 
 
@@ -275,19 +275,22 @@ $c->Show_Three_Photos();
 			<div class="info2">
 
 			<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;position:relative;top:5px;"></span>
-<input type="text" name="Email" placeholder="ايمايل" value="<?php echo $c->Email ;?>" class="inputinf2">
+<input type="checkbox" id="emailcheck" name="emailcheck" value="" title="إظهار الايمايل في الحساب" style="margin-left: -10px;
+    position: relative;
+    top: 5px;" >
+<input type="text" name="Email" placeholder="ايمايل" value="<?php echo $c->Email ;?>" class="inputinf2" style="width:79%">
 </div>
 
 <div class="info2">
 
 <span class="fas fa-facebook-square" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;position:relative;top:5px;"></span>
-<input type="text" name="Facebook" placeholder="رابط حساب فايسبوك" value="<?php echo $c->Facebook ;?>" class="inputinf2">
+<input type="text" name="Facebook" placeholder="رابط حساب فايسبوك" value="<?php echo $c->Facebook ;?>" class="inputinf2" style="width:79%;margin-left:13px;">
 </div>
 
 <div class="info2">
 
 <span class="fas fa-instagram" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;position:relative;top:5px;"></span>
-<input type="text" name="Instagram" placeholder="رابط حساب انستغرام" value="<?php echo $c->Instagram ;?>" class="inputinf2">
+<input type="text" name="Instagram" placeholder="رابط حساب انستغرام" value="<?php echo $c->Instagram ;?>" class="inputinf2" style="width:79%;margin-left:13px;">
 </div>
 
 
