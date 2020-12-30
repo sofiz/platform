@@ -64,7 +64,7 @@ function sugtoinput(x) {
       <select class="dropdown" name="Job" >
 
 
-	   <option value="" selected>ابحث عن</option>
+	   <option value="" id="option1" selected>ابحث عن</option>
 <?php include 'jobsdata.html'; ?>
      </select>
 
@@ -97,7 +97,9 @@ function sugtoinput(x) {
 
   function sugtoinput(value) {
     document.getElementById('searchinput').value=value;
-    document.getElementById("livesearch").style.display="none";
+    document.getElementById("livesearch").style.display="nne";
+    document.getElementById('option1').innerHTML=value;
+    document.getElementById('option1').value=value;
 
 
 

@@ -77,29 +77,29 @@ $c->Get_Rating_Profile($db);
     <div class="infocontainer">
 
 			<div class="info">
-			
-				<?php if ($c->Job!="" && $c->Type == "worker" ) 
+
+				<?php if ($c->Job!="" && $c->Type == "worker" )
 				{
-				 echo '<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #036fa1;"></span> ' ; 
-			     echo '<span style="font-size: 15px;">'.  $c->Job .'</span> '; 
+				 echo '<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #036fa1;"></span> ' ;
+			     echo '<span style="font-size: 15px;">'.  $c->Job .'</span> ';
 				 }
 				 else { echo '<span style="font-size: 15px;"> </span> ';   }
 				 ?>
-				  
-				  
+
+
 			    </div>
 
 			    <div class="info">
 						<?php	if ($c->Wilaya!="" && $c->Type == "worker")
          {
-		 echo '<span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #036fa1;"></span>' ; 
+		 echo '<span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #036fa1;"></span>' ;
 		 if(empty($c->Daira)&&empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.'</span>';
          if(!empty($c->Daira)&&empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.'</span>';
 		if(!empty($c->Daira)&&!empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.','.$c->Commune.'</span>';
-		 
+
 		 }
 		  else { echo '<span style="font-size: 15px;"> </span> ';   }
 		?>
@@ -116,11 +116,14 @@ $c->Get_Rating_Profile($db);
 
     <div class="info">
 			<?php	if ($c->Email!=""&& $c->Type == "worker" ) {
-			echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;  
+			echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
             echo ' <span> '.$c->Email .'</span> ';
-	  }   
+	  }
+
 	  else { echo '<span style="font-size: 15px;"> </span> ';   }
+
 	  ?>
+
     </div>
 
 
@@ -139,7 +142,9 @@ $c->Get_Rating_Profile($db);
 ?>
 
 
-<button type="button" name="button" class="uploadpicbtn">more</button>
+<!--<button type="button" name="button" class="uploadpicbtn">more</button> -->
+<button type="button" name="button" class="socialmedia"><span class="fas fa-facebook" style="font-family: FontAwesome ;margin-left: 15px;margin-right: 15px;color: white;font-size:20px"></span></button>
+<button type="button" name="button" id="insta" class="socialmedia"><span class="fas fa-instagram" style="font-family: FontAwesome; margin-left: 15px;margin-right: 15px;color: white;font-size:20px;"></span></button>
     </div>
 </div>
 <div class="s1s2">
