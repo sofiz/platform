@@ -304,7 +304,7 @@ $ligature_map = array(
 				        $sql1="SELECT * FROM users WHERE  Job='$Job'  ";
 				              else if(empty($Name) && empty($Job) &&  !empty($Wilaya))
 						        $sql1="SELECT * FROM users WHERE Wilaya='$Wilaya' ";
-
+$sql1= $sql1." and  Type = 'worker' ";
 	                                  $res1=mysqli_query($db,$sql1);
 
 		                            	if(!$res1){
@@ -375,7 +375,7 @@ $sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%
                             $sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%' )";
 							
 							
-							
+							$sql2= $sql2." and  Type = 'worker' ";
 					
 	                                  $res2=mysqli_query($db,$sql2);
 
@@ -441,7 +441,7 @@ $sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%
                             $sql3="SELECT * FROM users WHERE (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%')  ";
 
 
-                                      
+$sql3= $sql3." and  Type = 'worker' ";
 	                                  $res3=mysqli_query($db,$sql3);
 
 
@@ -541,7 +541,7 @@ $sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 				         else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
                             $sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
 
-
+$sql5= $sql5." and  Type = 'worker' ";
 	                                  $res5=mysqli_query($db,$sql5);
 
 
@@ -642,7 +642,7 @@ $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 				         else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
                             $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
 
-
+                                      $sql4= $sql4." and  Type = 'worker' ";
 	                                  $res4=mysqli_query($db,$sql4);
 
 
