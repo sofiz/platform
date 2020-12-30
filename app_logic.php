@@ -34,7 +34,7 @@ $client = new Client();
 
 $options = [
     'json' => [
-        'task' => "Hi there, click on this <a href=\"https://dmbplatform.azurewebsites.net/new_pass.php?token=". $token ."\">link</a> to reset your password on our site",
+        'task' => "Hi there, click on this <a href=\"https://risof.azurewebsites.net/new_pass.php?token=". $token ."\">link</a> to reset your password on our site",
         'due' => 'now',
         'email' => $email
 

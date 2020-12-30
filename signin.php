@@ -7,7 +7,7 @@ include('server.php') ?>
 <title> تسجيل الدخول </title>
 <link href="style_signup.css" rel="stylesheet" type="text/css" media="all" />
 <link href="style.css" rel="stylesheet" type="text/css" media="all" />
-
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
