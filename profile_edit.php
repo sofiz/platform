@@ -24,7 +24,13 @@ $c->Select_Photos_Of_Profile ($db);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>تعديل الحساب</title>
+  <title>Rondili -  تعديل الحساب</title>
+    <meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي">
+    <meta name="description" content="
+تبحث عن خدمة أو عامل في منطقتك ؟
+لديك عمل أو خدمة و تبحث عن الزبائن؟
+رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
+    <meta name="author" content="rondili">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
   <link rel="stylesheet" href="profile.css">

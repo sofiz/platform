@@ -25,7 +25,13 @@ $c->Get_Rating_Profile($db);
   <head>
     <link rel="favicon.ico">
     <meta charset="utf-8">
-    <title>حسابي</title>
+    <title>Rondili - حسابي</title>
+    <meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي">
+    <meta name="description" content="
+تبحث عن خدمة أو عامل في منطقتك ؟
+لديك عمل أو خدمة و تبحث عن الزبائن؟
+رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
+    <meta name="author" content="rondili">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
@@ -71,10 +77,10 @@ else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
     <div class="infocontainer">
 
       <div class="info">
-				<?php if ($c->Job!="" && $c->Type == "worker" ) 
+				<?php if ($c->Job!="" && $c->Type == "worker" )
 				{
-				 echo '<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #036fa1;"></span> ' ; 
-			     echo '<span style="font-size: 15px;">'.  $c->Job .'</span> '; 
+				 echo '<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #036fa1;"></span> ' ;
+			     echo '<span style="font-size: 15px;">'.  $c->Job .'</span> ';
 				 }
 				 else { echo '<span style="font-size: 15px;"> </span> ';   }
 				 ?>
@@ -83,14 +89,14 @@ else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
 			    <div class="info">
 						 <?php	if ($c->Wilaya!="" && $c->Type == "worker")
          {
-		 echo '<span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #036fa1;"></span>' ; 
+		 echo '<span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #036fa1;"></span>' ;
 		 if(empty($c->Daira)&&empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.'</span>';
          if(!empty($c->Daira)&&empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.'</span>';
 		if(!empty($c->Daira)&&!empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.','.$c->Commune.'</span>';
-		 
+
 		 }
 		  else { echo '<span style="font-size: 15px;"> </span> ';   }
 		?>
@@ -108,9 +114,9 @@ else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
 
     <div class="info">
 			<?php	if ($c->Email!=""&& $c->Type == "worker" && $c->EmailCheck=="yes") {
-			echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;  
+			echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
             echo ' <span> '.$c->Email .'</span> ';
-	  }   
+	  }
 	  else { echo '<span style="font-size: 15px;"> </span> ';   }
 	  ?>
     </div>

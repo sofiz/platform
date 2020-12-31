@@ -4,7 +4,13 @@ include('server.php') ?>
  <?php include('topbar.php'); ?>
 <html>
 <head>
-<title> تسجيل الدخول </title>
+<title>Rondili -  تسجيل الدخول </title>
+<meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي, تسجيل الدخول">
+<meta name="description" content="
+تبحث عن خدمة أو عامل في منطقتك ؟
+لديك عمل أو خدمة و تبحث عن الزبائن؟
+رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
+<meta name="author" content="rondili">
 <link href="style_signup.css" rel="stylesheet" type="text/css" media="all" />
 <link href="style.css" rel="stylesheet" type="text/css" media="all" />
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">

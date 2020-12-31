@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Password Reset PHP</title>
+	<title>Rondili - تغيير كلمة السر</title>
 	<link rel="stylesheet" href="resetpass.css">
 </head>
 <body>
