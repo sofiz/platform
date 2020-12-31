@@ -41,7 +41,7 @@ $c->Select_Photos_Of_Profile ($db);
 
  <?php include('topbar.php');
 
- if($c->Type !="worker") echo '<h1> املء المعلومات لتغيير الئ حساب عامل</h1>';
+ if($c->Type !="worker") echo '<p class="msgclient"> املء المعلومات لتغيير الى حساب عامل</p>';
 
 
 
