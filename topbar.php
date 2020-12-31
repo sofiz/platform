@@ -1,4 +1,33 @@
+
+<?php  
+
+if (isset($_POST['sendreport'])) { 
+
+
+include('../conn.php') ;
+$Email = mysqli_real_escape_string($db, $_POST['Email']);
+$Name = mysqli_real_escape_string($db, $_POST['Name']);
+$Report = mysqli_real_escape_string($db, $_POST['Report']);
+
+
+$query = "INSERT INTO reports (Name,Email,Report)
+  			  VALUES('$Name','$Email','$Report')";
+			  
+  	mysqli_query($db, $query);
+	
+	mysqli_close ( $db );
+
+}
+
+
+?>
+
+
+
 <!DOCTYPE html>
+
+
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -25,7 +54,12 @@
     <span class="closepolicy">&times;</span>
 
 		<div class="policycontainer">
-<?php include 'policy.html'; ?>
+<?php include 'policy.html'; 
+
+
+
+
+?>
 		</div>
 
   </div>
@@ -40,15 +74,21 @@
   <!-- Modal content -->
   <div class="modal-contentr">
     <span class="closereport">&times;</span>
+	
+	<form    action="" method="post" >
 
 		<div class="reportcontainer">
-      <span class="fas fa-user" style="font-family: FontAwesome;color: black;font-size:20px;display:inline;vertical-align: sub;"></span>
-<input type="text" name="" value="" class="input" placeholder="الإسم" style="margin-top:30px;margin-bottom:10px;height:25px;"><br>
+      <span class="fas fa-user" style="font-family: FontAwesome;color: black;font-size:20px; display:inline ;vertical-align: sub;"></span>
+<input type="text" name="Name" value="" class="input" placeholder="الإسم" style="margin-top:30px;margin-bottom:10px;height:25px;display:inline"><br>
 <span class="fas fa-envelope" style="font-family: FontAwesome;color: black;font-size:20px;display:inline;vertical-align: sub;"></span>
-<input type="text" name="" value="" class="input" placeholder="الايمايل" style="display: inline;margin-bottom:10px;height:25px;">
-<textarea name="reportmsg" rows="8" cols="80" placeholder="إشرح ماتريد قوله"></textarea>
+<input type="text" name="Email" value="" class="input" placeholder="الايمايل" style="display: inline;margin-bottom:10px;height:25px;">
+<textarea name="Report" rows="8" cols="80" placeholder="إشرح ماتريد قوله"></textarea>
 <button type="submit" name="sendreport" class="btnstyle" id="sendreport">أرسل</button>
+
+
 		</div>
+		
+		</form>
 
   </div>
 

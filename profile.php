@@ -115,7 +115,7 @@ $c->Get_Rating_Profile($db);
 			    </div>
 
     <div class="info">
-			<?php	if ($c->Email!=""&& $c->Type == "worker" ) {
+			<?php	if ($c->Email!=""&& $c->Type == "worker" && $c->EmailCheck=="yes" ) {
 			echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
             echo ' <span> '.$c->Email .'</span> ';
 	  }

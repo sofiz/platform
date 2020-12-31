@@ -275,9 +275,9 @@ $c->Show_Three_Photos();
 			<div class="info2">
 
 			<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;position:relative;top:5px;"></span>
-<input type="checkbox" id="emailcheck" name="emailcheck" value="" title="إظهار الايمايل في الحساب" style="margin-left: -10px;
+<input type="checkbox" id="emailcheck" name="EmailCheck" value="yes" title="إظهار الايمايل في الحساب" style="margin-left: -10px;
     position: relative;
-    top: 5px;" >
+    top: 5px;" <?php  if($c->EmailCheck=="yes" )echo "checked"?>>
 <input type="text" name="Email" placeholder="ايمايل" value="<?php echo $c->Email ;?>" class="inputinf2" style="width:79%">
 </div>
 

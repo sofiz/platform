@@ -89,6 +89,12 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
   $Facebook =mysqli_real_escape_string($db, $_POST['Facebook']);
   $Instagram =mysqli_real_escape_string($db, $_POST['Instagram']);
   
+  
+  if($_POST['EmailCheck']=='yes'){
+  $EmailCheck =mysqli_real_escape_string($db, $_POST['EmailCheck']); }
+  else  { $EmailCheck ='no'; }
+  
+  
   $Type="worker";
 
 /*
@@ -150,7 +156,7 @@ compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,30);
 ///***************************************** UPDATE data *********************************************
 if(count($errors) == 0) {
 	$query = "UPDATE users
-	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Wilaya='$Wilaya',Daira='$Daira',Commune='$Commune',Birthday='$Birthday',Description='$Description',Type='$Type' ,Facebook='$Facebook',Instagram='$Instagram' WHERE id='$id'" ;
+	SET  First_Name='$First_Name', Last_Name='$Last_Name',Email='$Email',Phone='$Phone',Job='$Job',Wilaya='$Wilaya',Daira='$Daira',Commune='$Commune',Birthday='$Birthday',Description='$Description',Type='$Type' ,Facebook='$Facebook',Instagram='$Instagram',EmailCheck='$EmailCheck' WHERE id='$id'" ;
   	//$query ="UPDATE comments set rating='$rating' WHERE User_id='$User_id' AND Commentor_id='$Commentor_id'";
 	mysqli_query($db, $query);
 

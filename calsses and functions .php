@@ -26,7 +26,7 @@ class user {
       public $ids ;
       public $Facebook ;
       public $Instagram ;
-
+      public $EmailCheck ;
 
 
      function Age($dateNaissance)
@@ -128,6 +128,7 @@ function Select_Information_Of_Profile($db){
 	  $this->Type=$row['Type'];
 	  $this->Facebook=$row['Facebook'];
 	  $this->Instagram=$row['Instagram'];
+	  $this->EmailCheck=$row['EmailCheck'];
       }
 }
 
