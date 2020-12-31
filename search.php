@@ -1,6 +1,10 @@
-<?php
+<?php 
+session_start();
+//
+/*
 // start at the top of the page since we start a session
 session_name('mysite_hit_counter');
+
 session_start();
 //
 $fn = 'test.txt';
@@ -28,7 +32,7 @@ if (!isset($_SESSION['page_visited_already']))
 
 }
 
-
+*/
 
 
 

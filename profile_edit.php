@@ -16,6 +16,8 @@ $c->Select_Photos_Of_Profile ($db);
 ?>
 
 
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -80,7 +82,11 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 	</div>
 </div>
 <div class="" style="border-radius: inherit;">
-  <?php echo '<img id="pic" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >'; ?>
+
+  <?php if ($c->Profile_Pic!="default.png")echo '<img id="pic" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
+
+
+else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
 
 
 

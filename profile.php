@@ -63,7 +63,9 @@ $c->Get_Rating_Profile($db);
 <div id="square1">
 
 
-   <?php echo' <img id="pic"  src="imgs/'.$c->id.'/'.$c->Profile_Pic.'"  alt="" onclick="slide(this.src)" class="pictures" > '; ?>
+   <?php if ($c->Profile_Pic!="default.png")  echo '<img id="pic" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
+else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
+
 
     <strong id="name" ><?php echo $c->First_Name .' '. $c->Last_Name ; ?> </strong>
 

@@ -41,27 +41,8 @@ $options = [
     ]
 ];
 
-$promise = $client-> post("https://prod-12.francecentral.logic.azure.com:443/workflows/f833a55e56a8400a9a6088a5d972dabc/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=QHPu16-ilv9l_KNP8ksEjv9nYTmh1238FNxiGnKm-Iw", $options);/*->then(
-    function ($response) {
-        return $response->getStatusCode();
-    }, function ($exception) {
-        return $exception->getResponse();
-    }
-);
+$promise = $client-> post("https://prod-12.francecentral.logic.azure.com:443/workflows/f833a55e56a8400a9a6088a5d972dabc/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=QHPu16-ilv9l_KNP8ksEjv9nYTmh1238FNxiGnKm-Iw", $options);
 
-$response = $promise->wait();*/
-// Requires Laravel to run Log::info(). Check the documentation of your preferred framework for logging instructions.
-//Log::info(print_r($response, TRUE));
-    // Send email to user with the token in a link they can click on
-    /*
-    $to = $email;
-    $subject = "Reset your password on oursite.com";
-    $msg = "Hi there, click on this <a href=\"new_password.php?token=" . $token . "\">link</a> to reset your password on our site";
-    $msg = wordwrap($msg,70);
-    $headers = "From: riyadh.derbale99@gmail.com". "\r\n" .
-"CC:".$email;
-
-    mail($to, $subject, $msg, $headers);*/
     header("location: pending.php?email=".$email);
   }
 
@@ -85,7 +66,7 @@ if (isset($_POST['new_password'])) {
     $email = mysqli_fetch_assoc($results)['email'];
 
     if ($email) {
-      $new_pass = md5($new_pass);
+      $new_pass = password_hash($new_pass, PASSWORD_DEFAULT);
       $sql = "UPDATE users SET Password='$new_pass' WHERE Email='$email'";
       $results = mysqli_query($db, $sql);
       header('location: profile.php');
