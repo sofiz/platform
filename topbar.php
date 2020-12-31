@@ -1,7 +1,7 @@
 
-<?php  
+<?php
 
-if (isset($_POST['sendreport'])) { 
+if (isset($_POST['sendreport'])) {
 
 
 include('../conn.php') ;
@@ -12,9 +12,9 @@ $Report = mysqli_real_escape_string($db, $_POST['Report']);
 
 $query = "INSERT INTO reports (Name,Email,Report)
   			  VALUES('$Name','$Email','$Report')";
-			  
+
   	mysqli_query($db, $query);
-	
+
 	mysqli_close ( $db );
 
 }
@@ -54,7 +54,7 @@ $query = "INSERT INTO reports (Name,Email,Report)
     <span class="closepolicy">&times;</span>
 
 		<div class="policycontainer">
-<?php include 'policy.html'; 
+<?php include 'policy.html';
 
 
 
@@ -74,20 +74,20 @@ $query = "INSERT INTO reports (Name,Email,Report)
   <!-- Modal content -->
   <div class="modal-contentr">
     <span class="closereport">&times;</span>
-	
-	<form    action="" method="post" >
+
+	<form    action="" class="defaultform" method="post" >
 
 		<div class="reportcontainer">
       <span class="fas fa-user" style="font-family: FontAwesome;color: black;font-size:20px; display:inline ;vertical-align: sub;"></span>
 <input type="text" name="Name" value="" class="input" placeholder="الإسم" style="margin-top:30px;margin-bottom:10px;height:25px;display:inline"><br>
 <span class="fas fa-envelope" style="font-family: FontAwesome;color: black;font-size:20px;display:inline;vertical-align: sub;"></span>
 <input type="text" name="Email" value="" class="input" placeholder="الايمايل" style="display: inline;margin-bottom:10px;height:25px;">
-<textarea name="Report" rows="8" cols="80" placeholder="إشرح ماتريد قوله"></textarea>
+<textarea name="Report" rows="8" cols="80" placeholder="إشرح ماتريد قوله" style="resize: none;"></textarea>
 <button type="submit" name="sendreport" class="btnstyle" id="sendreport">أرسل</button>
 
 
 		</div>
-		
+
 		</form>
 
   </div>
