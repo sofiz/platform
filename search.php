@@ -139,9 +139,9 @@ function sugtoinput(x) {
 
 
 				</form>
-        <div class="ad1">
+         <!-- <div class="ad1">
             this is an ad
-          </div>
+          </div> -->
                 <div class="resultscontainer">
 
 
