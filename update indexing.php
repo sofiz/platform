@@ -262,10 +262,11 @@ $ligature_map = array(
   
   
   
+  $count=0;
+ $arr=array();
   
   
-  
-  $sql= " SELECT * FROM users ";
+                                       $sql= "SELECT * FROM users";
 	                                  $res=mysqli_query($db,$sql);
 
 		                            	if(!$res){
@@ -306,7 +307,7 @@ $ligature_map = array(
 				                 	  }
 										  }
   
-  
+									  }
   
   
   
@@ -319,8 +320,7 @@ $ligature_map = array(
  $Job = mysqli_real_escape_string($db,$_GET['Job']);
  $Wilaya =mysqli_real_escape_string($db,$_GET['Wilaya']);
 
- $count=0;
- $arr=array();
+ 
  
  
  $carc=array("o","O","a","A","i","I","e","E");  
