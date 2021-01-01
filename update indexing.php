@@ -345,6 +345,8 @@ $sql1= $sql1." and  Type = 'worker' ";
                                       
 						              echo '<div class="resultcontainer"> ';
                                       echo ' <p id="noresult">no result found!</p>  </div> '; 
+									  
+									  $count=-5;
 									  }
 					               
 				  }
@@ -688,12 +690,14 @@ $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND 
 					
 						
                           							 
-                                 /* if($count==0){
+                                  if($count==0){
                                       
 						              echo '<div class="resultcontainer"> ';
                                       echo ' <p id="noresult">no result found!</p>  </div> '; 
+									  
+									  $count =-5; 
 									  }
-*/
+
 										  
 									  }
 									
