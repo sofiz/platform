@@ -265,9 +265,46 @@ $ligature_map = array(
   
   
   
-  
-  
-  
+  $sql= " SELECT * FROM users ";
+	                                  $res=mysqli_query($db,$sql);
+
+		                            	if(!$res){
+	                                  echo "error".mysqli_error($db);
+                                       }
+		                              if(mysqli_num_rows($res)>0){
+                                      
+			                          while($row1=mysqli_fetch_assoc($res))
+				                      	  {
+   $flag=true ;
+						              for($j=0;$j<count($arr);$j++)
+						              if($arr[$j]==$row1['id']){ $flag=false ; }
+						              if($flag){
+										  $count++;
+	                                  echo'    <div class="resultcontainer">  ';
+									  
+                                      //echo'<a href="profile.php?id='.$row0['id'].'" ><img src="imgs/'.$row0['id'].'/'.$row0['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+									   
+									   if(($row1['Profile_Pic'])!="default.png")
+                                      echo'<a href="profile.php?id='.$row1['id'].'" ><img src="imgs/'.$row1['id'].'/'.$row1['Profile_Pic'].'" alt="" class="resimg" ></a> ';
+									  else 
+									  echo'<a href="profile.php?id='.$row1['id'].'" > <img src="imgs/default.png" alt="" class="resimg" ></a> ';
+									  
+									  
+                                      echo'<div class="infocontainer"> ';
+                                      echo'<a href="profile.php?id='.$row1['id'].'" class="name">  '. $row1['First_Name']." ".$row1['Last_Name'] . ' </a>  ';
+                                      echo'<p class="info"> ' .$row1['Phone'] .  '</p> ';
+									  echo'<p class="info"> ' .$row1['Job'] .  '</p> ';
+									  
+                        if(empty($row1['Daira'])&&empty($row1['Commune']))
+         echo '<p class="info"><span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row1['Wilaya'].'</span></p></div> </div>';
+         if(!empty($row1['Daira'])&&empty($row1['Commune']))
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row1['Wilaya'].','.$row1['Daira'].'</span></p></div> </div>';
+		if(!empty($row1['Daira'])&&!empty($row1['Commune']))
+         echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top000000000000000: -2px;">'.$row1['Wilaya'].','.$row1['Daira'].','.$row1['Commune'].'</span> </p> </div> </div> ';
+		
+                                      array_push($arr,$row1['id']);
+				                 	  }
+										  }
   
   
   
