@@ -1,6 +1,8 @@
 ﻿<?php
-
+session_id("session1");
 session_start();
+
+
 // initializing variables
 $Username = "";
 $Email    = "";
@@ -78,6 +80,12 @@ if (isset($_POST['SIGNUP'])) {
   	mysqli_query($db, $query);
   	$_SESSION['Username'] = $Username;
   	$_SESSION['success'] = "You are now logged in";
+	
+	$q0 ="INSERT INTO  statistics (Username,Session_Nbr) VALUES ('$Username','1')";
+	mysqli_query($db, $q0);
+	  
+	
+	
   	header('location: search.php');
   }
   mysqli_close ( $db );
@@ -111,6 +119,12 @@ if (isset($_POST['login'])) {
 	if(password_verify($Password,$hassh)){
   	  $_SESSION['Username'] = $Username;
   	  $_SESSION['success'] = "You are now logged in";
+	  
+	  $q ="UPDATE statistics set Session_Nbr=Session_Nbr+1 WHERE Username='$Username' ";
+	  mysqli_query($db, $q);
+	  
+	  
+	  
   	 header('location: search.php');
   	} else {
   		array_push($errors, "Wrong username/password combination");

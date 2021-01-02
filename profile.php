@@ -17,6 +17,35 @@ $c->Select_Information_Of_Profile($db);
 $c->Select_Photos_Of_Profile ($db);
 ////*************************** Get Rating profile ($id) from URL  ********************
 $c->Get_Rating_Profile($db);
+
+
+
+
+
+if (isset($_SESSION['Username'])) {
+	
+	
+$Visitor_id = $c->Get_Id_From_Session($db); 
+	  
+	  
+	  $q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id)
+  			  VALUES('$c->id','$Visitor_id')";
+	  mysqli_query($db, $q);
+}
+else {
+	
+	  $q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id)
+  			  VALUES('$this->id','00')";
+	  mysqli_query($db, $q);
+	  
+}
+
+
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 

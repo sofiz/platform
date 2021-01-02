@@ -1,4 +1,15 @@
-<?php include('app_logic.php'); ?>
+<?php 
+include('../conn.php') ;
+include('app_logic.php'); 
+session_id("session1");
+session_start();
+if (isset($_SESSION['Username'])) {
+	  $Username=$_SESSION['Username'];
+	  $q ="UPDATE statistics set EnterEmail=EnterEmail+1 WHERE Username='$Username' ";
+	  mysqli_query($db, $q);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

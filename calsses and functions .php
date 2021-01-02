@@ -56,6 +56,10 @@ if (isset($_SESSION['Username'])) {
 //******************************************************************************
 function Get_Id_From_Session($db){
 
+
+
+
+
 	  if (isset($_SESSION['Username'])) {
 	  $user=$_SESSION['Username'];
 	  $res1=mysqli_query($db,"SELECT id FROM users WHERE Username='$user'");
@@ -67,6 +71,19 @@ function Get_Id_From_Session($db){
 }
 return $this->ids;
                                }
+							   
+//***********************************************************************
+
+function Get_Username_From_Session($db){
+
+	  if (isset($_SESSION['Username'])) {
+	  $Username=$_SESSION['Username'];
+      return $Username;
+}
+
+                               }
+
+
 
 //******************************************************************************
 
@@ -400,6 +417,17 @@ else  if ($this->Check_Session_Isset() && $this->Type =="worker"  ) { echo' <p> 
 
 
 
+
+function Get_Nbr_All_Users(){
+
+$sql="SELECT COUNT(*)
+FROM users";
+
+$users = mysqli_query($db, $sql);
+
+return $users ;
+
+	}
 
 
 

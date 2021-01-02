@@ -1,4 +1,16 @@
-<?php include('app_logic.php'); ?>
+<?php 
+include('app_logic.php');
+include('../conn.php') ;
+session_id("session1");
+session_start();
+if (isset($_SESSION['Username'])) {
+	  $Username=$_SESSION['Username'];
+	  $q ="UPDATE statistics set ResetPass=ResetPass+1 WHERE Username='$Username' ";
+	  mysqli_query($db, $q);
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

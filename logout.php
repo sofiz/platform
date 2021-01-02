@@ -1,5 +1,6 @@
 <?php
 
+//session_id("session1");
 session_start();
 
  session_destroy();

@@ -19,5 +19,22 @@
 
 //ss
 
+        include 'visitors.php'; 
+
+		$indexvisit++ ;
+        $var_str1 = var_export($AllVisitors, true);
+		$var_str2 = var_export($indexvisit, true);
+		
+        $var ="<?php\n\n\$AllVisitors=$var_str1;\n\n\n\$indexvisit=$var_str2;\n\n?>";
+        file_put_contents('visitors.php', $var);
+		
+		
+		
+		
+		
+
 header('Location: search.php');
+
+
+
  ?>

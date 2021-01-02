@@ -1,6 +1,7 @@
 
 
 <?php
+session_id("session1");
 session_start();
 include('calsses and functions .php') ;
 include('../conn.php');
@@ -15,6 +16,17 @@ $c->Select_Information_Of_Profile($db);
 $c->Select_Photos_Of_Profile ($db);
 ////*************************** Get Rating profile ($id) from URL  ********************
 $c->Get_Rating_Profile($db);
+
+
+
+if (isset($_SESSION['Username'])) {
+	  $Username=$_SESSION['Username'];
+	  $q ="UPDATE statistics set Myprofile=Myprofile+1 WHERE Username='$Username' ";
+	  mysqli_query($db, $q);
+}
+
+
+
 ?>
 
 

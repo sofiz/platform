@@ -1,5 +1,6 @@
 
 <?php
+session_id("session1");
 session_start();
 include('../conn.php');
 include('calsses and functions .php') ;
@@ -13,6 +14,13 @@ $c->id = $c->Get_Id_From_Session($db);
 $c->Select_Information_Of_Profile($db);
 //--------------select photos -----------------------
 $c->Select_Photos_Of_Profile ($db);
+
+
+if (isset($_SESSION['Username'])) {
+	  $Username=$_SESSION['Username'];
+	  $q ="UPDATE statistics set ProfileEdit=ProfileEdit+1 WHERE Username='$Username' ";
+	  mysqli_query($db, $q);
+}
 ?>
 
 
