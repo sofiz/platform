@@ -152,15 +152,15 @@ else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
 			    </div>
 
     <div class="info">
-			<?php	if ($c->Email!=""&& $c->Type == "worker" && $c->EmailCheck=="yes" ) {
+			<?php	if ($c->Email!=""&& $c->Type == "worker" && $c->EmailCheck=="yes") {
 			echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
             echo ' <span> '.$c->Email .'</span> ';
 	  }
-
-	  else { echo '<span style="font-size: 15px;"> </span> ';   }
-
+	  else if (($c->Email=="" && $c->Type == "worker") || $c->EmailCheck=="no"||$c->EmailCheck!=""){
+          echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
+		  echo '<span style="font-size: 15px;"> لا يوجد ايميل </span> ';   }
+		  else  echo '<span>  </span> ';
 	  ?>
-
     </div>
 
 
@@ -171,17 +171,18 @@ else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
         echo '<span>  ' . $c->Age($c->Birthday)  .'</span> </div>';
     }
 
-	else {
+	elseif(($c->Birthday ==  "0000-00-00" || ($c->Age($c->Birthday) < 16  || $c->Age($c->Birthday) > 65)) && $c->Type == "worker") {
 	    echo ' <div class="info"> ';
-        echo '<span>  </span> </div>';
-    }
+		 echo ' <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ';
+        echo '<span> لايوجد العمر </span> </div>';
+    } 
+	else  echo '<span> </span> </div>';
 
 ?>
 
-
 <!--<button type="button" name="button" class="uploadpicbtn">more</button> -->
-<button type="button" name="button" class="socialmedia"><span class="fas fa-facebook" style="font-family: FontAwesome ;margin-left: 7px;margin-right: 7px;color: white;font-size:20px"></span></button>
-<button type="button" name="button" id="insta" class="socialmedia"><span class="fas fa-instagram" style="font-family: FontAwesome; margin-left: 7px;margin-right: 7px;color: white;font-size:20px;"></span></button>
+<button type="button" name="button" class="socialmedia"><a href="<?php echo $c->Facebook ;?>"><span class="fas fa-facebook" style="font-family: FontAwesome ;margin-left: 7px;margin-right: 7px;color: white;font-size:20px"></span></a></button>
+<button type="button" name="button" id="insta" class="socialmedia"><a href="<?php echo $c->Instagram ;?>"><span class="fas fa-instagram" style="font-family: FontAwesome; margin-left: 7px;margin-right: 7px;color: white;font-size:20px;"></span></a></button>
     </div>
 </div>
 <div class="s1s2">

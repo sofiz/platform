@@ -120,7 +120,7 @@ else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
 		<div class="info2">
 			<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
 	    <select type="text" name="Job" id="jobinp"  class="dropdown2" required>
-       <?php if($c->Job!="") { echo '<option value="'.$c->Job.' " selected>'.   $c->Job .'</option>' ;  }
+       <?php if($c->Job!="") { echo '<option value="'.$c->Job.'" selected>'.$c->Job.'</option>' ;  }
 	         else { echo '<option id="mihna" value=""  selected>المهنة</option>';   }
 
 			 include('jobsdata.html'); ?>
@@ -298,7 +298,7 @@ $c->Show_Three_Photos();
 <input type="checkbox" id="emailcheck" name="EmailCheck" value="yes" title="إظهار الايمايل في الحساب" style="margin-left: -10px;
     position: relative;
     top: 5px;" <?php  if($c->EmailCheck=="yes" )echo "checked"?>>
-<input type="text" name="Email" placeholder="ايمايل" value="<?php echo $c->Email ;?>" class="inputinf2" style="width:79%">
+<input type="text" name="Email" placeholder="ايمايل" value="<?php echo $c->Email ;?>" class="inputinf2" style="width:79%" required>
 </div>
 
 <div class="info2">
