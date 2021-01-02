@@ -53,7 +53,7 @@ else {
   <head>
     <meta charset="utf-8">
     <title>Rondili - <?php echo $c->First_Name .' '. $c->Last_Name ; ?></title>
-    <meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي">
+    <meta name="keywords" content="rondili, service,<?php echo $c->First_Name .' '. $c->Last_Name ; ?>, job, خدمة ,الجزائر ,عامل , رونديلي">
     <meta name="description" content="
 تبحث عن خدمة أو عامل في منطقتك ؟
 لديك عمل أو خدمة و تبحث عن الزبائن؟
