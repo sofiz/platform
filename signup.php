@@ -74,7 +74,7 @@ include('topbar.php'); ?>
 
 					</select>
 <div id="myDIV" ></div>
-<?php include 'wilayascript.html'; ?>
+
 
 
 			<input type="hidden" name ="Wilaya"  id="Wilaya" value=""  >
@@ -144,5 +144,56 @@ include('topbar.php'); ?>
 	}
 
 </script>
+<script>
+
+
+//************************** for wilaya *******************
+
+var myParent = document.getElementById("myDIV")
+//Create and append select list
+var selectList = document.createElement("select");
+selectList.id = "mySelectwilaya";
+
+myParent.appendChild(selectList);
+document.getElementById("mySelectwilaya").classList.add('dropdown');
+document.getElementById('mySelectwilaya').required=true;
+//*************** default ********
+var option = document.createElement("option");
+option.value = "" ;
+option.text = "اختر ولاية" ;
+selectList.appendChild(option);
+//Create and append the options
+
+
+
+for (i in arr.wilayas) {
+
+
+var option = document.createElement("option");
+option.value = i ;
+option.text = arr.wilayas[i].name_ar;
+selectList.appendChild(option);
+
+
+}
+
+
+
+$(document).ready(function(){
+
+
+$("#mySelectwilaya").change(function(){
+wilayacode = $(this).children("option:selected").val();
+//********* set value of wilaya in input ********
+
+document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
+
+});   });
+
+
+
+
+</script>
+
 </html>
 <html>

@@ -95,7 +95,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
   <?php if ($c->Profile_Pic!="default.png")echo '<img id="pic" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
 
 
-else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
+else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
 
 
 

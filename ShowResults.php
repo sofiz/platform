@@ -25,9 +25,9 @@ echo'<a href="profile.php?id='.$row['id'].'" class="name">  '. $row['First_Name'
 
 echo'<p class="info"> ' .$row['Job'] .  '</p> ';
 if(empty($row['Daira'])&&empty($row['Commune']))
-echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].'</span></p> </div> </div>';
+echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].'</span></p> ';
 if(!empty($row['Daira'])&&empty($row['Commune']))
-echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].'</span></p> </div> </div>';
+echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].'</span></p> ';
 if(!empty($row['Daira'])&&!empty($row['Commune'])) 
 echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].','.$row['Commune'].'</span> </p> ';                                     
 echo'<p class="info"> ' .$row['Phone'] .  '</p> </div> </div>';

@@ -281,7 +281,11 @@ function For_My_Comment($db){
 				 }
 
          echo' <div class="yourcomment"> ';
+	     if ($this->Profile_Pic!="default.png")
          echo'  <img src="imgs/'.$Commentor_id.'/'.$Profile_Pic.'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
+		 else  echo'  <img src="imgs/default.png" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
+		 
+		 
          echo'    <form action="onsbmit.php" method="post">   ';
 
 
@@ -351,7 +355,10 @@ while($row1=mysqli_fetch_array($rest))
 
    echo ' <div class="commentsection" id="'.$row['Comment_id'].'" > ';
    echo ' <div class="comment"> ' ;
+   if ($this->Profile_Pic!="default.png")
    echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/'.$Commentor_id.'/'.   $Profile_Pic   .' " alt="" onerror="error(this)"> </a>' ;
+   else 
+   echo'<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/default.png" alt="" onerror="error(this)"> </a>' ;
    echo '<div style="    display: inline-grid;">';
 	 echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
 

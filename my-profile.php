@@ -70,7 +70,7 @@ mysqli_query($db, $q);
    <?php if ($c->Profile_Pic!="default.png")echo '<img id="pic" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
 
 
-else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
+            else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
 
 
 
@@ -124,13 +124,16 @@ else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
 			    </div>
 
     <div class="info">
-			<?php	if ($c->Email!=""&& $c->Type == "worker" && $c->EmailCheck=="yes") {
+			<?php	if ($c->Email!="" && $c->Type == "worker" && $c->EmailCheck=="yes") {
 			echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
             echo ' <span> '.$c->Email .'</span> ';
 	  }
-	  else if (($c->Email=="" && $c->Type == "worker") || $c->EmailCheck=="no"||$c->EmailCheck!=""){
+	  else if (($c->EmailCheck=="no"||$c->EmailCheck="")&& $c->Type == "worker"){
           echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
 		  echo '<span style="font-size: 15px;"> لا يوجد ايميل </span> ';   }
+		  else { '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ; 
+		         echo '<span>  </span> ';}
+		  
 	  ?>
     </div>
 
