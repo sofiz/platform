@@ -93,6 +93,30 @@ else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
 
     </div>
 
+
+    <!-- <div class="infocontainer">
+
+      <div class="info">
+				<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #ffffff;background: #0096c7;padding: 6px;border-radius: 18px;"></span> <span style="font-size: 15px;">موثق
+</span> 			    </div>
+
+			    <div class="info">
+						 <span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #ffffff;background: #e64e4e;padding: 5px 9px;border-radius: 18px;"></span><span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">تلمسان</span>
+			    </div>
+
+					<div class="info">
+					 <span class="fas fa-phone" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: white;background: #54c554;padding: 5px 7px;border-radius: 18px;top: 2px;position: relative;"></span> <span>  +213673937894 </span> 			    </div>
+
+    <div class="info">
+			<span>  </span>     </div>
+
+
+
+ <div class="info">  <span class="fas fa-birthday-cake" style="font-family: FontAwesome;margin-right: 10px;color: white;background: #FF9800;padding: 6px;border-radius: 18px;"></span> <span> لايوجد العمر </span> </div>
+
+    </div>
+  -->
+
     <div class="infocontainer">
 
 			<div class="info">

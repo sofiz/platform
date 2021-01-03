@@ -173,17 +173,17 @@ object-fit: cover;
 
 
 .resultcontainer {
-  width: 32%;
+  width: 48%;
   background: #FAFAFA;
   margin-top: 20px;
   border-radius: 10px;
   display: inline-flex;
   box-shadow: 1px 3px 16px 0px #00000047;
-  margin: 20px auto;
+  margin: 20px auto 0;
   margin-right: 10px;
 }
 .resultscontainer{
-  width: 70%;
+  width: 60%;
     margin: auto;
 }
 .info{

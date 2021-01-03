@@ -1,0 +1,30 @@
+//new css experiments
+
+.input {
+    margin-top: 0.4375em;
+    height: 1.5625em;
+    border: none;
+    width: 300px;
+    padding-left: 0.9375em;
+    border: none;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: solid 2px #8a8a8a;
+    font-family: 'jf flat';
+    padding: 15px;
+    outline: none;
+}
+.input:hove,.input:focus{
+border: solid 2px #9faae8;}
+
+
+textarea{
+resize: none;
+border-radius: 20px;
+border: solid 2px #8a8a8a;
+font-family: 'jf flat';
+padding: 15px;
+width: 80%;
+margin-left: 22px;
+outline: none;
+}
