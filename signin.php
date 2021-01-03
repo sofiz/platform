@@ -1,8 +1,8 @@
 ﻿<?php
 session_id("session1");
 session_start();
-include('server.php') ; 
-include('topbar.php'); 
+include('server.php') ;
+include('topbar.php');
 
 ?>
 <html>
@@ -17,6 +17,7 @@ include('topbar.php');
 <link href="style_signup.css" rel="stylesheet" type="text/css" media="all" />
 <link href="style.css" rel="stylesheet" type="text/css" media="all" />
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
 
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

@@ -17,6 +17,7 @@
       left: 0;
       box-shadow: 1px 3px 16px 0px #00000047;
       transition: all .4s ease-in-out;
+      z-index: 3;
     }
 .foot{
 

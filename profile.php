@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include('../conn.php');
 
@@ -20,15 +20,15 @@ $c->Select_Photos_Of_Profile ($db);
 ////*************************** Get Rating profile ($id) from URL  ********************
 $c->Get_Rating_Profile($db);
 
-include('topbar.php'); 
-if (isset($_SESSION['Username'])) {	
-$Visitor_id = $c->Get_Id_From_Session($db);   
+include('topbar.php');
+if (isset($_SESSION['Username'])) {
+$Visitor_id = $c->Get_Id_From_Session($db);
 $q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id) VALUES('$c->id','$Visitor_id')";
 mysqli_query($db, $q);
 }
-else {	
+else {
 $q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id) VALUES('$c->id','00')";
-mysqli_query($db, $q);	  
+mysqli_query($db, $q);
 }
 
 ?>
@@ -141,8 +141,8 @@ else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
 	  else if (($c->EmailCheck=="no"||$c->EmailCheck="")&& $c->Type == "worker"){
           echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
 		  echo '<span style="font-size: 15px;"> لا يوجد ايميل </span> ';   }
-		  
-		  else { '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ; 
+
+		  else { '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
 		         echo '<span>  </span> ';}
 	  ?>
     </div>
@@ -159,7 +159,7 @@ else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
 	    echo ' <div class="info"> ';
 		 echo ' <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ';
         echo '<span> لايوجد العمر </span> </div>';
-    } 
+    }
 	else  echo '<div class="info"><span> </span> </div>';
 
 ?>
@@ -348,7 +348,7 @@ mysqli_close($db);
  s.remove(undefined);
  number_of_pics = s.length - 1;
 
- if (number_of_pics<=3) {
+ if (number_of_pics<3) {
    document.getElementById('viewallpic').style.display='none';
  }
 

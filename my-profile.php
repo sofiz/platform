@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_id("session1");
 session_start();
 include('../conn.php');
@@ -10,7 +10,7 @@ $c = new  user();
 if (!($c->Check_Session_Isset())) {
 header('location: signin.php');
               }
-			  
+
 
 
 $c->id = $c->Get_Id_From_Session($db);
@@ -61,7 +61,7 @@ mysqli_query($db, $q);
 
 
 
- 
+
 
 <div id="container" >
 <div id="square1">
@@ -131,9 +131,9 @@ mysqli_query($db, $q);
 	  else if (($c->EmailCheck=="no"||$c->EmailCheck="")&& $c->Type == "worker"){
           echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
 		  echo '<span style="font-size: 15px;"> لا يوجد ايميل </span> ';   }
-		  else { '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ; 
+		  else { '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
 		         echo '<span>  </span> ';}
-		  
+
 	  ?>
     </div>
 
@@ -335,7 +335,7 @@ mysqli_close($db);
   s.remove(undefined);
   number_of_pics = s.length - 1;
 
-  if (number_of_pics<=3) {
+  if (number_of_pics<3) {
     document.getElementById('viewallpic').style.display='none';
   }
 

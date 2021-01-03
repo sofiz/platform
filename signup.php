@@ -23,6 +23,7 @@ include('topbar.php'); ?>
 <!-- web font -->
 <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="data.js"></script>
 <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -35,7 +36,7 @@ include('topbar.php'); ?>
 
 		<div class="main-agileinfo" >
 
-		
+
 
 			<div class="agileits-top" >
 				<form action="signup.php" method="post">

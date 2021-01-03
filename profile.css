@@ -719,7 +719,7 @@ outline: none;
   .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 5; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -748,7 +748,12 @@ outline: none;
   }
 
 
-
+#mymodalmoreedit{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
   /* The Close Button */
   .close , .closeconfirm,.closemoreedit{
@@ -1153,6 +1158,9 @@ width: 440px;
 }
 }
     @media only screen and (max-width: 700px) {
+      .modal-content2 {
+    width: 85%;
+}
       .msgclient{
         position: absolute;
     margin: auto;
@@ -1164,7 +1172,7 @@ width: 440px;
     padding: 5px;
     border-radius: 7px;
     color: white;
-	
+
 }
       #container {
   border-radius: 0.625em;
