@@ -1,14 +1,17 @@
-
 <?php
 session_id("session1");
 session_start();
 include('../conn.php');
-include('calsses and functions .php') ;
+ 
 
+include('calsses and functions .php') ;
 $c = new  user();
-	if (!($c->Check_Session_Isset())) {
-  	header('location: signin.php');
+if (!($c->Check_Session_Isset())) {
+header('location: signin.php');
               }
+			  
+include('topbar.php');
+
 $c->id = $c->Get_Id_From_Session($db);
 ///**********************************Get information of profile **********************
 $c->Select_Information_Of_Profile($db);
@@ -17,9 +20,9 @@ $c->Select_Photos_Of_Profile ($db);
 
 
 if (isset($_SESSION['Username'])) {
-	  $Username=$_SESSION['Username'];
-	  $q ="UPDATE statistics set ProfileEdit=ProfileEdit+1 WHERE Username='$Username' ";
-	  mysqli_query($db, $q);
+$Username=$_SESSION['Username'];
+$q ="UPDATE statistics set ProfileEdit=ProfileEdit+1 WHERE Username='$Username' ";
+mysqli_query($db, $q);
 }
 ?>
 
@@ -52,16 +55,8 @@ if (isset($_SESSION['Username'])) {
 </head>
 
 <body>
-
- <?php include('topbar.php');
-
+<?php
  if($c->Type !="worker") echo '<p class="msgclient"> املء المعلومات لتغيير الى حساب عامل</p>';
-
-
-
-
-
-
  ?>
 
  <form class = "d" action= "onsbmit.php" method="post"  >
@@ -321,9 +316,7 @@ $c->Show_Three_Photos();
 
 
 </div>
-
-
-
+<?php mysqli_close ( $db ); ?>
 <div id="results"></div>
 <script>
 

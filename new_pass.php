@@ -1,15 +1,19 @@
 <?php 
-include('app_logic.php');
+
 include('../conn.php') ;
+include('app_logic.php');
 session_id("session1");
 session_start();
+
+if(!isset($_GET['token']))  header('location: search.php');
+
+include('topbar.php');
 if (isset($_SESSION['Username'])) {
 	  $Username=$_SESSION['Username'];
 	  $q ="UPDATE statistics set ResetPass=ResetPass+1 WHERE Username='$Username' ";
 	  mysqli_query($db, $q);
 }
-
-
+mysqli_close ( $db );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +23,7 @@ if (isset($_SESSION['Username'])) {
 	<link rel="stylesheet" href="resetpass.css">
 </head>
 <body>
-<?php include('topbar.php'); ?>
+
 <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
 	<form class="login-form" action="<?php $actual_link ?>" method="post">
 		<h2 class="form-title">New password</h2>

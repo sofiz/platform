@@ -1,72 +1,29 @@
 <?php
+include('../conn.php') ;
 
+//***********************************************************************************
 session_id("session2");
 session_start();
-
-
-
-
-if (!isset($_SESSION['page_visited_already']))
-{
-	
+if (!isset($_SESSION['page_visited_already'])){
 		include 'visitors.php'; 
 		$AllVisitors++;
         $var_str1 = var_export($AllVisitors, true);
 		$var_str2 = var_export($indexvisit, true);
         $var ="<?php\n\n\$AllVisitors=$var_str1;\n\n\n\$indexvisit=$var_str2;\n\n?>";
         file_put_contents('visitors.php', $var);
-		
 		$_SESSION['page_visited_already'] = 1;
-		
 }
-
-
-/*
-$fn = 'test.txt';
-$hits = 0;
-// read current hits
-if (($hits = file_get_contents($fn)) === false)
-{
-	$hits = 0;
-}
-// write one more hit
-if (!isset($_SESSION['page_visited_already']))
-{
-	if (($fp = @fopen($fn, 'w')) !== false)
-	{
-		if (flock($fp, LOCK_EX))
-		{
-			$hits++;
-			fwrite($fp, $hits, strlen($hits));
-			flock($fp, LOCK_UN);
-			$_SESSION['page_visited_already'] = 1;
-		}
-		fclose($fp);
-	}
-
-
-}
-*/
-//session_destroy();
- 
 session_write_close();
-
-
- 
-
-
+//***********************************************************************************
 session_id("session1");
 session_start();
-include('../conn.php') ;
-
-
+include('topbar.php'); 
 if (isset($_SESSION['Username'])) {
 	  $Username=$_SESSION['Username'];
 	  $q ="UPDATE statistics set Search=Search+1 WHERE Username='$Username' ";
 	  mysqli_query($db, $q);
 }
-
-
+//************************************************************************************
 
 
 
@@ -77,8 +34,6 @@ error_reporting(E_ERROR);
 
 $errors = array();
 $obj = new \ArPHP\I18N\Arabic();
-
-// connect to the database
 
 ?>
 
@@ -129,7 +84,7 @@ function sugtoinput(x) {
   </head>
 
   <body>
-  <?php include('topbar.php'); ?>
+  
 
 <form action="search.php" method="get">
 
@@ -166,8 +121,9 @@ function sugtoinput(x) {
                 <div class="resultscontainer">
 
 
-				<?php include('update indexing.php'); ?>
-              </div>
+				<?php include('ShowResults.php'); ?>
+                <?php mysqli_close($db); ?>   
+				</div>
 
   </body>
   <script type="text/javascript">

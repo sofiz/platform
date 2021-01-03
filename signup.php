@@ -1,8 +1,10 @@
 
 <?php
-include('server.php') ?>
+session_id("session1");
+session_start();
+include('server.php') ;
+include('topbar.php'); ?>
 
-<!DOCTYPE html>
 <html>
 <head>
 <title>Rondili -  إنشاء حساب</title>
@@ -28,15 +30,12 @@ include('server.php') ?>
 <!-- //web font -->
 </head>
 <body>
-
-
-
 	<!-- main -->
 	<div class="main-w3layouts wrapper" >
 
 		<div class="main-agileinfo" >
 
-		<?php include('topbar.php'); ?>
+		
 
 			<div class="agileits-top" >
 				<form action="signup.php" method="post">
@@ -146,3 +145,4 @@ include('server.php') ?>
 
 </script>
 </html>
+<html>

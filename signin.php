@@ -1,7 +1,10 @@
 ﻿<?php
+session_id("session1");
+session_start();
+include('server.php') ; 
+include('topbar.php'); 
 
-include('server.php') ?>
- <?php include('topbar.php'); ?>
+?>
 <html>
 <head>
 <title>Rondili -  تسجيل الدخول </title>

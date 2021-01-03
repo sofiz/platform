@@ -1,51 +1,14 @@
-
-<?php
-
-if (isset($_POST['sendreport'])) {
-
-
-include('../conn.php') ;
-$Email = mysqli_real_escape_string($db, $_POST['Email']);
-$Name = mysqli_real_escape_string($db, $_POST['Name']);
-$Report = mysqli_real_escape_string($db, $_POST['Report']);
-
-
-$query = "INSERT INTO reports (Name,Email,Report)
-  			  VALUES('$Name','$Email','$Report')";
-
-  	mysqli_query($db, $query);
-
-	mysqli_close ( $db );
-
-}
-
-
-?>
-
-
-
-<!DOCTYPE html>
-
-
-
-<html lang="en" dir="ltr">
+<html>
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="topbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
-
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
-
-
-
     <title></title>
   </head>
-
-
-
+  <body>
 <!-- The Modal -->
 <div id="myModalpolicy" class="modal">
 
@@ -54,28 +17,17 @@ $query = "INSERT INTO reports (Name,Email,Report)
     <span class="closepolicy">&times;</span>
 
 		<div class="policycontainer">
-<?php include 'policy.html';
-
-
-
-
-?>
+<?php include 'policy.html'; ?>
 		</div>
-
   </div>
-
-
 </div>
-
-
 <!-- The Modal -->
 <div id="myModalreport" class="modal">
-
   <!-- Modal content -->
   <div class="modal-contentr">
     <span class="closereport">&times;</span>
 
-	<form    action="" class="defaultform" method="post" >
+	<form    action="onsbmit.php" class="defaultform" method="post" >
 
 		<div class="reportcontainer">
       <span class="fas fa-user" style="font-family: FontAwesome;color: black;font-size:20px; display:inline ;vertical-align: sub;"></span>
@@ -95,22 +47,9 @@ $query = "INSERT INTO reports (Name,Email,Report)
 
 </div>
 
-</html>
+
 <?php
 
-/* <?php
-// function to get webpage title
-function getTitle($url) {
-    $page = file_get_contents($url);
-    $title = preg_match('/<title[^>]*>(.*?)<\/title>/ims', $page, $match) ? $match[1] : null;
-    return $title;
-}
-// get web page title
-echo 'Title: ' . getTitle('http://www.w3schools.com/php/');
-
-// Output:
-// Title: PHP 5 Tutorial
-?> */
 
 echo '<div class="topbar">
 
@@ -218,3 +157,5 @@ window.onclick = function(event) {
   }
 }
 </script>
+</body>
+</html>

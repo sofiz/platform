@@ -1,14 +1,12 @@
 
-
-<?php include('../conn.php') ?>     <?php
+<?php 
 
 class user {
 
-      public  $Mrating =0;
+      public $Mrating =0;
       public $Photo_id = array();
       public $Photo = array();
       public $nphotos ;
-
       public $Username;
 	  public $Wilaya;
 	  public $Daira;
@@ -393,28 +391,7 @@ else  if ($this->Check_Session_Isset() && $this->Type =="worker"  ) { echo' <p> 
 	       else echo '<p> لايوجد اي تقييم  </p>';
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
 
 
 
@@ -428,24 +405,6 @@ $users = mysqli_query($db, $sql);
 return $users ;
 
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

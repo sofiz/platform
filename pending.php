@@ -1,4 +1,9 @@
-<?php include('app_logic.php'); ?>
+<?php 
+session_id("session1");
+session_start();
+if(!isset($_GET['email']))  header('location: search.php');
+include('topbar.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +12,6 @@
 	<link rel="stylesheet" href="resetpass.css">
 </head>
 <body>
-<?php include('topbar.php'); ?>
 	<form class="login-form" action="login.php" method="post" style="text-align: center;">
 		<p class="msg">
 			We sent an email to  <b><?php echo $_GET['email'] ?></b> to help you recover your account.

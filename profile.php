@@ -1,6 +1,8 @@
-<?php
+<?php 
 session_start();
 include('../conn.php');
+
+
 include('calsses and functions .php') ;
 //include('onsbmit.php');
 $c = new  user();
@@ -18,33 +20,16 @@ $c->Select_Photos_Of_Profile ($db);
 ////*************************** Get Rating profile ($id) from URL  ********************
 $c->Get_Rating_Profile($db);
 
-
-
-
-
-if (isset($_SESSION['Username'])) {
-	
-	
-$Visitor_id = $c->Get_Id_From_Session($db); 
-	  
-	  
-	  $q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id)
-  			  VALUES('$c->id','$Visitor_id')";
-	  mysqli_query($db, $q);
+include('topbar.php'); 
+if (isset($_SESSION['Username'])) {	
+$Visitor_id = $c->Get_Id_From_Session($db);   
+$q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id) VALUES('$c->id','$Visitor_id')";
+mysqli_query($db, $q);
 }
-else {
-	
-	  $q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id)
-  			  VALUES('$this->id','00')";
-	  mysqli_query($db, $q);
-	  
+else {	
+$q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id) VALUES('$c->id','00')";
+mysqli_query($db, $q);	  
 }
-
-
-
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -91,9 +76,6 @@ else {
 	</style>
 
   <body >
-
-
- <?php include('topbar.php'); ?>
 <div id="container" >
 <div id="square1">
 
@@ -156,7 +138,7 @@ else  echo '<img id="pic" src="imgs/'.$c->Profile_Pic .'" alt="" >'; ?>
 			echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
             echo ' <span> '.$c->Email .'</span> ';
 	  }
-	  else if (($c->Email=="" && $c->Type == "worker") || $c->EmailCheck=="no"||$c->EmailCheck!=""){
+	  else if (($c->Email=="" && $c->Type == "worker") || $c->EmailCheck=="no"||$c->EmailCheck!="NULL"){
           echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
 		  echo '<span style="font-size: 15px;"> لا يوجد ايميل </span> ';   }
 		  else  echo '<span>  </span> ';
@@ -263,7 +245,7 @@ $c->For_My_Comment($db);
 //------------------------------for show all comments------------------
 $c->Show_All_Comments($db);
 
-  mysqli_close($db);
+mysqli_close($db);
 ?>
 </div>
 </div>

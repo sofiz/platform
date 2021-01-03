@@ -3,12 +3,13 @@ include('../conn.php') ;
 include('app_logic.php'); 
 session_id("session1");
 session_start();
+include('topbar.php');
 if (isset($_SESSION['Username'])) {
 	  $Username=$_SESSION['Username'];
 	  $q ="UPDATE statistics set EnterEmail=EnterEmail+1 WHERE Username='$Username' ";
 	  mysqli_query($db, $q);
 }
-
+mysqli_close ( $db );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,6 @@ if (isset($_SESSION['Username'])) {
 	<link rel="stylesheet" href="resetpass.css">
 </head>
 <body>
-<?php include('topbar.php'); ?>
 	<form class="login-form" action="enter_email.php" method="post">
 
 		<h2 class="form-title">Reset Password</h2>

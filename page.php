@@ -1,11 +1,7 @@
 <?php
+include ('../conn.php');
 $data = file_get_contents("php://input");
 $random = json_decode($data);
-
-
-
-include ('../conn.php');
-
 	$x=count($random);
 	for($i=0;$i<=$x;$i++)
 		{
@@ -20,7 +16,5 @@ include ('../conn.php');
 	unlink('imgs/'.strval($row['User_id']).'/'.$row['Photo_Path']);
 
 		}
-
-
-
+		mysqli_close ( $db );
 ?>

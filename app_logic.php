@@ -1,8 +1,5 @@
-
 <?php
-
 ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
- include('../conn.php') ;
 use GuzzleHttp\Client;
 require_once 'vendor/autoload.php';
 $errors =array();
@@ -42,21 +39,19 @@ $options = [
 ];
 
 $promise = $client-> post("https://prod-12.francecentral.logic.azure.com:443/workflows/f833a55e56a8400a9a6088a5d972dabc/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=QHPu16-ilv9l_KNP8ksEjv9nYTmh1238FNxiGnKm-Iw", $options);
-
+    
     header("location: pending.php?email=".$email);
   }
 
 }
 
-// ENTER A NEW PASSWORD
-
 if (isset($_POST['new_password'])) {
   $token = $_GET['token'];
   $new_pass = mysqli_real_escape_string($db, $_POST['new_pass']);
   $new_pass_c = mysqli_real_escape_string($db, $_POST['new_pass_c']);
-
+  
   // Grab to token that came from the email link
-
+  
   if (empty($new_pass) || empty($new_pass_c)) array_push($errors, "Password is required");
   if ($new_pass !== $new_pass_c) array_push($errors, "Password do not match");
   if (count($errors) == 0) {
@@ -69,7 +64,7 @@ if (isset($_POST['new_password'])) {
       $new_pass = password_hash($new_pass, PASSWORD_DEFAULT);
       $sql = "UPDATE users SET Password='$new_pass' WHERE Email='$email'";
       $results = mysqli_query($db, $sql);
-      header('location: profile.php');
+      header('location: my-profile.php');
     }
   }
 }

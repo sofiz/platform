@@ -1,14 +1,18 @@
-
-
-<?php
+<?php 
 session_id("session1");
 session_start();
-include('calsses and functions .php') ;
 include('../conn.php');
+
+
+include('calsses and functions .php') ;
+
 $c = new  user();
 if (!($c->Check_Session_Isset())) {
 header('location: signin.php');
               }
+			  
+
+
 $c->id = $c->Get_Id_From_Session($db);
 ///**********************************Get information of profile **********************
 $c->Select_Information_Of_Profile($db);
@@ -16,23 +20,18 @@ $c->Select_Information_Of_Profile($db);
 $c->Select_Photos_Of_Profile ($db);
 ////*************************** Get Rating profile ($id) from URL  ********************
 $c->Get_Rating_Profile($db);
-
+include('topbar.php');
 
 
 if (isset($_SESSION['Username'])) {
-	  $Username=$_SESSION['Username'];
-	  $q ="UPDATE statistics set Myprofile=Myprofile+1 WHERE Username='$Username' ";
-	  mysqli_query($db, $q);
+$Username=$_SESSION['Username'];
+$q ="UPDATE statistics set Myprofile=Myprofile+1 WHERE Username='$Username' ";
+mysqli_query($db, $q);
 }
 
 
-
 ?>
-
-
-
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
   <head>
     <link rel="favicon.ico">
@@ -62,7 +61,7 @@ if (isset($_SESSION['Username'])) {
 
 
 
- <?php include('topbar.php'); ?>
+ 
 
 <div id="container" >
 <div id="square1">
