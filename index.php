@@ -16,23 +16,15 @@
   </body>
 </html>
 <?php
+include('../conn.php');
 
-//ss
-
-        include 'visitors.php'; 
-
-		$indexvisit++ ;
-        $var_str1 = var_export($AllVisitors, true);
-		$var_str2 = var_export($indexvisit, true);
-		
-        $var ="<?php\n\n\$AllVisitors=$var_str1;\n\n\n\$indexvisit=$var_str2;\n\n?>";
-        file_put_contents('visitors.php', $var);
-		
-		
-		
-		
-		
-
+$sql0="UPDATE visitors SET Indexvisit=Indexvisit+1 where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+               }
+mysqli_close ($db);
+	
 header('Location: search.php');
 
 

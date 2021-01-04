@@ -1,5 +1,4 @@
 ﻿<?php
-
 include('../conn.php') ;
 
 function unichr($u) 
@@ -245,10 +244,23 @@ $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);
                }
-  
-  
-	
-  	header('location: search.php');
+			   
+			   
+
+$rest=mysqli_query($db,"SELECT AllVisitors,Users,Unkown FROM visitors WHERE id='1' ");
+while($row=mysqli_fetch_array($rest)){
+$AllVisitors=$row['AllVisitors'] ;
+$Users=$row['Users'] ;
+$Unkown=$row['Unkown'] ;
+}
+$Users++;
+$Unkown=$AllVisitors-$Users;
+$sql0="UPDATE visitors SET Users='$Users',AllVisitors='$AllVisitors',Unkown='$Unkown' where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+               }
+header('location: search.php');
   }
   
 }

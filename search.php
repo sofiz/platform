@@ -5,13 +5,37 @@ include('../conn.php') ;
 session_id("session2");
 session_start();
 if (!isset($_SESSION['page_visited_already'])){
+	
+	
+
+	
+	
+$rest=mysqli_query($db,"SELECT AllVisitors,Users,Unkown FROM visitors WHERE id='1' ");
+while($row=mysqli_fetch_array($rest)){
+$AllVisitors=$row['AllVisitors'] ;
+$Users=$row['Users'] ;
+$Unkown=$row['Unkown'] ;
+}
+
+$AllVisitors++; 
+$Unkown=$AllVisitors-$Users;
+        
+$sql0="UPDATE visitors SET Users='$Users',AllVisitors='$AllVisitors',Unkown='$Unkown' where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+               }
+	    /** 
 		include 'visitors.php'; 
 		$AllVisitors++;
         $var_str1 = var_export($AllVisitors, true);
 		$var_str2 = var_export($indexvisit, true);
         $var ="<?php\n\n\$AllVisitors=$var_str1;\n\n\n\$indexvisit=$var_str2;\n\n?>";
         file_put_contents('visitors.php', $var);
+		**/
+		
 		$_SESSION['page_visited_already'] = 1;
+		
 }
 session_write_close();
 //***********************************************************************************

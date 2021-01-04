@@ -403,14 +403,10 @@ else  if ($this->Check_Session_Isset() && $this->Type =="worker"  ) { echo' <p> 
 
 
 function Get_Nbr_All_Users(){
-
 $sql="SELECT COUNT(*)
 FROM users";
-
 $users = mysqli_query($db, $sql);
-
 return $users ;
-
 	}
 
 
