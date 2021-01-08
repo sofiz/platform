@@ -16,9 +16,11 @@ driver.get("https://www.google.com/maps/@34.3097665,4.2376437,7z")
 element = driver.find_element_by_id("searchboxinput")
 
  #listwilaya= ["أدرار", " الشلف", "الأغواط", "أم البواقي", "باتنة", " بجاية", "بسكرة", "بشار", "البليدة", "البويرة", "تمنراست", "تبسة", "تلمسان", "تيارت", "تيزي وزو", "الجزائر", "الجلفة", "جيجل", "سطيف", "سعيدة", "سكيكدة", "سيدي بلعباس", "عنابة", "قالمة", "قسنطينة", "المدية", "مستغانم", "المسيلة", "معسكر", "ورقلة", "وهران", "البيض", "إليزي", "برج بوعريريج", "بومرداس", "الطارف", "تندوف", "تيسمسيلت", "الوادي", "خنشلة", "سوق أهراس", "تيبازة", "ميلة", "عين الدفلة", "النعامة", "عين تيموشنت", "غرداية", "غليزان"]
- listwilaya=[  "Jijel", "Sétif", "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh", "Illizi", "Bordj Bou Arreridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane"]
 
 #listwilaya=[ "Adrar","Chlef","Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret", "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif", "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh", "Illizi", "Bordj Bou Arreridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane"]
+
+listwilaya=["Batna", "Béjaïa", "Biskra", "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret", "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif", "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh", "Illizi", "Bordj Bou Arreridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane"]
+
 
 jobs=['Medecin', 'Avocat', 'noteur', 'Architecture', 'Impression', 'Charpenterie', 'builder', 'Composition hygienique', 'Plomberie', 'peintre', 'platre', 'Soudeur', 'Menuiserie aluminium', 'electricien', 'Mecanique automobile', 'electricite des voitures', 'Lave-Auto', 'installation de verre automobile', "l'interieur du vehicule", 'Mecanique moto', 'Reparation et vente de roues', 'Carreaux de porcelaine et mosaique', 'reparation de lunettes', 'Reparation de montres', 'Blanchisserie et nettoyage sec', 'Beaute et maquillage', 'design', 'Notification automatisee', 'Reparer les telephones et les ordinateurs', 'Techniques audiovisuelles', 'coiffeuse', 'coiffeur', 'cordonnerie', 'climatisation', "Reparation d'appareils electromenagers", 'panneaux solaires', "systemes d'alarme", 'marketing', 'couturiere', 'patisserie', 'Boulanger et tartes', 'Boucherie', 'legumes', 'Produits alimentaires generaux', 'boissons et collations', 'chocolat et biscuits', 'Restaurant et cafe', 'cosmetique', 'vetements', 'Quincaillerie', 'librarie', 'Taxi', 'Transport inter-etats', 'sport', 'couvertures et meubles', 'Hotel', 'Horticulture', 'creche', 'bijoutier', 'veterinaire', 'Vendre des animaux', 'Gardiennage et paturage', 'Emballage', 'Fabrication de beton']
 
@@ -45,54 +47,76 @@ for job in jobs :
       action.send_keys(Keys.RETURN)
       action.perform()
 
-      f = open("file.txt", "a",encoding='utf-8') #creat file if not exist
+      f = open(job+".txt", "a",encoding='utf-8') #creat file if not exist
 
-      element1 = WebDriverWait(driver, 20).until(
+      element1 = WebDriverWait(driver, 40).until(
          EC.presence_of_element_located((By.CLASS_NAME, "section-result-title")))
       condition = True
       while condition==True:
        time.sleep(1)
        names = driver.find_elements_by_class_name('section-result-title')
-       phones = driver.find_elements_by_class_name('section-result-phone-number')
-
-
-       x=0
+       y=0
        l= len(names)
+       while (y<l):
+        element3 = WebDriverWait(driver, 30).until(
+                    EC.presence_of_element_located((By.CLASS_NAME, "section-result-content")))
+        result = driver.find_elements_by_class_name('section-result-content')[y]
+        y=y+1
+        clickresult = ActionChains(driver)
+        clickresult.click(on_element=result)
+        clickresult.perform()
+        element1 = WebDriverWait(driver, 30).until(
+                 EC.presence_of_element_located((By.CLASS_NAME, "section-hero-header-title-title")))
 
-
-     # rating location with loop job with loop description (times rue)
-
-
-
-       while (x<l):
-
-
-        try:
-            name=names[x].text
-            phone = phones[x].text
-        except:
-            name ="error"
-            phone="error"
-            pass
-
-        if name in allnames:
+        name = driver.find_element_by_class_name('section-hero-header-title-title').text
+        if name in allnames :
             continue
-        else:
-                print (name)
-                f.write(name+"\n")
-                if phone=="":
-                    nophone="no phone number"
-                    print(nophone)
-                    f.write(nophone+"\n")
-                else:
-                    print (phone)
+        else :
+                    try:
+                        code = driver.find_element_by_css_selector('button.ugiz4pqJLAG__button[data-item-id="oloc"]').text
+                    except :
+                        back = ActionChains(driver)
+                        backbtn = driver.find_element_by_class_name('section-back-to-list-button')
+                        back.click(on_element=backbtn)
+                        back.perform()
+                        continue
+
+                    try:
+                        adress1 = driver.find_element_by_css_selector('button.ugiz4pqJLAG__button[data-item-id="laddress"]').text
+                    except:
+                        adress1 = ""
+                    try:
+                        address2 = driver.find_element_by_css_selector('button.ugiz4pqJLAG__button[data-item-id="address"]').text
+
+                    except:
+                        address2 = ""
+                    try:
+                        phone = driver.find_element_by_css_selector('button.ugiz4pqJLAG__button[data-tooltip="Copy phone number"]').text
+                    except:
+                        phone = "no phone number"
+                    try:
+                        pass
+                    except Exception as e:
+                        raise
+
+                    print(name)
+                    f.write(name+"\n")
+                    print(code)
+                    f.write(code+"\n")
+                    print(adress1)
+                    f.write(adress1+"\n")
+                    print(address2)
+                    f.write(address2+"\n")
+                    print(phone)
                     f.write(phone+"\n")
-                print(wilaya)
-                f.write(wilaya+"\n")
-                print(jobsar[jobnumber])
-                f.write(jobsar[jobnumber]+"\n")
-                x=x+1
-                allnames.append(name)
+
+            # click back button
+                    back = ActionChains(driver)
+                    backbtn = driver.find_element_by_class_name('section-back-to-list-button')
+                    back.click(on_element=backbtn)
+                    back.perform()
+                    element1 = WebDriverWait(driver, 30).until(
+                             EC.presence_of_element_located((By.CLASS_NAME, "section-result-title")))
 
        try:
               wait = WebDriverWait(driver, 2)
@@ -104,6 +128,6 @@ for job in jobs :
               time.sleep(7)
 
        except:
-              print("done")
+              print("job in wilaya done")
               break
     jobnumber=jobnumber+1
