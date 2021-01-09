@@ -17,9 +17,9 @@ element = driver.find_element_by_id("searchboxinput")
 
  #listwilaya= ["أدرار", " الشلف", "الأغواط", "أم البواقي", "باتنة", " بجاية", "بسكرة", "بشار", "البليدة", "البويرة", "تمنراست", "تبسة", "تلمسان", "تيارت", "تيزي وزو", "الجزائر", "الجلفة", "جيجل", "سطيف", "سعيدة", "سكيكدة", "سيدي بلعباس", "عنابة", "قالمة", "قسنطينة", "المدية", "مستغانم", "المسيلة", "معسكر", "ورقلة", "وهران", "البيض", "إليزي", "برج بوعريريج", "بومرداس", "الطارف", "تندوف", "تيسمسيلت", "الوادي", "خنشلة", "سوق أهراس", "تيبازة", "ميلة", "عين الدفلة", "النعامة", "عين تيموشنت", "غرداية", "غليزان"]
 
-#listwilaya=[ "Adrar","Chlef","Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret", "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif", "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh", "Illizi", "Bordj Bou Arreridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane"]
+listwilaya=[ "Adrar","Chlef","Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret", "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif", "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh", "Illizi", "Bordj Bou Arreridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane"]
 
-listwilaya=["Batna", "Béjaïa", "Biskra", "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret", "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif", "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh", "Illizi", "Bordj Bou Arreridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane"]
+
 
 
 jobs=['Medecin', 'Avocat', 'noteur', 'Architecture', 'Impression', 'Charpenterie', 'builder', 'Composition hygienique', 'Plomberie', 'peintre', 'platre', 'Soudeur', 'Menuiserie aluminium', 'electricien', 'Mecanique automobile', 'electricite des voitures', 'Lave-Auto', 'installation de verre automobile', "l'interieur du vehicule", 'Mecanique moto', 'Reparation et vente de roues', 'Carreaux de porcelaine et mosaique', 'reparation de lunettes', 'Reparation de montres', 'Blanchisserie et nettoyage sec', 'Beaute et maquillage', 'design', 'Notification automatisee', 'Reparer les telephones et les ordinateurs', 'Techniques audiovisuelles', 'coiffeuse', 'coiffeur', 'cordonnerie', 'climatisation', "Reparation d'appareils electromenagers", 'panneaux solaires', "systemes d'alarme", 'marketing', 'couturiere', 'patisserie', 'Boulanger et tartes', 'Boucherie', 'legumes', 'Produits alimentaires generaux', 'boissons et collations', 'chocolat et biscuits', 'Restaurant et cafe', 'cosmetique', 'vetements', 'Quincaillerie', 'librarie', 'Taxi', 'Transport inter-etats', 'sport', 'couvertures et meubles', 'Hotel', 'Horticulture', 'creche', 'bijoutier', 'veterinaire', 'Vendre des animaux', 'Gardiennage et paturage', 'Emballage', 'Fabrication de beton']
@@ -49,7 +49,7 @@ for job in jobs :
 
       f = open(job+".txt", "a",encoding='utf-8') #creat file if not exist
 
-      element1 = WebDriverWait(driver, 40).until(
+      element1 = WebDriverWait(driver, 100).until(
          EC.presence_of_element_located((By.CLASS_NAME, "section-result-title")))
       condition = True
       while condition==True:
@@ -58,14 +58,14 @@ for job in jobs :
        y=0
        l= len(names)
        while (y<l):
-        element3 = WebDriverWait(driver, 30).until(
+        element3 = WebDriverWait(driver, 100).until(
                     EC.presence_of_element_located((By.CLASS_NAME, "section-result-content")))
         result = driver.find_elements_by_class_name('section-result-content')[y]
         y=y+1
         clickresult = ActionChains(driver)
         clickresult.click(on_element=result)
         clickresult.perform()
-        element1 = WebDriverWait(driver, 30).until(
+        element1 = WebDriverWait(driver, 100).until(
                  EC.presence_of_element_located((By.CLASS_NAME, "section-hero-header-title-title")))
 
         name = driver.find_element_by_class_name('section-hero-header-title-title').text
@@ -91,31 +91,30 @@ for job in jobs :
                     except:
                         address2 = ""
                     try:
-                        phone = driver.find_element_by_css_selector('button.ugiz4pqJLAG__button[data-tooltip="Copy phone number"]').text
+                        phone = driver.find_element_by_css_selector("button.ugiz4pqJLAG__button[data-item-id^='phone:']").text
                     except:
-                        phone = "no phone number"
-                    try:
-                        pass
-                    except Exception as e:
-                        raise
+                        phone = "no"
 
                     print(name)
                     f.write(name+"\n")
+                    print(phone)
+                    f.write(phone+"\n")
                     print(code)
                     f.write(code+"\n")
+                    print(job)
+                    f.write(job+"\n")
                     print(adress1)
                     f.write(adress1+"\n")
                     print(address2)
                     f.write(address2+"\n")
-                    print(phone)
-                    f.write(phone+"\n")
+
 
             # click back button
                     back = ActionChains(driver)
                     backbtn = driver.find_element_by_class_name('section-back-to-list-button')
                     back.click(on_element=backbtn)
                     back.perform()
-                    element1 = WebDriverWait(driver, 30).until(
+                    element1 = WebDriverWait(driver, 100).until(
                              EC.presence_of_element_located((By.CLASS_NAME, "section-result-title")))
 
        try:
