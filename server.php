@@ -148,7 +148,7 @@ if (isset($_POST['SIGNUP'])) {
   	mysqli_query($db, $query);
   	$_SESSION['Username'] = $Username;
   	$_SESSION['success'] = "You are now logged in";
-	
+	//session_set_cookie_params ( array $lifetime_or_options )
 	$q0 ="INSERT INTO  statistics (Username,Session_Nbr) VALUES ('$Username','1')";
 	mysqli_query($db, $q0);
 	$q ="UPDATE statistics set  Search='0',Myprofile='0' ,ProfileEdit='0' ,ResetPass='0 ',EnterEmail='0' WHERE Username='$Username' ";

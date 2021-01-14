@@ -45,14 +45,11 @@ if (isset($_SESSION['Username'])) {
 	  mysqli_query($db, $q);
 }
 //************************************************************************************
-
-
-
-
 ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+
 require 'vendor/autoload.php';
 error_reporting(E_ERROR);
-
 $errors = array();
 $obj = new \ArPHP\I18N\Arabic();
 
