@@ -1,18 +1,15 @@
 <?php
+ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 include('../conn.php') ;
 
 //***********************************************************************************
 session_id("session2");
 session_start();
 if (!isset($_SESSION['page_visited_already'])){
-	
-	
-
-	
-	
-$rest=mysqli_query($db,"SELECT AllVisitors,Users,Unkown FROM visitors WHERE id='1' ");
+$rest=mysqli_query($db,"SELECT Allvisitors,Users,Unkown FROM visitors WHERE id='1' ");
 while($row=mysqli_fetch_array($rest)){
-$AllVisitors=$row['AllVisitors'] ;
+$AllVisitors=$row['Allvisitors'] ;
 $Users=$row['Users'] ;
 $Unkown=$row['Unkown'] ;
 }
@@ -20,7 +17,7 @@ $Unkown=$row['Unkown'] ;
 $AllVisitors++; 
 $Unkown=$AllVisitors-$Users;
         
-$sql0="UPDATE visitors SET Users='$Users',AllVisitors='$AllVisitors',Unkown='$Unkown' where id='1'";
+$sql0="UPDATE visitors SET Users='$Users',Allvisitors='$AllVisitors',Unkown='$Unkown' where id='1'";
 $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);

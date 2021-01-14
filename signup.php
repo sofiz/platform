@@ -46,7 +46,7 @@ include('topbar.php'); ?>
 
 <button type="button" name="button" class="btns" id="workerbtn" onclick="workerclick()">عامل</button>
 <button type="button" name="button" class="btns" id="clientbtn" onclick="clientclick()">زبون</button>
-
+<button type="button" name="button" class="btns" id="clientbtn" onclick="Addclick()" style="margin-left:46px">اضف عامل</button>
 <input type="hidden" name="typeinp" value="worker" id="typeinp">
 				</div>
 

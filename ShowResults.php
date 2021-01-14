@@ -14,6 +14,7 @@ $flag=true ;
 for($j=0;$j<count($arr);$j++)
 if($arr[$j]==$row['id']){ $flag=false ; }
 if($flag){
+if($count<30){
 $count++;
 echo'  <div class="resultcontainer">  ';
 if(($row['Profile_Pic'])!="default.png")
@@ -33,6 +34,7 @@ echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relati
 echo'<p class="info"> ' .$row['Phone'] .  '</p> </div> </div>';
 array_push($arr,$row['id']);
 				                 	  }
+                                      }
 									  } 
 									  }     
   }   
@@ -81,33 +83,13 @@ else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
 $sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%' || Description LIKE '%$Name%')AND Wilaya='$Wilaya'  ";
 //********************************* name exxist .... dadira and commune not exissts
 else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-$sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%'|| Description LIKE '%$Name%' )";
+$sql2="SELECT * FROM users WHERE  ((Username LIKE '%$Name%') || (First_Name LIKE '%$Name%') || (Last_Name LIKE '%$Name%') || (Job LIKE '%$Name%') || (Wilaya LIKE '%$Name%') || (Daira LIKE '%$Name%') || (Commune LIKE '%$Name%')|| (Description LIKE '%$Name%') )";
 												
 $sql2= $sql2." and  Type = 'worker' ";
 					
 $res2=mysqli_query($db,$sql2);
 Show_Result($db,$res2,$count,$arr);
-//------------------------------------------------------------explode name -----------------------------------------------------------------------------------------------									  
-$words=explode(" ",$Name);
-									 
-foreach ($words as $word ){
-			  						 
-if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$Word%') AND Job='$Job' AND Wilaya='$Wilaya' ";
-//************************************* Name andd ddaira exxist .... and commune not exxist
-else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$Word%') AND Job='$Job'  ";
-else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$Word%') AND Wilaya='$Wilaya'  ";
-//********************************* name exxist .... dadira and commune not exissts
-else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-$sql3="SELECT * FROM users WHERE (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$Word%')  ";
 
-$sql3= $sql3." and  Type = 'worker' ";
-$res3=mysqli_query($db,$sql3);
-Show_Result($db,$res3,$count,$arr);	 
-
-}
 //------------------------------------------------------------- search by soundexx metaphone ------------------------------------------------------------------------------------									  
 									 
 if (strlen($Name)>2){									  
@@ -137,6 +119,34 @@ $res5=mysqli_query($db,$sql5);
 Show_Result($db,$res5,$count,$arr);
 										
 										}
+
+//**************************************** explode name **********************************************************
+
+$words=explode(" ",$Name);
+foreach($words as $word ){
+ if(strlen($word)>3){
+
+if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Job='$Job' AND Wilaya='$Wilaya'";
+//************************************* Name andd ddaira exxist .... and commune not exxist
+else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Job='$Job'";
+else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Wilaya='$Wilaya'";
+//********************************* name exxist .... dadira and commune not exissts
+else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
+$sql3="SELECT * FROM users WHERE (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%')";
+$sql3= $sql3."AND  Type='worker'";
+$res3=mysqli_query($db,$sql3);
+Show_Result($db,$res3,$count,$arr);	
+
+}
+}
+
+
+
+
+
 //--------------------------------------------------------- explode name and use soundex  metaphone ----------------------------------------------------------------------------------------------------------------
 $words=explode(" ",$Name);
 								 
@@ -180,16 +190,16 @@ echo ' <p id="noresult">no result found!</p>  </div> ';
 $count =-5; 
 									  }
 									  }
- //******************************************** show all users **********************************************************
  
  }
- 
+ //******************************************** show all users *********************************************************
+
  
  else 
  if($count==0){ 
  $sql= "SELECT * FROM users";
  $res=mysqli_query($db,$sql);
  Show_Result($db,$res,$count,$arr);
-  }
+  } 
 
 ?>

@@ -133,7 +133,7 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
 	//------- get id -----------------------------
 	$re=mysqli_query($db,"SELECT id,Profile_Pic FROM users WHERE Username='$Username'");
 
-	while($row=mysqli_fetch_array($re)){
+  while($row=mysqli_fetch_array($re)){
   $id=$row['id'];
   $Profile_Pic=$row['Profile_Pic'];	}
   $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
@@ -145,9 +145,14 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
   $Daira = mysqli_real_escape_string($db,$_POST['Daira']);
   $Commune = mysqli_real_escape_string($db,$_POST['Commune']);
   $Description = mysqli_real_escape_string($db,$_POST['Description']);
-  $Birthday =mysqli_real_escape_string($db, $_POST['Birthday']);
-  $Facebook =mysqli_real_escape_string($db, $_POST['Facebook']);
-  $Instagram =mysqli_real_escape_string($db, $_POST['Instagram']);
+  if($_POST['Birthday']!='' )
+  {
+  $Birthday = mysqli_real_escape_string($db,$_POST['Birthday']);
+  }
+  else  {$Birthday = '0000-00-00'; 
+        }
+  $Facebook = mysqli_real_escape_string($db, $_POST['Facebook']);
+  $Instagram = mysqli_real_escape_string($db, $_POST['Instagram']);
   $Type="worker";
   
   if($_POST['EmailCheck']=='yes'){
@@ -183,7 +188,7 @@ mysqli_query($db, $queryi);
 unlink('imgs/'.strval($id).'/'.$Profile_Pic);
 //move_uploaded_file($_FILES['fileToUpload']['tmp_name'],$tar);
 
-compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,30);
+compressImage($_FILES['fileToUpload']['tmp_name'],$tar.$id.".".$extension,15);
 
 
 }
@@ -339,7 +344,7 @@ $in = in_array($detectedType, $allowedTypes);
 			  //move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);
 
 			  //compressImage($_FILES['uploadpic']['tmp_name'],$tar,60);
-			  compressImage($_FILES['uploadpic']['tmp_name'][$key],$tar.$newname.".".$extension,30);
+			  compressImage($_FILES['uploadpic']['tmp_name'][$key],$tar.$newname.".".$extension,15);
 			          }
 
 

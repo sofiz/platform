@@ -31,7 +31,7 @@ $client = new Client();
 
 $options = [
     'json' => [
-        'task' => "Hi there, click on this <a href=\"https://risof.azurewebsites.net/new_pass.php?token=". $token ."\">link</a> to reset your password on our site",
+        'task' => "مرحبا , اضغط على رابط  <a href=\"https://rondili.com/new_pass.php?token=". $token ."\">من هنا </a> لتحديث كلمة السر في موقع رونديلي",
         'due' => 'now',
         'email' => $email
 

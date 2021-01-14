@@ -17,4 +17,5 @@ $random = json_decode($data);
 
 		}
 		mysqli_close ( $db );
+		
 ?>

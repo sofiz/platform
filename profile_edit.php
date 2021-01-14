@@ -1,4 +1,5 @@
 <?php
+
 session_id("session1");
 session_start();
 include('../conn.php');
@@ -26,16 +27,14 @@ mysqli_query($db, $q);
 }
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
+     <title> Rondili -  تعديل الحساب</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rondili -  تعديل الحساب</title>
+ 
     <meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي">
     <meta name="description" content="
 تبحث عن خدمة أو عامل في منطقتك ؟
@@ -92,10 +91,11 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 </div>
 <div class="" style="border-radius: inherit;">
 
-  <?php if ($c->Profile_Pic!="default.png")echo '<img id="pic" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
+  <?php if ($c->Profile_Pic!="default.png")
+  echo '<img id="pic" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
 
 
-else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
+    else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
 
 
 
@@ -153,25 +153,19 @@ else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
   <?php
   echo '<span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span>   '   ;
 
-  if($c->Birthday !=  "0000-00-00" && $c->Age($c->Birthday) > 16 && $c->Age($c->Birthday) < 65)
+  if($c->Birthday !="0000-00-00" && $c->Age($c->Birthday) > 16 && $c->Age($c->Birthday) < 65)
     {
 
     echo '  <label for="birthday" style="font-size: 15px;"> '.$c->Age($c->Birthday).'  </label>  '  ;
 
  }
-
 //echo ' <input type="date" name="Birthday" id="birthday"  value="'.$c->Birthday.'"';
-
-
 ?>
 
-<input type="date" id="birthday" name="Birthday" value="<?php echo $c->Birthday ; ?>" >
-
-
-
+ <?php echo '<input type="date" id="birthday" name="Birthday" value="'.$c->Birthday.'">'; ?>
+ 
+ 
   </div>
-
-
 
   </div>
 		<button type="button" name="button" class="uploadpicbtn" id="moreedite">المزيد</button>

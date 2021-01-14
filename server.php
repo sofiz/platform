@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include('../conn.php') ;
 
 function unichr($u) 
@@ -105,7 +105,7 @@ if (isset($_POST['SIGNUP'])) {
   $Email = mysqli_real_escape_string($db, $_POST['Email']);
    
   $Type=mysqli_real_escape_string($db, $_POST['typeinp']);
-  
+  $EmailCheck="no"; 
   
   
   if($Type=="worker") {
@@ -143,14 +143,16 @@ if (isset($_POST['SIGNUP'])) {
   if (count($errors) == 0) {
   	$Password = password_hash($Password_1, PASSWORD_DEFAULT); //encrypt the password before saving in the database
    
-  	$query = "INSERT INTO Users (First_Name,Last_Name,Username, Email, Password,Phone,Job,Wilaya,Type,Profile_Pic)
-  			  VALUES('$First_Name','$Last_Name','$Username', '$Email', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic')";
+  	$query = "INSERT INTO Users (First_Name,Last_Name,Username, Email,EmailCheck, Password,Phone,Job,Wilaya,Type,Profile_Pic)
+  			  VALUES('$First_Name','$Last_Name','$Username', '$Email','$EmailCheck', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic')";
   	mysqli_query($db, $query);
   	$_SESSION['Username'] = $Username;
   	$_SESSION['success'] = "You are now logged in";
 	
 	$q0 ="INSERT INTO  statistics (Username,Session_Nbr) VALUES ('$Username','1')";
 	mysqli_query($db, $q0);
+	$q ="UPDATE statistics set  Search='0',Myprofile='0' ,ProfileEdit='0' ,ResetPass='0 ',EnterEmail='0' WHERE Username='$Username' ";
+	 mysqli_query($db, $q);
 	  
 //----------------------------------------------------- update indexing-------------------------------------------------------- ---------------
 $soundex=" " ;
@@ -294,7 +296,7 @@ if (isset($_POST['login'])) {
   	  $_SESSION['Username'] = $Username;
   	  $_SESSION['success'] = "You are now logged in";
 	  
-	  $q ="UPDATE statistics set Session_Nbr=Session_Nbr+1 WHERE Username='$Username' ";
+	  $q ="UPDATE statistics set Session_Nbr=Session_Nbr+1, Search='0',Myprofile='0' ,ProfileEdit='0' ,ResetPass='0 ',EnterEmail='0' WHERE Username='$Username' ";
 	  mysqli_query($db, $q);
 	  
 	  
