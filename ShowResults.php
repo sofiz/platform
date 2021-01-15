@@ -140,7 +140,8 @@ array_push($arr,$row['id']);
  $carc=array("o","O","a","A","i","I","e","E");  
  
  $Name= rtrim($Name);
- 
+ $Job=rtrim($Job);
+ $Wilaya= rtrim($Wilaya);
  
 if(empty($Name) && empty($Job) &&  empty($Wilaya)){
 echo '<div class="resultcontainer"> ';

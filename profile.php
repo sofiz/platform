@@ -37,7 +37,7 @@ mysqli_query($db, $q);
 }
 else {
 	
-$res1=mysqli_query($db,"SELECT * FROM profile_visitors where Profile_id='$c->id' AND Visitor_id='0'");
+$res=mysqli_query($db,"SELECT * FROM profile_visitors where Profile_id='$c->id' AND Visitor_id='0'");
 if(mysqli_num_rows($res)==1)
 {
 $q = "UPDATE users SET  Num=Num+1 WHERE Profile_id='$c->id' AND Visitor_id='0'" ;
@@ -188,8 +188,8 @@ else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
           echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
 		  echo '<span style="font-size: 15px;"> لا يوجد ايميل </span> ';   }
 
-		  else { '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
-		         echo '<span>  </span> ';}
+		  else { echo'<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
+		         echo '<span>  لا يوجد ايميل</span> ';}
 	  ?>
     </div>
 

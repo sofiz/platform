@@ -131,8 +131,8 @@ mysqli_query($db, $q);
 	  else if (($c->EmailCheck=="no"||$c->EmailCheck="")&& $c->Type == "worker"){
           echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
 		  echo '<span style="font-size: 15px;"> لا يوجد ايميل </span> ';   }
-		  else { '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
-		         echo '<span>  </span> ';}
+		  else { echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
+		         echo '<span>  لا يوجد ايميل</span> ';}
 
 	  ?>
     </div>
