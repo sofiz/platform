@@ -25,7 +25,6 @@ $l=4;
 
 while(!feof($myfile)) {	
 	
-
 $des = fgets($myfile); 
 $des = fgets($myfile); 
 $des = fgets($myfile);
@@ -40,10 +39,7 @@ echo ($l-1)."\n" ;
 
 }
 
-
-
 }
-
 
  fclose($myfile);
 ?>

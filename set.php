@@ -1,7 +1,7 @@
 <?php 
 
 include('../conn.php') ;
-
+ set_time_limit(99999999);
 	$arr =  array(
 		'wilayas' => array(
 			'01' => array(
@@ -14033,10 +14033,10 @@ include('../conn.php') ;
 
 $myfile = fopen("py/Medecin.txt","r") or die("Unable to open file!");
 $f = fopen("py/MedecinnoneWilaya.txt","a") ;
-$x=0;
+$x=1;
  
- //while(!feof($myfile)) {	
-  while($x<11) {
+ while(!feof($myfile)) {	
+ // while($x<11) {
   
   
   $name =  fgets($myfile);
@@ -14062,7 +14062,7 @@ $x=0;
    
              
                 $Profile_Pic = 'default.png';
-                $Type = 'none'; 
+                $Type = 'worker'; 
                 $Wilaya = 'none'; 
 			    $Daira = 'none'; 
 			    $Commune = 'none'; 
@@ -14076,7 +14076,7 @@ $x=0;
 		
          if($perc > 89){
 			  
-               $Wilaya = $arr['wilayas'][$wilaya]['name'] ; 
+               $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ; 
 			   $Daira = 'none'; 
 			   $Commune = 'none'; 
 			   
@@ -14091,8 +14091,8 @@ $x=0;
               similar_text($location,$arr['wilayas'][$wilaya]['dairas'][$daira]['name'],$perc);
 			  
               if($perc > 85){ 
-                      $Wilaya = $arr['wilayas'][$wilaya]['name'] ;
-			          $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name']; 
+                      $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ;
+			          $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name_ar']; 
 					  $Commune = 'none'; 
 					       
 
@@ -14112,9 +14112,9 @@ $x=0;
                      
 					 
                      if($perc > 85){ 
-                      $Wilaya = $arr['wilayas'][$wilaya]['name'] ;
-			          $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name']; 
-					  $Commune = $arr['wilayas'][$wilaya]['dairas'][$daira]['communes'][$commune]['name'];
+                      $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ;
+			          $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name_ar']; 
+					  $Commune = $arr['wilayas'][$wilaya]['dairas'][$daira]['communes'][$commune]['name_ar'];
 					               
 								   
 								   
@@ -14130,9 +14130,9 @@ $x=0;
   
   } 
   
-  echo " ***wilaya = " . $Wilaya ." ***daira = " .$Daira."  ***commune =   ".$Commune. "<br>" ; 
+  /* echo " ***wilaya = " . $Wilaya ." ***daira = " .$Daira."  ***commune =   ".$Commune. "<br>" ; 
  
-  /*
+ 
   echo " name =  " .$name  ." phone =  " .$phone. "<br>" ; 
   
   $job = fgets($myfile);
@@ -14155,13 +14155,6 @@ $x=0;
   $job= str_replace(array("\n", "\r"), '', $job);
   $description = str_replace(array("\n", "\r"), '', $description);
   
-  echo  $name  ;
- 
-  echo  $phone ;
-  echo  $location ;
-  echo  $job ;
-  echo  $description ;
-  
   
   
 if($Wilaya=="none"){ 
@@ -14179,6 +14172,7 @@ else {
 	} 
 	
  $x++;  
+ echo  $x."/7579" ;
 }
 
     fclose($myfile);

@@ -77,16 +77,34 @@ $ligature_map = array(
   
 function Show_Result($db,$res,&$count,&$arr){
 	
+	
+if (isset($_GET["page"])) { 
+$page  = $_GET["page"];
+} 
+else { 
+$page=1;
+}
+if($page==1)
+$start_from = 1 ;
+else 
+$start_from = ($page-1) * 30;
+
+
+
+
+
 if(!$res){
-echo "error".mysqli_error($db);                                       }
+echo "error".mysqli_error($db);   
+}
 if(mysqli_num_rows($res)>0){
 while($row=mysqli_fetch_assoc($res)){
+
 $flag=true ;
 for($j=0;$j<count($arr);$j++)
 if($arr[$j]==$row['id']){ $flag=false ; }
 if($flag){
-if($count<30){
 $count++;
+if(($count>=$start_from) && ($count<$start_from+30)){
 echo'  <div class="resultcontainer">  ';
 if(($row['Profile_Pic'])!="default.png")
 echo'<a href="profile.php?id='.$row['id'].'" ><img src="imgs/'.$row['id'].'/'.$row['Profile_Pic'].'" alt="" class="resimg" ></a> ';
@@ -106,7 +124,11 @@ echo'<p class="info"> ' .$row['Phone'] .  '</p> </div> </div>';
 array_push($arr,$row['id']);
 				                 	  }
                                       }
-									  } 
+							
+}
+			  
+									  
+									 
 									  }     
   }   
   
@@ -118,6 +140,7 @@ array_push($arr,$row['id']);
  $carc=array("o","O","a","A","i","I","e","E");  
  
  $Name= rtrim($Name);
+ 
  
 if(empty($Name) && empty($Job) &&  empty($Wilaya)){
 echo '<div class="resultcontainer"> ';
@@ -139,7 +162,7 @@ Show_Result($db,$res1,$count,$arr);
 									
 if($count==0){                                    
 echo '<div class="resultcontainer"> ';
-echo ' <p id="noresult">no result found!</p>  </div> '; 
+echo ' <p id="noresult">XXno result found!</p>  </div> '; 
 $count=-5;
 									  }
 				             
@@ -256,19 +279,63 @@ $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
 
 $sql4= $sql4." and  Type = 'worker' ";
 $res4=mysqli_query($db,$sql4);
-									  
+						 
 Show_Result($db,$res4,$count,$arr);
 										}
-						  }			 
+						  }		
+	/*					 //$q= $sql2.$sql3.$sql4.$sql5; 
+						//$resx = mysqli_multi_query($db,$q) ; 
+
+//echo 		mysqli_query($db,$sql4);	 
+$res2 = array_filter($res2);
+$res3 = array_filter($res3);
+$res4 = array_filter($res4);
+$res5= array_filter($res5);
+
+$resx = (object) array_merge((array) json_decode($res2), (array) json_decode($res3), (array) json_decode($res4) ,(array) json_decode($res5));
+//$resx = (object) array_merge_recursive((array) $res2, (array) $res3, (array) $res4 ,(array) $res5);
+//$q=$sql2 ."UNION ALL" . $sql3 .  "UNION ALL" . $sql4 . "UNION ALL" . $sql5 ; 
+//$res=mysqli_query($db,$q);
+//var_dump($resx);
+
+
+$a = (object) array_merge_recursive((array) json_decode($res2), (array) json_decode($res3));
+$b = (object) array_merge_recursive((array) json_decode($res4), (array) json_decode($res5));
+$c = (object) array_merge_recursive((array) json_decode($a), (array) json_decode($b));
+
+try { 
+Show_Result($db,$c,$count,$arr);
+}
+catch (mysqli_sql_exception $e) { 
+      var_dump($e);
+      exit; 
+   } */  
+
 if($count==0){                                     
 echo '<div class="resultcontainer"> ';
 echo ' <p id="noresult">no result found!</p>  </div> '; 			  
 $count =-5; 
 									  }
-									  }
+									 
+
+
+									 }
  
+ 
+ 
+ 
+ 
+ 
+$results_per_page = 30; // number of results per page
+$total_pages = (int) $count/$results_per_page ; 
+for($i=1; $i<=$total_pages; $i++) { 
+
+	echo "<a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$i."'>".$i."</a> ";
+}
  }
  //******************************************** show all users *********************************************************
+
+ 
 
  
  else 
@@ -276,6 +343,21 @@ $count =-5;
  $sql= "SELECT * FROM users";
  $res=mysqli_query($db,$sql);
  Show_Result($db,$res,$count,$arr);
+ 
+$results_per_page = 30; // number of results per page
+$total_pages =  $count/$results_per_page ; 
+if(!is_int($total_pages))
+$total_pages = (int) $total_pages+1 ; 
+
+for($i=1; $i<=$total_pages; $i++) { 
+
+echo "<a href='search.php?page=".$i."'>".$i."</a> ";
+
+}
+ 
   } 
+  
+
+
 
 ?>

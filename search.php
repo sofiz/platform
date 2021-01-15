@@ -3,6 +3,13 @@ ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); m
 
 include('../conn.php') ;
 
+
+error_reporting(E_ALL & E_STRICT);
+ini_set('display_errors', '1');
+ini_set('log_errors', '0');
+ini_set('error_log', './');
+
+
 //***********************************************************************************
 session_id("session2");
 session_start();
@@ -139,8 +146,11 @@ function sugtoinput(x) {
                 <div class="resultscontainer">
 
 
-				<?php include('ShowResults.php'); ?>
-                <?php mysqli_close($db); ?>   
+<?php 
+include('ShowResults.php');
+include('pagessearch.php');
+mysqli_close($db); 
+?>   
 				</div>
 
   </body>
