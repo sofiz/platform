@@ -539,17 +539,21 @@ margin-right: 44px;
 
 #workerbtnselected{
 margin-right: 44px;
-background: linear-gradient(#03AFD1,#4896E4);
+background: #2d2d96;;
 }
 
 #clientbtn{
 }
 
 #clientbtnselected{
-    background: linear-gradient(#03AFD1,#4896E4);
+    background: #2d2d96;;
+}
+#addworker{}
+#addworkerselected{
+  background: #2d2d96;;
 }
 
-}
+
 
 .colorlib-bubbles li:nth-child(9) {
   left: 25%;

@@ -28,6 +28,10 @@
     bottom: 0;
 
 }
+#textarea{
+  width: 78%;
+  height: 140px;
+}
 .foottxt{
   margin: 0;
   font-size: 14px;
@@ -289,6 +293,12 @@ border: none;
   padding: 17px 10px;
   border: none;
 }
+}
+@media only screen and (max-width: 500px) {
+  .modal-contentr , .modal-contentp{
+    margin-top: 35%;
+    width : 85%;
+  }
 }
 @media only screen and (max-width: 370px) {
   .nav {

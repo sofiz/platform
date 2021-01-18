@@ -46,13 +46,13 @@ include('topbar.php'); ?>
 
 <button type="button" name="button" class="btns" id="workerbtn" onclick="workerclick()">عامل</button>
 <button type="button" name="button" class="btns" id="clientbtn" onclick="clientclick()">زبون</button>
-<button type="button" name="button" class="btns" id="clientbtn" onclick="Addclick()" style="margin-left:46px">اضف عامل</button>
+<button type="button" name="button" class="btns" id="addworker" onclick="addclick()" style="margin-left:44px">اضف عامل</button>
 <input type="hidden" name="typeinp" value="worker" id="typeinp">
 				</div>
 
 
 
-				   <input class="text" type="text" name="Username" placeholder="إسم المستخدم" required="">
+				   <input class="text" type="text" name="Username" id="username" placeholder="إسم المستخدم" required="">
 					 <div class="names">
 
 
@@ -64,9 +64,9 @@ include('topbar.php'); ?>
     display: inline-block; "
 						</div>
 
-					<input class="text" type="email" name="Email" placeholder="الإيميل" required="">
-					<input class="text" type="password" name="Password_1" placeholder="كلمة السر" required="">
-					<input class="text w3lpass" type="password" name="Password_2" placeholder="تأكيد كلمة السر" required="">
+					<input class="text" type="email" name="Email" placeholder="الإيميل" id="email" required="">
+					<input class="text" type="password" name="Password_1" id="pass1" placeholder="كلمة السر" required="">
+					<input class="text w3lpass" type="password" name="Password_2" id="pass2" placeholder="تأكيد كلمة السر" required="">
 
 					<input class="text" type="text" id="phone" name="Phone" placeholder="رقم الهاتف" required>
 
@@ -117,10 +117,42 @@ include('topbar.php'); ?>
 </body>
 
 <script type="text/javascript">
-  workerclick();
+
+  function addclick() {
+    document.getElementById('jobselect').style.display='';
+    document.getElementById('jobselect').required=true;
+    document.getElementById('phone').style.display='';
+    document.getElementById('phone').required=true;
+    document.getElementById('mySelectwilaya').required=true;
+    document.getElementById('myDIV').style.display='';
+    document.getElementById('typeinp').value="submitted";
+    document.getElementById('pass1').style.display='none';
+    document.getElementById('pass1').required=false;
+    document.getElementById('pass2').style.display='none';
+    document.getElementById('pass2').required=false;
+    document.getElementById('email').style.display='none';
+    document.getElementById('email').required=false;
+    document.getElementById('username').style.display='none';
+    document.getElementById('username').required=false;
+    try {
+        document.getElementById('addworker').id='addworkerselected';
+    } catch (e) {
+
+    }
+  try {
+    document.getElementById('workerbtnselected').id='workerbtn';
+  } catch (e) {
+
+  }
+  try {
+    document.getElementById('clientbtnselected').id='clientbtn';
+  } catch (e) {
+
+  }
+
+
+  }
 	function workerclick(){
-		document.getElementById('workerbtn').id='workerbtnselected';
-		document.getElementById('clientbtnselected').id='clientbtn';
 		document.getElementById('jobselect').style.display='';
 		document.getElementById('myDIV').style.display='';
 		document.getElementById('phone').style.display='';
@@ -129,11 +161,35 @@ include('topbar.php'); ?>
 		document.getElementById('phone').required=true;
 		document.getElementById('mySelectwilaya').required=true;
 		document.getElementById('typeinp').value="worker";
+    document.getElementById('pass1').style.display='';
+    document.getElementById('pass1').required=true;
+    document.getElementById('pass2').style.display='';
+    document.getElementById('pass2').required=true;
+    document.getElementById('email').style.display='';
+    document.getElementById('email').required=true;
+    document.getElementById('username').style.display='';
+    document.getElementById('username').required=true;
+    try {
+      document.getElementById('workerbtn').id='workerbtnselected';
+    } catch (e) {
+
+    }
+    try {
+      document.getElementById('clientbtnselected').id='clientbtn';
+    } catch (e) {
+
+    }
+    try {
+      document.getElementById('addworkerselected').id='addworker';
+    } catch (e) {
+
+    }
+
+
 	}
 
 	function clientclick(){
-		document.getElementById('clientbtn').id='clientbtnselected';
-		document.getElementById('workerbtnselected').id='workerbtn';
+
 		document.getElementById('jobselect').style.display='none';
 		document.getElementById('myDIV').style.display='none';
 		document.getElementById('phone').style.display='none';
@@ -142,7 +198,32 @@ include('topbar.php'); ?>
 		document.getElementById('phone').required=false;
 		document.getElementById('mySelectwilaya').required=false;
 		document.getElementById('typeinp').value="client";
+    document.getElementById('pass1').style.display='';
+    document.getElementById('pass1').required=true;
+    document.getElementById('pass2').style.display='';
+    document.getElementById('pass2').required=true;
+    document.getElementById('email').style.display='';
+    document.getElementById('email').required=true;
+    document.getElementById('username').style.display='';
+    document.getElementById('username').required=true;
+    try {
+      document.getElementById('clientbtn').id='clientbtnselected';
+    } catch (e) {
+
+    }
+    try {
+      document.getElementById('workerbtnselected').id='workerbtn';
+    } catch (e) {
+
+    }
+
+    try {
+      document.getElementById('addworkerselected').id='addworker';
+    } catch (e) {
+
+    }
 	}
+
 
 </script>
 <script>
@@ -193,7 +274,7 @@ document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
 
 
 
-
+$("#workerbtn").click()
 </script>
 
 </html>

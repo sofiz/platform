@@ -31,10 +31,10 @@
 
 		<div class="reportcontainer">
       <span class="fas fa-user" style="font-family: FontAwesome;color: black;font-size:20px; display:inline ;vertical-align: sub;"></span>
-<input type="text" name="Name" value="" class="input" placeholder="الإسم" style="margin-top:30px;margin-bottom:10px;height:25px;display:inline"><br>
+<input type="text" name="Name" value="" class="input" placeholder="الإسم" style="margin-top:30px;margin-bottom:10px;height:25px;display:inline;width:50%"><br>
 <span class="fas fa-envelope" style="font-family: FontAwesome;color: black;font-size:20px;display:inline;vertical-align: sub;"></span>
-<input type="text" name="Email" value="" class="input" placeholder="الايمايل" style="display: inline;margin-bottom:10px;height:25px;">
-<textarea name="Report" rows="8" cols="80" placeholder="إشرح ماتريد قوله" style="resize: none;"></textarea>
+<input type="text" name="Email" value="" class="input" placeholder="الايمايل" style="display: inline;margin-bottom:10px;height:25px;width:50%">
+<textarea name="Report" id="textarea" placeholder="إشرح ماتريد قوله" style="resize: none;"></textarea>
 <button type="submit" name="sendreport" class="btnstyle" id="sendreport">أرسل</button>
 
 
