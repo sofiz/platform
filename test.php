@@ -15,7 +15,7 @@ if( strpos ( 'bbxbb' , 'n')!='')
 echo 'char exist ';
 else echo 'char  not exist ';
 */
-$myfile = fopen("py/notaire.txt","r") or die("Unable to open file!");
+$myfile = fopen("py/Medecin.txt","r") or die("Unable to open file!");
 
 $des = fgets($myfile); 
 $des = fgets($myfile); 

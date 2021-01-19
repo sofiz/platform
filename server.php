@@ -254,8 +254,6 @@ if (isset($_POST['SIGNUP'])) {
 	 
 	 header('location: search.php');
     
-	
-	 
 	}
   }
 
