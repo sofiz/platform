@@ -1,6 +1,8 @@
 <?php
 include('../conn.php') ;
-
+ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 function unichr($u) 
 {
      return mb_convert_encoding('&#' . intval($u) . ';', 'UTF-8', 'HTML-ENTITIES');
@@ -77,84 +79,10 @@ $ligature_map = array(
  error_reporting(E_ERROR);
  require 'vendor/autoload.php';
  $obj = new \ArPHP\I18N\Arabic();
-
-
-
-
-session_id("session1");
-session_start();
-
-
-// initializing variables
-$Username = "";
-$Email    = "";
-$errors = array();
-
-// connect to the database
  
 
-// REGISTER USER
-if (isset($_POST['SIGNUP'])) {
-  // receive all input values from the form
-  $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
-  $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
-  $Username = mysqli_real_escape_string($db, $_POST['Username']);
-  $Password_1 = mysqli_real_escape_string($db, $_POST['Password_1']);
-  $Password_2 = mysqli_real_escape_string($db, $_POST['Password_2']);
-  
-  $Email = mysqli_real_escape_string($db, $_POST['Email']);
-   
-  $Type=mysqli_real_escape_string($db, $_POST['typeinp']);
-  $EmailCheck="no"; 
-  
-  
-  if($Type=="worker") {
-	  
-  $Job = mysqli_real_escape_string($db, $_POST['Job']);
-  $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
-  $Wilaya = mysqli_real_escape_string($db, $_POST['Wilaya']);
-  
-  }
-  
-  $Profile_Pic="default.png";
 
-  if ($Password_1 != $Password_2) {
-	array_push($errors, "The two passwords do not match");
-  }
-
-  // first check the database to make sure
-  // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT * FROM Users WHERE ((Username='$Username') OR (Email='$Email')) LIMIT 1";
-  $result = mysqli_query($db, $user_check_query);
-
-
-  if ($User = mysqli_fetch_assoc($result)) { // if user exists
-    if ($User['Username'] === $Username) {
-      array_push($errors, "Username already exists");
-    }
-
-     
-    if ($User['Email'] === $Email) {
-      array_push($errors, "email already exists");
-    }
-  }
-
-  // Finally, register user if there are no errors in the form
-  if (count($errors) == 0) {
-  	$Password = password_hash($Password_1, PASSWORD_DEFAULT); //encrypt the password before saving in the database
-   
-  	$query = "INSERT INTO Users (First_Name,Last_Name,Username, Email,EmailCheck, Password,Phone,Job,Wilaya,Type,Profile_Pic)
-  			  VALUES('$First_Name','$Last_Name','$Username', '$Email','$EmailCheck', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic')";
-  	mysqli_query($db, $query);
-  	$_SESSION['Username'] = $Username;
-  	$_SESSION['success'] = "You are now logged in";
-	//session_set_cookie_params ( array $lifetime_or_options )
-	$q0 ="INSERT INTO  statistics (Username,Session_Nbr) VALUES ('$Username','1')";
-	mysqli_query($db, $q0);
-	$q ="UPDATE statistics set  Search='0',Myprofile='0' ,ProfileEdit='0' ,ResetPass='0 ',EnterEmail='0' WHERE Username='$Username' ";
-	 mysqli_query($db, $q);
-	  
-//----------------------------------------------------- update indexing-------------------------------------------------------- ---------------
+function inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj){
 $soundex=" " ;
  //-------------------------------
 if($First_Name!=null){
@@ -181,17 +109,6 @@ else $soundex.=" ". metaphone($word);
 		                           }
 	                    }
 //-------------------------------
-if($Username!=null){
-$words=explode(" ",$Username);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
 //---------------------------------------------
 if($Job!=null){
 $words=explode(" ",$Job);
@@ -217,8 +134,8 @@ else $soundex.=" ". metaphone($word);
 		                           }
 	                    }
 //-------------------------------
-if($Daira!=null){
-$words=explode(" ",$Daira);
+if($Username!=null){
+$words=explode(" ",$Username);
 foreach ($words as $word) {
 $firstChar = mb_substr($word, 0, 1, "UTF-8");
 if(in_array($firstChar, $ligature_map)){
@@ -229,17 +146,7 @@ else $soundex.=" ". metaphone($word);
 		                           }
 	                    }
 //-------------------------------
-if($Commune!=null){
-$words=explode(" ",$Commune);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
+
 	 
 $sql0="UPDATE users SET indexing='$soundex' where Username='$Username'";
 $res0=mysqli_query($db,$sql0);
@@ -248,7 +155,6 @@ echo "error".mysqli_error($db);
                }
 			   
 			   
-
 $rest=mysqli_query($db,"SELECT AllVisitors,Users,Unkown FROM visitors WHERE id='1' ");
 while($row=mysqli_fetch_array($rest)){
 $AllVisitors=$row['AllVisitors'] ;
@@ -262,9 +168,123 @@ $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);
                }
-header('location: search.php');
-  }
+}	
+
+
+session_id("session1");
+session_start();
+
+
+// initializing variables
+$Username = "";
+$Email    = "";
+$errors = array();
+
+// connect to the database
+ 
+
+// REGISTER USER
+if (isset($_POST['SIGNUP'])) {
+  // receive all input values from the form
   
+  $Type=mysqli_real_escape_string($db, $_POST['typeinp']);
+  $Profile_Pic="default.png";
+  
+  if($Type=="worker" || $Type=="client"){
+  
+  $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
+  $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
+  $Username = mysqli_real_escape_string($db, $_POST['Username']);
+  $Password_1 = mysqli_real_escape_string($db, $_POST['Password_1']);
+  $Password_2 = mysqli_real_escape_string($db, $_POST['Password_2']);
+  $Email = mysqli_real_escape_string($db, $_POST['Email']);
+  
+  $EmailCheck="no"; 
+  
+  
+  if($Type=="worker") {
+	  
+  $Job = mysqli_real_escape_string($db, $_POST['Job']);
+  $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
+  $Wilaya = mysqli_real_escape_string($db, $_POST['Wilaya']);
+  
+  }
+ 
+  
+  
+
+  if ($Password_1 != $Password_2) {
+	array_push($errors, "The two passwords do not match");
+  }
+
+  // first check the database to make sure
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM Users WHERE ((Username='$Username') OR (Email='$Email')) LIMIT 1";
+  $result = mysqli_query($db, $user_check_query);
+
+
+  if ($User = mysqli_fetch_assoc($result)) { // if user exists
+    if ($User['Username'] === $Username) {
+      array_push($errors, "Username already exists");
+    }
+
+     
+    if ($User['Email'] === $Email) {
+      array_push($errors, "email already exists");
+    }
+  }
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors) == 0) {
+  	$Password = password_hash($Password_1, PASSWORD_DEFAULT); //encrypt the password before saving in the database
+   
+  	$query = "INSERT INTO users (First_Name,Last_Name,Username, Email,EmailCheck, Password,Phone,Job,Wilaya,Type,Profile_Pic)
+  			  VALUES('$First_Name','$Last_Name','$Username', '$Email','$EmailCheck', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic')";
+  	mysqli_query($db, $query);
+  	$_SESSION['Username'] = $Username;
+  	$_SESSION['success'] = "You are now logged in";
+	//session_set_cookie_params ( array $lifetime_or_options )
+	$q0 ="INSERT INTO  statistics (Username,Session_Nbr) VALUES ('$Username','1')";
+	mysqli_query($db, $q0);
+	$q ="UPDATE statistics set  Search='0',Myprofile='0' ,ProfileEdit='0' ,ResetPass='0 ',EnterEmail='0' WHERE Username='$Username' ";
+	 mysqli_query($db, $q);
+	   
+     //----------------------------------------------------- update indexing-------------------------------------------------------- ---------------
+      inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj); 
+	 
+	 header('location: search.php');
+    
+	
+	 
+	}
+  }
+
+
+if($Type=="submitted"){
+	
+	$First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
+    $Last_Name= mysqli_real_escape_string($db, $_POST['Last_Name']);
+	$Job = mysqli_real_escape_string($db, $_POST['Job']);
+    $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
+    $Wilaya = mysqli_real_escape_string($db, $_POST['Wilaya']);
+    
+	$name = $First_Name.$Last_Name ;
+	$Username =$First_Name. rand(0,1000000).$Last_Name.rand(0,1000000);
+	$description = "***هدا الحساب مضاف و ليس شخصي ***" ; 
+	
+	$query = "INSERT INTO users (First_Name,Last_Name,Username,Phone,Job,Wilaya,Type,Profile_Pic,Ad,Description)
+  			  VALUES('$First_Name','$Last_Name','$Username','$Phone','$Job','$Wilaya','worker','$Profile_Pic','yes','$description')";
+  	mysqli_query($db, $query);
+	
+	
+	inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj); 
+	
+	header('location: search.php');
+	
+}
+
+
+
 }
 
 

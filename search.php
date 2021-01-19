@@ -67,6 +67,8 @@ $obj = new \ArPHP\I18N\Arabic();
   <head>
 
     <script>
+
+ 
 function showResult(str) {
   if (str.length==0) {
     document.getElementById("livesearch").innerHTML="";
@@ -102,6 +104,9 @@ function sugtoinput(x) {
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="search.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	          <script src="https://pagination.js.org/dist/2.1.5/pagination.js"></script>
+			   <script src="https://pagination.js.org/dist/2.1.5/pagination.min.js"></script>
+			   <script src="pagination-with-styles.js"></script>
   <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   	<script src="data.js"></script>
@@ -133,6 +138,13 @@ function sugtoinput(x) {
 
 
 
+
+
+
+
+
+
+
 	</script>
 	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
     </div>
@@ -148,15 +160,24 @@ function sugtoinput(x) {
 
 <?php 
 include('ShowResults.php');
-include('pagessearch.php');
+//include('pagessearch.php');
 mysqli_close($db); 
 ?>   
 				</div>
+				
+				
+<div id="hiddenData">
+</div>
+
 
   </body>
   <script type="text/javascript">
+  
+  
 
-  function sugtoinput(value) {
+
+
+function sugtoinput(value) {
     document.getElementById('searchinput').value=value;
     document.getElementById("livesearch").style.display="none";
     document.getElementById('option1').innerHTML=value;
@@ -165,5 +186,9 @@ mysqli_close($db);
 
 
   }
+
+
+
+  
   </script>
 </html>

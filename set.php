@@ -14035,8 +14035,8 @@ $myfile = fopen("py/Medecin.txt","r") or die("Unable to open file!");
 $f = fopen("py/MedecinnoneWilaya.txt","a") ;
 $x=1;
  
- while(!feof($myfile)) {	
- // while($x<11) {
+ //while(!feof($myfile)) {	
+ while($x<11) {
   
   
   $name =  fgets($myfile);
@@ -14062,7 +14062,7 @@ $x=1;
    
              
                 $Profile_Pic = 'default.png';
-                $Type = 'worker'; 
+                $Type = 'submitted'; 
                 $Wilaya = 'none'; 
 			    $Daira = 'none'; 
 			    $Commune = 'none'; 
@@ -14155,7 +14155,8 @@ $x=1;
   $job= str_replace(array("\n", "\r"), '', $job);
   $description = str_replace(array("\n", "\r"), '', $description);
   
-  
+  $description = $description . "***هدا الحساب مضاف و ليس شخصي ***" ; 
+
   
 if($Wilaya=="none"){ 
 fwrite($f, $name.PHP_EOL);
@@ -14166,8 +14167,16 @@ fwrite($f, $description.PHP_EOL);
 } 
 //.PHP_EOL
 else { 
-  $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Daira,Commune,Type,Description,Profile_Pic)
-  			  VALUES('$name','$phone','$job','$Wilaya','$Daira','$Commune','$Type','$description','$Profile_Pic')";
+if($Daira=="none"  &&  $Commune=="none" )
+ $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Type,Description,Profile_Pic,Add)
+  			  VALUES('$name','$phone','$job','$Wilaya','$Type','$description','$Profile_Pic','yes')";
+if($Commune=="none" &&   $Daira!="none"  )
+  $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Daira,Type,Description,Profile_Pic,Add)
+  			  VALUES('$name','$phone','$job','$Wilaya','$Daira','$Type','$description','$Profile_Pic','yes')";
+if($Commune!="none" &&   $Daira!="none"  )
+  $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Daira,Commune,Type,Description,Profile_Pic,Add)
+  			  VALUES('$name','$phone','$job','$Wilaya','$Daira','$Commune','$Type','$description','$Profile_Pic','yes')";
+			  
   	mysqli_query($db, $query); 
 	} 
 	
