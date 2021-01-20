@@ -192,8 +192,17 @@ if (isset($_POST['SIGNUP'])) {
   
   if($Type=="worker" || $Type=="client"){
   
-  $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
-  $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
+    $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
+	$firstChar = mb_substr($First_Name, 0, 1, "UTF-8");	
+    if(!in_array($firstChar, $ligature_map)){
+    $First_Name  =  mb_convert_case(mb_strtolower($First_Name), MB_CASE_TITLE, "UTF-8");
+    }
+    
+    $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
+    $firstChar = mb_substr($Last_Name, 0, 1, "UTF-8");	
+    if(!in_array($firstChar, $ligature_map)){
+    $Last_Name  =  mb_convert_case(mb_strtolower($Last_Name), MB_CASE_TITLE, "UTF-8");
+    }
   $Username = mysqli_real_escape_string($db, $_POST['Username']);
   $Password_1 = mysqli_real_escape_string($db, $_POST['Password_1']);
   $Password_2 = mysqli_real_escape_string($db, $_POST['Password_2']);
@@ -261,7 +270,17 @@ if (isset($_POST['SIGNUP'])) {
 if($Type=="submitted"){
 	
 	$First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
-    $Last_Name= mysqli_real_escape_string($db, $_POST['Last_Name']);
+	$firstChar = mb_substr($First_Name, 0, 1, "UTF-8");	
+    if(!in_array($firstChar, $ligature_map)){
+    $First_Name  =  mb_convert_case(mb_strtolower($First_Name), MB_CASE_TITLE, "UTF-8");
+    }
+    
+    $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
+    $firstChar = mb_substr($Last_Name, 0, 1, "UTF-8");	
+    if(!in_array($firstChar, $ligature_map)){
+    $Last_Name  =  mb_convert_case(mb_strtolower($Last_Name), MB_CASE_TITLE, "UTF-8");
+    }
+	
 	$Job = mysqli_real_escape_string($db, $_POST['Job']);
     $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
     $Wilaya = mysqli_real_escape_string($db, $_POST['Wilaya']);

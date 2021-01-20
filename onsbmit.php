@@ -136,8 +136,19 @@ if (isset($_POST['save'])||isset($_POST['savepics'])){
   while($row=mysqli_fetch_array($re)){
   $id=$row['id'];
   $Profile_Pic=$row['Profile_Pic'];	}
-  $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
-  $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
+  
+    $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
+	$firstChar = mb_substr($First_Name, 0, 1, "UTF-8");	
+    if(!in_array($firstChar, $ligature_map)){
+    $First_Name  =  mb_convert_case(mb_strtolower($First_Name), MB_CASE_TITLE, "UTF-8");
+    }
+    
+    $Last_Name = mysqli_real_escape_string($db, $_POST['Last_Name']);
+    $firstChar = mb_substr($Last_Name, 0, 1, "UTF-8");	
+    if(!in_array($firstChar, $ligature_map)){
+    $Last_Name  =  mb_convert_case(mb_strtolower($Last_Name), MB_CASE_TITLE, "UTF-8");
+    }
+	
   $Email =mysqli_real_escape_string($db, $_POST['Email']);
   $Phone = mysqli_real_escape_string($db, $_POST['Phone']);
   $Job =mysqli_real_escape_string($db, $_POST['Job']);

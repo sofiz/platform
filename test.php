@@ -148,6 +148,8 @@ $ligature_map = array(
 
 
 //echo ucwords (strtolower("RIYADH DERBALE")) ;
+///-------------------------------------------------------------------------------------------
+
 
 include('../conn.php') ;
 
@@ -166,7 +168,9 @@ while($row=mysqli_fetch_array($x))
 		
         if(!in_array($firstChar, $ligature_map)){
 		$id= $row['id'] ;
-		$name  =  ucwords (strtolower($name)) ;
+		
+		$name  =  mb_convert_case(mb_strtolower($name), MB_CASE_TITLE, "UTF-8");
+		
 		$query = "UPDATE users SET First_Name='$name' where id ='$id' ";
         $res=mysqli_query($db,$query);
          }
@@ -175,6 +179,7 @@ while($row=mysqli_fetch_array($x))
 
 
 mysqli_close ($db);
+
 
 
 

@@ -140,7 +140,12 @@ array_push($arr,$row['id']);
  $Name= rtrim($Name);
  $Job=rtrim($Job);
  $Wilaya= rtrim($Wilaya);
-
+ 
+ 
+ $firstChar = mb_substr($Name, 0, 1, "UTF-8");	
+ if(!in_array($firstChar, $ligature_map)){
+ $Name  =  mb_convert_case(mb_strtolower($Name), MB_CASE_TITLE, "UTF-8");
+  }
 if(empty($Name) && empty($Job) &&  empty($Wilaya)){
 echo '<div class="resultcontainer"> ';
 echo ' <p id="noresult"> no result found! <br> Please ENter Wilaya ANd Job  <p>  </div> ';
