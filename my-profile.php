@@ -124,15 +124,15 @@ mysqli_query($db, $q);
 			    </div>
 
     <div class="info">
-			<?php	if ($c->Email!="" && $c->Type == "worker" && $c->EmailCheck=="yes") {
+			<?php	if ($c->Type == "worker" && $c->EmailCheck=="yes") {
 			echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
             echo ' <span> '.$c->Email .'</span> ';
 	  }
-	  else if (($c->EmailCheck=="no"||$c->EmailCheck="")&& $c->Type == "worker"){
+	  else if (($c->EmailCheck=="no" && $c->Type == "worker")){
           echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
 		  echo '<span style="font-size: 15px;"> لا يوجد ايميل </span> ';   }
-		  else { echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
-		         echo '<span>  لا يوجد ايميل</span> ';}
+		  else {//echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
+		         echo '<span>  </span> ';}
 
 	  ?>
     </div>

@@ -14031,12 +14031,12 @@ include('../conn.php') ;
 		),
 	);
 
-$myfile = fopen("py/Medecin.txt","r") or die("Unable to open file!");
+$myfile = fopen("py/Architecture--done.txt","r") or die("Unable to open file!");
 $f = fopen("py/MedecinnoneWilaya.txt","a") ;
 $x=1;
  
  while(!feof($myfile)) {	
- // while($x<11) {
+ //while($x<11) {
   
   
   $name =  fgets($myfile);
@@ -14142,12 +14142,12 @@ $x=1;
   echo " description =  " .$description . "<br>" ; 
   */
   $job = fgets($myfile);
-  $job="طبيب خاص";
+  $job="مهدنس معماري"; 
   $description =  fgets($myfile) ;
   $description = fgets($myfile)." ".$description;
   
-  
-  
+  if($phone == "no")
+   $phone =  "لا يوجد رقم هاتف ";
   
   $name= str_replace(array("\n", "\r"), '', $name);
   $phone= str_replace(array("\n", "\r"), '', $phone);
@@ -14155,7 +14155,8 @@ $x=1;
   $job= str_replace(array("\n", "\r"), '', $job);
   $description = str_replace(array("\n", "\r"), '', $description);
   
-  
+  $description = $description . "***هدا الحساب مضاف و ليس شخصي ***" ; 
+
   
 if($Wilaya=="none"){ 
 fwrite($f, $name.PHP_EOL);
@@ -14166,13 +14167,21 @@ fwrite($f, $description.PHP_EOL);
 } 
 //.PHP_EOL
 else { 
-  $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Daira,Commune,Type,Description,Profile_Pic)
-  			  VALUES('$name','$phone','$job','$Wilaya','$Daira','$Commune','$Type','$description','$Profile_Pic')";
+if($Daira=="none"  &&  $Commune=="none" )
+ $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Type,Description,Profile_Pic,Ad)
+  			  VALUES('$name','$phone','$job','$Wilaya','$Type','$description','$Profile_Pic','yes')";
+if($Commune=="none" &&   $Daira!="none"  )
+  $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Daira,Type,Description,Profile_Pic,Ad)
+  			  VALUES('$name','$phone','$job','$Wilaya','$Daira','$Type','$description','$Profile_Pic','yes')";
+if($Commune!="none" &&   $Daira!="none"  )
+  $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Daira,Commune,Type,Description,Profile_Pic,Ad)
+  			  VALUES('$name','$phone','$job','$Wilaya','$Daira','$Commune','$Type','$description','$Profile_Pic','yes')";
+			  
   	mysqli_query($db, $query); 
 	} 
 	
  $x++;  
- echo  $x."/7579" ;
+ echo  $x ."\n";
 }
 
     fclose($myfile);

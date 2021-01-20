@@ -75,21 +75,19 @@ $ligature_map = array(
 );
 
   
-function Show_Result($db,$res,&$count,&$arr){
-	
-	
-if (isset($_GET["page"])) { 
-$page  = $_GET["page"];
+if(isset($_GET['page'])){ 
+$page = $_GET['page'];
 } 
 else { 
 $page=1;
 }
+
+function Show_Result($db,$res,&$count,&$arr,$page){
+	
 if($page==1)
 $start_from = 1 ;
 else 
 $start_from = ($page-1) * 30;
-
-
 
 
 
@@ -159,7 +157,7 @@ $sql1="SELECT * FROM users WHERE Wilaya='$Wilaya'";
 
 $sql1= $sql1." AND Type ='worker'";	                                 
 $res1=mysqli_query($db,$sql1);
-Show_Result($db,$res1,$count,$arr);
+Show_Result($db,$res1,$count,$arr,$page);
 									
 if($count==0){                                    
 echo '<div class="resultcontainer"> ';
@@ -184,7 +182,7 @@ $sql2="SELECT * FROM users WHERE  ((Username LIKE '%$Name%') || (First_Name LIKE
 $sql2= $sql2." and  Type = 'worker' ";
 					
 $res2=mysqli_query($db,$sql2);
-Show_Result($db,$res2,$count,$arr);
+Show_Result($db,$res2,$count,$arr,$page);
 
 //------------------------------------------------------------- search by soundexx metaphone ------------------------------------------------------------------------------------									  
 									 
@@ -216,7 +214,7 @@ $sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
 
 $sql5= $sql5." AND Type = 'worker' ";
 $res5=mysqli_query($db,$sql5);
-Show_Result($db,$res5,$count,$arr);
+Show_Result($db,$res5,$count,$arr,$page);
 										
 										}
 
@@ -238,7 +236,7 @@ else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
 $sql3="SELECT * FROM users WHERE (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%')";
 $sql3= $sql3."AND  Type='worker'";
 $res3=mysqli_query($db,$sql3);
-Show_Result($db,$res3,$count,$arr);	
+Show_Result($db,$res3,$count,$arr,$page);	
 
 }
 }
@@ -281,7 +279,7 @@ $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
 $sql4= $sql4." and  Type = 'worker' ";
 $res4=mysqli_query($db,$sql4);
 						 
-Show_Result($db,$res4,$count,$arr);
+Show_Result($db,$res4,$count,$arr,$page);
 										}
 						  }		
 	/*					 //$q= $sql2.$sql3.$sql4.$sql5; 
@@ -326,13 +324,97 @@ $count =-5;
  
  
  
- 
+ /*
 $results_per_page = 30; // number of results per page
 $total_pages = (int) $count/$results_per_page ; 
 for($i=1; $i<=$total_pages; $i++) { 
 
-	echo "<a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$i."'>".$i."</a> ";
+	echo "<div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$i."'>".$i."</a> </div> ";
+
 }
+ 
+ 
+ */
+ 
+ 
+ 
+$results_per_page = 30; // number of results per page
+$total_pages =  (int) $count/$results_per_page ; 
+if(!is_int($total_pages))
+$total_pages = (int) ($total_pages+1) ; 
+
+if($page <10 ){ 
+
+if($total_pages<10)
+for($i=1; $i<=$total_pages; $i++) { 
+echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$i."'>".$i."</a>   </div>  ";
+}
+else
+for($i=1; $i<=10; $i++) { 
+echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$i."'>".$i."</a>   </div>  ";
+}
+//if($page==9)
+//echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=10'>10</a>   </div>  ";
+ echo " <div class='record'> ... </div>  ";
+}
+else if($page<=($total_pages-10)){ 
+
+//if($page<=$total_pages && $page<=$total_pages )
+ echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=1'>1</a>   </div>  ";
+ echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=2'>2</a>   </div>  ";
+ 
+  echo " <div class='record'> ... </div>  ";
+ for($i=$page-3; $i<=$page+3; $i++) { 
+echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$i."'>".$i."</a>   </div>  ";
+}
+
+ echo " <div class='record'> ... </div>  ";
+ echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".($total_pages-1)."'>".($total_pages-1)."</a>   </div>  ";
+ echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$total_pages."'>".$total_pages."</a>   </div>  ";
+
+  }
+  else { 
+  
+  
+  if($page>12){ 
+ echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=1'>1</a>   </div>  ";
+ echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=2'>2</a>   </div>  ";
+ echo " <div class='record'> ... </div>  ";  
+ }
+ 
+ for($i=$total_pages-10; $i<=$total_pages; $i++) { 
+ echo " <div class='record'> <a href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$i."'>".$i."</a>   </div>  ";
+   }
+
+  }
+  
+  
+  
+  
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  }
  //******************************************** show all users *********************************************************
 
@@ -343,19 +425,59 @@ for($i=1; $i<=$total_pages; $i++) {
  if($count==0){ 
  $sql= "SELECT * FROM users";
  $res=mysqli_query($db,$sql);
- Show_Result($db,$res,$count,$arr);
+ Show_Result($db,$res,$count,$arr,$page);
  
 $results_per_page = 30; // number of results per page
 $total_pages =  $count/$results_per_page ; 
 if(!is_int($total_pages))
 $total_pages = (int) $total_pages+1 ; 
 
-for($i=1; $i<=$total_pages; $i++) { 
 
-echo "<a href='search.php?page=".$i."'>".$i."</a> ";
-
-}
+if($page<10){ 
+for($i=1; $i<=10; $i++) { 
+echo " <div class='record'> <a href='search.php?page=".$i."'>".$i."</a>   </div>  ";
  
+}
+
+ echo " <div class='record'> ... </div>  ";
+}
+
+else if($page<=($total_pages-10)){ 
+//if($page<=$total_pages && $page<=$total_pages )
+ echo " <div class='record'> <a href='search.php?page=1'>1</a>   </div>  ";
+ echo " <div class='record'> <a href='search.php?page=2'>2</a>   </div>  ";
+ 
+  echo " <div class='record'> ... </div>  ";
+ for($i=$page-3; $i<=$page+3; $i++) { 
+echo " <div class='record'> <a href='search.php?page=".$i."'>".$i."</a>   </div>  ";
+}
+
+ echo " <div class='record'> ... </div>  ";
+ echo " <div class='record'> <a href='search.php?page=".($total_pages-1)."'>".($total_pages-1)."</a>   </div>  ";
+ echo " <div class='record'> <a href='search.php?page=".$total_pages."'>".$total_pages."</a>   </div>  ";
+
+  }
+  else { 
+  
+  
+  
+   echo " <div class='record'> <a href='search.php?page=1'>1</a>   </div>  ";
+ echo " <div class='record'> <a href='search.php?page=2'>2</a>   </div>  ";
+ echo " <div class='record'> ... </div>  ";
+ 
+ for($i=$total_pages-10; $i<=$total_pages; $i++) { 
+echo " <div class='record'> <a href='search.php?page=".$i."'>".$i."</a>   </div>  ";
+}
+
+ 
+  
+  
+  
+  }
+  
+  
+  
+  
   } 
   
 
