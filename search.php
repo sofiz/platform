@@ -21,31 +21,31 @@ $Users=$row['Users'] ;
 $Unkown=$row['Unkown'] ;
 }
 
-$AllVisitors++; 
+$AllVisitors++;
 $Unkown=$AllVisitors-$Users;
-        
+
 $sql0="UPDATE visitors SET Users='$Users',Allvisitors='$AllVisitors',Unkown='$Unkown' where id='1'";
 $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);
                }
-	    /** 
-		include 'visitors.php'; 
+	    /**
+		include 'visitors.php';
 		$AllVisitors++;
         $var_str1 = var_export($AllVisitors, true);
 		$var_str2 = var_export($indexvisit, true);
         $var ="<?php\n\n\$AllVisitors=$var_str1;\n\n\n\$indexvisit=$var_str2;\n\n?>";
         file_put_contents('visitors.php', $var);
 		**/
-		
+
 		$_SESSION['page_visited_already'] = 1;
-		
+
 }
 session_write_close();
 //***********************************************************************************
 session_id("session1");
 session_start();
-include('topbar.php'); 
+include('topbar.php');
 if (isset($_SESSION['Username'])) {
 	  $Username=$_SESSION['Username'];
 	  $q ="UPDATE statistics set Search=Search+1 WHERE Username='$Username' ";
@@ -66,9 +66,29 @@ $obj = new \ArPHP\I18N\Arabic();
 <html lang="en" dir="ltr">
   <head>
 
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي, بحث">
+<meta name="description" content="
+تبحث عن خدمة أو عامل في منطقتك ؟
+لديك عمل أو خدمة و تبحث عن الزبائن؟
+رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
+<meta name="author" content="rondili">
+    <meta charset="utf-8">
+    <title>Rondili - صفحة البحث</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="search.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	          <script src="https://pagination.js.org/dist/2.1.5/pagination.js"></script>
+			   <script src="https://pagination.js.org/dist/2.1.5/pagination.min.js"></script>
+			   <script src="pagination-with-styles.js"></script>
+  <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
+
+  	<script src="data.js"></script>
+    <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
 
- 
+
 function showResult(str) {
   if (str.length==0) {
     document.getElementById("livesearch").innerHTML="";
@@ -92,29 +112,10 @@ function sugtoinput(x) {
 }
 </script>
 
-<meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي, بحث">
-<meta name="description" content="
-تبحث عن خدمة أو عامل في منطقتك ؟
-لديك عمل أو خدمة و تبحث عن الزبائن؟
-رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
-<meta name="author" content="rondili">
-    <meta charset="utf-8">
-    <title>Rondili - صفحة البحث</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
-    <link rel="stylesheet" href="search.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	          <script src="https://pagination.js.org/dist/2.1.5/pagination.js"></script>
-			   <script src="https://pagination.js.org/dist/2.1.5/pagination.min.js"></script>
-			   <script src="pagination-with-styles.js"></script>
-  <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  	<script src="data.js"></script>
-    <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   </head>
 
   <body>
-  
+
 
 <form action="search.php" method="get">
 
@@ -126,7 +127,7 @@ function sugtoinput(x) {
 
 
 	   <option value="" id="option1" selected>ابحث عن</option>
-<?php include 'jobsdata.html'; 
+<?php include 'jobsdata.html';
 ?>
      </select>
 
@@ -158,22 +159,22 @@ function sugtoinput(x) {
                 <div class="resultscontainer">
 
 
-<?php 
+<?php
 include('ShowResults.php');
 //include('pagessearch.php');
-mysqli_close($db); 
-?>   
+mysqli_close($db);
+?>
 				</div>
-				
-				
+
+
 <div id="hiddenData">
 </div>
 
 
   </body>
   <script type="text/javascript">
-  
-  
+
+
 
 
 
@@ -189,6 +190,6 @@ function sugtoinput(value) {
 
 
 
-  
+
   </script>
 </html>

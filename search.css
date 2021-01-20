@@ -8,6 +8,24 @@ body{
 
 }
 
+.record{
+  display: inline-block;
+      margin: 10px 4px;
+      cursor: pointer;
+      position: relative;
+      top: 5px;
+  
+
+}
+.pagen{
+  background: #fafafa;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 1px 3px 16px 0px #00000047;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
 #livesearch{
   background: #fafafa;
       padding: 5px 8px;
