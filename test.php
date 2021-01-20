@@ -14,8 +14,9 @@ echo mysqli_num_rows($res1);
 if( strpos ( 'bbxbb' , 'n')!='')
 echo 'char exist ';
 else echo 'char  not exist ';
-*/
-$myfile = fopen("py/Medecin.txt","r") or die("Unable to open file!");
+------------------------------------------------------------------------------------------------------------
+
+$myfile = fopen("py/sport.txt","r") or die("Unable to open file!");
 
 $des = fgets($myfile); 
 $des = fgets($myfile); 
@@ -42,4 +43,8 @@ echo ($l-1)."\n" ;
 }
 
  fclose($myfile);
+*/
+
+echo "***هدا الحساب مضاف و ليس شخصي *** \n ***هدا الحساب مضاف و ليس شخصي ***" ; 
+
 ?>

@@ -14031,9 +14031,44 @@ include('../conn.php') ;
 		),
 	);
 
-$myfile = fopen("py/Architecture--done.txt","r") or die("Unable to open file!");
-$f = fopen("py/MedecinnoneWilaya.txt","a") ;
-$x=1;
+$ar = array ( 
+  array("Architecture","مهندس معماري"),
+  array("audiovisuelles","تقنيات السمعي البصري"),
+  array("Avocat","محامي"),
+  array("Boucherie","الجزارة و منتجات اللحوم"),     
+  array("builder","البنــاء"),
+  array("Charpenterie","نجارة"),
+  array("coiffeuse","حِلاقة النساء"),
+  array("Composition hygienique","التركيب الصحي و الغـاز"),     
+  array("couvertures et meubles","بيع الأغطية و المفروشات"),
+  array("Hotel","فندق"),
+  array("Impression","طباعة"),
+  array("legumes","محل خضروات"),     
+  array("librarie","مكتبة و أدوات"),
+  array("Medecin","طبيب خاص"),
+  array("notaire","موثق"),
+  array("noteur","موثق"),
+  array("peintre","دهان"),
+  array("platre","تجصيص بلاتر"),     
+  array("Plomberie","سباكة"),
+  array("Produits alimentaires generaux","مواد غذائية عامة"),     
+  array("Soudeur","التلحيم"),
+  array("sport","رياضة"),  
+  array("vetements","محل ألبسة")  
+
+); 
+
+
+
+$x=0;
+
+
+$filex ="Medecin"; 
+$jobx ="طبيب خاص";
+
+$f = fopen("py/noneWilaya.txt","a") ;
+$myfile = fopen("py/".$filex.".txt","r");
+
  
  while(!feof($myfile)) {	
  //while($x<11) {
@@ -14142,7 +14177,7 @@ $x=1;
   echo " description =  " .$description . "<br>" ; 
   */
   $job = fgets($myfile);
-  $job="مهدنس معماري"; 
+  $job=$jobx; 
   $description =  fgets($myfile) ;
   $description = fgets($myfile)." ".$description;
   
@@ -14155,9 +14190,6 @@ $x=1;
   $job= str_replace(array("\n", "\r"), '', $job);
   $description = str_replace(array("\n", "\r"), '', $description);
   
-  $description = $description . "***هدا الحساب مضاف و ليس شخصي ***" ; 
-
-  
 if($Wilaya=="none"){ 
 fwrite($f, $name.PHP_EOL);
 fwrite($f, $phone.PHP_EOL);
@@ -14167,6 +14199,7 @@ fwrite($f, $description.PHP_EOL);
 } 
 //.PHP_EOL
 else { 
+  
 if($Daira=="none"  &&  $Commune=="none" )
  $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Type,Description,Profile_Pic,Ad)
   			  VALUES('$name','$phone','$job','$Wilaya','$Type','$description','$Profile_Pic','yes')";
@@ -14180,16 +14213,16 @@ if($Commune!="none" &&   $Daira!="none"  )
   	mysqli_query($db, $query); 
 	} 
 	
- $x++;  
- echo  $x ."\n";
+ 
+ $x++; 
 }
-
-    fclose($myfile);
+    
+	fclose($myfile);
 	fclose($f);
     mysqli_close ($db);	
-	echo "   DONE 	<br>" ; 
+	echo "     ALL DONE 	<br>".$x  ; 
 
-
+    exit();
 
 
 
