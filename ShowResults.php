@@ -173,6 +173,7 @@ $count=-5;
 				  }
 //-------------------------------------------------------- search by name ----------------------------------------------------------------------------------------------
 else if(!empty($Name)){
+	
 if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
 $sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%'|| Description LIKE '%$Name%') AND Job='$Job' AND Wilaya='$Wilaya' ";
 //************************************* Name andd ddaira exxist .... and commune not exxist
@@ -188,6 +189,31 @@ $sql2= $sql2." and  Type = 'worker' ";
 
 $res2=mysqli_query($db,$sql2);
 Show_Result($db,$res2,$count,$arr,$page);
+
+
+//**************************************** explode name **********************************************************
+
+$words=explode(" ",$Name);
+foreach($words as $word ){
+ if(strlen($word)>3){
+
+if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Job='$Job' AND Wilaya='$Wilaya'";
+//************************************* Name andd ddaira exxist .... and commune not exxist
+else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Job='$Job'";
+else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Wilaya='$Wilaya'";
+//********************************* name exxist .... dadira and commune not exissts
+else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
+$sql3="SELECT * FROM users WHERE (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%')";
+$sql3= $sql3."AND  Type='worker'";
+$res3=mysqli_query($db,$sql3);
+Show_Result($db,$res3,$count,$arr,$page);
+
+}
+}
+
 
 //------------------------------------------------------------- search by soundexx metaphone ------------------------------------------------------------------------------------
 
@@ -223,28 +249,6 @@ Show_Result($db,$res5,$count,$arr,$page);
 
 										}
 
-//**************************************** explode name **********************************************************
-
-$words=explode(" ",$Name);
-foreach($words as $word ){
- if(strlen($word)>3){
-
-if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Job='$Job' AND Wilaya='$Wilaya'";
-//************************************* Name andd ddaira exxist .... and commune not exxist
-else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Job='$Job'";
-else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Wilaya='$Wilaya'";
-//********************************* name exxist .... dadira and commune not exissts
-else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-$sql3="SELECT * FROM users WHERE (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%')";
-$sql3= $sql3."AND  Type='worker'";
-$res3=mysqli_query($db,$sql3);
-Show_Result($db,$res3,$count,$arr,$page);
-
-}
-}
 
 
 
@@ -355,13 +359,15 @@ if($total_pages<10)
 for($i=1; $i<=$total_pages; $i++) {
 echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$i."'>".$i."</a>   </div>  ";
 }
-else
+else{
 for($i=1; $i<=10; $i++) {
 echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$i."'>".$i."</a>   </div>  ";
 }
 //if($page==9)
 //echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=10'>10</a>   </div>  ";
  echo " <div class='record'> ... </div>  ";
+ echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=".$total_pages."'>".$total_pages."</a>   </div>  ";
+ }
 }
 else if($page<=($total_pages-10)){
 
@@ -439,13 +445,21 @@ if(!is_int($total_pages))
 $total_pages = (int) $total_pages+1 ;
 
 
-if($page<10){
+if($page <10 ){
+
+if($total_pages<10)
+for($i=1; $i<=$total_pages; $i++) {
+echo " <div class='record'> <a class='pagen' href='search.php?page=".$i."'>".$i."</a>   </div>  ";
+}
+else{
 for($i=1; $i<=10; $i++) {
 echo " <div class='record'> <a class='pagen' href='search.php?page=".$i."'>".$i."</a>   </div>  ";
-
 }
-
+//if($page==9)
+//echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['search']."&Job=".$_GET['Job']."&Wilaya=".$_GET['Wilaya']."&recherche=بحث&page=10'>10</a>   </div>  ";
  echo " <div class='record'> ... </div>  ";
+ echo " <div class='record'> <a class='pagen' href='search.php?page=".$total_pages."'>".$total_pages."</a>   </div>  ";
+ }
 }
 
 else if($page<=($total_pages-10)){
@@ -453,10 +467,10 @@ else if($page<=($total_pages-10)){
  echo " <div class='record'> <a class='pagen' href='search.php?page=1'>1</a>   </div>  ";
  echo " <div class='record'> <a class='pagen' href='search.php?page=2'>2</a>   </div>  ";
 
-  echo " <div class='record'> ... </div>  ";
+ echo " <div class='record'> ... </div>  ";
  for($i=$page-3; $i<=$page+3; $i++) {
-echo " <div class='record'> <a class='pagen' href='search.php?page=".$i."'>".$i."</a>   </div>  ";
-}
+ echo " <div class='record'> <a class='pagen' href='search.php?page=".$i."'>".$i."</a>   </div>  ";
+ }
 
  echo " <div class='record'> ... </div>  ";
  echo " <div class='record'> <a class='pagen' href='search.php?page=".($total_pages-1)."'>".($total_pages-1)."</a>   </div>  ";
@@ -466,8 +480,7 @@ echo " <div class='record'> <a class='pagen' href='search.php?page=".$i."'>".$i.
   else {
 
 
-
-   echo " <div class='record'> <a class='pagen' href='search.php?page=1'>1</a>   </div>  ";
+ echo " <div class='record'> <a class='pagen' href='search.php?page=1'>1</a>   </div>  ";
  echo " <div class='record'> <a class='pagen' href='search.php?page=2'>2</a>   </div>  ";
  echo " <div class='record'> ... </div>  ";
 
