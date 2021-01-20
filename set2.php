@@ -14031,8 +14031,9 @@ include('../conn.php') ;
 		),
 	);
 
-$myfile = fopen("py/MedecinnoneWilaya.txt","r") or die("Unable to open file!");
-$f = fopen("py/none.txt","a") ;
+
+$myfile = fopen("py/noneWilaya.txt","r") or die("Unable to open file!");
+$f = fopen("py/none.txt","a")or die("Unable to open file!") ;
 $x=1;
  
  while(!feof($myfile)) {	
@@ -14066,7 +14067,7 @@ $x=1;
 		 
          similar_text($location,$arr['wilayas'][$wilaya]['name'],$perc);
 		
-         if($perc > 89){
+         if($perc > 66){
 			  
                $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ; 
 			   $Daira = 'none'; 
@@ -14082,7 +14083,7 @@ $x=1;
               // $daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['code'] ;
               similar_text($location,$arr['wilayas'][$wilaya]['dairas'][$daira]['name'],$perc);
 			  
-              if($perc > 85){ 
+              if($perc > 66){ 
                       $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ;
 			          $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name_ar']; 
 					  $Commune = 'none'; 
@@ -14103,7 +14104,7 @@ $x=1;
                     }
                      
 					 
-                     if($perc > 85){ 
+                     if($perc > 66){ 
                       $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ;
 			          $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name_ar']; 
 					  $Commune = $arr['wilayas'][$wilaya]['dairas'][$daira]['communes'][$commune]['name_ar'];
@@ -14137,8 +14138,8 @@ $x=1;
   $description =  fgets($myfile) ;
   
   
-  if($phone == "no")
-   $phone =  "لا يوجد رقم هاتف ";
+  if($phone=="no")
+  $phone =  "لا يوجد رقم هاتف ";
   
   $name= str_replace(array("\n", "\r"), '', $name);
   $phone= str_replace(array("\n", "\r"), '', $phone);
@@ -14172,13 +14173,13 @@ if($Commune!="none" &&   $Daira!="none"  )
 	} 
 	
  $x++;  
- echo  $x ."\n";
+ 
 }
 
     fclose($myfile);
 	fclose($f);
     mysqli_close ($db);	
-	echo "   DONE 	<br>" ; 
+	echo $x."   DONE 	<br>" ; 
 	exit(); 
 
 

@@ -14109,7 +14109,7 @@ $myfile = fopen("py/".$filex.".txt","r");
 		 
          similar_text($location,$arr['wilayas'][$wilaya]['name'],$perc);
 		
-         if($perc > 89){
+         if($perc > 66){
 			  
                $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ; 
 			   $Daira = 'none'; 
@@ -14125,7 +14125,7 @@ $myfile = fopen("py/".$filex.".txt","r");
               // $daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['code'] ;
               similar_text($location,$arr['wilayas'][$wilaya]['dairas'][$daira]['name'],$perc);
 			  
-              if($perc > 85){ 
+              if($perc > 66){ 
                       $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ;
 			          $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name_ar']; 
 					  $Commune = 'none'; 
@@ -14146,7 +14146,7 @@ $myfile = fopen("py/".$filex.".txt","r");
                     }
                      
 					 
-                     if($perc > 85){ 
+                     if($perc > 66){ 
                       $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ;
 			          $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name_ar']; 
 					  $Commune = $arr['wilayas'][$wilaya]['dairas'][$daira]['communes'][$commune]['name_ar'];
