@@ -6,7 +6,12 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title></title>
+
+    <script type="text/javascript">
+
+    </script>
   </head>
   <body>
 <!-- The Modal -->
@@ -51,11 +56,11 @@
 <?php
 
 
-echo '<div class="topbar">
-
+echo '<div  class="topbar">
+<a href="index.php"  >
 <img src="LOGO_back_white2.png" class="logo" alt="">
 <p class="logo_txt">Rondili</p>
-
+</a>
 
  <div class="nav">';
 
@@ -103,6 +108,8 @@ echo '</div>
 
 ?>
 <script type="text/javascript">
+
+
 // Get the modal
 var modal5 = document.getElementById("myModalpolicy");
 
@@ -156,6 +163,8 @@ window.onclick = function(event) {
 
   }
 }
+
+
 </script>
 </body>
 </html>
