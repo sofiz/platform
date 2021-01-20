@@ -38,7 +38,7 @@ position: absolute;
     #square1{
       background: #FAFAFA;
       width: 27.5em;
-      height: 28.75em;
+      min-height: 28.75em;
       border-radius: inherit;
       box-shadow: 0.0625em 0.1875em 1em 0em #00000047;
       display: inline-block;
@@ -123,6 +123,7 @@ transition: all .4s ease-in-out;
     display: flex;
     justify-content: center;
     color: #313131;
+    text-align:center;
     }
 
 
@@ -965,6 +966,7 @@ font-family: 'JF Flat';
 }
 #insta{
     background:linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        margin-bottom: 16px;
 }
 .uploadpicbtn:hover ,.socialmedia{
 background-position: 100% 0;
@@ -974,7 +976,9 @@ moz-transition: all .4s ease-in-out;
 transition: all .4s ease-in-out;
 
   }
-
+.socialmedia{
+      margin-bottom: 16px;
+}
   #b1{
     background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
         border:none;
