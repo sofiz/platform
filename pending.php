@@ -17,11 +17,11 @@ include('topbar.php');
 <body>
 	<form class="login-form" action="login.php" method="post" style="text-align: center;">
 		<p class="msg">
-			We sent an email to  <b><?php echo $_GET['email'] ?></b> to help you recover your account.
+			لقد قمنا بارسال كلمة سر جديدة إلى  <b><?php echo $_GET['email'] ?></b> لمساعدتك على تغيير كلمة سر حسابك
 		</p>
-	    <p class="msg">Please login into your email account and click on the link we sent to reset your password</p>
+	    <p class="msg">يرجى تفقد الايمايل الخاص بك و الضغط على الرابط لتغيير كلمة السر. شكرا .</p>
 			<div class="form-group">
-				<a type="url" href="signin.php" class="login-btn">Login</a>
+				<a type="url" href="signin.php" class="login-btn">تسجيل الدخول</a>
 			</div>
 	</form>
 

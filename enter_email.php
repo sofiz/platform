@@ -30,7 +30,7 @@ mysqli_close ( $db );
 		<!-- form validation messages -->
 		<?php //include('messages.php'); ?>
 		<div class="form-group">
-			<input id="input3" placeholder="Enter your Email " type="email" name="email">
+			<input id="input3" class="input3" placeholder="Enter your Email " type="email" name="email">
 		</div>
 		<div class="form-group">
 			<button type="submit" name="reset-password" class="login-btn">Submit</button>

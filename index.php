@@ -11,7 +11,7 @@ or die ('can\'t charset in DataBase');
 session_start();
 
 if (!isset($_SESSION['page_visited_already'])){
-	
+
 $rest=mysqli_query($db,"SELECT Allvisitors,Users,Unkown FROM visitors WHERE id='1' ");
 while($row=mysqli_fetch_array($rest)){
 $AllVisitors=$row['Allvisitors'] ;
@@ -194,13 +194,13 @@ function showResult(str) {
   <div class="insta tile">
     <a class="subtile" href="www.instagram.com"><i class="fa fa-instagram"></i></a>
   </div>
-
+<div class="copyright"><p>Rondili © 2021</p>
   </div>
 
 
 </div>
   </body>
-  
+
   <script>
   function sugtoinput(value) {
     document.getElementById('searchinput').value=value;
@@ -211,6 +211,6 @@ function showResult(str) {
 
 
   }
-  
+
   </script>
 </html>

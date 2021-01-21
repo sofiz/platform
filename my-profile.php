@@ -16,7 +16,7 @@
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+
     <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 
@@ -74,10 +74,10 @@ mysqli_query($db, $q);
 <div id="square1">
 
 
-   <?php if ($c->Profile_Pic!="default.png") echo '<img id="pic"  src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" onclick="slide(this.src)">';
+   <?php if ($c->Profile_Pic!="default.png") echo '<img id="pic" class="pictures" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" onclick="slide(this.src)">';
 
 
-            else  echo '<img id="pic" src="imgs/default.png" alt="" onclick="slide(this.src)">'; ?>
+            else  echo '<img id="pic" src="imgs/default.png" alt="" class="pictures" onclick="slide(this.src)">'; ?>
 
 
 
@@ -354,6 +354,7 @@ mysqli_close($db);
   s.push(pictures[p].src)
   }
   s.remove(undefined);
+  console.log("s="+s);
   n = s.indexOf(e);
   n= Number(n);
   console.log("n="+n);

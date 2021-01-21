@@ -108,14 +108,14 @@ mysqli_query($db, $q);
   <body ><?php
  if($c->Ad =="yes") echo '<p class="msgclient">  هدا الحساب مضاف وليس شخصي </p>';
  ?>
-  
-  
+
+
 <div id="container" >
 <div id="square1">
 
 
-   <?php if ($c->Profile_Pic!="default.png")  echo '<img id="pic" onclick="slide(this.src)" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
-else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
+   <?php if ($c->Profile_Pic!="default.png")  echo '<img class="pictures" id="pic" onclick="slide(this.src)" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
+else  echo '<img id="pic" src="imgs/default.png" class="pictures" onclick="slide(this.src)" alt="" >'; ?>
 
 
     <strong id="name" ><?php echo $c->First_Name .' '. $c->Last_Name ; ?> </strong>

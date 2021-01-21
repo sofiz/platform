@@ -16,7 +16,7 @@ transform: translate(-50%, -50%);
   z-index: 1;
   background: #fafafab5;
   max-width: 360px;
-  margin: 0 auto 100px;
+  margin: 0 auto ;
   padding: 45px;
   text-align: center;
   box-shadow: 1px 3px 16px 0px #00000047;

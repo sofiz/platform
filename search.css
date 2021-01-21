@@ -14,7 +14,7 @@ body{
       cursor: pointer;
       position: relative;
       top: 5px;
-  
+
 
 }
 .pagen{
@@ -28,7 +28,7 @@ body{
 }
 #livesearch{
   background: #fafafa;
-      padding: 5px 8px;
+
       position: absolute;
       display: none;
       left: 27.2%;
@@ -36,6 +36,19 @@ body{
       width: 22%;
       z-index: 2;
 }
+
+.hint{
+  display: inline-block;
+      width: calc(100% - 40px);
+      padding: 1px 20px;
+      cursor: pointer;
+}
+
+.hint:hover{
+background: #008ffba6;
+
+}
+
   .ad1 {
       width: 200px;
       height: 550px;

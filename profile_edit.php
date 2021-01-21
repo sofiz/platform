@@ -212,6 +212,7 @@ $c->Show_Three_Photos();
 </div>
 
 <div class="btns">
+<input type="submit" value="حفظ" name="save" id="save">
 
 <a  href="my-profile.php" class="btn">
 <i class="fa fa-times "></i>
@@ -220,7 +221,7 @@ $c->Show_Three_Photos();
 
 
 
-<input type="submit" value="حفظ" name="save" id="save">
+
 
 </div>
 
@@ -292,7 +293,7 @@ $c->Show_Three_Photos();
 <input type="checkbox" id="emailcheck" name="EmailCheck" value="yes" title="إظهار الايمايل في الحساب" style="margin-left: -10px;
     position: relative;
     top: 5px;" <?php  if($c->EmailCheck=="yes" )echo "checked"?>>
-<input type="text" name="Email" placeholder="ايمايل" value="<?php echo $c->Email ;?>" class="inputinf2" style="width:79%" required>
+<input type="text" name="Email" placeholder="ايمايل" value="<?php echo $c->Email ;?>" class="inputinf2" style="width:72%" required>
 </div>
 
 <div class="info2">

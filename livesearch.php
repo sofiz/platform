@@ -17,12 +17,12 @@ if (strlen($q)>0) {
       //find a link matching the search text
       if (stristr($y->item(0)->childNodes->item(0)->nodeValue,$q)) {
         if ($hint=="") {
-          $hint="<a value='" .
+          $hint="<a class='hint' value='" .
           $z->item(0)->childNodes->item(0)->nodeValue .
           "' onclick='sugtoinput(this.innerHTML)'>" .
           $z->item(0)->childNodes->item(0)->nodeValue . "</a>";
         } else {
-          $hint=$hint . "<br /><a value='" .
+          $hint=$hint . "<br /><a class='hint' value='" .
           $z->item(0)->childNodes->item(0)->nodeValue .
           "'  onclick='sugtoinput(this.innerHTML)'>" .
           $z->item(0)->childNodes->item(0)->nodeValue . "</a>";
@@ -34,12 +34,11 @@ if (strlen($q)>0) {
 
 // Set output to "no suggestion" if no hint was found
 // or to the correct values
-if ($hint=="") {
-  $response="لا يوجد إقتراحات";
-} else {
+if ($hint!="") {
   $response=$hint;
+  echo $response;
 }
 
 //output the response
-echo $response;
+
 ?>

@@ -8,7 +8,9 @@
       transition: all .4s ease-in-out;
 
     }
-
+a{
+  text-decoration: none;
+}
 .msgclient{
 position: absolute;
   margin-top: -44px;
@@ -447,17 +449,19 @@ margin-right: -58px;
 
 }
 .deletecomlab {
-  font-size: 14px;
-  color: #000000;
-  cursor: pointer;
-  position: absolute;
-  margin-left: -47px;
-  background: #eeeef2bf;
-  padding: 4px 8px;
-  margin-top: 3px;
-  display: none;
+    font-size: 16px;
+    color: #000000;
+    cursor: pointer;
+    position: absolute;
+    margin-left: -64px;
+    background: #eeeef2;
+    padding: 9px 16px;
+    margin-top: 3px;
+    display: none;
 }
-
+.deletecomlab:hover {
+  background: #008ffba6;
+}
   .profileeditbtn{
     background: linear-gradient(135deg, #A0D0F9, #67B7FB);
         border:none;
@@ -734,7 +738,7 @@ outline: none;
   /* Modal Content/Box */
   .modal-content,.modal-content2 {
     background-color: #FAFAFA;
-        margin: 15% auto;
+        margin: auto;
         width: 50%;
         border-radius: inherit;
         padding-top: 0.625em;
@@ -743,6 +747,9 @@ outline: none;
         padding-right: 1.5625em;
         border-radius: 0.9375em;
         box-shadow: 0em 0.25em 1.25em 0em #0000006b;
+        top: 50%;
+transform: translateY(-50%);
+position: relative;
   }
   .modal-content2{
     width: 30%;
@@ -1064,7 +1071,7 @@ margin-top: 10px;
 #settingselementsclick{
   display: inline-grid;
   margin-left: 58%;
-  z-index: 1;
+  z-index: 2;
 position: relative;
 }
 
@@ -1139,10 +1146,14 @@ width: 440px;
 .btn{
   text-align: center;
   margin-right: 0;
+  margin-right: 0;
+margin-bottom: 20px;
 }
 #save{
   margin-top: 10px;
   margin-right: 0;
+  padding: 6px 9px;
+margin-bottom: 10px;
 }
     }
     @media only screen and (max-width: 920px) {
@@ -1165,6 +1176,8 @@ width: 440px;
       .modal-content2 {
     width: 85%;
 }
+
+
       .msgclient{
         position: absolute;
     margin: auto;
@@ -1197,6 +1210,14 @@ width: 440px;
 @media only screen and (max-width: 500px){
   .modal-contentx{
     margin-top: calc(60px+10%);
+  }
+  #resetpasslab, #deleteprofilelab {
+
+        padding: 9px 43px;
+  }
+
+  .modal-content{
+    width: 83%;
   }
   #settingselements , #settingselementsclick{
     margin-left: 40%;

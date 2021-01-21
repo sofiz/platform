@@ -29,19 +29,19 @@ mysqli_close ( $db );
 
 <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
 	<form class="login-form" action="<?php $actual_link ?>" method="post">
-		<h2 class="form-title">New password</h2>
+		<h2 class="form-title">تغيير كلمة السر</h2>
 		<!-- form validation messages -->
 		<?php //include('messages.php'); ?>
 		<div class="form-group">
-			<label>New password</label>
-			<input type="password" name="new_pass">
+			<label>كلمة سر جديدة</label>
+			<input class="input3" type="password" name="new_pass">
 		</div>
 		<div class="form-group">
-			<label>Confirm new password</label>
-			<input type="password" name="new_pass_c">
+			<label>تأكيد كلمة السر</label>
+			<inputclass="input3" type="password" name="new_pass_c">
 		</div>
 		<div class="form-group">
-			<button type="submit" name="new_password" class="login-btn">Submit</button>
+			<button type="submit" name="new_password" class="login-btn">أرسل</button>
 		</div>
 	</form>
 
