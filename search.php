@@ -70,9 +70,9 @@ ini_set('error_log', './');
 // server should keep session data for AT LEAST 1 hour
 //***********************************************************************************
 // server should keep session data for AT LEAST 1 hour
-ini_set('session.gc_maxlifetime', 1,866,240,000);
+ini_set('session.gc_maxlifetime', 1866240000);
 // each client should remember their session id for EXACTLY 1 hour
-session_set_cookie_params(1,866,240,000);
+session_set_cookie_params(1866240000);
 session_id("session1");
 session_start();
 include('topbar.php');
