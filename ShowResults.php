@@ -118,7 +118,7 @@ if(!empty($row['Daira'])&&empty($row['Commune']))
 echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].'</span></p> ';
 if(!empty($row['Daira'])&&!empty($row['Commune']))
 echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].','.$row['Commune'].'</span> </p> ';
-echo'<p class="info"> ' .$row['Phone']  ."******". $count .  '</p> </div> </div>';
+echo'<p class="info"> ' .$row['Phone']  .'</p> </div> </div>';
 array_push($arr,$row['id']);
 				                 	  }
                                       }
