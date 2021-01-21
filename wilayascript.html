@@ -32,19 +32,12 @@ selectList.appendChild(option);
 }
 
 
-
-$(document).ready(function(){
-
-
 $("#mySelectwilaya").change(function(){
 wilayacode = $(this).children("option:selected").val();
 //********* set value of wilaya in input ********
 
 document.getElementById("Wilaya").value= arr.wilayas[wilayacode].name_ar;
 
-});   });
-
-
-
+});   
 
 </script>

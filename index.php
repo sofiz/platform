@@ -46,6 +46,8 @@ mysqli_close ($db);
 <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <link rel="stylesheet" href="index.css">
 <link rel="stylesheet" href="data.js">
 <script src="data.js"></script>
@@ -77,9 +79,7 @@ function showResult(str) {
   xmlhttp.send();
 }
 
-function sugtoinput(x) {
-  document.getElementById('searchinput').value=x;
-}
+
 </script>
 
   </head>
@@ -200,4 +200,17 @@ function sugtoinput(x) {
 
 </div>
   </body>
+  
+  <script>
+  function sugtoinput(value) {
+    document.getElementById('searchinput').value=value;
+    document.getElementById("livesearch").style.display="none";
+    document.getElementById('option1').innerHTML=value;
+    document.getElementById('option1').value=value;
+
+
+
+  }
+  
+  </script>
 </html>

@@ -114,7 +114,7 @@ mysqli_query($db, $q);
 <div id="square1">
 
 
-   <?php if ($c->Profile_Pic!="default.png")  echo '<img id="pic" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
+   <?php if ($c->Profile_Pic!="default.png")  echo '<img id="pic" onclick="slide(this.src)" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
 else  echo '<img id="pic" src="imgs/default.png" alt="" >'; ?>
 
 
