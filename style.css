@@ -5,7 +5,10 @@
 .login-page {
     width: 360px;
     margin: auto;
-    margin-top: 5%;
+  top: 50%;
+position: absolute;
+left: 50%;
+transform: translate(-50%, -50%);
 	backdrop-filter: blur(7px);
 }
 .form {
