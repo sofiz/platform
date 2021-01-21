@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body{
   background: #d0d0ea;
   font-family:  'jf flat';
@@ -12,10 +17,10 @@ body{
   height: 50px;
 }
 
-.footer{
-height: 50px;
-  background: #012d4e;
-  width: 100%;
+.footer {
+    height: 50px;
+    background: #012d4e;
+    width: 100%;
 }
 .logo{
   width: 95px;
@@ -43,10 +48,13 @@ height: 50px;
   margin-right: 5px;
 }
 
-.subtile{
-  padding: 10px;
+.subtile {
     color: white;
     text-decoration: none;
+    height: 50px;
+    display: block;
+    line-height: 50px;
+    padding: 0 10px;
 }
 
 
@@ -55,14 +63,20 @@ height: 50px;
   border-radius: 5px;
 }
 
-.tiles ,.tilesf{
+.tiles {
   display: inline-block;
       float: right;
       position: relative;
-      top: 50%;
-      margin-top: -14px;
       margin-right: 38px;
 }
+
+
+.tilesf{
+  display: inline-block;
+text-align: center;
+
+}
+
 .line1{
   font-size: 35px;
       font-weight: bolder;
@@ -195,15 +209,14 @@ background: white;
 @media only screen and (max-width:670px){
 
   .footer{
-height: 72px;}
+height: 100px;}
 .tilesf{
 
-    display: inline-block;
-    float: right;
-    position: relative;
-    margin-right: 38px;
-    top: 0;
-    margin-top: 0;
+
 
 }
+}
+@media only screen and (max-width:670px){
+  .footer{
+height: 150px;}
 }
