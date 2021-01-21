@@ -30,6 +30,9 @@ session_id("session1");
 session_start();
 include('../conn.php');
 
+$sSQL= 'SET CHARACTER SET utf8';
+mysqli_query($db,$sSQL)
+or die ('can\'t charset in DataBase');
 
 include('calsses and functions .php') ;
 $c = new  user();
