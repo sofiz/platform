@@ -107,7 +107,11 @@ mysqli_query($db, $q);
 include('topbar.php');
 	 ?>
 
-  <body >
+  <body ><?php
+ if($c->Ad =="yes") echo '<p class="msgclient">  هدا الحساب مضاف وليس شخصي </p>';
+ ?>
+  
+  
 <div id="container" >
 <div id="square1">
 

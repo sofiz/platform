@@ -109,7 +109,7 @@ echo'<a href="profile.php?id='.$row['id'].'" ><img src="imgs/'.$row['id'].'/'.$r
 else
 echo'<a href="profile.php?id='.$row['id'].'" > <img src="imgs/default.png" alt="" class="resimg" ></a> ';
 echo'<div class="infocontainer"> ';
-echo'<a href="profile.php?id='.$row['id'].'" class="name">  '. $row['First_Name']." ".$row['Last_Name'] . ' </a>  ';
+echo'<a href="profile.php?id='.$row['id'].'" class="name">  '. $row['First_Name']." ".$row['Last_Name'].'</a> ';
 
 echo'<p class="info"> ' .$row['Job'] .  '</p> ';
 if(empty($row['Daira'])&&empty($row['Commune']))
@@ -118,7 +118,7 @@ if(!empty($row['Daira'])&&empty($row['Commune']))
 echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].'</span></p> ';
 if(!empty($row['Daira'])&&!empty($row['Commune']))
 echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].','.$row['Commune'].'</span> </p> ';
-echo'<p class="info"> ' .$row['Phone'] .  '</p> </div> </div>';
+echo'<p class="info"> ' .$row['Phone']  ."******". $count .  '</p> </div> </div>';
 array_push($arr,$row['id']);
 				                 	  }
                                       }
@@ -146,9 +146,12 @@ array_push($arr,$row['id']);
  if(!in_array($firstChar, $ligature_map)){
  $Name  =  mb_convert_case(mb_strtolower($Name), MB_CASE_TITLE, "UTF-8");
   }
+  
+  //echo  "**".$Name."**" ; 
+  
 if(empty($Name) && empty($Job) &&  empty($Wilaya)){
 echo '<div class="resultcontainer"> ';
-echo ' <p id="noresult"> no result found! <br> Please ENter Wilaya ANd Job  <p>  </div> ';
+echo ' <p id="noresult"> لايوجد نتائج ! <br> رجاء ادخال المهنة و الولاية المعنية  <p>  </div> ';
 exit ; }
 
 //********************************************************** Empty Name ****************************************************************************************************************
@@ -166,7 +169,7 @@ Show_Result($db,$res1,$count,$arr,$page);
 
 if($count==0){
 echo '<div class="resultcontainer"> ';
-echo ' <p id="noresult">XXno result found!</p>  </div> ';
+echo ' <p id="noresult">لايوجد نتائج !</p>  </div> ';
 $count=-5;
 									  }
 
@@ -175,21 +178,19 @@ $count=-5;
 else if(!empty($Name)){
 	
 if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
-$sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%'|| Description LIKE '%$Name%') AND Job='$Job' AND Wilaya='$Wilaya' ";
+$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')|| m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%') AND Job='$Job' AND Wilaya='$Wilaya' ";
 //************************************* Name andd ddaira exxist .... and commune not exxist
 else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
-$sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%'|| Description LIKE '%$Name%' )AND Job='$Job'  ";
+$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')|| m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%')AND Job='$Job'  ";
 else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
-$sql2="SELECT * FROM users WHERE  (Username LIKE '%$Name%' || First_Name LIKE '%$Name%' || Last_Name LIKE '%$Name%' || Job LIKE '%$Name%' || Wilaya LIKE '%$Name%' || Daira LIKE '%$Name%' || Commune LIKE '%$Name%' || Description LIKE '%$Name%')AND Wilaya='$Wilaya'  ";
+$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')|| m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%')AND Wilaya='$Wilaya'  ";
 //********************************* name exxist .... dadira and commune not exissts
 else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-$sql2="SELECT * FROM users WHERE  ((Username LIKE '%$Name%') || (First_Name LIKE '%$Name%') || (Last_Name LIKE '%$Name%') || (Job LIKE '%$Name%') || (Wilaya LIKE '%$Name%') || (Daira LIKE '%$Name%') || (Commune LIKE '%$Name%')|| (Description LIKE '%$Name%') )";
-
-$sql2= $sql2." and  Type = 'worker' ";
-
+$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')|| m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%') ";
+$sql2= $sql2."AND  Type='worker'";
 $res2=mysqli_query($db,$sql2);
-Show_Result($db,$res2,$count,$arr,$page);
 
+Show_Result($db,$res2,$count,$arr,$page);
 
 //**************************************** explode name **********************************************************
 
@@ -220,7 +221,6 @@ Show_Result($db,$res3,$count,$arr,$page);
 if (strlen($Name)>2){
 
 $firstChar = mb_substr($Name, 0, 1, "UTF-8");
-
 if(in_array($firstChar, $ligature_map)){
 $en_word_2 = $obj->ar2en($Name);
 $soundex= metaphone($en_word_2);
@@ -231,17 +231,38 @@ $firstChar = mb_substr($soundex, 0, 1, "UTF-8");
 if(in_array($firstChar, $carc))
 $soundex = substr($soundex, 1);
 
+//-------- inv name ------------
+$words=explode(" ",$Name);
+$soundex2 =" " ; 
+for($i=$words[count($words)-1] ;$i<0;$i--){
+	
+$firstChar = mb_substr($words[$i], 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($words[$i]);
+$soundex2 .= " ".metaphone($en_word_2);
+}
+else $soundex2 .= " ".metaphone($words[$i]);
+
+}
+$firstChar = mb_substr($soundex2, 0, 1, "UTF-8");
+if(in_array($firstChar, $carc))
+$soundex2 = substr($soundex2, 1);
+
+
+
+
+
 //*********************** NAME EXIST // name andd daira andd ccommune exissts ************************************
 if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
-$sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job' AND Wilaya='$Wilaya' ";
+$sql5="SELECT * FROM users WHERE  (indexing LIKE '%$soundex%' ||indexing LIKE '%$soundex2%') AND Job='$Job' AND Wilaya='$Wilaya' ";
 //************************************* Name andd ddaira exxist .... and commune not exxist
 else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
-$sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Job='$Job'  ";
+$sql5="SELECT * FROM users WHERE  (indexing LIKE '%$soundex%'||indexing LIKE '%$soundex2%') AND Job='$Job'  ";
 else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
-$sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Wilaya='$Wilaya'  ";
+$sql5="SELECT * FROM users WHERE  (indexing LIKE '%$soundex%'||indexing LIKE '%$soundex2%') AND Wilaya='$Wilaya'  ";
 //********************************* name exxist .... dadira and commune not exissts
 else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-$sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
+$sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%'||indexing LIKE '%$soundex2%' ";
 
 $sql5= $sql5." AND Type = 'worker' ";
 $res5=mysqli_query($db,$sql5);
@@ -321,7 +342,7 @@ catch (mysqli_sql_exception $e) {
 
 if($count==0){
 echo '<div class="resultcontainer"> ';
-echo ' <p id="noresult">no result found!</p>  </div> ';
+echo ' <p id="noresult">لايوجد نتائج !!</p>  </div> ';
 $count =-5;
 									  }
 
