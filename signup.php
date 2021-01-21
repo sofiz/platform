@@ -1,16 +1,3 @@
-
-<?php
-ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-session_id("session1");
-session_start();
-include('server.php') ;
-include('topbar.php'); 
-
-//ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-?>
-
 <html>
 <head>
 <title>Rondili -  إنشاء حساب</title>
@@ -36,6 +23,20 @@ include('topbar.php');
 
 <!-- //web font -->
 </head>
+
+
+<?php
+ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+session_id("session1");
+session_start();
+include('server.php') ;
+include('topbar.php');
+
+//ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+?>
+
 <body>
 	<!-- main -->
 	<div class="main-w3layouts wrapper" >

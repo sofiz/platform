@@ -1,32 +1,3 @@
-<?php
-
-session_id("session1");
-session_start();
-include('../conn.php');
- 
-
-include('calsses and functions .php') ;
-$c = new  user();
-if (!($c->Check_Session_Isset())) {
-header('location: signin.php');
-              }
-			  
-include('topbar.php');
-
-$c->id = $c->Get_Id_From_Session($db);
-///**********************************Get information of profile **********************
-$c->Select_Information_Of_Profile($db);
-//--------------select photos -----------------------
-$c->Select_Photos_Of_Profile ($db);
-
-
-if (isset($_SESSION['Username'])) {
-$Username=$_SESSION['Username'];
-$q ="UPDATE statistics set ProfileEdit=ProfileEdit+1 WHERE Username='$Username' ";
-mysqli_query($db, $q);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -34,7 +5,7 @@ mysqli_query($db, $q);
      <title> Rondili -  تعديل الحساب</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
     <meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي">
     <meta name="description" content="
 تبحث عن خدمة أو عامل في منطقتك ؟
@@ -52,6 +23,36 @@ mysqli_query($db, $q);
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 
 </head>
+
+<?php
+
+session_id("session1");
+session_start();
+include('../conn.php');
+
+
+include('calsses and functions .php') ;
+$c = new  user();
+if (!($c->Check_Session_Isset())) {
+header('location: signin.php');
+              }
+
+include('topbar.php');
+
+$c->id = $c->Get_Id_From_Session($db);
+///**********************************Get information of profile **********************
+$c->Select_Information_Of_Profile($db);
+//--------------select photos -----------------------
+$c->Select_Photos_Of_Profile ($db);
+
+
+if (isset($_SESSION['Username'])) {
+$Username=$_SESSION['Username'];
+$q ="UPDATE statistics set ProfileEdit=ProfileEdit+1 WHERE Username='$Username' ";
+mysqli_query($db, $q);
+}
+?>
+
 
 <body>
 <?php
@@ -163,8 +164,8 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 ?>
 
  <?php echo '<input type="date" id="birthday" name="Birthday" value="'.$c->Birthday.'">'; ?>
- 
- 
+
+
   </div>
 
   </div>

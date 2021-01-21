@@ -1,10 +1,3 @@
-﻿<?php
-session_id("session1");
-session_start();
-include('server.php') ;
-include('topbar.php');
-
-?>
 <html>
 <head>
 <title>Rondili -  تسجيل الدخول </title>
@@ -22,6 +15,14 @@ include('topbar.php');
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
  </head>
+
+<?php
+session_id("session1");
+session_start();
+include('server.php') ;
+include('topbar.php');
+
+?>
 
  <body>
  <div class="login-page">

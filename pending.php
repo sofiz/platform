@@ -1,9 +1,3 @@
-<?php 
-session_id("session1");
-session_start();
-if(!isset($_GET['email']))  header('location: search.php');
-include('topbar.php'); 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +5,13 @@ include('topbar.php');
 	<title>Password Reset PHP</title>
 	<link rel="stylesheet" href="resetpass.css">
 </head>
+
+<?php
+session_id("session1");
+session_start();
+if(!isset($_GET['email']))  header('location: search.php');
+include('topbar.php');
+?>
 <body>
 	<form class="login-form" action="login.php" method="post" style="text-align: center;">
 		<p class="msg">

@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Rondili - <?php echo $c->First_Name .' '. $c->Last_Name ; ?></title>
+    <meta name="keywords" content="rondili, service,<?php echo $c->First_Name .' '. $c->Last_Name ; ?>, job, خدمة ,الجزائر ,عامل , رونديلي">
+    <meta name="description" content="
+تبحث عن خدمة أو عامل في منطقتك ؟
+لديك عمل أو خدمة و تبحث عن الزبائن؟
+رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
+    <meta name="author" content="rondili">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="profile.css">
+		<link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+		    <script src="index.js"></script>
+				<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  </head>
+
 <?php
 session_start();
 include('../conn.php');
@@ -36,7 +59,7 @@ mysqli_query($db, $q);
 }
 }
 else {
-	
+
 $res=mysqli_query($db,"SELECT * FROM profile_visitors where Profile_id='$c->id' AND Visitor_id='0'");
 if(mysqli_num_rows($res)==1)
 {
@@ -54,28 +77,6 @@ mysqli_query($db, $q);
 }
 
 ?>
-<!DOCTYPE html>
-
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Rondili - <?php echo $c->First_Name .' '. $c->Last_Name ; ?></title>
-    <meta name="keywords" content="rondili, service,<?php echo $c->First_Name .' '. $c->Last_Name ; ?>, job, خدمة ,الجزائر ,عامل , رونديلي">
-    <meta name="description" content="
-تبحث عن خدمة أو عامل في منطقتك ؟
-لديك عمل أو خدمة و تبحث عن الزبائن؟
-رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
-    <meta name="author" content="rondili">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="profile.css">
-		<link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
-		    <script src="index.js"></script>
-				<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  </head>
 	<style >
 
 	.star-rating {

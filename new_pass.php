@@ -1,4 +1,12 @@
-<?php 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>تغيير كلمة السر</title>
+	<link rel="stylesheet" href="resetpass.css">
+</head>
+
+<?php
 
 include('../conn.php') ;
 include('app_logic.php');
@@ -15,13 +23,6 @@ if (isset($_SESSION['Username'])) {
 }
 mysqli_close ( $db );
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Password Reset PHP</title>
-	<link rel="stylesheet" href="resetpass.css">
-</head>
 <body>
 
 <?php $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>

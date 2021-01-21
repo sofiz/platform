@@ -1,3 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="favicon.ico">
+    <meta charset="utf-8">
+    <title>Rondili - حسابي</title>
+    <meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي">
+    <meta name="description" content="
+تبحث عن خدمة أو عامل في منطقتك ؟
+لديك عمل أو خدمة و تبحث عن الزبائن؟
+رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
+    <meta name="author" content="rondili">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="profile.css">
+    <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="profile.js"></script>
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+
+  </head>
+
+
 <?php
 session_id("session1");
 session_start();
@@ -31,31 +58,6 @@ mysqli_query($db, $q);
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <link rel="favicon.ico">
-    <meta charset="utf-8">
-    <title>Rondili - حسابي</title>
-    <meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي">
-    <meta name="description" content="
-تبحث عن خدمة أو عامل في منطقتك ؟
-لديك عمل أو خدمة و تبحث عن الزبائن؟
-رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
-    <meta name="author" content="rondili">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
-    <link rel="stylesheet" href="profile.css">
-    <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="profile.js"></script>
-
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-
-
-
-  </head>
 
   <body>
 

@@ -1,6 +1,14 @@
-<?php 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rondili - تغيير كلمة السر</title>
+	<link rel="stylesheet" href="resetpass.css">
+</head>
+
+<?php
 include('../conn.php') ;
-include('app_logic.php'); 
+include('app_logic.php');
 session_id("session1");
 session_start();
 include('topbar.php');
@@ -11,13 +19,6 @@ if (isset($_SESSION['Username'])) {
 }
 mysqli_close ( $db );
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Rondili - تغيير كلمة السر</title>
-	<link rel="stylesheet" href="resetpass.css">
-</head>
 <body>
 	<form class="login-form" action="enter_email.php" method="post">
 
