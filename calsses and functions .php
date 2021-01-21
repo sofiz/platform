@@ -2,7 +2,6 @@
 <?php 
 
 class user {
-
       public $Mrating =0;
       public $Photo_id = array();
       public $Photo = array();

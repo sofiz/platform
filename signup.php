@@ -22,7 +22,7 @@
 <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 <!-- //web font -->
-</head>
+</head> 
 
 
 <?php

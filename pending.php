@@ -9,7 +9,7 @@
 </head>
 
 <?php
-session_id("session1");
+
 session_start();
 if(!isset($_GET['email']))  header('location: search.php');
 include('topbar.php');

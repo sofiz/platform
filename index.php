@@ -1,6 +1,10 @@
 <?php
 include('../conn.php');
 
+$sSQL= 'SET CHARACTER SET utf8';
+mysqli_query($db,$sSQL)
+or die ('can\'t charset in DataBase');
+
 //ini_set('session.gc_maxlifetime', 1866240000);
 // each client should remember their session id for EXACTLY 1 hour
 //session_set_cookie_params(1866240000);

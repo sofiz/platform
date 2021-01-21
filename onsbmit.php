@@ -1,5 +1,10 @@
 <?php
 include('../conn.php');
+
+$sSQL= 'SET CHARACTER SET utf8';
+mysqli_query($db,$sSQL)
+or die ('can\'t charset in DataBase');
+
 //---------------------------for update indexing ---------------------------------------------
 function unichr($u) 
 {

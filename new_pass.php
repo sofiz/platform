@@ -9,8 +9,10 @@
 <?php
 
 include('../conn.php') ;
+$sSQL= 'SET CHARACTER SET utf8';
+mysqli_query($db,$sSQL)
+or die ('can\'t charset in DataBase');
 include('app_logic.php');
-session_id("session1");
 session_start();
 
 if(!isset($_GET['token']))  header('location: search.php');
