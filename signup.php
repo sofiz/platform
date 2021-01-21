@@ -29,7 +29,10 @@
 ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-session_id("session1");
+// server should keep session data for AT LEAST 1 hour
+ini_set('session.gc_maxlifetime', 1866240000);
+// each client should remember their session id for EXACTLY 1 hour
+session_set_cookie_params(1866240000);
 session_start();
 include('server.php') ;
 include('topbar.php');

@@ -2,6 +2,8 @@
 
 
 <?php
+
+
 session_start();
 include('../conn.php');
 
@@ -103,9 +105,7 @@ mysqli_query($db, $q);
 	}
 
 	</style>
-	<?php
-include('topbar.php');
-	 ?>
+	<?php  include('topbar.php');?>
 
   <body ><?php
  if($c->Ad =="yes") echo '<p class="msgclient">  هدا الحساب مضاف وليس شخصي </p>';

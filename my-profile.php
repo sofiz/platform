@@ -28,7 +28,7 @@
 
 
 <?php
-session_id("session1");
+
 session_start();
 include('../conn.php');
 

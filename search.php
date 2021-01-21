@@ -73,7 +73,7 @@ ini_set('error_log', './');
 ini_set('session.gc_maxlifetime', 1866240000);
 // each client should remember their session id for EXACTLY 1 hour
 session_set_cookie_params(1866240000);
-session_id("session1");
+
 session_start();
 include('topbar.php');
 if (isset($_SESSION['Username'])) {
