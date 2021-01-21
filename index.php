@@ -15,6 +15,9 @@
 <link rel="stylesheet" href="index.css">
 <link rel="stylesheet" href="data.js">
 <script src="data.js"></script>
+<link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
 <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <meta name="author" content="rondili">
