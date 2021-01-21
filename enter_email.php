@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Rondili - تغيير كلمة السر</title>
 	<link rel="stylesheet" href="resetpass.css">
+	<script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 </head>
 
 <?php
