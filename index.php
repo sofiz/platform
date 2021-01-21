@@ -91,7 +91,7 @@ function showResult(str) {
 
 
   <div class="search tile">
-    <a class="subtile" href="search.php">بحث</a>
+    <a class="subtile" href="search.php">تصفح</a>
   </div>
   <div class="about tile">
     <a class="subtile" href="#">مساعدة</a>
