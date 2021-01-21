@@ -666,6 +666,7 @@ background: #2d2d96;;
 @media(max-width:900px) {
   .main-agileinfo {
     width: 58%;
+    margin-top: 100px;
   }
 
   input[type="text"], input[type="email"], input[type="password"] {
