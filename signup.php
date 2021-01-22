@@ -3,9 +3,7 @@
 include('server.php') ;
 $sql0="UPDATE visitors SET Signupvisit=Signupvisit+1 where id='1'";
 $res0=mysqli_query($db,$sql0);
-if(!$res0){
-echo "error".mysqli_error($db);
-               }
+
 
 
 
