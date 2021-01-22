@@ -1,12 +1,11 @@
 <?php
 
 include('server.php') ;
+
 $sql0="UPDATE visitors SET Signupvisit=Signupvisit+1 where id='1'";
 $res0=mysqli_query($db,$sql0);
 
-
-
-
+mysqli_close ($db);
 
  ?>
 
@@ -43,10 +42,10 @@ ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); m
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 // server should keep session data for AT LEAST 1 hour
-ini_set('session.gc_maxlifetime', 1866240000);
+//ini_set('session.gc_maxlifetime', 1866240000);
 // each client should remember their session id for EXACTLY 1 hour
-session_set_cookie_params(1866240000);
-session_start();
+//session_set_cookie_params(1866240000);
+//session_start();
 
 include('topbar.php');
 

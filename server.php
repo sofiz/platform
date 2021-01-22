@@ -1,9 +1,14 @@
 <?php
 include('../conn.php') ;
+session_start();
 
 $sSQL= 'SET CHARACTER SET utf8';
 mysqli_query($db,$sSQL)
 or die ('can\'t charset in DataBase');
+
+
+
+
 
 ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 ini_set('display_errors', 1);
@@ -87,74 +92,11 @@ $ligature_map = array(
  
 
 
-function inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj){
-$soundex=" " ;
- //-------------------------------
-if($First_Name!=null){
-$words=explode(" ",$First_Name);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
-//-------------------------------
-if($Last_Name!=null){
-$words=explode(" ",$Last_Name);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
-//-------------------------------
-//---------------------------------------------
-if($Job!=null){
-$words=explode(" ",$Job);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
-//----------------------------------------------
-if($Wilaya!=null){
-$words=explode(" ",$Wilaya);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
-//-------------------------------
-if($Username!=null){
-$words=explode(" ",$Username);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
-//-------------------------------
+//function inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj){
 
 	 
 
-}	
+//}	
 
 
 
@@ -245,13 +187,76 @@ if (isset($_POST['SIGNUP'])) {
 	 mysqli_query($db, $q);
 	   
      //----------------------------------------------------- update indexing-------------------------------------------------------- ---------------
-      inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj); 
-	  
-	  
-	  
-	  
+//inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj); 
+
+$soundex=" " ;
+ //-------------------------------
+if($First_Name!=null){
+$words=explode(" ",$First_Name);
+foreach ($words as $word) {
+$firstChar = mb_substr($word, 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($word);
+$soundex .=" ".metaphone($en_word_2);
+                                       }									  
+else $soundex.=" ". metaphone($word);
+		                           }
+	                    }
+//-------------------------------
+if($Last_Name!=null){
+$words=explode(" ",$Last_Name);
+foreach ($words as $word) {
+$firstChar = mb_substr($word, 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($word);
+$soundex .=" ".metaphone($en_word_2);
+                                       }									  
+else $soundex.=" ". metaphone($word);
+		                           }
+	                    }
+//-------------------------------
+//---------------------------------------------
+if($Job!=null){
+$words=explode(" ",$Job);
+foreach ($words as $word) {
+$firstChar = mb_substr($word, 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($word);
+$soundex .=" ".metaphone($en_word_2);
+                                       }									  
+else $soundex.=" ". metaphone($word);
+		                           }
+	                    }
+//----------------------------------------------
+if($Wilaya!=null){
+$words=explode(" ",$Wilaya);
+foreach ($words as $word) {
+$firstChar = mb_substr($word, 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($word);
+$soundex .=" ".metaphone($en_word_2);
+                                       }									  
+else $soundex.=" ". metaphone($word);
+		                           }
+	                    }
+//-------------------------------
+if($Username!=null){
+$words=explode(" ",$Username);
+foreach ($words as $word) {
+$firstChar = mb_substr($word, 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($word);
+$soundex .=" ".metaphone($en_word_2);
+                                       }									  
+else $soundex.=" ". metaphone($word);
+		                           }
+	                    }
+//-------------------------------
+
+	  //echo "error".$soundex."error" ;
 $sql0="UPDATE users SET indexing='$soundex' where Username='$Username'";
 $res0=mysqli_query($db,$sql0);
+
 if(!$res0){
 echo "error".mysqli_error($db);
                }
@@ -270,7 +275,7 @@ if(!$res0){
 echo "error".mysqli_error($db);
                }
 //******************************************************************************************************************************************	 
-	 header('location: search.php');
+	 //header('location: search.php');
     
 	}
   }
@@ -303,7 +308,70 @@ if($Type=="submitted"){
   	mysqli_query($db, $query);
 	
 	
-	inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj); 
+$soundex=" " ;
+ //-------------------------------
+if($First_Name!=null){
+$words=explode(" ",$First_Name);
+foreach ($words as $word) {
+$firstChar = mb_substr($word, 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($word);
+$soundex .=" ".metaphone($en_word_2);
+                                       }									  
+else $soundex.=" ". metaphone($word);
+		                           }
+	                    }
+//-------------------------------
+if($Last_Name!=null){
+$words=explode(" ",$Last_Name);
+foreach ($words as $word) {
+$firstChar = mb_substr($word, 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($word);
+$soundex .=" ".metaphone($en_word_2);
+                                       }									  
+else $soundex.=" ". metaphone($word);
+		                           }
+	                    }
+//-------------------------------
+//---------------------------------------------
+if($Job!=null){
+$words=explode(" ",$Job);
+foreach ($words as $word) {
+$firstChar = mb_substr($word, 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($word);
+$soundex .=" ".metaphone($en_word_2);
+                                       }									  
+else $soundex.=" ". metaphone($word);
+		                           }
+	                    }
+//----------------------------------------------
+if($Wilaya!=null){
+$words=explode(" ",$Wilaya);
+foreach ($words as $word) {
+$firstChar = mb_substr($word, 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($word);
+$soundex .=" ".metaphone($en_word_2);
+                                       }									  
+else $soundex.=" ". metaphone($word);
+		                           }
+	                    }
+//-------------------------------
+if($Username!=null){
+$words=explode(" ",$Username);
+foreach ($words as $word) {
+$firstChar = mb_substr($word, 0, 1, "UTF-8");
+if(in_array($firstChar, $ligature_map)){
+$en_word_2 = $obj->ar2en($word);
+$soundex .=" ".metaphone($en_word_2);
+                                       }									  
+else $soundex.=" ". metaphone($word);
+		                           }
+	                    }
+//-------------------------------
+	//inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj); 
 	
 	header('location: search.php');
 	
@@ -363,5 +431,5 @@ if (isset($_POST['login'])) {
   }
   
 }
-mysqli_close ($db);
+
 ?>

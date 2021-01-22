@@ -1,16 +1,18 @@
+
 <?php
+
 include('server.php') ;
 
 $sql0="UPDATE visitors SET Signinvisit=Signinvisit+1 where id='1'";
 $res0=mysqli_query($db,$sql0);
 
-
-
+mysqli_close ($db);
 
 
 
 
  ?>
+
 
 
 <html>
