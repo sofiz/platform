@@ -8,7 +8,6 @@ echo "error".mysqli_error($db);
                }
 
 
-mysqli_close ($db);
 
 
  ?>
