@@ -1,5 +1,32 @@
 <?php
-include('../conn.php');
+include('../conn.php') ;
+if (!isset($_COOKIE['page_visited_already'])){
+
+$rest=mysqli_query($db,"SELECT Allvisitors FROM visitors WHERE id='1' ");
+while($row=mysqli_fetch_array($rest)){
+$AllVisitors=$row['Allvisitors'] ;
+//$Users=$row['Users'] ;
+//$Unkown=$row['Unkown'] ;
+}
+
+
+$AllVisitors++;
+//$Unkown=$AllVisitors-$Users;
+
+
+$sql0="UPDATE visitors SET Allvisitors='$AllVisitors' where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+          }
+
+
+setcookie("page_visited_already", "1", time() + (18662000000), "/");
+
+}
+
+
+
 
 $sSQL= 'SET CHARACTER SET utf8';
 mysqli_query($db,$sSQL)
@@ -10,8 +37,8 @@ $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);
                }
-			   
-			   
+
+
 mysqli_close ($db);
 
  ?>
@@ -186,7 +213,8 @@ function showResult(str) {
 
   <script>
   function sugtoinput(value) {
-    document.getElementById('searchinput').value=value;
+    document.getElementById('searchinput').placeholder=value;
+    document.getElementById('searchinput').value="";
     document.getElementById("livesearch").style.display="none";
     document.getElementById('option1').innerHTML=value;
     document.getElementById('option1').value=value;
