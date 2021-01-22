@@ -405,15 +405,16 @@ if (isset($_POST['delete'])){
 	$dPh=mysqli_query($db,"DELETE  from  photos WHERE User_id='$id'");
 	
 //***********************************delet from visitors**********************
-$rest=mysqli_query($db,"SELECT AllVisitors,Users,Unkown FROM visitors WHERE id='1' ");
+$rest=mysqli_query($db,"SELECT Users FROM visitors WHERE id='1' ");
 while($row=mysqli_fetch_array($rest)){
-$AllVisitors=$row['AllVisitors'] ;
+//$AllVisitors=$row['AllVisitors'] ;
 $Users=$row['Users'] ;
-$Unkown=$row['Unkown'] ;
+//$Unkown=$row['Unkown'] ;
 }
 $Users--;
-$Unkown=$AllVisitors-$Users;
-$sql0="UPDATE visitors SET Users='$Users',AllVisitors='$AllVisitors',Unkown='$Unkown' where id='1'";
+//$Unkown=$AllVisitors-$Users;
+$sql0="UPDATE visitors SET Users='$Users' where id='1'";
+
 $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);
