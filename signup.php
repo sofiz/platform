@@ -1,3 +1,19 @@
+<?php
+
+include('server.php') ;
+$sql0="UPDATE visitors SET Signupvisit=Signupvisit+1 where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+               }
+
+
+mysqli_close ($db);
+
+
+ ?>
+
+
 <html>
 <head>
 <title>Rondili -  إنشاء حساب</title>
@@ -22,7 +38,7 @@
 <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 <!-- //web font -->
-</head> 
+</head>
 
 
 <?php
@@ -34,7 +50,7 @@ ini_set('session.gc_maxlifetime', 1866240000);
 // each client should remember their session id for EXACTLY 1 hour
 session_set_cookie_params(1866240000);
 session_start();
-include('server.php') ;
+
 include('topbar.php');
 
 //ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);

@@ -19,12 +19,20 @@ $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);
           }
-          
-    
+
+
 setcookie("page_visited_already", "1", time() + (18662000000), "/");
 
 }
 
+$sql0="UPDATE visitors SET Searchvisit=Searchvisit+1 where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+               }
+
+
+mysqli_close ($db);
 
 ?>
 <!DOCTYPE html>

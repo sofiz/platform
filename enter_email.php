@@ -1,3 +1,17 @@
+
+<?php
+include('../conn.php') ;
+$sql0="UPDATE visitors SET enter_emailvisit=enter_emailvisit+1 where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+               }
+
+
+mysqli_close ($db);
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +23,7 @@
 </head>
 
 <?php
-include('../conn.php') ;
+
 $sSQL= 'SET CHARACTER SET utf8';
 mysqli_query($db,$sSQL)
 or die ('can\'t charset in DataBase');

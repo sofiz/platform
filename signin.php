@@ -1,3 +1,20 @@
+<?php
+include('server.php') ;
+
+$sql0="UPDATE visitors SET Signinvisit=Signinvisit+1 where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+               }
+
+
+mysqli_close ($db);
+
+
+
+ ?>
+
+
 <html>
 <head>
 <title>Rondili -  تسجيل الدخول </title>
@@ -22,7 +39,7 @@ ini_set('session.gc_maxlifetime', 1866240000);
 // each client should remember their session id for EXACTLY 1 hour
 session_set_cookie_params(1866240000);
 session_start();
-include('server.php') ;
+
 include('topbar.php');
 
 ?>
