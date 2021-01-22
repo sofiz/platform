@@ -1,3 +1,32 @@
+<?php
+include('../conn.php') ;
+if (!isset($_COOKIE['page_visited_already'])){
+
+$rest=mysqli_query($db,"SELECT Allvisitors FROM visitors WHERE id='1' ");
+while($row=mysqli_fetch_array($rest)){
+$AllVisitors=$row['Allvisitors'] ;
+//$Users=$row['Users'] ;
+//$Unkown=$row['Unkown'] ;
+}
+
+
+$AllVisitors++;
+//$Unkown=$AllVisitors-$Users;
+
+
+$sql0="UPDATE visitors SET Allvisitors='$AllVisitors' where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+          }
+          
+    
+setcookie("page_visited_already", "1", time() + (18662000000), "/");
+
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -54,7 +83,7 @@ document.getElementById('searchinput').value=x;
 <?php
 ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-include('../conn.php') ;
+
 
 $sSQL= 'SET CHARACTER SET utf8';
 mysqli_query($db,$sSQL)
@@ -66,35 +95,15 @@ ini_set('log_errors', '0');
 ini_set('error_log', './');
 
 
-ini_set('session.gc_maxlifetime', 1866240000);
-session_set_cookie_params(1866240000);
+//ini_set('session.gc_maxlifetime', 1866240000);
+//session_set_cookie_params(1866240000);
 
 session_start();
 include('topbar.php');
 
 //*************************************************************************************************
 
-if (!isset($_SESSION['page_visited_already'])){
 
-$rest=mysqli_query($db,"SELECT Allvisitors FROM visitors WHERE id='1' ");
-while($row=mysqli_fetch_array($rest)){
-$AllVisitors=$row['Allvisitors'] ;
-//$Users=$row['Users'] ;
-//$Unkown=$row['Unkown'] ;
-}
-
-
-$AllVisitors++;
-//$Unkown=$AllVisitors-$Users;
-
-
-$sql0="UPDATE visitors SET Allvisitors='$AllVisitors' where id='1'";
-$res0=mysqli_query($db,$sql0);
-if(!$res0){
-echo "error".mysqli_error($db);
-          }
-		$_SESSION['page_visited_already'] = 1;
-}
 
 //**************************************************************************************************************
 
