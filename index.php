@@ -5,30 +5,13 @@ $sSQL= 'SET CHARACTER SET utf8';
 mysqli_query($db,$sSQL)
 or die ('can\'t charset in DataBase');
 
-//ini_set('session.gc_maxlifetime', 1866240000);
-// each client should remember their session id for EXACTLY 1 hour
-//session_set_cookie_params(1866240000);
-session_start();
-
-if (!isset($_SESSION['page_visited_already'])){
-
-$rest=mysqli_query($db,"SELECT Allvisitors,Users,Unkown FROM visitors WHERE id='1' ");
-while($row=mysqli_fetch_array($rest)){
-$AllVisitors=$row['Allvisitors'] ;
-$Users=$row['Users'] ;
-$Unkown=$row['Unkown'] ;
-}
-
-$AllVisitors++;
-$Unkown=$AllVisitors-$Users;
-$sql0="UPDATE visitors SET Users='$Users',Allvisitors='$AllVisitors',Unkown='$Unkown',Indexvisit=Indexvisit+1 where id='1'";
+$sql0="UPDATE visitors SET Indexvisit=Indexvisit+1 where id='1'";
 $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);
                }
-		$_SESSION['page_visited_already'] = 1;
-}
-session_write_close();
+			   
+			   
 mysqli_close ($db);
 
  ?>

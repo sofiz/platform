@@ -66,16 +66,38 @@ ini_set('log_errors', '0');
 ini_set('error_log', './');
 
 
-//***********************************************************************************
-// server should keep session data for AT LEAST 1 hour
-//***********************************************************************************
-// server should keep session data for AT LEAST 1 hour
 ini_set('session.gc_maxlifetime', 1866240000);
-// each client should remember their session id for EXACTLY 1 hour
 session_set_cookie_params(1866240000);
 
 session_start();
 include('topbar.php');
+
+//*************************************************************************************************
+
+if (!isset($_SESSION['page_visited_already'])){
+
+$rest=mysqli_query($db,"SELECT Allvisitors FROM visitors WHERE id='1' ");
+while($row=mysqli_fetch_array($rest)){
+$AllVisitors=$row['Allvisitors'] ;
+//$Users=$row['Users'] ;
+//$Unkown=$row['Unkown'] ;
+}
+
+
+$AllVisitors++;
+//$Unkown=$AllVisitors-$Users;
+
+
+$sql0="UPDATE visitors SET Allvisitors='$AllVisitors' where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+          }
+		$_SESSION['page_visited_already'] = 1;
+}
+
+//**************************************************************************************************************
+
 if (isset($_SESSION['Username'])) {
 	  $Username=$_SESSION['Username'];
 	  $q ="UPDATE statistics set Search=Search+1 WHERE Username='$Username' ";

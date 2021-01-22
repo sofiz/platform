@@ -31,26 +31,26 @@ if (isset($_SESSION['Username'])) {
 $Visitor_id = $c->Get_Id_From_Session($db);
 
 $res1=mysqli_query($db,"SELECT * FROM profile_visitors where Profile_id='$c->id' AND Visitor_id='$Visitor_id'");
-if(mysqli_num_rows($res1)==1)
-{
+if(mysqli_num_rows($res1)==1){
 $q = "UPDATE profile_visitors SET  Num=Num+1 WHERE Profile_id='$c->id' AND Visitor_id='$Visitor_id'" ;
 mysqli_query($db, $q);
 }
 else {
-$q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id,Num) VALUES('$c->id','$Visitor_id','0')";
+$q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id,Num) VALUES('$c->id','$Visitor_id','1')";
 mysqli_query($db, $q);
 }
 }
+
 else {
 
 $res=mysqli_query($db,"SELECT * FROM profile_visitors where Profile_id='$c->id' AND Visitor_id='0'");
 if(mysqli_num_rows($res)==1)
 {
-$q = "UPDATE users SET  Num=Num+1 WHERE Profile_id='$c->id' AND Visitor_id='0'" ;
+$q = "UPDATE profile_visitors SET  Num=Num+1 WHERE Profile_id='$c->id' AND Visitor_id='0'" ;
 mysqli_query($db, $q);
 }
 else {
-$q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id) VALUES('$c->id','0')";
+$q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id) VALUES('$c->id','1')";
 mysqli_query($db, $q);
 }
 
