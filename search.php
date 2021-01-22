@@ -193,7 +193,7 @@ $obj = new \ArPHP\I18N\Arabic();
     </div>
 
     <?php include 'wilayascript.html'; ?>
-
+<!--
     <div id="myBtnContainer">
   <button class="bt active" onclick="filterSelection('all')"> Show all</button>
   <button class="bt" onclick="filterSelection('cars')"> Cars</button>
@@ -276,6 +276,7 @@ for (var i = 0; i < btns.length; i++) {
 
 
 	</script>
+-->
 	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
     </div>
     <input type="submit" name="recherche"  value= "بحث" class="searchbtn">
