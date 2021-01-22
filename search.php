@@ -1,5 +1,10 @@
 <?php
 include('../conn.php') ;
+
+$sSQL= 'SET CHARACTER SET utf8';
+mysqli_query($db,$sSQL)
+or die ('can\'t charset in DataBase');
+
 if (!isset($_COOKIE['page_visited_already'])){
 
 $rest=mysqli_query($db,"SELECT Allvisitors FROM visitors WHERE id='1' ");
@@ -93,9 +98,6 @@ ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); m
 
 
 
-$sSQL= 'SET CHARACTER SET utf8';
-mysqli_query($db,$sSQL)
-or die ('can\'t charset in DataBase');
 
 error_reporting(E_ALL & E_STRICT);
 ini_set('display_errors', '1');
