@@ -36,7 +36,7 @@ $q = "UPDATE profile_visitors SET  Num=Num+1 WHERE Profile_id='$c->id' AND Visit
 mysqli_query($db, $q);
 }
 else {
-$q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id,Num) VALUES('$c->id','$Visitor_id','1')";
+$q = "INSERT INTO profile_Visitors (Profile_id,Visitor_id,Num) VALUES('$c->id','$Visitor_id','1')";
 mysqli_query($db, $q);
 }
 }
@@ -50,7 +50,7 @@ $q = "UPDATE profile_visitors SET  Num=Num+1 WHERE Profile_id='$c->id' AND Visit
 mysqli_query($db, $q);
 }
 else {
-$q = "INSERT INTO Profile_Visitors (Profile_id,Visitor_id) VALUES('$c->id','1')";
+$q = "INSERT INTO profile_Visitors (Profile_id,Visitor_id,Num) VALUES('$c->id','0','1')";
 mysqli_query($db, $q);
 }
 
