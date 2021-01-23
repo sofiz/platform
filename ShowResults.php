@@ -2,7 +2,7 @@
 
 $count=0;
 $arr=array();
-  function unichr($u)
+function unichr($u)
 {
      return mb_convert_encoding('&#' . intval($u) . ';', 'UTF-8', 'HTML-ENTITIES');
 }
@@ -82,13 +82,12 @@ else {
 $page=1;
 }
 
-function Show_Result($db,$res,&$count,&$arr,$page){
+function Show_Result($db,$res,&$count, array &$arr,$page){
 
 if($page==1)
 $start_from = 1 ;
 else
 $start_from = ($page-1) * 30;
-
 
 
 if(!$res){
@@ -98,8 +97,10 @@ if(mysqli_num_rows($res)>0){
 while($row=mysqli_fetch_assoc($res)){
 
 $flag=true ;
+
 for($j=0;$j<count($arr);$j++)
 if($arr[$j]==$row['id']){ $flag=false ; }
+
 if($flag){
 $count++;
 if(($count>=$start_from) && ($count<$start_from+30)){
@@ -128,6 +129,7 @@ array_push($arr,$row['id']);
 
 
 									  }
+  
   }
 
  if(isset($_GET['recherche'])) {
@@ -147,7 +149,7 @@ array_push($arr,$row['id']);
  $Name  =  mb_convert_case(mb_strtolower($Name), MB_CASE_TITLE, "UTF-8");
   }
   
-  //echo  "**".$Name."**" ; 
+ //echo  "**".$Name."**" ; 
   
 if(empty($Name) && empty($Job) &&  empty($Wilaya)){
 echo '<div class="resultcontainer"> ';
@@ -167,6 +169,7 @@ $sql1= $sql1." AND Type ='worker'";
 $res1=mysqli_query($db,$sql1);
 Show_Result($db,$res1,$count,$arr,$page);
 
+
 if($count==0){
 echo '<div class="resultcontainer"> ';
 echo ' <p id="noresult">لايوجد نتائج !</p>  </div> ';
@@ -177,40 +180,69 @@ $count=-5;
 //-------------------------------------------------------- search by name ----------------------------------------------------------------------------------------------
 else if(!empty($Name)){
 	
-if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
-$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')|| m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%') AND Job='$Job' AND Wilaya='$Wilaya' ";
+if(!empty($Name) && !empty($Job) &&  !empty($Wilaya)){
+$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')) AND Job='$Job' AND Wilaya='$Wilaya' ";
+$sql2_1="SELECT * FROM users m WHERE ( m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%') AND Job='$Job' AND Wilaya='$Wilaya' ";
+}
 //************************************* Name andd ddaira exxist .... and commune not exxist
-else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
-$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')|| m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%')AND Job='$Job'  ";
-else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
-$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')|| m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%')AND Wilaya='$Wilaya'  ";
+else if(!empty($Name) && !empty($Job) &&  empty($Wilaya)){
+$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')) AND Job='$Job'";
+$sql2_1="SELECT * FROM users m WHERE ( m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%') AND Job='$Job'";
+}
+else if(!empty($Name) && empty($Job) &&  !empty($Wilaya)){
+$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')) AND  Wilaya='$Wilaya' ";
+$sql2_1="SELECT * FROM users m WHERE ( m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%') AND  Wilaya='$Wilaya' ";
+}
 //********************************* name exxist .... dadira and commune not exissts
-else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')|| m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%') ";
+else if(!empty($Name) && empty($Job) &&  empty($Wilaya)){
+$sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')) ";
+$sql2_1="SELECT * FROM users m WHERE ( m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%') ";
+}
 $sql2= $sql2."AND  Type='worker'";
+$sql2_1= $sql2_1."AND  Type='worker'";
+
 $res2=mysqli_query($db,$sql2);
+$res2_1=mysqli_query($db,$sql2_1);
 
 Show_Result($db,$res2,$count,$arr,$page);
+Show_Result($db,$res2_1,$count,$arr,$page);
 
-//**************************************** explode name **********************************************************
+
+//********************************************************* explode name *********************************************************************************************************
 
 $words=explode(" ",$Name);
 foreach($words as $word ){
  if(strlen($word)>3){
 
-if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Job='$Job' AND Wilaya='$Wilaya'";
+if(!empty($Name) && !empty($Job) &&  !empty($Wilaya)){
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' ) AND Job='$Job' AND Wilaya='$Wilaya'";
+$sql3_1="SELECT * FROM users WHERE  ( Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Job='$Job' AND Wilaya='$Wilaya'";
+}
 //************************************* Name andd ddaira exxist .... and commune not exxist
-else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Job='$Job'";
-else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
-$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Wilaya='$Wilaya'";
+else if(!empty($Name) && !empty($Job) &&  empty($Wilaya)){
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' ) AND Job='$Job'";
+$sql3_1="SELECT * FROM users WHERE  ( Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Job='$Job'";
+}
+else if(!empty($Name) && empty($Job) &&  !empty($Wilaya)){
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' ) AND Wilaya='$Wilaya'";
+$sql3_1="SELECT * FROM users WHERE  ( Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') AND Wilaya='$Wilaya'";
+}
 //********************************* name exxist .... dadira and commune not exissts
-else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-$sql3="SELECT * FROM users WHERE (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' || Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%')";
+else if(!empty($Name) && empty($Job) &&  empty($Wilaya)){
+$sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%$word%' || Last_Name LIKE '%$word%' )  ";
+$sql3_1="SELECT * FROM users WHERE  ( Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') ";
+}
+
 $sql3= $sql3."AND  Type='worker'";
+$sql3_1= $sql3_1."AND  Type='worker'";
+
 $res3=mysqli_query($db,$sql3);
+$res3_1=mysqli_query($db,$sql3_1);
+
 Show_Result($db,$res3,$count,$arr,$page);
+Show_Result($db,$res3_1,$count,$arr,$page);
+
+
 
 }
 }
@@ -231,6 +263,7 @@ $firstChar = mb_substr($soundex, 0, 1, "UTF-8");
 if(in_array($firstChar, $carc))
 $soundex = substr($soundex, 1);
 
+/*
 //-------- inv name ------------
 $words=explode(" ",$Name);
 $soundex2 =" " ; 
@@ -244,25 +277,24 @@ $soundex2 .= " ".metaphone($en_word_2);
 else $soundex2 .= " ".metaphone($words[$i]);
 
 }
+
 $firstChar = mb_substr($soundex2, 0, 1, "UTF-8");
 if(in_array($firstChar, $carc))
 $soundex2 = substr($soundex2, 1);
 
-
-
-
+*/
 
 //*********************** NAME EXIST // name andd daira andd ccommune exissts ************************************
 if(!empty($Name) && !empty($Job) &&  !empty($Wilaya))
-$sql5="SELECT * FROM users WHERE  (indexing LIKE '%$soundex%' ||indexing LIKE '%$soundex2%') AND Job='$Job' AND Wilaya='$Wilaya' ";
+$sql5="SELECT * FROM users WHERE  (indexing LIKE '%$soundex%' ) AND Job='$Job' AND Wilaya='$Wilaya' ";
 //************************************* Name andd ddaira exxist .... and commune not exxist
 else if(!empty($Name) && !empty($Job) &&  empty($Wilaya))
-$sql5="SELECT * FROM users WHERE  (indexing LIKE '%$soundex%'||indexing LIKE '%$soundex2%') AND Job='$Job'  ";
+$sql5="SELECT * FROM users WHERE  (indexing LIKE '%$soundex%') AND Job='$Job'  ";
 else if(!empty($Name) && empty($Job) &&  !empty($Wilaya))
-$sql5="SELECT * FROM users WHERE  (indexing LIKE '%$soundex%'||indexing LIKE '%$soundex2%') AND Wilaya='$Wilaya'  ";
+$sql5="SELECT * FROM users WHERE  (indexing LIKE '%$soundex%') AND Wilaya='$Wilaya'  ";
 //********************************* name exxist .... dadira and commune not exissts
 else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
-$sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%'||indexing LIKE '%$soundex2%' ";
+$sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
 
 $sql5= $sql5." AND Type = 'worker' ";
 $res5=mysqli_query($db,$sql5);
@@ -276,6 +308,7 @@ Show_Result($db,$res5,$count,$arr,$page);
 
 
 //--------------------------------------------------------- explode name and use soundex  metaphone ----------------------------------------------------------------------------------------------------------------
+
 $words=explode(" ",$Name);
 
 foreach ($words as $word ){
@@ -310,8 +343,11 @@ $sql4= $sql4." and  Type = 'worker' ";
 $res4=mysqli_query($db,$sql4);
 
 Show_Result($db,$res4,$count,$arr,$page);
+
 										}
 						  }
+
+
 	/*					 //$q= $sql2.$sql3.$sql4.$sql5;
 						//$resx = mysqli_multi_query($db,$q) ;
 
@@ -451,14 +487,12 @@ echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['se
  }
  //******************************************** show all users *********************************************************
 
-
-
-
  else
  if($count==0){
  $sql= "SELECT * FROM users";
  $res=mysqli_query($db,$sql);
  Show_Result($db,$res,$count,$arr,$page);
+ 
 
 $results_per_page = 30; // number of results per page
 $total_pages =  $count/$results_per_page ;
