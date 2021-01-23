@@ -10,7 +10,7 @@ function unichr($u)
 /**
  * A map of Arabic attached forms of characters to original characters
  */
-$ligature_map = array(
+  $ligature_map = array(
 
   unichr(0xFE80) => unichr(0x0621),
   unichr(0xFE81) => unichr(0x0622), unichr(0xFE82) => unichr(0x0622),
@@ -122,11 +122,6 @@ echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relati
 if(!empty($row['Daira'])&&!empty($row['Commune']))
 echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].','.$row['Commune'].'</span> </p> ';
 echo'<p class="info"> ' .$row['Phone']  .'</p> </div> </div>';
-
-for($j=0;$j<count($arr);$j++)
-if($arr[$j] == $row['id']){ 
-exit(); 
-}
 
 array_push($arr,$row['id']);
 				                 	  }
@@ -483,11 +478,12 @@ echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['se
 
  }
  //******************************************** show all users *********************************************************
-/*
+
  else
  if($count==0){
  $sql= "SELECT * FROM users";
  $res=mysqli_query($db,$sql);
+ 
  Show_Result($db,$res,$count,$arr,$page);
  
 
@@ -551,7 +547,7 @@ echo " <div class='record'> <a class='pagen' href='search.php?page=".$i."'>".$i.
 
   }
 
-*/
+
 
 
 ?>
