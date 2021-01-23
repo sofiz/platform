@@ -107,7 +107,7 @@ function showResult(str) {
     <a class="subtile" href="#">مساعدة</a>
   </div>
 
-  <div clas.s="login tile">
+  <div class="login tile">
     <a class="subtile" href="signin.php">تسجيل</a>
   </div>
   </div>
