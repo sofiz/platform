@@ -82,7 +82,7 @@ else {
 $page=1;
 }
 
-function Show_Result($db,$res,&$count, array &$arr,$page){
+function Show_Result($db,$res,&$count,&$arr,$page){
 
 if($page==1)
 $start_from = 1 ;
@@ -94,12 +94,14 @@ if(!$res){
 echo "error".mysqli_error($db);
 }
 if(mysqli_num_rows($res)>0){
-while($row=mysqli_fetch_assoc($res)){
+while($row=mysqli_fetch_array($res)){
 
 $flag=true ;
 
 for($j=0;$j<count($arr);$j++)
-if($arr[$j]==$row['id']){ $flag=false ; }
+if($arr[$j] == $row['id']){ 
+$flag=false; 
+}
 
 if($flag){
 $count++;
@@ -120,6 +122,12 @@ echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relati
 if(!empty($row['Daira'])&&!empty($row['Commune']))
 echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].','.$row['Commune'].'</span> </p> ';
 echo'<p class="info"> ' .$row['Phone']  .'</p> </div> </div>';
+
+for($j=0;$j<count($arr);$j++)
+if($arr[$j] == $row['id']){ 
+exit(); 
+}
+
 array_push($arr,$row['id']);
 				                 	  }
                                       }
@@ -352,7 +360,7 @@ $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Wilaya='$Wilaya
 else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
 $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
 
-$sql4= $sql4." and  Type = 'worker' ";
+$sql4= $sql4." AND  Type = 'worker' ";
 $res4=mysqli_query($db,$sql4);
 
 Show_Result($db,$res4,$count,$arr,$page);
@@ -473,33 +481,9 @@ echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['se
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  }
  //******************************************** show all users *********************************************************
-
+/*
  else
  if($count==0){
  $sql= "SELECT * FROM users";
@@ -567,7 +551,7 @@ echo " <div class='record'> <a class='pagen' href='search.php?page=".$i."'>".$i.
 
   }
 
-
+*/
 
 
 ?>
