@@ -202,15 +202,14 @@ $sql2= $sql2."AND  Type='worker'";
 $sql2_1= $sql2_1."AND  Type='worker'";
 
 $res2=mysqli_query($db,$sql2);
-$res2_1=mysqli_query($db,$sql2_1);
-
 Show_Result($db,$res2,$count,$arr,$page);
-Show_Result($db,$res2_1,$count,$arr,$page);
+
 
 
 //********************************************************* explode name *********************************************************************************************************
 
 $words=explode(" ",$Name);
+$arrsql=array (  ) ;
 foreach($words as $word ){
  if(strlen($word)>3){
 
@@ -236,15 +235,29 @@ $sql3_1="SELECT * FROM users WHERE  ( Job LIKE '%$word%' || Wilaya LIKE '%$word%
 $sql3= $sql3."AND  Type='worker'";
 $sql3_1= $sql3_1."AND  Type='worker'";
 
-$res3=mysqli_query($db,$sql3);
-$res3_1=mysqli_query($db,$sql3_1);
+$arrR = array($sql3,$sql3_1);
 
-Show_Result($db,$res3,$count,$arr,$page);
-Show_Result($db,$res3_1,$count,$arr,$page);
-
-
+array_push($arrsql,$arrR);
 
 }
+}
+
+
+for($i=0;$i<count($arrsql);$i++){
+$res3=mysqli_query($db,$arrsql[$i][0]);
+Show_Result($db,$res3,$count,$arr,$page);
+}
+
+
+
+$res2_1=mysqli_query($db,$sql2_1);
+Show_Result($db,$res2_1,$count,$arr,$page);
+
+
+
+for($i=0;$i<count($arrsql);$i++){
+$res3_1=mysqli_query($db,$arrsql[$i][1]);
+Show_Result($db,$res3_1,$count,$arr,$page);
 }
 
 
