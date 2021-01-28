@@ -481,7 +481,8 @@ echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['se
 
  else
  if($count==0){
- $sql= "SELECT * FROM users";
+ $sql= "SELECT * FROM users  ORDER BY RAND()
+LIMIT 10000 ";
  $res=mysqli_query($db,$sql);
  
  Show_Result($db,$res,$count,$arr,$page);
