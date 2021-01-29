@@ -1,0 +1,63 @@
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+body{
+
+  font-family: 'Roboto', 'jf flat';
+  background: #eeeef2;
+
+}
+
+.container{
+  text-align: center;
+  display: block;
+  width: 55%;
+
+    margin-top: 130px;
+    margin-left: calc(50% + 100px);
+transform: translateX(-50%);
+background: #fafafa;
+padding: 30px;
+    box-sizing: border-box;
+    border-radius: 10px;
+      box-shadow: 1px 3px 16px 0px #00000047;
+}
+
+#copybtn{
+  width: 40px;
+  height: 40px;
+  position: relative;
+    top: 1px;
+    background: #f3f3f4;
+    border: solid 1px #c5c5c8;
+    cursor: pointer;
+}
+#reflink{
+  box-sizing: border-box;
+  height: 40px;
+  width: 60%;
+  padding-left:10px;
+  background: #f3f3f4;
+    border: solid 1px #c5c5c8;
+
+}
+
+#nikatok{
+  margin-top: 20px;
+}
+#score{
+  font-size: 75px;
+    font-weight: bolder;
+}
+#withdraw{
+  padding: 10px;
+    font-family: 'JF Flat';
+    background: #0087bf;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+}
