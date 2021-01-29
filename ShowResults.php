@@ -154,6 +154,7 @@ array_push($arr,$row['id']);
   
  //echo  "**".$Name."**" ; 
   
+  $typeandphone=" AND Type='worker' AND Phone<>'no'"  ; 
 if(empty($Name) && empty($Job) &&  empty($Wilaya)){
 echo '<div class="resultcontainer"> ';
 echo ' <p id="noresult"> لايوجد نتائج ! <br> رجاء ادخال المهنة و الولاية المعنية  <p>  </div> ';
@@ -168,7 +169,7 @@ $sql1="SELECT * FROM users WHERE  Job='$Job'";
 else if(empty($Name) && empty($Job) &&  !empty($Wilaya))
 $sql1="SELECT * FROM users WHERE Wilaya='$Wilaya'";
 
-$sql1= $sql1." AND Type ='worker'";
+$sql1= $sql1.$typeandphone;
 $res1=mysqli_query($db,$sql1);
 Show_Result($db,$res1,$count,$arr,$page);
 
@@ -201,8 +202,8 @@ else if(!empty($Name) && empty($Job) &&  empty($Wilaya)){
 $sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')) ";
 $sql2_1="SELECT * FROM users m WHERE ( m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%') ";
 }
-$sql2= $sql2."AND  Type='worker'";
-$sql2_1= $sql2_1."AND  Type='worker'";
+$sql2= $sql2.$typeandphone;
+$sql2_1= $sql2_1.$typeandphone;
 
 $res2=mysqli_query($db,$sql2);
 Show_Result($db,$res2,$count,$arr,$page);
@@ -235,8 +236,8 @@ $sql3="SELECT * FROM users WHERE  (Username LIKE '%$word%' || First_Name LIKE '%
 $sql3_1="SELECT * FROM users WHERE  ( Job LIKE '%$word%' || Wilaya LIKE '%$word%' || Daira LIKE '%$word%' || Commune LIKE '%$word%'|| Description LIKE '%$word%') ";
 }
 
-$sql3= $sql3."AND  Type='worker'";
-$sql3_1= $sql3_1."AND  Type='worker'";
+$sql3= $sql3.$typeandphone;
+$sql3_1= $sql3_1.$typeandphone;
 
 $arrR = array($sql3,$sql3_1);
 
@@ -312,7 +313,7 @@ $sql5="SELECT * FROM users WHERE  (indexing LIKE '%$soundex%') AND Wilaya='$Wila
 else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
 $sql5="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
 
-$sql5= $sql5." AND Type = 'worker' ";
+$sql5= $sql5.$typeandphone;
 $res5=mysqli_query($db,$sql5);
 Show_Result($db,$res5,$count,$arr,$page);
 
@@ -355,7 +356,7 @@ $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' AND Wilaya='$Wilaya
 else if(!empty($Name) && empty($Job) &&  empty($Wilaya))
 $sql4="SELECT * FROM users WHERE  indexing LIKE '%$soundex%' ";
 
-$sql4= $sql4." AND  Type = 'worker' ";
+$sql4= $sql4.$typeandphone;
 $res4=mysqli_query($db,$sql4);
 
 Show_Result($db,$res4,$count,$arr,$page);
@@ -481,8 +482,8 @@ echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['se
 
  else
  if($count==0){
- $sql= "SELECT * FROM users  ORDER BY RAND()
-LIMIT 10000 ";
+ $sql= "SELECT * FROM users where   Type='worker' AND Phone<>'no' ORDER BY RAND()
+LIMIT 12000 ";
  $res=mysqli_query($db,$sql);
  
  Show_Result($db,$res,$count,$arr,$page);
