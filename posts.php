@@ -9,7 +9,11 @@
     <title></title>
   </head>
 
-  <?php include('topbar.php'); ?>
+  <?php
+include('../conn.php') ;
+session_start();
+include('topbar.php'); 
+?>
   <body>
     <div class="container">
       <textarea name="posttextarea" class="posttextarea" placeholder="write your text here"></textarea>
@@ -38,35 +42,121 @@
           <p>offer</p>
         </div>
       </div>
-      <div class="post">
-        <div class="imgcontain">
-          <img src="imgs/default.png" alt="">
-        </div>
-        <div class="name">
-          <p class="nametxt">username username</p>
-        </div>
-        <div class="posttxtdiv">
-          <p class="posttxt">this is Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="commentsection">
-          <div class="comimgconatin">
-            <img src="imgs/default.png" alt="">
-          </div>
-          <div class="comname">
-            <p class="comenametxt">commentor name</p>
-          </div>
-          <div class="comtext">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occae</p>
-          </div>
-        </div>
-        <div class="commentorsection">
-          <div class="comimgconatin">
-            <img src="imgs/default.png" alt="">
-          </div>
-          <input type="text" name="comment" value="" class="inputcom">
-          <button type="submit" name="submitcomment" class="submitcom"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-        </div>
-      </div>
+	  
+	  
+	  
+	  <?php
+    $res=mysqli_query($db,"SELECT * FROM posts "); 
+	while($row=mysqli_fetch_array($res)){
+         
+    echo '<div class="post"> '; 
+	
+	      // get user info 
+		 $User_id = $row['User_id']; 
+		 $res1=mysqli_query($db,"SELECT * FROM users where id ='$User_id' ");   
+		 while($row1=mysqli_fetch_array($res1)){
+		    $First_Name = $row1['First_Name'];
+			$Last_Name = $row1['Last_Name'];
+			$Profile_Pic = $row1['Profile_Pic'];
+		 }
+		
+	    
+    
+    echo '<div class="imgcontain">' ; 
+    echo ' <img src="'.$Profile_Pic.'" alt="">'; 
+    echo '</div>' ; 
+		
+    echo '<div class="name">' ; 
+    echo ' <p class="nametxt">'.$First_Name .' '. $Last_Name . '</p>' ; 
+    echo ' </div> ' ; 
+		
+    echo '<div class="posttxtdiv">'; 
+    echo '<p class="posttxt">'.$row['Txt'].'</p>'; 
+    echo '</div>' ; 
+		 
+       
+
+         $Post_id = $row['Post_id'];
+         $res2=mysqli_query($db,"SELECT * FROM posts_comments WHERE Post_id='$Post_id'");
+		 while($row2=mysqli_fetch_array($res2)){
+		    $Commentor_id= $row2['Commentor_id'];
+			
+			$res3=mysqli_query($db,"SELECT * FROM users where id ='$Commentor_id' ");   
+		    while($row3=mysqli_fetch_array($res3)){
+		    $CFirst_Name = $row3['First_Name'];
+			$CLast_Name = $row3['Last_Name'];
+			$CProfile_Pic = $row3['Profile_Pic'];
+			 } 
+			
+			
+		   echo '<div class="commentsection">'; 
+           echo ' <div class="comimgconatin">'; 
+           echo '<img src="'.$CProfile_Pic.'" alt="">'; 
+           echo '</div>'; 
+           echo '<div class="comname">'; 
+           echo '<p class="comenametxt">'.$CFirst_Name .' '.$CLast_Name.'</p>'; 
+           echo ' </div> ';  
+           echo ' <div class="comtext"> ';  
+           echo ' <p>'.$row2['Comment'].'</p> ';  
+           echo ' </div>'; 
+           
+			
+		 }
+
+         
+
+
+
+echo ' </div>'; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	   }
+	   
+if (isset($_SESSION['Username'])) {
+	
+$Username=$_SESSION['Username'];
+
+$res4=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name,id FROM users WHERE Username='$Username'");
+while($row4=mysqli_fetch_array($res4)){
+  	             $MCProfile_Pic=$row4['Profile_Pic'] ;
+				 $MCid = $row4['id'] ;
+				 }
+
+echo ' <div class="commentorsection">';  		
+echo '<div class="comimgconatin">'; 
+echo '<img src="'.$MCProfile_Pic.'" alt=""> ';   
+echo '</div>';
+echo '<input type="text" name="comment" value="" class="inputcom"> ';   
+echo '<button type="submit" name="submitcomment" class="submitcom"><i class="fa fa-paper-plane" aria-hidden="true"></i></button> ';   
+echo '</div>' ; 
+
+
+}
+
+
+	   
+	   
+?>
+     	
+        
+		
+		
+        
+		
+      
     </div>
   </body>
 </html>
