@@ -1,4 +1,141 @@
 <!DOCTYPE html>
+
+<?php 
+
+include('../conn.php') ;
+session_start();
+
+
+function compressImage($source, $destination, $quality) {
+
+  $info = getimagesize($source);
+
+  if ($info['mime'] == 'image/jpeg')
+    $image = imagecreatefromjpeg($source);
+
+  elseif ($info['mime'] == 'image/gif')
+    $image = imagecreatefromgif($source);
+
+  elseif ($info['mime'] == 'image/png')
+    $image = imagecreatefrompng($source);
+
+    elseif ($info['mime'] == 'image/jpg')
+      $image = imagecreatefromjpeg($source);
+	  
+	  
+	  
+
+  imagejpeg($image, $destination, $quality);
+
+}
+
+
+
+if (isset($_POST['submitpost'])){
+	
+$posttextarea = $_POST['posttextarea']; 
+
+$User=$_SESSION['Username'];
+$res=mysqli_query($db,"SELECT id FROM users WHERE Username='$User'");
+while($row=mysqli_fetch_array($res)){
+$id=$row['id'] ;
+        }
+
+
+$query = "INSERT INTO posts (Txt,User_id) VALUES('$posttextarea', '$id') ";
+mysqli_query($db, $query);
+
+$getmaxid = mysqli_query($db," SELECT MAX(Post_id) AS id FROM posts");
+$rowx = mysqli_fetch_array($getmaxid);
+$Post_id=$rowx["id"];
+
+
+
+$x=0; 
+if(count($_FILES['upload']['name']) < 4 )
+foreach($_FILES['upload']['name'] as $key=>$val){
+ 
+
+	$x++;
+	if ($_FILES['upload']['size'][$key] != 0 	&& $_FILES['upload']['size'][$key] < 2097152 ){
+
+
+		if (!file_exists('imgs/'.$id)) {
+
+    mkdir('imgs/'.$id, 0777, true);
+
+}
+	/////-------------------- Get id -------------------
+
+$getmaxid = mysqli_query($db," SELECT MAX(Post_id) AS id FROM posts");
+$row77 = mysqli_fetch_array($getmaxid);
+$maxid=$row77["id"];
+
+$maxid++;
+
+
+$newname = "POST_".strval($id).strval($maxid).strval($x);
+  
+  
+  $tar='imgs/'.$id.'/';
+  //$tar=$tar.basename($_FILES['uploadpic']['name']) ;
+
+  $extension = pathinfo($_FILES["upload"]["name"][$key], PATHINFO_EXTENSION);
+
+
+  //$pic=($_FILES['uploadpic']['name']) ;
+  $pic=$newname.".".$extension;
+
+
+  $allowedTypes = array(IMAGETYPE_JPEG ,IMAGETYPE_PNG );
+
+$detectedType = exif_imagetype($_FILES['upload']['tmp_name'][$key]);
+$in = in_array($detectedType, $allowedTypes);
+  if($in){
+
+   
+  $query = "UPDATE posts SET Photo_$x='$pic' where Post_id=$Post_id  ";
+	if ($pic!=""){
+  mysqli_query($db, $query);
+			  //move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);
+
+			  //compressImage($_FILES['uploadpic']['tmp_name'],$tar,60);
+			  compressImage($_FILES['upload']['tmp_name'][$key],$tar.$newname.".".$extension,15);
+			          }
+
+
+  }
+	}
+  }
+
+
+
+
+
+
+ }
+
+if(isset($_POST['submitcomment'])){
+	
+$User=$_SESSION['Username'];
+$res=mysqli_query($db,"SELECT id FROM users WHERE Username='$User'");
+while($row=mysqli_fetch_array($res)){
+$Commentor_id=$row['id'] ;
+        }
+		
+$Post_id = $_POST['submitcomment'];
+
+$Comment = mysqli_real_escape_string($db, $_POST[$Post_id]);
+
+	
+$query = "INSERT INTO posts_comments (Post_id,Commentor_id,Comment) VALUES('$Post_id', '$Commentor_id', '$Comment') ";
+mysqli_query($db, $query);
+	
+		
+	
+}
+
+?> 
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -10,16 +147,17 @@
   </head>
 
   <?php
-include('../conn.php') ;
-session_start();
-include('topbar.php'); 
+//include('topbar.php'); 
 ?>
   <body>
+  <form action="posts.php" method="post" enctype="multipart/form-data">
+  
     <div class="container">
       <textarea name="posttextarea" class="posttextarea" placeholder="write your text here"></textarea>
       <div class="btnscontainer">
-        <button type="button" name="upload" class="button" id="upload">upload</button>
-        <button type="button" name="upload" class="button" id="submitpost">submit</button>
+	    <input type="file" name="upload[]" class="button" id="upload" multiple>
+        <!-- <button type="button" name="upload" class="button" id="upload">upload</button> -->
+        <button type="submit" name="submitpost" class="button" id="submitpost">submit</button>
 
       </div>
       <div class="filterscontain">
@@ -33,10 +171,12 @@ include('topbar.php');
 
           </select>
         </div>
-        <input type="radio" name="offer" value="offer" class="radio">
+        
+		<input type="radio" name="offer" value="offer" class="radio">
         <div class="filtersradiotxt">
           <p>job</p>
         </div>
+		
         <input type="radio" name="looking" value="looking" class="radio">
         <div class="filtersradiotxt">
           <p>offer</p>
@@ -45,7 +185,7 @@ include('topbar.php');
 	  
 	  
 	  
-	  <?php
+<?php
     $res=mysqli_query($db,"SELECT * FROM posts "); 
 	while($row=mysqli_fetch_array($res)){
          
@@ -53,6 +193,7 @@ include('topbar.php');
 	
 	      // get user info 
 		 $User_id = $row['User_id']; 
+		 
 		 $res1=mysqli_query($db,"SELECT * FROM users where id ='$User_id' ");   
 		 while($row1=mysqli_fetch_array($res1)){
 		    $First_Name = $row1['First_Name'];
@@ -63,7 +204,9 @@ include('topbar.php');
 	    
     
     echo '<div class="imgcontain">' ; 
+	if($Profile_Pic!="default.png")
     echo ' <img src="'.$Profile_Pic.'" alt="">'; 
+	else echo '<img src="imgs/default.png" alt=""> '; 
     echo '</div>' ; 
 		
     echo '<div class="name">' ; 
@@ -86,44 +229,34 @@ include('topbar.php');
 		    $CFirst_Name = $row3['First_Name'];
 			$CLast_Name = $row3['Last_Name'];
 			$CProfile_Pic = $row3['Profile_Pic'];
+			$Cid = $row3['id'];
 			 } 
 			
 			
 		   echo '<div class="commentsection">'; 
-           echo ' <div class="comimgconatin">'; 
-           echo '<img src="'.$CProfile_Pic.'" alt="">'; 
+           
+		   echo '<div class="comimgconatin">'; 
+		   if($CProfile_Pic!="default.png")
+           echo '<img src="imgs/'.$Cid.'/'.$CProfile_Pic.'" alt="">'; 
+		   else  echo '<img src="imgs/default.png" alt=""> '; 
+		   
            echo '</div>'; 
-           echo '<div class="comname">'; 
+          
+		   echo '<div class="comname">'; 
            echo '<p class="comenametxt">'.$CFirst_Name .' '.$CLast_Name.'</p>'; 
            echo ' </div> ';  
+
            echo ' <div class="comtext"> ';  
            echo ' <p>'.$row2['Comment'].'</p> ';  
            echo ' </div>'; 
-           
+           echo ' </div>'; 
 			
 		 }
 
          
 
 
-
-echo ' </div>'; 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	   }
+	   
 	   
 if (isset($_SESSION['Username'])) {
 	
@@ -136,22 +269,32 @@ while($row4=mysqli_fetch_array($res4)){
 				 }
 
 echo ' <div class="commentorsection">';  		
-echo '<div class="comimgconatin">'; 
-echo '<img src="'.$MCProfile_Pic.'" alt=""> ';   
+
+echo '<div class="comimgconatin">';
+
+if($MCProfile_Pic!="default.png")
+echo '<img src="imgs/'.$MCid.'/'.$MCProfile_Pic.'" alt=""> ';  
+else
+echo '<img src="imgs/default.png" alt="">';
+
 echo '</div>';
-echo '<input type="text" name="comment" value="" class="inputcom"> ';   
-echo '<button type="submit" name="submitcomment" class="submitcom"><i class="fa fa-paper-plane" aria-hidden="true"></i></button> ';   
+echo '<input type="text" name="'.$Post_id.'" class="inputcom"> ';
+
+echo '<button type="submit" name="submitcomment" class="submitcom" value="'.$Post_id.'"><i class="fa fa-paper-plane" aria-hidden="true"></i>  </button>';
+
 echo '</div>' ; 
 
 
+
+
 }
-
-
+echo '</div>' ; 
+}
 	   
 	   
 ?>
      	
-        
+</form>
 		
 		
         

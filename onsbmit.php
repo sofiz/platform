@@ -335,7 +335,7 @@ $maxid=$row77["id"];
 
 	$maxid++;
 
-	$newname = strval($id).strval($maxid);
+  $newname = strval($id).strval($maxid);
 
   $tar='imgs/'.$id.'/';
   //$tar=$tar.basename($_FILES['uploadpic']['name']) ;
