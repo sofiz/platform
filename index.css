@@ -121,7 +121,8 @@ background: #008ffba6;
   height: 33px;
 background: #008ffb;
 border: none;
-border-radius: 10px;
+border-radius: 20px;
+    text-align-last: center;
 margin-left: 10px;
 width: 117px;
 font-family: 'jf flat';
@@ -147,27 +148,25 @@ option {
     background: #fafafa;
 }
 
-.searchbtn{
-  margin: auto;
+.searchbtn {
+    margin: auto;
     display: block;
     margin-top: 15px;
-
-      border: none;
-      background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
-      border-radius: 10px;
-      box-shadow: 0px 3px 8px 0px #00000047;
-      color:#ffffffeb;
-      padding: 5px 8px;
-      font-family: 'jf flat';
-      cursor: pointer;
-          outline: none;
-
-      background-size: 300% 100%;
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-
+    border: none;
+    background: #034dd4d9;
+    border-radius: 20px;
+    box-shadow: 0px 3px 8px 0px #00000047;
+    color: #ffffffeb;
+    padding: 8px 100px;
+    font-family: 'jf flat';
+    cursor: pointer;
+    outline: none;
+    background-size: 300% 100%;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    backdrop-filter: blur(4px);
 }
 
 .searchbtn:hover {
