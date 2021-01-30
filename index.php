@@ -21,7 +21,7 @@ echo "error".mysqli_error($db);
           }
 
 
-setcookie("page_visited_already", "1", time() + (18662000000), "/");
+setcookie("page_visited_already", "1",time() +(10 * 365 * 24 * 60 * 60), "/");
 
 }
 
