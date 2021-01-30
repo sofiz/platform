@@ -117,7 +117,7 @@ if (isset($_POST['SIGNUP'])) {
   
   $Type=mysqli_real_escape_string($db, $_POST['typeinp']);
   $Profile_Pic="default.png";
-  
+  $Date = date("l jS \of F Y h:i:s A") ;
   if($Type=="worker" || $Type=="client"){
   
     $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
@@ -174,9 +174,11 @@ if (isset($_POST['SIGNUP'])) {
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
   	$Password = password_hash($Password_1, PASSWORD_DEFAULT); //encrypt the password before saving in the database
-   
-  	$query = "INSERT INTO users (First_Name,Last_Name,Username, Email,EmailCheck, Password,Phone,Job,Wilaya,Type,Profile_Pic)
-  			  VALUES('$First_Name','$Last_Name','$Username', '$Email','$EmailCheck', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic')";
+    
+	
+	
+  	$query = "INSERT INTO users (First_Name,Last_Name,Username, Email,EmailCheck, Password,Phone,Job,Wilaya,Type,Profile_Pic,Date)
+  			  VALUES('$First_Name','$Last_Name','$Username', '$Email','$EmailCheck', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic','$Date')";
   	mysqli_query($db, $query);
   	$_SESSION['Username'] = $Username;
   	$_SESSION['success'] = "You are now logged in";
@@ -186,11 +188,11 @@ if (isset($_POST['SIGNUP'])) {
 	$q ="UPDATE statistics set  Search='0',Myprofile='0' ,ProfileEdit='0' ,ResetPass='0 ',EnterEmail='0' WHERE Username='$Username' ";
 	 mysqli_query($db, $q);
 	   
-     //----------------------------------------------------- update indexing-------------------------------------------------------- ---------------
+//----------------------------------------------------- update indexing-------------------------------------------------------- ---------------
 //inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj); 
 
 $soundex=" " ;
- //-------------------------------
+//-------------------------------
 if($First_Name!=null){
 $words=explode(" ",$First_Name);
 foreach ($words as $word) {
@@ -214,31 +216,7 @@ $soundex .=" ".metaphone($en_word_2);
 else $soundex.=" ". metaphone($word);
 		                           }
 	                    }
-//-------------------------------
-//---------------------------------------------
-if($Job!=null){
-$words=explode(" ",$Job);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
-//----------------------------------------------
-if($Wilaya!=null){
-$words=explode(" ",$Wilaya);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
+			  
 //-------------------------------
 if($Username!=null){
 $words=explode(" ",$Username);
@@ -303,8 +281,8 @@ if($Type=="submitted"){
 	$Username =$First_Name. rand(0,1000000).$Last_Name.rand(0,1000000);
 	$description = "***هدا الحساب مضاف و ليس شخصي ***" ; 
 	
-	$query = "INSERT INTO users (First_Name,Last_Name,Username,Phone,Job,Wilaya,Type,Profile_Pic,Ad,Description)
-  			  VALUES('$First_Name','$Last_Name','$Username','$Phone','$Job','$Wilaya','worker','$Profile_Pic','yes','$description')";
+	$query = "INSERT INTO users (First_Name,Last_Name,Username,Phone,Job,Wilaya,Type,Profile_Pic,Ad,Description,Date)
+  			  VALUES('$First_Name','$Last_Name','$Username','$Phone','$Job','$Wilaya','worker','$Profile_Pic','yes','$description','$Date')";
   	mysqli_query($db, $query);
 	
 	
@@ -333,31 +311,7 @@ $soundex .=" ".metaphone($en_word_2);
 else $soundex.=" ". metaphone($word);
 		                           }
 	                    }
-//-------------------------------
-//---------------------------------------------
-if($Job!=null){
-$words=explode(" ",$Job);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
-//----------------------------------------------
-if($Wilaya!=null){
-$words=explode(" ",$Wilaya);
-foreach ($words as $word) {
-$firstChar = mb_substr($word, 0, 1, "UTF-8");
-if(in_array($firstChar, $ligature_map)){
-$en_word_2 = $obj->ar2en($word);
-$soundex .=" ".metaphone($en_word_2);
-                                       }									  
-else $soundex.=" ". metaphone($word);
-		                           }
-	                    }
+
 //-------------------------------
 if($Username!=null){
 $words=explode(" ",$Username);
@@ -370,6 +324,14 @@ $soundex .=" ".metaphone($en_word_2);
 else $soundex.=" ". metaphone($word);
 		                           }
 	                    }
+						
+						
+$sql0="UPDATE users SET indexing='$soundex' where Username='$Username'";
+$res0=mysqli_query($db,$sql0);
+
+if(!$res0){
+echo "error".mysqli_error($db);
+               }
 //-------------------------------
 	//inde_upt($db,$Username,$First_Name,$Last_Name,$Job,$Wilaya,$ligature_map,$obj); 
 	

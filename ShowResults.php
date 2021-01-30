@@ -153,8 +153,10 @@ array_push($arr,$row['id']);
   }
   
  //echo  "**".$Name."**" ; 
+
   
-  $typeandphone=" AND Type='worker' AND Phone<>'no'"  ; 
+$typeandphone=" AND Type='worker' AND Phone<>'no'"  ; 
+  
 if(empty($Name) && empty($Job) &&  empty($Wilaya)){
 echo '<div class="resultcontainer"> ';
 echo ' <p id="noresult"> لايوجد نتائج ! <br> رجاء ادخال المهنة و الولاية المعنية  <p>  </div> ';

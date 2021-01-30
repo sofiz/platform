@@ -198,7 +198,7 @@ else  echo '<img id="pic" src="imgs/default.png" class="pictures" onclick="slide
 	  }
 	  else if (($c->EmailCheck=="no" && $c->Type == "worker")){
           echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
-		  echo '<span style="font-size: 15px;"> لا يوجد ايميل </span> ';   }
+		  echo '<span style="font-size: 15px;"> - </span> ';   }
 		  else {//echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
 		         echo '<span>  </span> ';}
 
@@ -216,7 +216,7 @@ else  echo '<img id="pic" src="imgs/default.png" class="pictures" onclick="slide
 	elseif(($c->Birthday ==  "0000-00-00" || ($c->Age($c->Birthday) < 16  || $c->Age($c->Birthday) > 65)) && $c->Type == "worker") {
 	    echo ' <div class="info"> ';
 		 echo ' <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ';
-        echo '<span> لايوجد العمر </span> </div>';
+        echo '<span> - </span> </div>';
     }
 	else  echo '<div class="info"><span> </span> </div>';
 
