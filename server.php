@@ -175,7 +175,15 @@ if (isset($_POST['SIGNUP'])) {
   if (count($errors) == 0) {
   	$Password = password_hash($Password_1, PASSWORD_DEFAULT); //encrypt the password before saving in the database
     
-	
+	if(isset($id) && !isset($_COOKIE['page_visited_already'])){
+		
+		$queryx ="UPDATE users set Points=Points+1 WHERE id='$id'";
+		
+	    $re = mysqli_query($db, $queryx);
+		if(!$re){
+echo "error".mysqli_error($db);
+               }
+		}
 	
   	$query = "INSERT INTO users (First_Name,Last_Name,Username, Email,EmailCheck, Password,Phone,Job,Wilaya,Type,Profile_Pic,Date)
   			  VALUES('$First_Name','$Last_Name','$Username', '$Email','$EmailCheck', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic','$Date')";

@@ -9,11 +9,23 @@
     <title>برنامج الاحالة - rondili</title>
   </head>
   <body>
-    <?php include 'topbar.php'; ?>
+    <?php 
+include('../conn.php') ;
+session_start();
+include 'topbar.php';
+if (isset($_SESSION['Username'])) {
+$user=$_SESSION['Username'];
+$res1=mysqli_query($db,"SELECT id FROM users WHERE Username='$user'");
+while($row1=mysqli_fetch_array($res1)) {
+$id=$row1['id'] ;
+        }
+}
+
+		?>
     <div class="container">
       <p>للمشاركة في برنامج الاحالة يمكنك نسخ الرابط الخاص بك و مشاركته مع أصدقائك ستحصل على نقاط لكل شخص يقوم بالتسجيل عن طريق رابطك.</p>
       <p>: رابطك هو</p>
-      <input type="text" name="" value="rondili.com/ss" id="reflink" ReadOnly>
+    <?php  echo  '<input type="text" name="" value="rondili.com/signup.php?id='.$id.'" id="reflink" ReadOnly>'; ?>
       <button type="button" onclick="copy()" name="copy" id="copybtn"><i class="fa fa-clipboard" aria-hidden="true" style="font-size:16px;color: #0082bc;"></i></button>
       <p id="nikatok">: نقاطك </p>
       <p id="score">0</p>
@@ -35,5 +47,6 @@ document.execCommand("copy");
   alert("Copied the text: " + copyText.value);
 
 }
+
   </script>
 </html>
