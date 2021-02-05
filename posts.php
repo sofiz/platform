@@ -143,6 +143,8 @@ mysqli_query($db, $query);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
+	
+	<script src="data.js"></script>
     <title></title>
   </head>
 
@@ -163,13 +165,14 @@ mysqli_query($db, $query);
       <div class="filterscontain">
         <div class="jobdrop">
           <select class="dropdown" name="jobs" id="jobs">
-
+<?php include 'jobsdata.html';?>
+    
           </select>
         </div>
-        <div class="wilayadrop">
-          <select class="dropdown" name="wilayas" id="wilayas">
-
-          </select>
+        <div class="wilayadrop" id="myDIV">
+          
+    <?php include 'wilayascript.html'; ?>
+         
         </div>
         
 		<input type="radio" name="offer" value="offer" class="radio">
@@ -181,21 +184,27 @@ mysqli_query($db, $query);
         <div class="filtersradiotxt">
           <p>offer</p>
         </div>
+		<button type="submit" name="sub" class="button" id="submitpost">sub</button>
       </div>
 	  
 	  
 	  
 <?php
+    if (isset($_POST['sub']))
+	$res=mysqli_query($db,"SELECT * FROM posts "); 
+	else 
     $res=mysqli_query($db,"SELECT * FROM posts "); 
+	
 	while($row=mysqli_fetch_array($res)){
          
-    echo '<div class="post"> '; 
+         echo '<div class="post"> '; 
 	
 	      // get user info 
 		 $User_id = $row['User_id']; 
 		 
 		 $res1=mysqli_query($db,"SELECT * FROM users where id ='$User_id' ");   
 		 while($row1=mysqli_fetch_array($res1)){
+			 
 		    $First_Name = $row1['First_Name'];
 			$Last_Name = $row1['Last_Name'];
 			$Profile_Pic = $row1['Profile_Pic'];
@@ -205,7 +214,7 @@ mysqli_query($db, $query);
     
     echo '<div class="imgcontain">' ; 
 	if($Profile_Pic!="default.png")
-    echo ' <img src="'.$Profile_Pic.'" alt="">'; 
+    echo ' <img src="imgs/'.$User_id.'/'.$Profile_Pic.'" alt="">'; 
 	else echo '<img src="imgs/default.png" alt=""> '; 
     echo '</div>' ; 
 		
@@ -214,7 +223,7 @@ mysqli_query($db, $query);
     echo ' </div> ' ; 
 		
     echo '<div class="posttxtdiv">'; 
-    echo '<p class="posttxt">'.$row['Txt'].'</p>'; 
+    echo '<p class="posttxt">'.$row['Txt'].'</p>';
     echo '</div>' ; 
 		 
        

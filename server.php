@@ -8,8 +8,6 @@ or die ('can\'t charset in DataBase');
 
 
 
-
-
 ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -117,7 +115,8 @@ if (isset($_POST['SIGNUP'])) {
   
   $Type=mysqli_real_escape_string($db, $_POST['typeinp']);
   $Profile_Pic="default.png";
-  $Date = date("l jS \of F Y h:i:s A") ;
+  $Date = date("j/n/Y");
+  $Time = date("H:i:s"); 
   if($Type=="worker" || $Type=="client"){
   
     $First_Name = mysqli_real_escape_string($db, $_POST['First_Name']);
@@ -152,6 +151,8 @@ if (isset($_POST['SIGNUP'])) {
 
   if ($Password_1 != $Password_2) {
 	array_push($errors, "The two passwords do not match");
+	//array_push($errors,$id);
+	
   }
 
   // first check the database to make sure
@@ -172,21 +173,10 @@ if (isset($_POST['SIGNUP'])) {
   }
 
   // Finally, register user if there are no errors in the form
-  if (count($errors) == 0) {
-  	$Password = password_hash($Password_1, PASSWORD_DEFAULT); //encrypt the password before saving in the database
-    
-	if(isset($id) && !isset($_COOKIE['page_visited_already'])){
-		
-		$queryx ="UPDATE users set Points=Points+1 WHERE id='$id'";
-		
-	    $re = mysqli_query($db, $queryx);
-		if(!$re){
-echo "error".mysqli_error($db);
-               }
-		}
-	
-  	$query = "INSERT INTO users (First_Name,Last_Name,Username, Email,EmailCheck, Password,Phone,Job,Wilaya,Type,Profile_Pic,Date)
-  			  VALUES('$First_Name','$Last_Name','$Username', '$Email','$EmailCheck', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic','$Date')";
+if (count($errors) == 0) {
+$Password = password_hash($Password_1, PASSWORD_DEFAULT); //encrypt the password before saving in the database
+  	$query = "INSERT INTO users (First_Name,Last_Name,Username, Email,EmailCheck, Password,Phone,Job,Wilaya,Type,Profile_Pic,Date,Time)
+  			  VALUES('$First_Name','$Last_Name','$Username', '$Email','$EmailCheck', '$Password','$Phone','$Job','$Wilaya','$Type','$Profile_Pic','$Date','$Time')";
   	mysqli_query($db, $query);
   	$_SESSION['Username'] = $Username;
   	$_SESSION['success'] = "You are now logged in";

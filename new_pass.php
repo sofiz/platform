@@ -18,6 +18,8 @@ session_start();
 if(!isset($_GET['token']))  header('location: search.php');
 
 include('topbar.php');
+
+//----- COUNT NEW PASS VISITs ---------
 if (isset($_SESSION['Username'])) {
 	  $Username=$_SESSION['Username'];
 	  $q ="UPDATE statistics set ResetPass=ResetPass+1 WHERE Username='$Username' ";

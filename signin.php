@@ -1,19 +1,12 @@
-
 <?php
-
 include('server.php') ;
-
+//-----ALL-----
 $sql0="UPDATE visitors SET Signinvisit=Signinvisit+1 where id='1'";
 $res0=mysqli_query($db,$sql0);
 
 mysqli_close ($db);
 
-
-
-
  ?>
-
-
 
 <html>
 <head>
@@ -34,10 +27,10 @@ mysqli_close ($db);
  </head>
 
 <?php
-// server should keep session data for AT LEAST 1 hour
+
 ini_set('session.gc_maxlifetime', 1866240000);
-// each client should remember their session id for EXACTLY 1 hour
 session_set_cookie_params(1866240000);
+
 session_start();
 
 include('topbar.php');
@@ -47,20 +40,6 @@ include('topbar.php');
  <body>
  <div class="login-page">
   <div class="form">
-
-
-  <!--
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-	-->
-
-
-
     <form class="login-form" action="signin.php" method="post" >
 	<?php include('errors.php'); ?>
       <input type="text" name="Username" placeholder="إسم المستخدم" required="" >

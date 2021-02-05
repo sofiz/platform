@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <?php
 session_start();
 include('../conn.php');
@@ -26,10 +24,9 @@ $c->Select_Photos_Of_Profile ($db);
 ////*************************** Get Rating profile ($id) from URL  ********************
 $c->Get_Rating_Profile($db);
 
-
+//-----COUNT PROFILE VISITORS ------------
 if (isset($_SESSION['Username'])) {
 $Visitor_id = $c->Get_Id_From_Session($db);
-
 $res1=mysqli_query($db,"SELECT * FROM profile_visitors where Profile_id='$c->id' AND Visitor_id='$Visitor_id'");
 if(mysqli_num_rows($res1)==1){
 $q = "UPDATE profile_visitors SET  Num=Num+1 WHERE Profile_id='$c->id' AND Visitor_id='$Visitor_id'" ;
@@ -53,11 +50,29 @@ else {
 $q = "INSERT INTO profile_Visitors (Profile_id,Visitor_id,Num) VALUES('$c->id','0','1')";
 mysqli_query($db, $q);
 }
-
-
-
-
 }
+
+//------SUBMIT POST COMMENTS ----
+if(isset($_POST['submitcomment'])){
+	
+$User=$_SESSION['Username'];
+$res=mysqli_query($db,"SELECT id FROM users WHERE Username='$User'");
+while($row=mysqli_fetch_array($res)){
+$Commentor_id=$row['id'] ;
+        }
+		
+$Post_id = $_POST['submitcomment'];
+
+$Comment = mysqli_real_escape_string($db, $_POST[$Post_id]);
+
+	
+$query = "INSERT INTO posts_comments (Post_id,Commentor_id,Comment) VALUES('$Post_id', '$Commentor_id', '$Comment') ";
+mysqli_query($db, $query);
+
+header("Location:profile.php?id=".$c->id);
+		
+}
+
 
 ?>
 
@@ -81,6 +96,12 @@ mysqli_query($db, $q);
 		    <script src="index.js"></script>
         <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 				<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+				
+				
+	<link rel="stylesheet" href="posts.css">
+   
+    
+    
   </head>
 
 	<style >
@@ -126,31 +147,6 @@ else  echo '<img id="pic" src="imgs/default.png" class="pictures" onclick="slide
 ?>
 
     </div>
-
-
-    <!-- <div class="infocontainer">
-
-      <div class="info">
-				<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #ffffff;background: #0096c7;padding: 6px;border-radius: 18px;"></span> <span style="font-size: 15px;">موثق
-</span> 			    </div>
-
-			    <div class="info">
-						 <span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #ffffff;background: #e64e4e;padding: 5px 9px;border-radius: 18px;"></span><span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">تلمسان</span>
-			    </div>
-
-					<div class="info">
-					 <span class="fas fa-phone" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: white;background: #54c554;padding: 5px 7px;border-radius: 18px;top: 2px;position: relative;"></span> <span>  +213673937894 </span> 			    </div>
-
-    <div class="info">
-			<span>  </span>     </div>
-
-
-
- <div class="info">  <span class="fas fa-birthday-cake" style="font-family: FontAwesome;margin-right: 10px;color: white;background: #FF9800;padding: 6px;border-radius: 18px;"></span> <span> لايوجد العمر </span> </div>
-
-    </div>
-  -->
-
     <div class="infocontainer">
 
 			<div class="info">
@@ -255,9 +251,128 @@ else  echo '<img id="pic" src="imgs/default.png" class="pictures" onclick="slide
 	 ?>
     </div>
     <button id="viewallpic" type="button" name="button">See all</button>
-</div>
+	
+	
 
 </div>
+</div>
+
+
+<?php
+echo '<form action="profile.php?id='.$c->id.'" method="post" enctype="multipart/form-data">' ;
+echo '<div> ' ; 
+ 
+    $res=mysqli_query($db,"SELECT * FROM posts where User_id='$c->id'"); 
+	while($row=mysqli_fetch_array($res)){
+         
+    echo '<div class="post"> '; 
+	
+	      // get user info 
+		 $User_id = $row['User_id']; 
+		 
+		 $res1=mysqli_query($db,"SELECT * FROM users where id ='$User_id' ");   
+		 while($row1=mysqli_fetch_array($res1)){
+		    $First_Name = $row1['First_Name'];
+			$Last_Name = $row1['Last_Name'];
+			$Profile_Pic = $row1['Profile_Pic'];
+		 }
+		
+	    
+    
+    echo '<div class="imgcontain">' ; 
+	if($Profile_Pic!="default.png")
+    echo ' <img src="imgs/'.$User_id.'/'.$Profile_Pic.'" alt="">';  
+	else echo '<img src="imgs/default.png" alt=""> '; 
+    echo '</div>' ; 
+		
+    echo '<div class="name">' ; 
+    echo ' <p class="nametxt">'.$First_Name .' '. $Last_Name . '</p>' ; 
+    echo ' </div> ' ; 
+		
+    echo '<div class="posttxtdiv">'; 
+    echo '<p class="posttxt">'.$row['Txt'].'</p>'; 
+    echo '</div>' ; 
+		 
+       
+
+         $Post_id = $row['Post_id'];
+         $res2=mysqli_query($db,"SELECT * FROM posts_comments WHERE Post_id='$Post_id'");
+		 while($row2=mysqli_fetch_array($res2)){
+		    $Commentor_id= $row2['Commentor_id'];
+			
+			$res3=mysqli_query($db,"SELECT * FROM users where id ='$Commentor_id' ");   
+		    while($row3=mysqli_fetch_array($res3)){
+		    $CFirst_Name = $row3['First_Name'];
+			$CLast_Name = $row3['Last_Name'];
+			$CProfile_Pic = $row3['Profile_Pic'];
+			$Cid = $row3['id'];
+			 } 
+			
+			
+		   echo '<div class="commentsection">'; 
+           
+		   echo '<div class="comimgconatin">'; 
+		   if($CProfile_Pic!="default.png")
+           echo '<img src="imgs/'.$Cid.'/'.$CProfile_Pic.'" alt="">'; 
+		   else  echo '<img src="imgs/default.png" alt=""> '; 
+		   
+           echo '</div>'; 
+          
+		   echo '<div class="comname">'; 
+           echo '<p class="comenametxt">'.$CFirst_Name .' '.$CLast_Name.'</p>'; 
+           echo ' </div> ';  
+
+           echo ' <div class="comtext"> ';  
+           echo ' <p>'.$row2['Comment'].'</p> ';  
+           echo ' </div>'; 
+           echo ' </div>'; 
+			
+		 }
+
+         
+
+
+	   
+	   
+if (isset($_SESSION['Username'])) {
+	
+$Username=$_SESSION['Username'];
+
+$res4=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name,id FROM users WHERE Username='$Username'");
+while($row4=mysqli_fetch_array($res4)){
+  	             $MCProfile_Pic=$row4['Profile_Pic'] ;
+				 $MCid = $row4['id'] ;
+				 }
+
+echo ' <div class="commentorsection">';  		
+
+echo '<div class="comimgconatin">';
+
+if($MCProfile_Pic!="default.png")
+echo '<img src="imgs/'.$MCid.'/'.$MCProfile_Pic.'" alt=""> ';  
+else
+echo '<img src="imgs/default.png" alt="">';
+
+echo '</div>';
+echo '<input type="text" name="'.$Post_id.'" class="inputcom"> ';
+
+echo '<button type="submit" name="submitcomment" class="submitcom" value="'.$Post_id.'"><i class="fa fa-paper-plane" aria-hidden="true"></i>  </button>';
+
+echo '</div>' ; 
+
+
+
+
+}
+echo '</div>' ; 
+}
+	   
+	   
+?>
+
+</div>
+</form>
+
 <div id="myModal" class="modal">
 
   <!-- Modal content -->

@@ -1,13 +1,31 @@
 <?php
-$id =$_GET['id'];
-include('server.php');
+if(isset($_GET['id']))
+$id = $_GET['id'];
 
+include('server.php');
+//-----FOR POINTS----
+if(isset($id) && !isset($_COOKIE['page_visited_already'])){ 
+$qe ="UPDATE users SET Points=Points+1 WHERE id='$id'";
+$re = mysqli_query($db,$qe);	
+if(!$re){
+echo "error".mysqli_error($db);
+               }	  
+setcookie("page_visited_already","1", time() +(10 * 365 * 24 * 60 * 60) , "/");
+		}
+//-------------ALL---------------
+if (!isset($_COOKIE['page_visited_already'])){
+$sql0="UPDATE visitors SET Allvisitors=Allvisitors+1 where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+          }	  
+setcookie("page_visited_already","1", time() +(10 * 365 * 24 * 60 * 60) , "/");
+}
+//---------ALL--------
 $sql0="UPDATE visitors SET Signupvisit=Signupvisit+1 where id='1'";
 $res0=mysqli_query($db,$sql0);
 
 mysqli_close($db);
-
-
 
 
  ?>
@@ -40,21 +58,8 @@ mysqli_close($db);
 </head>
 
 
-<?php
-ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-// server should keep session data for AT LEAST 1 hour
-//ini_set('session.gc_maxlifetime', 1866240000);
-// each client should remember their session id for EXACTLY 1 hour
-//session_set_cookie_params(1866240000);
-//session_start();
-
-include('topbar.php');
-
-//ini_set('display_errors', 1); ini_set('log_errors',1); error_reporting(E_ALL); mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-?>
-
+<?php include('topbar.php'); ?>
+ 
 <body>
 	<!-- main -->
 	<div class="main-w3layouts wrapper" >

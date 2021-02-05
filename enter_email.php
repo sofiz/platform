@@ -6,10 +6,6 @@ $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);
                }
-
-
-
-
  ?>
 
 <!DOCTYPE html>
@@ -30,12 +26,14 @@ or die ('can\'t charset in DataBase');
 include('app_logic.php');
 session_start();
 include('topbar.php');
+
 if (isset($_SESSION['Username'])) {
 	  $Username=$_SESSION['Username'];
 	  $q ="UPDATE statistics set EnterEmail=EnterEmail+1 WHERE Username='$Username' ";
 	  mysqli_query($db, $q);
 }
-mysqli_close ( $db );
+
+mysqli_close ($db);
 ?>
 <body>
 	<form class="login-form" action="enter_email.php" method="post">

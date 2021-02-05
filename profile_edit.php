@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
      <title> Rondili -  تعديل الحساب</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="keywords" content="rondili, service, job, خدمة ,الجزائر ,عامل , رونديلي">
     <meta name="description" content="
 تبحث عن خدمة أو عامل في منطقتك ؟
@@ -21,11 +19,8 @@
 <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
-
 </head>
-
 <?php
 
 session_start();
@@ -49,7 +44,7 @@ $c->Select_Information_Of_Profile($db);
 //--------------select photos -----------------------
 $c->Select_Photos_Of_Profile ($db);
 
-
+//----- COUNT PROFILE EDIT VISITs -------
 if (isset($_SESSION['Username'])) {
 $Username=$_SESSION['Username'];
 $q ="UPDATE statistics set ProfileEdit=ProfileEdit+1 WHERE Username='$Username' ";

@@ -1,43 +1,44 @@
 <?php
-include('../conn.php') ;
-if (!isset($_COOKIE['page_visited_already'])){
-
-$rest=mysqli_query($db,"SELECT Allvisitors FROM visitors WHERE id='1' ");
-while($row=mysqli_fetch_array($rest)){
-$AllVisitors=$row['Allvisitors'] ;
-//$Users=$row['Users'] ;
-//$Unkown=$row['Unkown'] ;
-}
-
-
-$AllVisitors++;
-//$Unkown=$AllVisitors-$Users;
-
-
-$sql0="UPDATE visitors SET Allvisitors='$AllVisitors' where id='1'";
-$res0=mysqli_query($db,$sql0);
-if(!$res0){
-echo "error".mysqli_error($db);
-          }
-
-
-setcookie("page_visited_already", "1",time() +(10 * 365 * 24 * 60 * 60), "/");
-
-}
-
-
-
+include('../conn.php');
 
 $sSQL= 'SET CHARACTER SET utf8';
 mysqli_query($db,$sSQL)
 or die ('can\'t charset in DataBase');
 
+//-------ALL------
+if (!isset($_COOKIE['page_visited_already'])){
+	
+$sql0="UPDATE visitors SET Allvisitors=Allvisitors+1 where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+          }
+setcookie("page_visited_already", "1",time() +(10 * 365 * 24 * 60 * 60), "/");
+
+}
+
+//----- daily visits -----
+if (!isset($_COOKIE[date("j/n/Y")])){
+$Date = date("j/n/Y"); 
+$res1=mysqli_query($db,"SELECT * FROM daily_visits where Date='$Date'");
+if(mysqli_num_rows($res1)==1){
+$q = "UPDATE daily_visits SET  Visitors=Visitors+1 WHERE Date='$Date'" ;
+mysqli_query($db, $q);
+}
+else {
+$q = "INSERT INTO daily_visits (Date,Visitors) VALUES('$Date','1')";
+mysqli_query($db, $q);
+}
+
+setcookie(date("j/n/Y"),date("j/n/Y"), time() +(10 * 365 * 24 ) , "/");
+}
+
+//-------ALL------
 $sql0="UPDATE visitors SET Indexvisit=Indexvisit+1 where id='1'";
 $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);
-               }
-
+          }
 
 mysqli_close ($db);
 

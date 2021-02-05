@@ -411,10 +411,20 @@ $users = mysqli_query($db, $sql);
 return $users ;
 	}
 
+function Count_All_Visitors(){
+	
+if (!isset($_COOKIE['page_visited_already'])){
+	
+$sql0="UPDATE visitors SET Allvisitors=Allvisitors+1 where id='1'";
+$res0=mysqli_query($db,$sql0);
+if(!$res0){
+echo "error".mysqli_error($db);
+          }
+setcookie("page_visited_already", "1",time() +(10 * 365 * 24 * 60 * 60), "/");
 
+}
 
-
-
+}
 
 
 

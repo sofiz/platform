@@ -16,6 +16,7 @@
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <link rel="stylesheet" href="posts.css">
 
     <script data-ad-client="ca-pub-8433558651734014" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
@@ -54,7 +55,7 @@ $c->Select_Photos_Of_Profile ($db);
 $c->Get_Rating_Profile($db);
 include('topbar.php');
 
-
+//---COUNT PROFILE VISITs ----
 if (isset($_SESSION['Username'])) {
 $Username=$_SESSION['Username'];
 $q ="UPDATE statistics set Myprofile=Myprofile+1 WHERE Username='$Username' ";
@@ -190,6 +191,119 @@ mysqli_query($db, $q);
 </div>
 </div>
 
+<div> 
+<?php
+echo '<form action="profile.php?id='.$c->id.'" method="post" enctype="multipart/form-data">' ;
+echo '<div> ' ; 
+ 
+    $res=mysqli_query($db,"SELECT * FROM posts where User_id='$c->id'"); 
+	while($row=mysqli_fetch_array($res)){
+         
+    echo '<div class="post"> '; 
+	
+	      // get user info 
+		 $User_id = $row['User_id']; 
+		 
+		 $res1=mysqli_query($db,"SELECT * FROM users where id ='$User_id' ");   
+		 while($row1=mysqli_fetch_array($res1)){
+		    $First_Name = $row1['First_Name'];
+			$Last_Name = $row1['Last_Name'];
+			$Profile_Pic = $row1['Profile_Pic'];
+		 }
+		
+	    
+    
+    echo '<div class="imgcontain">' ; 
+	if($Profile_Pic!="default.png")
+    echo ' <img src="imgs/'.$User_id.'/'.$Profile_Pic.'" alt="">'; 
+	else echo '<img src="imgs/default.png" alt=""> '; 
+    echo '</div>' ; 
+		
+    echo '<div class="name">' ; 
+    echo ' <p class="nametxt">'.$First_Name .' '. $Last_Name . '</p>' ; 
+    echo ' </div> ' ; 
+		
+    echo '<div class="posttxtdiv">'; 
+    echo '<p class="posttxt">'.$row['Txt'].'</p>'; 
+    echo '</div>' ; 
+		 
+       
+
+         $Post_id = $row['Post_id'];
+         $res2=mysqli_query($db,"SELECT * FROM posts_comments WHERE Post_id='$Post_id'");
+		 while($row2=mysqli_fetch_array($res2)){
+		    $Commentor_id= $row2['Commentor_id'];
+			
+			$res3=mysqli_query($db,"SELECT * FROM users where id ='$Commentor_id' ");   
+		    while($row3=mysqli_fetch_array($res3)){
+		    $CFirst_Name = $row3['First_Name'];
+			$CLast_Name = $row3['Last_Name'];
+			$CProfile_Pic = $row3['Profile_Pic'];
+			$Cid = $row3['id'];
+			 } 
+			
+			
+		   echo '<div class="commentsection">'; 
+           
+		   echo '<div class="comimgconatin">'; 
+		   if($CProfile_Pic!="default.png")
+           echo '<img src="imgs/'.$Cid.'/'.$CProfile_Pic.'" alt="">'; 
+		   else  echo '<img src="imgs/default.png" alt=""> '; 
+		   
+           echo '</div>'; 
+          
+		   echo '<div class="comname">'; 
+           echo '<p class="comenametxt">'.$CFirst_Name .' '.$CLast_Name.'</p>'; 
+           echo ' </div> ';  
+
+           echo ' <div class="comtext"> ';  
+           echo ' <p>'.$row2['Comment'].'</p> ';  
+           echo ' </div>'; 
+           echo ' </div>'; 
+			
+		 }
+
+         
+
+
+	   
+	   
+if (isset($_SESSION['Username'])) {
+	
+$Username=$_SESSION['Username'];
+
+$res4=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name,id FROM users WHERE Username='$Username'");
+while($row4=mysqli_fetch_array($res4)){
+  	             $MCProfile_Pic=$row4['Profile_Pic'] ;
+				 $MCid = $row4['id'] ;
+				 }
+
+echo ' <div class="commentorsection">';  		
+
+echo '<div class="comimgconatin">';
+
+if($MCProfile_Pic!="default.png")
+echo '<img src="imgs/'.$MCid.'/'.$MCProfile_Pic.'" alt=""> ';  
+else
+echo '<img src="imgs/default.png" alt="">';
+
+echo '</div>';
+echo '<input type="text" name="'.$Post_id.'" class="inputcom"> ';
+
+echo '<button type="submit" name="submitcomment" class="submitcom" value="'.$Post_id.'"><i class="fa fa-paper-plane" aria-hidden="true"></i>  </button>';
+
+echo '</div>' ; 
+
+
+
+
+}
+echo '</div>' ; 
+}
+	   
+	   
+?>
+</div>
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -235,6 +349,11 @@ $c->Show_All_Photos();
 $c->For_My_Comment($db);
 //-----------for show all comments-------
 $c->Show_All_Comments($db);
+
+
+
+
+
 mysqli_close($db);
 
 ?>

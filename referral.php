@@ -10,16 +10,21 @@
   </head>
   <body>
     <?php 
-include('../conn.php') ;
+include('../conn.php');
 session_start();
 include 'topbar.php';
+//---GET ID FROM SESSION -----
 if (isset($_SESSION['Username'])) {
 $user=$_SESSION['Username'];
 $res1=mysqli_query($db,"SELECT id FROM users WHERE Username='$user'");
 while($row1=mysqli_fetch_array($res1)) {
 $id=$row1['id'] ;
         }
+	  
+	  $q ="UPDATE statistics set Referral=Referral+1 WHERE id='$id' ";
+	  mysqli_query($db, $q);
 }
+else header("Location: signup.php");
 
 		?>
     <div class="container">
