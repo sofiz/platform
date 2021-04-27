@@ -193,6 +193,8 @@ mysqli_query($db, $q);
 
 <div> 
 <?php
+
+
 echo '<form action="profile.php?id='.$c->id.'" method="post" enctype="multipart/form-data">' ;
 echo '<div> ' ; 
  
@@ -200,7 +202,7 @@ echo '<div> ' ;
 	while($row=mysqli_fetch_array($res)){
          
     echo '<div class="post"> '; 
-	
+
 	      // get user info 
 		 $User_id = $row['User_id']; 
 		 
@@ -209,8 +211,8 @@ echo '<div> ' ;
 		    $First_Name = $row1['First_Name'];
 			$Last_Name = $row1['Last_Name'];
 			$Profile_Pic = $row1['Profile_Pic'];
+		 
 		 }
-		
 	    
     
     echo '<div class="imgcontain">' ; 
@@ -224,7 +226,10 @@ echo '<div> ' ;
     echo ' </div> ' ; 
 		
     echo '<div class="posttxtdiv">'; 
-    echo '<p class="posttxt">'.$row['Txt'].'</p>'; 
+    echo '<p class="posttxt">'.$row['Txt'].'</p>';
+    	echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_1'].'" alt="">'; 
+		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_2'].'" alt="">'; 
+		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_3'].'" alt="">'; 
     echo '</div>' ; 
 		 
        
@@ -266,7 +271,7 @@ echo '<div> ' ;
          
 
 
-	   
+	  
 	   
 if (isset($_SESSION['Username'])) {
 	
@@ -298,10 +303,12 @@ echo '</div>' ;
 
 
 }
+
 echo '</div>' ; 
 }
 	   
 	   
+	   echo '</form>' ; 
 ?>
 </div>
 <div id="myModal" class="modal">

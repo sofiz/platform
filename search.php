@@ -167,110 +167,25 @@ $obj = new \ArPHP\I18N\Arabic();
     <input type="text" id="searchinput" name="search" autocomplete="off" placeholder=" ابحث عن" class="searchinput" onkeyup="showResult(this.value)">
     <div id="livesearch"></div>
     <div id="myDIV">
-      <select class="dropdown" name="Job" >
-
-
+	
+	
+       <select class="dropdown" name="Job" >
 	   <option value="" id="option1" selected>ابحث عن</option>
-<?php include 'jobsdata.html';
-?>
-     </select>
+       <?php include 'jobsdata.html';?>
+       </select>
 
     </div>
 
     <?php include 'wilayascript.html'; ?>
-<!--
-    <div id="myBtnContainer">
-  <button class="bt active" onclick="filterSelection('all')"> Show all</button>
-  <button class="bt" onclick="filterSelection('cars')"> Cars</button>
-  <button class="bt" onclick="filterSelection('animals')"> Animals</button>
-  <button class="bt" onclick="filterSelection('fruits')"> Fruits</button>
-  <button class="bt" onclick="filterSelection('colors')"> Colors</button>
-</div>
 
-<div class="container">
-  <div class="filterDiv cars">BMW</div>
-  <div class="filterDiv colors fruits">Orange</div>
-  <div class="filterDiv cars">Volvo</div>
-  <div class="filterDiv colors">Red</div>
-  <div class="filterDiv cars animals">Mustang</div>
-  <div class="filterDiv colors">Blue</div>
-  <div class="filterDiv animals">Cat</div>
-  <div class="filterDiv animals">Dog</div>
-  <div class="filterDiv fruits">Melon</div>
-  <div class="filterDiv fruits animals">Kiwi</div>
-  <div class="filterDiv fruits">Banana</div>
-  <div class="filterDiv fruits">Lemon</div>
-  <div class="filterDiv animals">Cow</div>
-</div>
-
-<script>
-filterSelection("all")
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("filterDiv");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-    w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-  }
-}
-
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
-
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);
-    }
-  }
-  element.className = arr1.join(" ");
-}
-
-// Add active class to the current button (highlight it)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("bt");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-</script>
-
-<script>
-       document.getElementById('mihna').remove();
-
-
-
-
-
-
-
-
-
-
-	</script>
--->
-	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
+	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" >
+	
+	
     </div>
     <input type="submit" name="recherche"  value= "بحث" class="searchbtn">
 
 
 				</form>
-         <!-- <div class="ad1">
-            this is an ad
-          </div> -->
                 <div class="resultscontainer">
 
 

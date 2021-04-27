@@ -35,6 +35,17 @@ if (isset($_POST['submitpost'])){
 	
 $posttextarea = $_POST['posttextarea']; 
 
+
+
+    $Job = $_POST['jobs']; 
+	$Wilaya = $_POST['Wilaya']; 
+	$Category = $_POST['offer']; 
+	
+	
+	
+	
+	
+
 $User=$_SESSION['Username'];
 $res=mysqli_query($db,"SELECT id FROM users WHERE Username='$User'");
 while($row=mysqli_fetch_array($res)){
@@ -42,7 +53,7 @@ $id=$row['id'] ;
         }
 
 
-$query = "INSERT INTO posts (Txt,User_id) VALUES('$posttextarea', '$id') ";
+$query = "INSERT INTO posts (Txt,User_id,Job,Wilaya,Category) VALUES('$posttextarea', '$id', '$Job', '$Wilaya', '$Category') ";
 mysqli_query($db, $query);
 
 $getmaxid = mysqli_query($db," SELECT MAX(Post_id) AS id FROM posts");
@@ -135,6 +146,8 @@ mysqli_query($db, $query);
 	
 }
 
+
+
 ?> 
 <html lang="en" dir="ltr">
   <head>
@@ -143,8 +156,10 @@ mysqli_query($db, $query);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="data.js"></script>
+	
+	
     <title></title>
   </head>
 
@@ -152,46 +167,110 @@ mysqli_query($db, $query);
 //include('topbar.php'); 
 ?>
   <body>
-  <form action="posts.php" method="post" enctype="multipart/form-data">
-  
+ 
     <div class="container">
+	
+	<form action="posts.php" method="post" enctype="multipart/form-data">
       <textarea name="posttextarea" class="posttextarea" placeholder="write your text here"></textarea>
       <div class="btnscontainer">
 	    <input type="file" name="upload[]" class="button" id="upload" multiple>
         <!-- <button type="button" name="upload" class="button" id="upload">upload</button> -->
-        <button type="submit" name="submitpost" class="button" id="submitpost">submit</button>
-
-      </div>
+		
+		
+		
+		
+		
+	
+	
       <div class="filterscontain">
         <div class="jobdrop">
+		
           <select class="dropdown" name="jobs" id="jobs">
-<?php include 'jobsdata.html';?>
-    
+             <?php include 'jobsdata.html';?>
           </select>
+		  
         </div>
-        <div class="wilayadrop" id="myDIV">
-          
-    <?php include 'wilayascript.html'; ?>
-         
-        </div>
-        
-		<input type="radio" name="offer" value="offer" class="radio">
+		
+   
+	 
+        <div  class="wilayadrop"  id="myDIV">    
+     <input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>  
+    </div>
+		
+
+	
+	
+	
+		<input type="text" name="offer" value="offer" class="radio">
         <div class="filtersradiotxt">
           <p>job</p>
         </div>
 		
-        <input type="radio" name="looking" value="looking" class="radio">
+
+        <div class="filtersradiotxt">
+          <p>offer</p>
+        </div>
+
+		
+		
+		
+		
+        <button type="submit" name="submitpost" class="button" id="submitpost">submit</button>
+
+      </div>
+	  
+	  </form>
+	
+	  <form action="posts.php" method="post" enctype="multipart/form-data">
+	  
+	   
+	
+	
+	
+      <div class="filterscontain">
+        <div class="jobdrop">
+		
+          <select class="dropdown" name="jobs" id="jobs">
+             <?php include 'jobsdata.html';?>
+          </select>
+		  
+        </div>
+		
+   
+	 
+        <div  class="wilayadrop"  id="myDIV">    
+     <input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>  
+    </div>
+		
+
+	
+	
+	
+		<input type="text" name="offer" value="offer" class="radio">
+        <div class="filtersradiotxt">
+          <p>job</p>
+        </div>
+		
+
         <div class="filtersradiotxt">
           <p>offer</p>
         </div>
 		<button type="submit" name="sub" class="button" id="submitpost">sub</button>
       </div>
 	  
-	  
+	  </form>
 	  
 <?php
     if (isset($_POST['sub']))
-	$res=mysqli_query($db,"SELECT * FROM posts "); 
+	{
+	$Job = $_POST['jobs']; 
+	$Wilaya = $_POST['Wilaya']; 
+	$Category = $_POST['offer']; 
+	$res=mysqli_query($db,"SELECT * FROM posts where Job='$Job'  and Wilaya='$Wilaya' and Category='$Category' ");   
+	 echo  $Job; 
+	 echo  $Wilaya; 
+	 echo  $Category; 
+	 }
 	else 
     $res=mysqli_query($db,"SELECT * FROM posts "); 
 	
@@ -224,6 +303,9 @@ mysqli_query($db, $query);
 		
     echo '<div class="posttxtdiv">'; 
     echo '<p class="posttxt">'.$row['Txt'].'</p>';
+	echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_1'].'" alt="">'; 
+		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_2'].'" alt="">'; 
+		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_3'].'" alt="">'; 
     echo '</div>' ; 
 		 
        
@@ -302,13 +384,15 @@ echo '</div>' ;
 	   
 	   
 ?>
-     	
+     
+
+ </div>	 
 </form>
 		
 		
         
 		
       
-    </div>
+   <?php include 'wilayascript.html'; ?> 
   </body>
 </html>
