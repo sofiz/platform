@@ -165,15 +165,24 @@ mysqli_query($db, $query);
 
   <?php
 //include('topbar.php'); 
+
+
+
+
+
 ?>
   <body>
  
     <div class="container">
 	
 	<form action="posts.php" method="post" enctype="multipart/form-data">
+	  <input type="file" name="upload[]" class="button" id="upload" multiple>
       <textarea name="posttextarea" class="posttextarea" placeholder="write your text here"></textarea>
-      <div class="btnscontainer">
-	    <input type="file" name="upload[]" class="button" id="upload" multiple>
+      <div class="btnscontainer"> </div>
+	  
+	  
+	 
+	  
         <!-- <button type="button" name="upload" class="button" id="upload">upload</button> -->
 		
 		
@@ -219,13 +228,11 @@ mysqli_query($db, $query);
 
       </div>
 	  
-	  </form>
-	
-	  <form action="posts.php" method="post" enctype="multipart/form-data">
 	  
-	   
+	  
+	   </form>
 	
-	
+	<form action="posts.php" method="post" enctype="multipart/form-data">
 	
       <div class="filterscontain">
         <div class="jobdrop">
@@ -258,7 +265,7 @@ mysqli_query($db, $query);
 		<button type="submit" name="sub" class="button" id="submitpost">sub</button>
       </div>
 	  
-	  </form>
+	  
 	  
 <?php
     if (isset($_POST['sub']))
@@ -387,9 +394,9 @@ echo '</div>' ;
      
 
  </div>	 
-</form>
+
 		
-		
+	</form>	
         
 		
       
