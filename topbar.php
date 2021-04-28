@@ -73,6 +73,12 @@ echo  '<a href="my-profile.php" id="my-profilebtn" class="fa fa-user"><span clas
 
 ';
 
+
+echo  '<a href="posts.php" id="my-profilebtn" class="fa fa-briefcase"><span class="navbartxt" >فرص عمل</span></a>
+
+
+';
+
 echo '<a href="search.php"id ="searchnav2" > <label for="search" id="searchnav" class="fa fa-search" ><span class ="navbartxt">بحث</span></label>   </a>
 ';
 
@@ -81,8 +87,16 @@ echo '<a href="logout.php" id ="logoutbtn2"> <label for="logout" id="logoutbtn" 
 
 }
 
-else { echo '<a href="search.php"  id="searchnav2" > <label for="search" id="searchnav" class="fa fa-search" ><span class ="navbartxt">بحث</span></label>   </a>
+else {
+ echo  '<a href="posts.php" id="my-profilebtn" class="fa fa-briefcase"><span class="navbartxt" >فرص عمل</span></a>
+
+
+  ';
+
+   echo '
+  <a href="search.php"  id="searchnav2" > <label for="search" id="searchnav" class="fa fa-search" ><span class ="navbartxt">بحث</span></label>   </a>
 ';
+
    echo '<a href="signin.php">
 <label for="login" id="logoutbtn" class="fa fa-sign-in" ><span class="navbartxt" >دخول</span></label></a>  ';
 echo '<a href="signup.php">

@@ -96,71 +96,74 @@ mysqli_query($db, $q);
     <div class="infocontainer">
 
       <div class="info">
-				<?php if ($c->Job!="" && $c->Type == "worker" )
-				{
-				 echo '<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #036fa1;"></span> ' ;
-			     echo '<span style="font-size: 15px;">'.  $c->Job .'</span> ';
-				 }
-				 else { echo '<span style="font-size: 15px;"> </span> ';   }
-				 ?>
-			    </div>
+        <?php if ($c->Job!="" && $c->Type == "worker" )
+        {
+         echo '	<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #ffffff;background: #0096c7;padding: 6px;border-radius: 18px;"></span> ';
+           echo '<span style="font-size: 15px;">'.  $c->Job .'</span> ';
+         }
+         else { echo '<span style="font-size: 15px;"> </span> ';   }
+         ?>
 
-			    <div class="info">
-						 <?php	if ($c->Wilaya!="" && $c->Type == "worker")
+
+          </div>
+
+          <div class="info">
+            <?php	if ($c->Wilaya!="" && $c->Type == "worker")
          {
-		 echo '<span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #036fa1;"></span>' ;
-		 if(empty($c->Daira)&&empty($c->Commune))
+     echo '<span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #ffffff;background: #e64e4e;padding: 5px 9px;border-radius: 18px;"></span>
+  ' ;
+     if(empty($c->Daira)&&empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.'</span>';
          if(!empty($c->Daira)&&empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.'</span>';
-		if(!empty($c->Daira)&&!empty($c->Commune))
+    if(!empty($c->Daira)&&!empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.','.$c->Daira.','.$c->Commune.'</span>';
 
-		 }
-		  else { echo '<span style="font-size: 15px;"> </span> ';   }
-		?>
+     }
+      else { echo '<span style="font-size: 15px;"> </span> ';   }
+    ?>
+          </div>
 
-			    </div>
-
-					<div class="info">
-					<?php	if ($c->Phone!="" && $c->Type == "worker") {
-					echo ' <span class="fas fa-phone" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #036fa1;"></span>' ;
-			        echo ' <span>  '.$c->Phone. ' </span> ';
-				  }
-				  else { echo '<span style="font-size: 15px;"> </span> ';   }
-				  ?>
-			    </div>
+          <div class="info">
+            <?php	if ($c->Phone!="" && $c->Type == "worker") {
+          echo ' <span class="fas fa-phone" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: white;background: #54c554;padding: 5px 7px;border-radius: 18px;top: 2px;position: relative;"></span>
+  ' ;
+              echo ' <span>  '.$c->Phone. ' </span> ';
+          }
+          else { echo '<span style="font-size: 15px;"> </span> ';   }
+          ?>
+          </div>
 
     <div class="info">
-			<?php	if ($c->Type == "worker" && $c->EmailCheck=="yes") {
-			echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
+      <?php	if ($c->Type == "worker" && $c->EmailCheck=="yes") {
+      echo '<span class="fas fa-envelope" style="font-family: FontAwesome;margin-right: 10px;font-size: 14px;color: white;background: #9f54c5;;padding: 6px 7px;border-radius: 18px;top:0px;position: relative;"></span> ' ;
             echo ' <span> '.$c->Email .'</span> ';
-	  }
-	  else if (($c->EmailCheck=="no" && $c->Type == "worker")){
-          echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
-		  echo '<span style="font-size: 15px;"> - </span> ';   }
-		  else {//echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
-		         echo '<span>  </span> ';}
+    }
+    else if (($c->EmailCheck=="no" && $c->Type == "worker")){
+      echo '<span class="fas fa-envelope" style="font-family: FontAwesome;margin-right: 10px;font-size: 14px;color: white;background: #9f54c5;;padding: 6px 7px;border-radius: 18px;top: 0px;position: relative;"></span> ' ;
+      echo '<span style="font-size: 15px;"> - </span> ';   }
+      else {//echo '<span class="fas fa-envelope" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ' ;
+             echo '<span>  </span> ';}
 
-	  ?>
+    ?>
     </div>
 
 
 
-<?php  if($c->Birthday !=  "0000-00-00" && $c->Age($c->Birthday) > 16  && $c->Age($c->Birthday) < 65 && $c->Type == "worker")
+  <?php  if($c->Birthday !=  "0000-00-00" && $c->Age($c->Birthday) > 16  && $c->Age($c->Birthday) < 65 && $c->Type == "worker")
     {
-	    echo ' <div class="info"> <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ';
+      echo ' <div class="info"> <span class="fas fa-birthday-cake" style="font-family: FontAwesome;margin-right: 10px;color: white;background: #FF9800;padding: 6px;border-radius: 18px;"></span> ';
         echo '<span>  ' . $c->Age($c->Birthday)  .'</span> </div>';
     }
 
-	elseif(($c->Birthday ==  "0000-00-00" || ($c->Age($c->Birthday) < 16  || $c->Age($c->Birthday) > 65)) && $c->Type == "worker") {
-	    echo ' <div class="info"> ';
-		 echo ' <span class="fas fa-birthday-cake" style="font-family: FontAwesome ;margin-right: 10px;color: #036fa1;"></span> ';
+  elseif(($c->Birthday ==  "0000-00-00" || ($c->Age($c->Birthday) < 16  || $c->Age($c->Birthday) > 65)) && $c->Type == "worker") {
+      echo ' <div class="info"> ';
+     echo ' <span class="fas fa-birthday-cake" style="font-family: FontAwesome;margin-right: 10px;color: white;background: #FF9800;padding: 6px;border-radius: 18px;"></span> ';
         echo '<span> - </span> </div>';
     }
+  else  echo '<div class="info"><span> </span> </div>';
 
-?>
-
+  ?>
 
     </div>
     <div id="profileeditbtnp">
@@ -191,90 +194,90 @@ mysqli_query($db, $q);
 </div>
 </div>
 
-<div> 
+<div>
 <?php
 
 
 echo '<form action="profile.php?id='.$c->id.'" method="post" enctype="multipart/form-data">' ;
-echo '<div> ' ; 
- 
-    $res=mysqli_query($db,"SELECT * FROM posts where User_id='$c->id'"); 
-	while($row=mysqli_fetch_array($res)){
-         
-    echo '<div class="post"> '; 
+echo '<div> ' ;
 
-	      // get user info 
-		 $User_id = $row['User_id']; 
-		 
-		 $res1=mysqli_query($db,"SELECT * FROM users where id ='$User_id' ");   
+    $res=mysqli_query($db,"SELECT * FROM posts where User_id='$c->id'");
+	while($row=mysqli_fetch_array($res)){
+
+    echo '<div class="post"> ';
+
+	      // get user info
+		 $User_id = $row['User_id'];
+
+		 $res1=mysqli_query($db,"SELECT * FROM users where id ='$User_id' ");
 		 while($row1=mysqli_fetch_array($res1)){
 		    $First_Name = $row1['First_Name'];
 			$Last_Name = $row1['Last_Name'];
 			$Profile_Pic = $row1['Profile_Pic'];
-		 
+
 		 }
-	    
-    
-    echo '<div class="imgcontain">' ; 
+
+
+    echo '<div class="imgcontain">' ;
 	if($Profile_Pic!="default.png")
-    echo ' <img src="imgs/'.$User_id.'/'.$Profile_Pic.'" alt="">'; 
-	else echo '<img src="imgs/default.png" alt=""> '; 
-    echo '</div>' ; 
-		
-    echo '<div class="name">' ; 
-    echo ' <p class="nametxt">'.$First_Name .' '. $Last_Name . '</p>' ; 
-    echo ' </div> ' ; 
-		
-    echo '<div class="posttxtdiv">'; 
+    echo ' <img src="imgs/'.$User_id.'/'.$Profile_Pic.'" alt="">';
+	else echo '<img src="imgs/default.png" alt=""> ';
+    echo '</div>' ;
+
+    echo '<div class="name">' ;
+    echo ' <p class="nametxt">'.$First_Name .' '. $Last_Name . '</p>' ;
+    echo ' </div> ' ;
+
+    echo '<div class="posttxtdiv">';
     echo '<p class="posttxt">'.$row['Txt'].'</p>';
-    	echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_1'].'" alt="">'; 
-		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_2'].'" alt="">'; 
-		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_3'].'" alt="">'; 
-    echo '</div>' ; 
-		 
-       
+    	echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_1'].'" alt="">';
+		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_2'].'" alt="">';
+		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_3'].'" alt="">';
+    echo '</div>' ;
+
+
 
          $Post_id = $row['Post_id'];
          $res2=mysqli_query($db,"SELECT * FROM posts_comments WHERE Post_id='$Post_id'");
 		 while($row2=mysqli_fetch_array($res2)){
 		    $Commentor_id= $row2['Commentor_id'];
-			
-			$res3=mysqli_query($db,"SELECT * FROM users where id ='$Commentor_id' ");   
+
+			$res3=mysqli_query($db,"SELECT * FROM users where id ='$Commentor_id' ");
 		    while($row3=mysqli_fetch_array($res3)){
 		    $CFirst_Name = $row3['First_Name'];
 			$CLast_Name = $row3['Last_Name'];
 			$CProfile_Pic = $row3['Profile_Pic'];
 			$Cid = $row3['id'];
-			 } 
-			
-			
-		   echo '<div class="commentsection">'; 
-           
-		   echo '<div class="comimgconatin">'; 
-		   if($CProfile_Pic!="default.png")
-           echo '<img src="imgs/'.$Cid.'/'.$CProfile_Pic.'" alt="">'; 
-		   else  echo '<img src="imgs/default.png" alt=""> '; 
-		   
-           echo '</div>'; 
-          
-		   echo '<div class="comname">'; 
-           echo '<p class="comenametxt">'.$CFirst_Name .' '.$CLast_Name.'</p>'; 
-           echo ' </div> ';  
+			 }
 
-           echo ' <div class="comtext"> ';  
-           echo ' <p>'.$row2['Comment'].'</p> ';  
-           echo ' </div>'; 
-           echo ' </div>'; 
-			
+
+		   echo '<div class="commentsection">';
+
+		   echo '<div class="comimgconatin">';
+		   if($CProfile_Pic!="default.png")
+           echo '<img src="imgs/'.$Cid.'/'.$CProfile_Pic.'" alt="">';
+		   else  echo '<img src="imgs/default.png" alt=""> ';
+
+           echo '</div>';
+
+		   echo '<div class="comname">';
+           echo '<p class="comenametxt">'.$CFirst_Name .' '.$CLast_Name.'</p>';
+           echo ' </div> ';
+
+           echo ' <div class="comtext"> ';
+           echo ' <p>'.$row2['Comment'].'</p> ';
+           echo ' </div>';
+           echo ' </div>';
+
 		 }
 
-         
 
 
-	  
-	   
+
+
+
 if (isset($_SESSION['Username'])) {
-	
+
 $Username=$_SESSION['Username'];
 
 $res4=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name,id FROM users WHERE Username='$Username'");
@@ -283,12 +286,12 @@ while($row4=mysqli_fetch_array($res4)){
 				 $MCid = $row4['id'] ;
 				 }
 
-echo ' <div class="commentorsection">';  		
+echo ' <div class="commentorsection">';
 
 echo '<div class="comimgconatin">';
 
 if($MCProfile_Pic!="default.png")
-echo '<img src="imgs/'.$MCid.'/'.$MCProfile_Pic.'" alt=""> ';  
+echo '<img src="imgs/'.$MCid.'/'.$MCProfile_Pic.'" alt=""> ';
 else
 echo '<img src="imgs/default.png" alt="">';
 
@@ -297,18 +300,18 @@ echo '<input type="text" name="'.$Post_id.'" class="inputcom"> ';
 
 echo '<button type="submit" name="submitcomment" class="submitcom" value="'.$Post_id.'"><i class="fa fa-paper-plane" aria-hidden="true"></i>  </button>';
 
-echo '</div>' ; 
+echo '</div>' ;
 
 
 
 
 }
 
-echo '</div>' ; 
+echo '</div>' ;
 }
-	   
-	   
-	   echo '</form>' ; 
+
+
+	   echo '</form>' ;
 ?>
 </div>
 <div id="myModal" class="modal">

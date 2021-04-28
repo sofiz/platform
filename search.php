@@ -12,12 +12,12 @@ $res0=mysqli_query($db,$sql0);
 if(!$res0){
 echo "error".mysqli_error($db);
           }
-		  
+
 setcookie("page_visited_already","1", time() +(10 * 365 * 24 * 60 * 60) , "/");
 }
 //----- daily visits -----
 if (!isset($_COOKIE[date("j/n/Y")])){
-$Date = date("j/n/Y"); 
+$Date = date("j/n/Y");
 $res1=mysqli_query($db,"SELECT * FROM daily_visits where Date='$Date'");
 if(mysqli_num_rows($res1)==1){
 $q = "UPDATE daily_visits SET  Visitors=Visitors+1 WHERE Date='$Date'" ;
@@ -92,6 +92,10 @@ echo "error".mysqli_error($db);
   <meta charset="utf-8">
   <title>Rondili - صفحة البحث</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
   <link rel="stylesheet" href="search.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -167,8 +171,8 @@ $obj = new \ArPHP\I18N\Arabic();
     <input type="text" id="searchinput" name="search" autocomplete="off" placeholder=" ابحث عن" class="searchinput" onkeyup="showResult(this.value)">
     <div id="livesearch"></div>
     <div id="myDIV">
-	
-	
+
+
        <select class="dropdown" name="Job" >
 	   <option value="" id="option1" selected>ابحث عن</option>
        <?php include 'jobsdata.html';?>
@@ -178,9 +182,9 @@ $obj = new \ArPHP\I18N\Arabic();
 
     <?php include 'wilayascript.html'; ?>
 
-	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" >
-	
-	
+	<input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
+
+
     </div>
     <input type="submit" name="recherche"  value= "بحث" class="searchbtn">
 

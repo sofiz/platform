@@ -99,8 +99,8 @@ while($row=mysqli_fetch_array($res)){
 $flag=true ;
 
 for($j=0;$j<count($arr);$j++)
-if($arr[$j] == $row['id']){ 
-$flag=false; 
+if($arr[$j] == $row['id']){
+$flag=false;
 }
 
 if($flag){
@@ -116,12 +116,12 @@ echo'<a href="profile.php?id='.$row['id'].'" class="name">  '. $row['First_Name'
 
 echo'<p class="info"> ' .$row['Job'] .  '</p> ';
 if(empty($row['Daira'])&&empty($row['Commune']))
-echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].'</span></p> ';
+echo '<p class="info"> <span style="font-size: 15px;">'.$row['Wilaya'].'</span></p> ';
 if(!empty($row['Daira'])&&empty($row['Commune']))
-echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].'</span></p> ';
+echo '<p class="info"> <span style="font-size: 15px;">'.$row['Wilaya'].','.$row['Daira'].'</span></p> ';
 if(!empty($row['Daira'])&&!empty($row['Commune']))
-echo '<p class="info"> <span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$row['Wilaya'].','.$row['Daira'].','.$row['Commune'].'</span> </p> ';
-echo'<p class="info"> ' .$row['Phone']  .'</p> </div> </div>';
+echo '<p class="info"> <span style="font-size: 15px;">'.$row['Wilaya'].','.$row['Daira'].','.$row['Commune'].'</span> </p> ';
+echo'<p class="infop" > ' .$row['Phone']  .'</p> </div> </div>';
 
 array_push($arr,$row['id']);
 				                 	  }
@@ -132,7 +132,7 @@ array_push($arr,$row['id']);
 
 
 									  }
-  
+
   }
 
  if(isset($_GET['recherche'])) {
@@ -145,18 +145,18 @@ array_push($arr,$row['id']);
  $Name= rtrim($Name);
  $Job=rtrim($Job);
  $Wilaya= rtrim($Wilaya);
- 
- 
- $firstChar = mb_substr($Name, 0, 1, "UTF-8");	
+
+
+ $firstChar = mb_substr($Name, 0, 1, "UTF-8");
  if(!in_array($firstChar, $ligature_map)){
  $Name  =  mb_convert_case(mb_strtolower($Name), MB_CASE_TITLE, "UTF-8");
   }
-  
- //echo  "**".$Name."**" ; 
 
-  
-$typeandphone=" AND Type='worker' AND Phone<>'no'"  ; 
-  
+ //echo  "**".$Name."**" ;
+
+
+$typeandphone=" AND Type='worker' AND Phone<>'no'"  ;
+
 if(empty($Name) && empty($Job) &&  empty($Wilaya)){
 echo '<div class="resultcontainer"> ';
 echo ' <p id="noresult"> لايوجد نتائج ! <br> رجاء ادخال المهنة و الولاية المعنية  <p>  </div> ';
@@ -185,7 +185,7 @@ $count=-5;
 				  }
 //-------------------------------------------------------- search by name ----------------------------------------------------------------------------------------------
 else if(!empty($Name)){
-	
+
 if(!empty($Name) && !empty($Job) &&  !empty($Wilaya)){
 $sql2="SELECT * FROM users m WHERE  (m.Username LIKE '%$Name%' || m.First_Name LIKE '%$Name%' || m.Last_Name LIKE '%$Name%' || (CONCAT(TRIM(m.First_Name), ' ', TRIM(m.Last_Name)) LIKE '%$Name%') ||(CONCAT(TRIM(m.Last_Name), ' ', TRIM(m.First_Name)) LIKE '%$Name%')) AND Job='$Job' AND Wilaya='$Wilaya' ";
 $sql2_1="SELECT * FROM users m WHERE ( m.Job LIKE '%$Name%' || m.Wilaya LIKE '%$Name%' || m.Daira LIKE '%$Name%' || m.Commune LIKE '%$Name%'|| m.Description LIKE '%$Name%') AND Job='$Job' AND Wilaya='$Wilaya' ";
@@ -285,9 +285,9 @@ $soundex = substr($soundex, 1);
 /*
 //-------- inv name ------------
 $words=explode(" ",$Name);
-$soundex2 =" " ; 
+$soundex2 =" " ;
 for($i=$words[count($words)-1] ;$i<0;$i--){
-	
+
 $firstChar = mb_substr($words[$i], 0, 1, "UTF-8");
 if(in_array($firstChar, $ligature_map)){
 $en_word_2 = $obj->ar2en($words[$i]);
@@ -487,9 +487,9 @@ echo " <div class='record'> <a class='pagen' href='search.php?search=".$_GET['se
  $sql= "SELECT * FROM users where   Type='worker' AND Phone<>'no' ORDER BY RAND()
 LIMIT 12000 ";
  $res=mysqli_query($db,$sql);
- 
+
  Show_Result($db,$res,$count,$arr,$page);
- 
+
 
 $results_per_page = 30; // number of results per page
 $total_pages =  $count/$results_per_page ;
