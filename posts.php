@@ -68,7 +68,7 @@ foreach($_FILES['upload']['name'] as $key=>$val){
  
 
 	$x++;
-	if ($_FILES['upload']['size'][$key] != 0 	&& $_FILES['upload']['size'][$key] < 2097152 ){
+	if ($_FILES['upload']['size'][$key] != 0 	&& $_FILES['upload']['size'][$key] < 6097152 ){
 
 
 		if (!file_exists('imgs/'.$id)) {
@@ -176,6 +176,11 @@ mysqli_query($db, $query);
     <div class="container">
 	
 	<form action="posts.php" method="post" enctype="multipart/form-data">
+	
+	
+	
+	
+	
 	  <input type="file" name="upload[]" class="button" id="upload" multiple>
       <textarea name="posttextarea" class="posttextarea" placeholder="write your text here"></textarea>
       <div class="btnscontainer"> </div>
