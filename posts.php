@@ -180,16 +180,12 @@ include('topbar.php');
 
 
 	<form action="posts.php" method="post" enctype="multipart/form-data">
-<<<<<<< HEAD
 
-=======
-	
-	
-	
-	
-	
-	  <input type="file" name="upload[]" class="button" id="upload" multiple>
->>>>>>> a05b2e4642cf68a2dfec8a6713facf29500004de
+
+
+
+
+
       <textarea name="posttextarea" class="posttextarea" placeholder="write your text here"></textarea>
       <input type="file" name="upload[]" class="button" id="upload" multiple>
       <div class="btnscontainer"> </div>
