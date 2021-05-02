@@ -157,6 +157,8 @@ mysqli_query($db, $query);
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="data.js"></script>
 
 
@@ -164,7 +166,7 @@ mysqli_query($db, $query);
   </head>
 
   <?php
-include('topbar.php'); 
+include('topbar.php');
 
 
 
@@ -174,10 +176,13 @@ include('topbar.php');
   <body>
 
     <div class="container">
+<div class="newpostcontain">
+
 
 	<form action="posts.php" method="post" enctype="multipart/form-data">
-	  <input type="file" name="upload[]" class="button" id="upload" multiple>
+
       <textarea name="posttextarea" class="posttextarea" placeholder="write your text here"></textarea>
+      <input type="file" name="upload[]" class="button" id="upload" multiple>
       <div class="btnscontainer"> </div>
 
 
@@ -210,27 +215,34 @@ include('topbar.php');
 
 
 
-		<input type="text" name="offer" value="offer" class="radio">
+		<input type="radio" name="offer" value="offer" class="radio">
         <div class="filtersradiotxt">
-          <p>job</p>
+          <p style="margin-left:10px;width:73px">فرصة عمل</p>
         </div>
 
-
+<input type="radio" name="offer" value="offer" class="radio">
         <div class="filtersradiotxt">
-          <p>offer</p>
+          <p style="margin-left:10px;width:79px">تقديم عمل</p>
+
         </div>
+<input type="hidden" name="" value="">
 
 
 
 
-
-        <button type="submit" name="submitpost" class="button" id="submitpost">submit</button>
+        <button type="submit" name="submitpost" class="button" id="submitpost">نشر</button>
 
       </div>
 
 
 
 	   </form>
+</div>
+
+<div class="postscontain">
+<div class="poststitlediv">
+  <strong class="poststitle">منشورات</strong>
+</div>
 
 	<form action="posts.php" method="post" enctype="multipart/form-data">
 
@@ -245,7 +257,7 @@ include('topbar.php');
 
 
 
-        <div  class="wilayadrop"  id="myDIV">
+        <div  class="wilayadrop"  id="myDIV2">
      <input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
     </div>
 
@@ -253,16 +265,16 @@ include('topbar.php');
 
 
 
-		<input type="text" name="offer" value="offer" class="radio">
+		<input type="radio" name="offer" value="offer" class="radio">
         <div class="filtersradiotxt">
-          <p>job</p>
+          <p style="margin-left:10px;width:73px">فرصة عمل</p>
         </div>
 
-
+<input type="radio" name="offer" value="offer" class="radio">
         <div class="filtersradiotxt">
-          <p>offer</p>
+          <p style="margin-left:10px;width:79px">تقديم عمل</p>
         </div>
-		<button type="submit" name="sub" class="button" id="submitpost">sub</button>
+		<button type="submit" name="sub" class="button" id="submitpost">بحث</button>
       </div>
 
 
@@ -310,9 +322,41 @@ include('topbar.php');
 
     echo '<div class="posttxtdiv">';
     echo '<p class="posttxt">'.$row['Txt'].'</p>';
-	echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_1'].'" alt="">';
-		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_2'].'" alt="">';
-		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_3'].'" alt="">';
+	echo '
+
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_1'].'" style="width:100%">
+
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_2'].'" style="width:100%">
+
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_3'].'" style="width:100%">
+
+    </div>
+
+
+
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+
+  <div style="text-align:center">
+    <span class="dot"></span>
+    <span class="dot" ></span>
+    <span class="dot" ></span>
+  </div>
+  </div>
+
+  ';
+
     echo '</div>' ;
 
 
@@ -378,7 +422,7 @@ echo '<img src="imgs/default.png" alt="">';
 echo '</div>';
 echo '<input type="text" name="'.$Post_id.'" class="inputcom"> ';
 
-echo '<button type="submit" name="submitcomment" class="submitcom" value="'.$Post_id.'"><i class="fa fa-paper-plane" aria-hidden="true"></i>  </button>';
+echo '<button type="submit" name="submitcomment" class="submitcom" value="'.$Post_id.'"><i class="material-icons">&#xe163;</i>  </button>';
 
 echo '</div>' ;
 
@@ -397,9 +441,89 @@ echo '</div>' ;
 
 
 	</form>
-
+</div>
 
 
    <?php include 'wilayascript.html'; ?>
   </body>
+
+  <script type="text/javascript">
+  (function() {
+
+    init(); //on page load - show first slide, hidethe rest
+
+    function init() {
+
+      parents = document.getElementsByClassName('slideshow-container');
+
+      for (j = 0; j < parents.length; j++) {
+        var slides = parents[j].getElementsByClassName("mySlides");
+        var dots = parents[j].getElementsByClassName("dot");
+        slides[0].classList.add('active-slide');
+        dots[0].classList.add('active');
+      }
+    }
+
+    dots = document.getElementsByClassName('dot'); //dots functionality
+
+    for (i = 0; i < dots.length; i++) {
+
+      dots[i].onclick = function() {
+
+        slides = this.parentNode.parentNode.getElementsByClassName("mySlides");
+
+        for (j = 0; j < this.parentNode.children.length; j++) {
+          this.parentNode.children[j].classList.remove('active');
+          slides[j].classList.remove('active-slide');
+          if (this.parentNode.children[j] == this) {
+            index = j;
+          }
+        }
+        this.classList.add('active');
+        slides[index].classList.add('active-slide');
+
+      }
+    }
+  //prev/next functionality
+    links = document.querySelectorAll('.slideshow-container a');
+
+    for (i = 0; i < links.length; i++) {
+      links[i].onclick = function() {
+        current = this.parentNode;
+
+        var slides = current.getElementsByClassName("mySlides");
+        var dots = current.getElementsByClassName("dot");
+        curr_slide = current.getElementsByClassName('active-slide')[0];
+        curr_dot = current.getElementsByClassName('active')[0];
+        curr_slide.classList.remove('active-slide');
+        curr_dot.classList.remove('active');
+        if (this.className == 'next') {
+
+          if (curr_slide.nextElementSibling.classList.contains('mySlides')) {
+            curr_slide.nextElementSibling.classList.add('active-slide');
+            curr_dot.nextElementSibling.classList.add('active');
+          } else {
+            slides[0].classList.add('active-slide');
+            dots[0].classList.add('active');
+          }
+
+        }
+
+        if (this.className == 'prev') {
+
+          if (curr_slide.previousElementSibling) {
+            curr_slide.previousElementSibling.classList.add('active-slide');
+            curr_dot.previousElementSibling.classList.add('active');
+          } else {
+            slides[slides.length - 1].classList.add('active-slide');
+            dots[slides.length - 1].classList.add('active');
+          }
+
+        }
+
+      }
+
+    }
+  })();
+    </script>
 </html>

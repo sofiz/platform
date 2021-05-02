@@ -7,7 +7,7 @@ or die ('can\'t charset in DataBase');
 
 //-------ALL------
 if (!isset($_COOKIE['page_visited_already'])){
-	
+
 $sql0="UPDATE visitors SET Allvisitors=Allvisitors+1 where id='1'";
 $res0=mysqli_query($db,$sql0);
 if(!$res0){
@@ -19,7 +19,7 @@ setcookie("page_visited_already", "1",time() +(10 * 365 * 24 * 60 * 60), "/");
 
 //----- daily visits -----
 if (!isset($_COOKIE[date("j/n/Y")])){
-$Date = date("j/n/Y"); 
+$Date = date("j/n/Y");
 $res1=mysqli_query($db,"SELECT * FROM daily_visits where Date='$Date'");
 if(mysqli_num_rows($res1)==1){
 $q = "UPDATE daily_visits SET  Visitors=Visitors+1 WHERE Date='$Date'" ;
@@ -56,7 +56,7 @@ mysqli_close ($db);
 رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
 <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <link rel="stylesheet" href="index.css">

@@ -87,7 +87,7 @@ header("Location:profile.php?id=".$c->id);
 رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
     <meta name="author" content="rondili">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="profile.css">
@@ -126,9 +126,7 @@ header("Location:profile.php?id=".$c->id);
 	</style>
 	<?php  include('topbar.php');?>
 
-  <body ><?php
- if($c->Ad =="yes") echo '<p class="msgclient">  هدا الحساب مضاف وليس شخصي </p>';
- ?>
+  <body >
 
 
 <div id="container" >
@@ -137,7 +135,9 @@ header("Location:profile.php?id=".$c->id);
 
    <?php if ($c->Profile_Pic!="default.png")  echo '<img class="pictures" id="pic" onclick="slide(this.src)" src="imgs/'.$c->id.'/'.$c->Profile_Pic .'" alt="" >';
 else  echo '<img id="pic" src="imgs/default.png" class="pictures" onclick="slide(this.src)" alt="" >'; ?>
-
+<?php
+if($c->Ad =="yes") echo '<p class="msgclient">  هدا الحساب مضاف وليس شخصي </p>';
+?>
 
     <strong id="name" ><?php echo $c->First_Name .' '. $c->Last_Name ; ?> </strong>
 
@@ -169,8 +169,17 @@ else  echo '<img id="pic" src="imgs/default.png" class="pictures" onclick="slide
  <div class="info">  <span class="fas fa-birthday-cake" style="font-family: FontAwesome;margin-right: 10px;color: white;background: #FF9800;padding: 6px;border-radius: 18px;"></span> <span> لايوجد العمر </span> </div>
 
     </div>
-  -->
+  --><?php  if ($c->Type == "worker")  :  ?>
+    <div class="socialmediacontain">
+
+
+  <button type="button" name="button" class="socialmedia"><a href="<?php echo $c->Facebook ;?>"><span class="fa fa-facebook" style="font-family: FontAwesome ;margin-left: 7px;margin-right: 7px;color: white;font-size:20px"></span></a></button>
+  <button type="button" name="button" id="insta" class="socialmedia"><a href="<?php echo $c->Instagram ;?>"><span class="instas fa fa-instagram " ></span></a></button>
+      </div> <?php  endif ?>
+
     <div class="infocontainer">
+<div class="co">
+
 
 			<div class="info">
 
@@ -188,7 +197,7 @@ else  echo '<img id="pic" src="imgs/default.png" class="pictures" onclick="slide
 			    <div class="info">
 						<?php	if ($c->Wilaya!="" && $c->Type == "worker")
          {
-		 echo '<span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 10px;font-size: 18px;color: #ffffff;background: #e64e4e;padding: 5px 9px;border-radius: 18px;"></span>
+		 echo '<span class="fas fa-map-marker" style="font-family: FontAwesome;margin-right: 4px;font-size: 18px;color: #ffffff;background: #e64e4e;padding: 5px 9px;border-radius: 18px;"></span>
 ' ;
 		 if(empty($c->Daira)&&empty($c->Commune))
          echo '<span style="font-size: 15px;margin: 5px;position: relative;top: -2px;">'.$c->Wilaya.'</span>';
@@ -245,26 +254,20 @@ else  echo '<img id="pic" src="imgs/default.png" class="pictures" onclick="slide
 
 <!--<button type="button" name="button" class="uploadpicbtn">more</button> -->
 
-<?php  if ($c->Type == "worker")  :  ?>
-<button type="button" name="button" class="socialmedia"><a href="<?php echo $c->Facebook ;?>"><span class="fas fa-facebook" style="font-family: FontAwesome ;margin-left: 7px;margin-right: 7px;color: white;font-size:20px"></span></a></button>
-<button type="button" name="button" id="insta" class="socialmedia"><a href="<?php echo $c->Instagram ;?>"><span class="fas fa-instagram" style="font-family: FontAwesome; margin-left: 7px;margin-right: 7px;color: white;font-size:20px;"></span></a></button>
-   <?php  endif ?>
+ </div>
+   <div class="descript">
 
+<span  id="descriptiontxt"><?php echo $c->Description ; ?></span>
+
+</div>
 
    </div>
+
 </div>
 <div class="s1s2">
 
 
-<div id="square2">
 
-    <strong class="titles">الوصف</strong>
-  <div class="description">
-    <p  id="descriptiontxt"><?php echo $c->Description ; ?></p>
-  </div>
-
-
-</div>
 
 <div id="square3">
     <strong id="photostitle" class="titles">الصور</strong>
@@ -316,6 +319,40 @@ echo '<div> ' ;
 
     echo '<div class="posttxtdiv">';
     echo '<p class="posttxt">'.$row['Txt'].'</p>';
+    echo '
+
+<div class="slideshow-container">
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_1'].'" style="width:100%">
+
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_2'].'" style="width:100%">
+
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_3'].'" style="width:100%">
+
+  </div>
+
+
+
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+
+<div style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot" ></span>
+  <span class="dot" ></span>
+</div>
+</div>
+
+';
     echo '</div>' ;
 
 
@@ -420,7 +457,7 @@ $c->Show_All_Photos();
 
 
 <!-- Trigger the Modal -->
-<img id="myImgx" src="" alt="" hidden>
+<img id="myImgx" src=""  style="display:none;">
 
 <!-- The Modal -->
 <div id="myModalx" class="modalx">
@@ -666,5 +703,83 @@ function error(v){
      event.stopPropagation();
  });
 
+
+ (function() {
+
+   init(); //on page load - show first slide, hidethe rest
+
+   function init() {
+
+     parents = document.getElementsByClassName('slideshow-container');
+
+     for (j = 0; j < parents.length; j++) {
+       var slides = parents[j].getElementsByClassName("mySlides");
+       var dots = parents[j].getElementsByClassName("dot");
+       slides[0].classList.add('active-slide');
+       dots[0].classList.add('active');
+     }
+   }
+
+   dots = document.getElementsByClassName('dot'); //dots functionality
+
+   for (i = 0; i < dots.length; i++) {
+
+     dots[i].onclick = function() {
+
+       slides = this.parentNode.parentNode.getElementsByClassName("mySlides");
+
+       for (j = 0; j < this.parentNode.children.length; j++) {
+         this.parentNode.children[j].classList.remove('active');
+         slides[j].classList.remove('active-slide');
+         if (this.parentNode.children[j] == this) {
+           index = j;
+         }
+       }
+       this.classList.add('active');
+       slides[index].classList.add('active-slide');
+
+     }
+   }
+ //prev/next functionality
+   links = document.querySelectorAll('.slideshow-container a');
+
+   for (i = 0; i < links.length; i++) {
+     links[i].onclick = function() {
+       current = this.parentNode;
+
+       var slides = current.getElementsByClassName("mySlides");
+       var dots = current.getElementsByClassName("dot");
+       curr_slide = current.getElementsByClassName('active-slide')[0];
+       curr_dot = current.getElementsByClassName('active')[0];
+       curr_slide.classList.remove('active-slide');
+       curr_dot.classList.remove('active');
+       if (this.className == 'next') {
+
+         if (curr_slide.nextElementSibling.classList.contains('mySlides')) {
+           curr_slide.nextElementSibling.classList.add('active-slide');
+           curr_dot.nextElementSibling.classList.add('active');
+         } else {
+           slides[0].classList.add('active-slide');
+           dots[0].classList.add('active');
+         }
+
+       }
+
+       if (this.className == 'prev') {
+
+         if (curr_slide.previousElementSibling) {
+           curr_slide.previousElementSibling.classList.add('active-slide');
+           curr_dot.previousElementSibling.classList.add('active');
+         } else {
+           slides[slides.length - 1].classList.add('active-slide');
+           dots[slides.length - 1].classList.add('active');
+         }
+
+       }
+
+     }
+
+   }
+ })();
  </script>
 </html>

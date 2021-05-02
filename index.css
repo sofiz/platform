@@ -22,8 +22,9 @@ body{
 
 .footer {
     height: 78px;
-    background: #012d4e;
+    background:#034dd4d9;
     width: 100%;
+    text-align: center;
 }
 .logo{
   width: 111px;
@@ -220,7 +221,7 @@ background: white;
 }
 .copyright{
   width: max-content;
-  padding: 0 20px;
+margin: auto;
   color: white;
 }
 

@@ -94,6 +94,7 @@ mysqli_query($db, $q);
     </div>
 
     <div class="infocontainer">
+      <div class="co">
 
       <div class="info">
         <?php if ($c->Job!="" && $c->Type == "worker" )
@@ -166,6 +167,12 @@ mysqli_query($db, $q);
   ?>
 
     </div>
+    <div class="descript">
+
+ <span  id="descriptiontxt"><?php echo $c->Description ; ?></span>
+
+ </div>
+</div>
     <div id="profileeditbtnp">
 <a class="btn1" href="profile_edit.php" style="color:#ffffffeb;">تعديل الحساب</a>
 </div>
@@ -230,9 +237,40 @@ echo '<div> ' ;
 
     echo '<div class="posttxtdiv">';
     echo '<p class="posttxt">'.$row['Txt'].'</p>';
-    	echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_1'].'" alt="">';
-		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_2'].'" alt="">';
-		echo ' <img src="imgs/'.$User_id.'/'.$row['Photo_3'].'" alt="">';
+    echo '
+
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_1'].'" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_2'].'" style="width:100%">
+
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_3'].'" style="width:100%">
+
+      </div>
+
+
+
+      <a class="prev">&#10094;</a>
+      <a class="next">&#10095;</a>
+
+    <div style="text-align:center">
+      <span class="dot"></span>
+      <span class="dot" ></span>
+      <span class="dot" ></span>
+    </div>
+    </div>
+
+    ';
     echo '</div>' ;
 
 
@@ -578,5 +616,84 @@ mysqli_close($db);
   $('.deletecom').click(function(event){
       event.stopPropagation();
   });
+
+
+  (function() {
+
+  init(); //on page load - show first slide, hidethe rest
+
+  function init() {
+
+    parents = document.getElementsByClassName('slideshow-container');
+
+    for (j = 0; j < parents.length; j++) {
+      var slides = parents[j].getElementsByClassName("mySlides");
+      var dots = parents[j].getElementsByClassName("dot");
+      slides[0].classList.add('active-slide');
+      dots[0].classList.add('active');
+    }
+  }
+
+  dots = document.getElementsByClassName('dot'); //dots functionality
+
+  for (i = 0; i < dots.length; i++) {
+
+    dots[i].onclick = function() {
+
+      slides = this.parentNode.parentNode.getElementsByClassName("mySlides");
+
+      for (j = 0; j < this.parentNode.children.length; j++) {
+        this.parentNode.children[j].classList.remove('active');
+        slides[j].classList.remove('active-slide');
+        if (this.parentNode.children[j] == this) {
+          index = j;
+        }
+      }
+      this.classList.add('active');
+      slides[index].classList.add('active-slide');
+
+    }
+  }
+//prev/next functionality
+  links = document.querySelectorAll('.slideshow-container a');
+
+  for (i = 0; i < links.length; i++) {
+    links[i].onclick = function() {
+      current = this.parentNode;
+
+      var slides = current.getElementsByClassName("mySlides");
+      var dots = current.getElementsByClassName("dot");
+      curr_slide = current.getElementsByClassName('active-slide')[0];
+      curr_dot = current.getElementsByClassName('active')[0];
+      curr_slide.classList.remove('active-slide');
+      curr_dot.classList.remove('active');
+      if (this.className == 'next') {
+
+        if (curr_slide.nextElementSibling.classList.contains('mySlides')) {
+          curr_slide.nextElementSibling.classList.add('active-slide');
+          curr_dot.nextElementSibling.classList.add('active');
+        } else {
+          slides[0].classList.add('active-slide');
+          dots[0].classList.add('active');
+        }
+
+      }
+
+      if (this.className == 'prev') {
+
+        if (curr_slide.previousElementSibling) {
+          curr_slide.previousElementSibling.classList.add('active-slide');
+          curr_dot.previousElementSibling.classList.add('active');
+        } else {
+          slides[slides.length - 1].classList.add('active-slide');
+          dots[slides.length - 1].classList.add('active');
+        }
+
+      }
+
+    }
+
+  }
+})();
   </script>
 </html>
