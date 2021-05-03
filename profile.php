@@ -87,7 +87,8 @@ header("Location:profile.php?id=".$c->id);
 رونديلي هي الحل، منصة تجمع بين الزبون و أصحاب الأعمال rondili ">
     <meta name="author" content="rondili">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="profile.css">
@@ -185,7 +186,14 @@ if($c->Ad =="yes") echo '<p class="msgclient">  هدا الحساب مضاف و�
 
 				<?php if ($c->Job!="" && $c->Type == "worker" )
 				{
-				 echo '	<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #ffffff;background: #0096c7;padding: 6px;border-radius: 18px;"></span> ';
+				 echo '	<span class="material-icons" style="    margin-right: 10px;
+    color: #ffffff;
+    background: #0096c7;
+    padding: 5px;
+    border-radius: 18px;
+    font-size: 19px;">
+business_center
+</span> ';
 			     echo '<span style="font-size: 15px;">'.  $c->Job .'</span> ';
 				 }
 				 else { echo '<span style="font-size: 15px;"> </span> ';   }

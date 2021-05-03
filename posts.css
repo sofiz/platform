@@ -6,8 +6,8 @@
 
 body{
 
-  font-family: 'Roboto', 'jf flat';
-  background: #eeeef2;
+  font-family: 'Roboto', 'DroidArabicKufiRegular';
+  background:  #f3f2f2c4;
 
 }
 
@@ -118,12 +118,12 @@ body{
     width: 100%;
     height: 100px;
     margin-top: 30px;
-    box-shadow: 1px 3px 16px 0px #00000047;
+
     padding: 20px;
     box-sizing: border-box;
     border-radius: 20px;
     border: solid 2px #008ffb;
-    font-family: 'JF Flat';
+    font-family: 'DroidArabicKufiRegular';
 }
 .btnscontainer{
   width: 30%;
@@ -139,17 +139,17 @@ element.style {
 
 option {
     color: black;
-    background: #fafafa;
+    background: #ffffff;
 }
 .button {
     display: inline-block;
     padding: 5px 15px;
     background: #008ffb;
-    box-shadow: 0px 3px 8px 0px #00000047;
+    box-shadow: 0px 3px 10px 0px #00000038;
     border: none;
     color: white;
     border-radius: 20px;
-    font-family: 'jf flat';
+    font-family: 'DroidArabicKufiRegular';
 }
 .button:hover {
     background-position: 100% 0;
@@ -175,6 +175,7 @@ margin-right: 16%;
     padding: 20px;
     border-radius: 10px;
     margin-top: 15px;
+    box-shadow: 0px 3px 10px 0px #00000038;
 }
 
 .postscontain{
@@ -203,7 +204,7 @@ margin-top: 20px;
     text-align-last: center;
     margin-left: 10px;
     width: 117px;
-    font-family: 'jf flat';
+    font-family: 'DroidArabicKufiRegular';
     box-shadow: 0px 3px 10px 0px #00000038;
     color: white;
     outline: none;
@@ -211,6 +212,7 @@ margin-top: 20px;
 
 .radio{
   width: 20px;
+
 height: 20px;
 margin-left: 10px;
 
@@ -219,19 +221,28 @@ position: relative;
 
 
 }
+.comtext{
 
+  background: #eeeef2;
+    width: max-content;
+    padding: 10px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-family: sans-serif;
+    max-width: fit-content;
+}
 .filtersradiotxt{
   margin-right: 20px;
 }
 
 .post{
-  background: #FAFAFA;
+  background: #ffffff;
     box-sizing: border-box;
     padding: 21px;
     margin-top: 25px;
     margin-bottom: 20px;
     border-radius: 10px;
-      box-shadow: 1px 3px 16px 0px #00000047;
+      box-shadow: 0px 3px 10px 0px #00000038;
 }
 
 img{
@@ -263,16 +274,16 @@ margin-left: 10px;
   display: inline;
   font-weight: bolder;
 }
-.posttxtdiv{
-  margin-top: 13px;
-padding-bottom: 10px;
-border-bottom: solid 1px #9e9e9e;
+.posttxtdiv {
+    margin-top: 13px;
+    padding-bottom: 10px;
+    border-bottom: solid 2px #cecdcd;
 }
 .commentsection{
   padding-left: 20px;
     margin-top: 10px;
     padding-bottom: 10px;
-    border-bottom: solid 1px #9e9e9e;
+
 }
 .commentorsection{
   margin-top: 10px;
@@ -293,7 +304,7 @@ border-bottom: solid 1px #9e9e9e;
     border: none;
     background: #008ffb;
     border-radius: 30px;
-    box-shadow: 0px 3px 8px 0px #00000047;
+    box-shadow: 0px 3px 10px 0px #00000038;
     color: #ffffffeb;
     position: relative;
     top: -8px;

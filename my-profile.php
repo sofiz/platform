@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
     <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
+
     <link href="//db.onlinewebfonts.com/c/7d411bb0357d6fd29347455b7d207995?family=JF+Flat" rel="stylesheet" type="text/css"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -99,8 +101,15 @@ mysqli_query($db, $q);
       <div class="info">
         <?php if ($c->Job!="" && $c->Type == "worker" )
         {
-         echo '	<span class="fas fa-briefcase" style="font-family: FontAwesome;margin-right: 10px;color: #ffffff;background: #0096c7;padding: 6px;border-radius: 18px;"></span> ';
-           echo '<span style="font-size: 15px;">'.  $c->Job .'</span> ';
+          echo '	<span class="material-icons" style="    margin-right: 10px;
+     color: #ffffff;
+     background: #0096c7;
+     padding: 5px;
+     border-radius: 18px;
+     font-size: 19px;">
+ business_center
+ </span> ';
+            echo '<span style="font-size: 15px;">'.  $c->Job .'</span> ';
          }
          else { echo '<span style="font-size: 15px;"> </span> ';   }
          ?>
