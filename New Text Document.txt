@@ -1,0 +1,79 @@
+delete \'
+(Wilaya Déléguée)
+delete -
+
+Alger Ctre
+, Algeria
+ à á â ã ä å æ ç è é ê ë ì í î ï  ñ ð ò ó ô õ ö ø ù ú û ü ý
+
+str_replace("world","Peter","Hello world!");
+
+
+
+
+
+
+
+Algerie Telecom 
+Djezzy
+Assurance
+متحف 
+Air Algérie 
+Peugeot
+École Supérieure
+Institute
+Airport 
+مقر ولاية 
+Cuisine 
+Ansej
+مديرية
+ مسح الأراضي
+ لولاية 
+مطار  
+Météo
+الوكالة الوطنية لتطوير الإستثمار
+ ANDI  
+Banque
+National Higher School Of Mines And Metallurgy
+Résultats De Recherche Coopérative De Céréales & De Légumes Secs
+Aéroport
+Radio
+Direction
+Aeroport
+Agence
+Ministère
+Centre National
+Auberge
+الشركة الجزائرية 
+SAA 
+Ooredoo
+Hyundai
+
+Kia 
+Stadium 
+متوسطة 
+قاعة متعددة 
+دار الشباب 
+شلالات مشتت ماه تيفريت 
+Algérie Motors
+الشركة الوطنية 
+Protection Civile 
+الراطة الولائية الرايضة للصم بشار 
+سوسيتي جنرال 
+Condor 
+إتصالات الجزائر 
+Lycee
+مسجد 
+Mosque  
+Bank 
+Telecomunications 
+جامعة
+قطب
+Faculté
+Aadl
+
+
+
+University  
+
+Tnkerod

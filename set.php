@@ -270,13 +270,13 @@ include('../conn.php') ;
 						'id' => '10901',
 						'code' => '10901',
 						'name_ar' => 'تيميمون (ولاية منتدبة)',
-						'name' => 'Timimoun (Wilaya Déléguée)',
+						'name' => 'Timimoun',
 					),
 					'12501' => array(
 						'id' => '12501',
 						'code' => '12501',
 						'name_ar' => 'برج باجي مختار (ولاية منتدبة)',
-						'name' => 'Bordj Badji Mokhtar (Wilaya Déléguée)',
+						'name' => 'Bordj Badji Mokhtar',
 					),
 				),
 			),
@@ -666,7 +666,7 @@ include('../conn.php') ;
 						'id' => '306',
 						'code' => '306',
 						'name_ar' => 'حاسي الرمل',
-						'name' => 'Hassi R\'mel',
+						'name' => 'Hassi Rmel',
 						'communes' => array(
 							'75' => array(
 								'id' => '75',
@@ -678,7 +678,7 @@ include('../conn.php') ;
 								'id' => '76',
 								'code' => '76',
 								'name_ar' => 'حاسي الرمل',
-								'name' => 'Hassi R\'mel',
+								'name' => 'Hassi Rmel',
 							),
 						),
 					),
@@ -828,7 +828,7 @@ include('../conn.php') ;
 								'id' => '81',
 								'code' => '81',
 								'name_ar' => 'وادي مزي',
-								'name' => 'Oued M\'zi',
+								'name' => 'Oued Mzi',
 							),
 						),
 					),
@@ -890,13 +890,13 @@ include('../conn.php') ;
 						'id' => '403',
 						'code' => '403',
 						'name_ar' => 'عين مليلة',
-						'name' => 'Ain M\'lila',
+						'name' => 'Ain Mlila',
 						'communes' => array(
 							'93' => array(
 								'id' => '93',
 								'code' => '93',
 								'name_ar' => 'عين مليلة',
-								'name' => 'Ain M\'lila',
+								'name' => 'Ain Mlila',
 							),
 							'109' => array(
 								'id' => '109',
@@ -1002,7 +1002,7 @@ include('../conn.php') ;
 						'id' => '416',
 						'code' => '416',
 						'name_ar' => 'فكيرينة',
-						'name' => 'F\'kirina',
+						'name' => 'Fkirina',
 						'communes' => array(
 							'104' => array(
 								'id' => '104',
@@ -1278,7 +1278,7 @@ include('../conn.php') ;
 						'id' => '509',
 						'code' => '509',
 						'name_ar' => 'نقاوس',
-						'name' => 'N\'gaous',
+						'name' => 'Ngaous',
 						'communes' => array(
 							'127' => array(
 								'id' => '127',
@@ -1500,7 +1500,7 @@ include('../conn.php') ;
 								'id' => '168',
 								'code' => '168',
 								'name_ar' => 'تكوت',
-								'name' => 'T Kout',
+								'name' => 'TKout',
 							),
 						),
 					),
@@ -1604,7 +1604,7 @@ include('../conn.php') ;
 								'id' => '160',
 								'code' => '160',
 								'name_ar' => 'أولاد سلام',
-								'name' => 'Ouled Sellem',
+								'name' => 'Ouled Sellam',
 							),
 							'163' => array(
 								'id' => '163',
@@ -1658,7 +1658,7 @@ include('../conn.php') ;
 				'id' => '6',
 				'code' => '06',
 				'name_ar' => 'بجاية',
-				'name' => 'Béjaïa',
+				'name' => 'Bejaia',
 				'dairas' => array(
 					'601' => array(
 						'id' => '601',
@@ -1788,13 +1788,13 @@ include('../conn.php') ;
 								'id' => '179',
 								'code' => '179',
 								'name_ar' => 'أيت رزين',
-								'name' => 'Ait R\'zine',
+								'name' => 'Ait Rzine',
 							),
 							'204' => array(
 								'id' => '204',
 								'code' => '204',
 								'name_ar' => 'إغيل علي',
-								'name' => 'Ighil-Ali',
+								'name' => 'Ighil Ali',
 							),
 						),
 					),
@@ -1808,7 +1808,7 @@ include('../conn.php') ;
 								'id' => '180',
 								'code' => '180',
 								'name_ar' => 'أيت إسماعيل',
-								'name' => 'Ait-Smail',
+								'name' => 'Ait Smail',
 							),
 							'197' => array(
 								'id' => '197',
@@ -1840,7 +1840,7 @@ include('../conn.php') ;
 								'id' => '228',
 								'code' => '228',
 								'name_ar' => 'تيزي نبربر',
-								'name' => 'Tizi-N\'berber',
+								'name' => 'Tizi Nberber',
 							),
 						),
 					),
@@ -1860,7 +1860,7 @@ include('../conn.php') ;
 								'id' => '189',
 								'code' => '189',
 								'name_ar' => 'بني كسيلة',
-								'name' => 'Beni K\'sila',
+								'name' => 'Beni Ksila',
 							),
 							'220' => array(
 								'id' => '220',
@@ -1924,7 +1924,7 @@ include('../conn.php') ;
 								'id' => '208',
 								'code' => '208',
 								'name_ar' => 'مسيسنة',
-								'name' => 'M\'cisna',
+								'name' => 'Mcisna',
 							),
 							'211' => array(
 								'id' => '211',
@@ -1944,7 +1944,7 @@ include('../conn.php') ;
 								'id' => '190',
 								'code' => '190',
 								'name_ar' => 'بني مليكش',
-								'name' => 'Beni-Mallikeche',
+								'name' => 'Beni Mallikeche',
 							),
 							'192' => array(
 								'id' => '192',
@@ -2048,7 +2048,7 @@ include('../conn.php') ;
 								'id' => '213',
 								'code' => '213',
 								'name_ar' => 'سيدي عيش',
-								'name' => 'Sidi-Aich',
+								'name' => 'Sidi Aich',
 							),
 							'225' => array(
 								'id' => '225',
@@ -2246,7 +2246,7 @@ include('../conn.php') ;
 								'id' => '251',
 								'code' => '251',
 								'name_ar' => 'مشونش',
-								'name' => 'M\'chouneche',
+								'name' => 'Mchouneche',
 							),
 						),
 					),
@@ -2390,7 +2390,7 @@ include('../conn.php') ;
 								'id' => '254',
 								'code' => '254',
 								'name_ar' => 'مليلي',
-								'name' => 'M\'lili',
+								'name' => 'Mlili',
 							),
 							'256' => array(
 								'id' => '256',
@@ -2430,7 +2430,7 @@ include('../conn.php') ;
 						'id' => '70507',
 						'code' => '70507',
 						'name_ar' => 'أولاد جلال (ولاية منتدبة)',
-						'name' => 'Ouled Djellal (Wilaya Déléguée)',
+						'name' => 'Ouled Djellal',
 					),
 				),
 			),
@@ -2438,7 +2438,7 @@ include('../conn.php') ;
 				'id' => '8',
 				'code' => '08',
 				'name_ar' => 'بشار',
-				'name' => 'Béchar',
+				'name' => 'Bechar',
 				'dairas' => array(
 					'801' => array(
 						'id' => '801',
@@ -2470,7 +2470,7 @@ include('../conn.php') ;
 								'id' => '279',
 								'code' => '279',
 								'name_ar' => 'أولاد خضير',
-								'name' => 'Ouled-Khodeir',
+								'name' => 'Ouled Khodeir',
 							),
 						),
 					),
@@ -2510,7 +2510,7 @@ include('../conn.php') ;
 								'id' => '265',
 								'code' => '265',
 								'name_ar' => 'بني عباس',
-								'name' => 'Beni-Abbes',
+								'name' => 'Beni Abbes',
 							),
 							'282' => array(
 								'id' => '282',
@@ -2612,13 +2612,13 @@ include('../conn.php') ;
 								'id' => '270',
 								'code' => '270',
 								'name_ar' => 'عرق فراج',
-								'name' => 'Erg-Ferradj',
+								'name' => 'Erg Ferradj',
 							),
 							'276' => array(
 								'id' => '276',
 								'code' => '276',
 								'name_ar' => 'مشرع هواري بومدين',
-								'name' => 'Machraa-Houari-Boumediene',
+								'name' => 'Machraa Houari Boumediene',
 							),
 						),
 					),
@@ -2632,7 +2632,7 @@ include('../conn.php') ;
 								'id' => '266',
 								'code' => '266',
 								'name_ar' => 'بن يخلف',
-								'name' => 'Beni-Ikhlef',
+								'name' => 'Beni Ikhlef',
 							),
 							'273' => array(
 								'id' => '273',
@@ -2658,7 +2658,7 @@ include('../conn.php') ;
 								'id' => '267',
 								'code' => '267',
 								'name_ar' => 'بني ونيف',
-								'name' => 'Beni-Ounif',
+								'name' => 'Beni Ounif',
 							),
 						),
 					),
@@ -2666,7 +2666,7 @@ include('../conn.php') ;
 						'id' => '80708',
 						'code' => '80708',
 						'name_ar' => 'بني عباس (ولاية منتدبة)',
-						'name' => 'Beni Abbes (Wilaya Déléguée)',
+						'name' => 'Beni Abbes',
 					),
 				),
 			),
@@ -2726,7 +2726,7 @@ include('../conn.php') ;
 								'id' => '286',
 								'code' => '286',
 								'name_ar' => 'بني تامو',
-								'name' => 'Beni-Tamou',
+								'name' => 'Beni Tamou',
 							),
 							'287' => array(
 								'id' => '287',
@@ -2778,7 +2778,7 @@ include('../conn.php') ;
 								'id' => '297',
 								'code' => '297',
 								'name_ar' => 'العفرون',
-								'name' => 'El-Affroun',
+								'name' => 'El Affroun',
 							),
 							'303' => array(
 								'id' => '303',
@@ -2950,7 +2950,7 @@ include('../conn.php') ;
 								'id' => '332',
 								'code' => '332',
 								'name_ar' => 'المقراني',
-								'name' => 'El-Mokrani',
+								'name' => 'El Mokrani',
 							),
 							'348' => array(
 								'id' => '348',
@@ -3046,7 +3046,7 @@ include('../conn.php') ;
 								'id' => '353',
 								'code' => '353',
 								'name_ar' => 'زبربر',
-								'name' => 'Z\'barbar (El Isseri )',
+								'name' => 'Zbarbar (El Isseri )',
 							),
 						),
 					),
@@ -3162,7 +3162,7 @@ include('../conn.php') ;
 								'id' => '314',
 								'code' => '314',
 								'name_ar' => 'عين بسام',
-								'name' => 'Ain-Bessem',
+								'name' => 'Ain Bessem',
 							),
 						),
 					),
@@ -3196,7 +3196,7 @@ include('../conn.php') ;
 						'id' => '1037',
 						'code' => '1037',
 						'name_ar' => 'مشد الله',
-						'name' => 'M\'chedallah',
+						'name' => 'Mchedallah',
 						'communes' => array(
 							'309' => array(
 								'id' => '309',
@@ -3258,7 +3258,7 @@ include('../conn.php') ;
 								'id' => '331',
 								'code' => '331',
 								'name_ar' => 'الحاكمية',
-								'name' => 'El-Hakimia',
+								'name' => 'El Hakimia',
 							),
 							'341' => array(
 								'id' => '341',
@@ -3408,13 +3408,13 @@ include('../conn.php') ;
 						'id' => '110411',
 						'code' => '110411',
 						'name_ar' => 'عين قزام (ولاية منتدبة)',
-						'name' => 'In Guezzam (Wilaya Déléguée)',
+						'name' => 'In Guezzam',
 					),
 					'110811' => array(
 						'id' => '110811',
 						'code' => '110811',
 						'name_ar' => 'عين صالح (ولاية منتدبة)',
-						'name' => 'In Salah (Wilaya Déléguée)',
+						'name' => 'In Salah',
 					),
 				),
 			),
@@ -3422,7 +3422,7 @@ include('../conn.php') ;
 				'id' => '12',
 				'code' => '12',
 				'name_ar' => 'تبسة',
-				'name' => 'Tébessa',
+				'name' => 'Tebessa',
 				'dairas' => array(
 					'1201' => array(
 						'id' => '1201',
@@ -3448,7 +3448,7 @@ include('../conn.php') ;
 								'id' => '369',
 								'code' => '369',
 								'name_ar' => 'بئر العاتر',
-								'name' => 'Bir-El-Ater',
+								'name' => 'Bir El Ater',
 							),
 							'378' => array(
 								'id' => '378',
@@ -3494,7 +3494,7 @@ include('../conn.php') ;
 								'id' => '379',
 								'code' => '379',
 								'name_ar' => 'العوينات',
-								'name' => 'El-Aouinet',
+								'name' => 'El Aouinet',
 							),
 						),
 					),
@@ -3664,7 +3664,7 @@ include('../conn.php') ;
 								'id' => '380',
 								'code' => '380',
 								'name_ar' => 'الحويجبات',
-								'name' => 'El-Houidjbet',
+								'name' => 'El Houidjbet',
 							),
 						),
 					),
@@ -4046,13 +4046,13 @@ include('../conn.php') ;
 								'id' => '425',
 								'code' => '425',
 								'name_ar' => 'مرسى بن مهيدي',
-								'name' => 'Marsa Ben M\'hidi',
+								'name' => 'Marsa Ben Mhidi',
 							),
 							'426' => array(
 								'id' => '426',
 								'code' => '426',
 								'name_ar' => 'مسيردة الفواقة',
-								'name' => 'M\'sirda Fouaga',
+								'name' => 'Msirda Fouaga',
 							),
 						),
 					),
@@ -4564,7 +4564,7 @@ include('../conn.php') ;
 								'id' => '549',
 								'code' => '549',
 								'name_ar' => 'تيزي وزو',
-								'name' => 'Tizi-Ouzou',
+								'name' => 'Tizi Ouzou',
 							),
 						),
 					),
@@ -4578,19 +4578,19 @@ include('../conn.php') ;
 								'id' => '487',
 								'code' => '487',
 								'name_ar' => 'أبي يوسف',
-								'name' => 'Abi-Youcef',
+								'name' => 'Abi Youcef',
 							),
 							'490' => array(
 								'id' => '490',
 								'code' => '490',
 								'name_ar' => 'عين الحمام',
-								'name' => 'Ain-El-Hammam',
+								'name' => 'Ain El Hammam',
 							),
 							'502' => array(
 								'id' => '502',
 								'code' => '502',
 								'name_ar' => 'أيت يحيى',
-								'name' => 'Ait-Yahia',
+								'name' => 'Ait Yahia',
 							),
 							'503' => array(
 								'id' => '503',
@@ -4630,7 +4630,7 @@ include('../conn.php') ;
 								'id' => '491',
 								'code' => '491',
 								'name_ar' => 'عين الزاوية',
-								'name' => 'Ain-Zaouia',
+								'name' => 'Ain Zaouia',
 							),
 							'496' => array(
 								'id' => '496',
@@ -4642,7 +4642,7 @@ include('../conn.php') ;
 								'id' => '518',
 								'code' => '518',
 								'name_ar' => 'ذراع الميزان',
-								'name' => 'Draa-El-Mizan',
+								'name' => 'Draa El Mizan',
 							),
 							'520' => array(
 								'id' => '520',
@@ -4656,19 +4656,19 @@ include('../conn.php') ;
 						'id' => '1511',
 						'code' => '1511',
 						'name_ar' => 'تيزي غنيف',
-						'name' => 'Tizi-Ghenif',
+						'name' => 'Tizi Ghenif',
 						'communes' => array(
 							'536' => array(
 								'id' => '536',
 								'code' => '536',
 								'name_ar' => 'مكيرة',
-								'name' => 'M\'kira',
+								'name' => 'Mkira',
 							),
 							'548' => array(
 								'id' => '548',
 								'code' => '548',
 								'name_ar' => 'تيزي غنيف',
-								'name' => 'Tizi-Gheniff',
+								'name' => 'Tizi Gheniff',
 							),
 						),
 					),
@@ -4772,13 +4772,13 @@ include('../conn.php') ;
 								'id' => '500',
 								'code' => '500',
 								'name_ar' => 'أيت  أومالو',
-								'name' => 'Ait-Oumalou',
+								'name' => 'Ait Oumalou',
 							),
 							'550' => array(
 								'id' => '550',
 								'code' => '550',
 								'name_ar' => 'تيزي راشد',
-								'name' => 'Tizi-Rached',
+								'name' => 'Tizi Rached',
 							),
 						),
 					),
@@ -4792,7 +4792,7 @@ include('../conn.php') ;
 								'id' => '497',
 								'code' => '497',
 								'name_ar' => 'أيت عيسى ميمون',
-								'name' => 'Ait-Aissa-Mimoun',
+								'name' => 'Ait Aissa Mimoun',
 							),
 							'539' => array(
 								'id' => '539',
@@ -4824,7 +4824,7 @@ include('../conn.php') ;
 								'id' => '542',
 								'code' => '542',
 								'name_ar' => 'سوق الإثنين',
-								'name' => 'Souk-El-Tenine',
+								'name' => 'Souk El Tenine',
 							),
 						),
 					),
@@ -4838,7 +4838,7 @@ include('../conn.php') ;
 								'id' => '499',
 								'code' => '499',
 								'name_ar' => 'أيت محمود',
-								'name' => 'Ait-Mahmoud',
+								'name' => 'Ait Mahmoud',
 							),
 							'508' => array(
 								'id' => '508',
@@ -4850,13 +4850,13 @@ include('../conn.php') ;
 								'id' => '509',
 								'code' => '509',
 								'name_ar' => 'بني عيسي',
-								'name' => 'Beni-Aissi',
+								'name' => 'Beni Aissi',
 							),
 							'510' => array(
 								'id' => '510',
 								'code' => '510',
 								'name_ar' => 'بني دوالة',
-								'name' => 'Beni-Douala',
+								'name' => 'Beni Douala',
 							),
 						),
 					),
@@ -4870,7 +4870,7 @@ include('../conn.php') ;
 								'id' => '512',
 								'code' => '512',
 								'name_ar' => 'بني زيكــي',
-								'name' => 'Beni-Zikki',
+								'name' => 'Beni Zikki',
 							),
 							'516' => array(
 								'id' => '516',
@@ -4902,7 +4902,7 @@ include('../conn.php') ;
 								'id' => '489',
 								'code' => '489',
 								'name_ar' => 'أقني قغران',
-								'name' => 'Agouni-Gueghrane',
+								'name' => 'Agouni Gueghrane',
 							),
 							'493' => array(
 								'id' => '493',
@@ -4920,7 +4920,7 @@ include('../conn.php') ;
 								'id' => '547',
 								'code' => '547',
 								'name_ar' => 'تيزي نثلاثة',
-								'name' => 'Tizi N\'tleta',
+								'name' => 'Tizi Ntleta',
 							),
 						),
 					),
@@ -4940,7 +4940,7 @@ include('../conn.php') ;
 								'id' => '498',
 								'code' => '498',
 								'name_ar' => 'أيت شافع',
-								'name' => 'Ait-Chafaa',
+								'name' => 'Ait Chafaa',
 							),
 							'504' => array(
 								'id' => '504',
@@ -4992,7 +4992,7 @@ include('../conn.php') ;
 								'id' => '505',
 								'code' => '505',
 								'name_ar' => 'أسي يوسف',
-								'name' => 'Assi-Youcef',
+								'name' => 'Assi Youcef',
 							),
 							'513' => array(
 								'id' => '513',
@@ -5024,7 +5024,7 @@ include('../conn.php') ;
 								'id' => '517',
 								'code' => '517',
 								'name_ar' => 'ذراع بن خدة',
-								'name' => 'Draa-Ben-Khedda',
+								'name' => 'Draa Ben Khedda',
 							),
 							'540' => array(
 								'id' => '540',
@@ -5062,7 +5062,7 @@ include('../conn.php') ;
 								'id' => '501',
 								'code' => '501',
 								'name_ar' => 'أيت تودرت',
-								'name' => 'Ait-Toudert',
+								'name' => 'Ait Toudert',
 							),
 							'537' => array(
 								'id' => '537',
@@ -5108,7 +5108,7 @@ include('../conn.php') ;
 								'id' => '511',
 								'code' => '511',
 								'name_ar' => 'بني يني',
-								'name' => 'Beni-Yenni',
+								'name' => 'Beni Yenni',
 							),
 							'521' => array(
 								'id' => '521',
@@ -5136,13 +5136,13 @@ include('../conn.php') ;
 						'id' => '1602',
 						'code' => '1602',
 						'name_ar' => 'سيدي امحمد',
-						'name' => 'Sidi M\'hamed',
+						'name' => 'Sidi Mhamed',
 						'communes' => array(
 							'556' => array(
 								'id' => '556',
 								'code' => '556',
 								'name_ar' => 'الجزائر الوسطى',
-								'name' => 'Alger Centre',
+								'name' => 'Alger Ctre',
 							),
 							'582' => array(
 								'id' => '582',
@@ -5160,7 +5160,7 @@ include('../conn.php') ;
 								'id' => '605',
 								'code' => '605',
 								'name_ar' => 'سيدي امحمد',
-								'name' => 'Sidi M\'hamed',
+								'name' => 'Sidi Mhamed',
 							),
 						),
 					),
@@ -5810,7 +5810,7 @@ include('../conn.php') ;
 								'id' => '637',
 								'code' => '637',
 								'name_ar' => 'مليليحة',
-								'name' => 'M\'liliha',
+								'name' => 'Mliliha',
 							),
 							'642' => array(
 								'id' => '642',
@@ -6008,7 +6008,7 @@ include('../conn.php') ;
 								'id' => '647',
 								'code' => '647',
 								'name_ar' => 'برج الطهر',
-								'name' => 'Bordj T\'har',
+								'name' => 'Bordj Thar',
 							),
 							'652' => array(
 								'id' => '652',
@@ -6020,7 +6020,7 @@ include('../conn.php') ;
 								'id' => '657',
 								'code' => '657',
 								'name_ar' => 'القنار نشفي',
-								'name' => 'El Kennar Nouchfi',
+								'name' => 'Kennar',
 							),
 							'670' => array(
 								'id' => '670',
@@ -6168,7 +6168,7 @@ include('../conn.php') ;
 				'id' => '19',
 				'code' => '19',
 				'name_ar' => 'سطيف',
-				'name' => 'Sétif',
+				'name' => 'Setif',
 				'dairas' => array(
 					'1901' => array(
 						'id' => '1901',
@@ -6220,13 +6220,13 @@ include('../conn.php') ;
 								'id' => '683',
 								'code' => '683',
 								'name_ar' => 'عين السبت',
-								'name' => 'Ain-Sebt',
+								'name' => 'Ain Sebt',
 							),
 							'695' => array(
 								'id' => '695',
 								'code' => '695',
 								'name_ar' => 'بني عزيز',
-								'name' => 'Beni-Aziz',
+								'name' => 'Beni Aziz',
 							),
 							'718' => array(
 								'id' => '718',
@@ -6252,13 +6252,13 @@ include('../conn.php') ;
 								'id' => '698',
 								'code' => '698',
 								'name_ar' => 'بئر العرش',
-								'name' => 'Bir-El-Arch',
+								'name' => 'Bir El Arch',
 							),
 							'708' => array(
 								'id' => '708',
 								'code' => '708',
 								'name_ar' => 'الولجة',
-								'name' => 'El-Ouldja',
+								'name' => 'El Ouldja',
 							),
 							'730' => array(
 								'id' => '730',
@@ -6284,7 +6284,7 @@ include('../conn.php') ;
 								'id' => '728',
 								'code' => '728',
 								'name_ar' => 'سرج الغول',
-								'name' => 'Serdj-El-Ghoul',
+								'name' => 'Serdj El Ghoul',
 							),
 						),
 					),
@@ -6318,7 +6318,7 @@ include('../conn.php') ;
 								'id' => '688',
 								'code' => '688',
 								'name_ar' => 'بازر سكرة',
-								'name' => 'Bazer-Sakra',
+								'name' => 'Bazer Sakra',
 							),
 							'706' => array(
 								'id' => '706',
@@ -6364,7 +6364,7 @@ include('../conn.php') ;
 								'id' => '681',
 								'code' => '681',
 								'name_ar' => 'عين لقراج',
-								'name' => 'Ain-Legradj',
+								'name' => 'Ain Legradj',
 							),
 							'691' => array(
 								'id' => '691',
@@ -6382,7 +6382,7 @@ include('../conn.php') ;
 								'id' => '696',
 								'code' => '696',
 								'name_ar' => 'بني موحلي',
-								'name' => 'Beni-Mouhli',
+								'name' => 'Beni Mouhli',
 							),
 						),
 					),
@@ -6440,7 +6440,7 @@ include('../conn.php') ;
 								'id' => '734',
 								'code' => '734',
 								'name_ar' => 'تيزي نبشار',
-								'name' => 'Tizi N\'bechar',
+								'name' => 'Tizi Nbechar',
 							),
 						),
 					),
@@ -6492,7 +6492,7 @@ include('../conn.php') ;
 								'id' => '685',
 								'code' => '685',
 								'name_ar' => 'ايت تيزي',
-								'name' => 'Ait-Tizi',
+								'name' => 'Ait Tizi',
 							),
 							'699' => array(
 								'id' => '699',
@@ -6634,7 +6634,7 @@ include('../conn.php') ;
 								'id' => '682',
 								'code' => '682',
 								'name_ar' => 'عين الروى',
-								'name' => 'Ain-Roua',
+								'name' => 'Ain Roua',
 							),
 							'694' => array(
 								'id' => '694',
@@ -6660,7 +6660,7 @@ include('../conn.php') ;
 								'id' => '705',
 								'code' => '705',
 								'name_ar' => 'ذراع قبيلة',
-								'name' => 'Draa-Kebila',
+								'name' => 'Draa Kebila',
 							),
 							'715' => array(
 								'id' => '715',
@@ -6686,7 +6686,7 @@ include('../conn.php') ;
 								'id' => '731',
 								'code' => '731',
 								'name_ar' => 'تالة إيفاسن',
-								'name' => 'Tala-Ifacene',
+								'name' => 'Tala Ifacene',
 							),
 						),
 					),
@@ -6696,7 +6696,7 @@ include('../conn.php') ;
 				'id' => '20',
 				'code' => '20',
 				'name_ar' => 'سعيدة',
-				'name' => 'Saïda',
+				'name' => 'Saida',
 				'dairas' => array(
 					'2001' => array(
 						'id' => '2001',
@@ -7188,7 +7188,7 @@ include('../conn.php') ;
 				'id' => '22',
 				'code' => '22',
 				'name_ar' => 'سيدي بلعباس',
-				'name' => 'Sidi Bel Abbès',
+				'name' => 'Sidi Bel Abbes',
 				'dairas' => array(
 					'2201' => array(
 						'id' => '2201',
@@ -7200,7 +7200,7 @@ include('../conn.php') ;
 								'id' => '824',
 								'code' => '824',
 								'name_ar' => 'سيدي بلعباس',
-								'name' => 'Sidi Bel-Abbes',
+								'name' => 'Sidi Bel Abbes',
 							),
 						),
 					),
@@ -7542,7 +7542,7 @@ include('../conn.php') ;
 								'id' => '793',
 								'code' => '793',
 								'name_ar' => 'عين أدن',
-								'name' => 'Ain- Adden',
+								'name' => 'Ain  Adden',
 							),
 							'800' => array(
 								'id' => '800',
@@ -7554,7 +7554,7 @@ include('../conn.php') ;
 								'id' => '810',
 								'code' => '810',
 								'name_ar' => 'مسيد',
-								'name' => 'M\'cid',
+								'name' => 'Mcid',
 							),
 							'821' => array(
 								'id' => '821',
@@ -7930,7 +7930,7 @@ include('../conn.php') ;
 						'id' => '2422',
 						'code' => '2422',
 						'name_ar' => 'حمام النبايل',
-						'name' => 'Hammam N\'bails',
+						'name' => 'Hammam Nbails',
 						'communes' => array(
 							'867' => array(
 								'id' => '867',
@@ -7942,7 +7942,7 @@ include('../conn.php') ;
 								'id' => '873',
 								'code' => '873',
 								'name_ar' => 'حمام النبايل',
-								'name' => 'Hammam N\'bail',
+								'name' => 'Hammam Nbail',
 							),
 							'880' => array(
 								'id' => '880',
@@ -8176,7 +8176,7 @@ include('../conn.php') ;
 				'id' => '26',
 				'code' => '26',
 				'name_ar' => 'المدية',
-				'name' => 'Médéa',
+				'name' => 'Medea',
 				'dairas' => array(
 					'2601' => array(
 						'id' => '2601',
@@ -8458,7 +8458,7 @@ include('../conn.php') ;
 								'id' => '934',
 								'code' => '934',
 								'name_ar' => 'مفاتحة',
-								'name' => 'M\'fatha',
+								'name' => 'Mfatha',
 							),
 							'947' => array(
 								'id' => '947',
@@ -8746,7 +8746,7 @@ include('../conn.php') ;
 								'id' => '965',
 								'code' => '965',
 								'name_ar' => 'عين نويسي',
-								'name' => 'Ain-Nouissy',
+								'name' => 'Ain Nouissy',
 							),
 							'970' => array(
 								'id' => '970',
@@ -8798,7 +8798,7 @@ include('../conn.php') ;
 								'id' => '967',
 								'code' => '967',
 								'name_ar' => 'عين تادلس',
-								'name' => 'Ain-Tedles',
+								'name' => 'Ain Tedles',
 							),
 							'981' => array(
 								'id' => '981',
@@ -8830,13 +8830,13 @@ include('../conn.php') ;
 								'id' => '964',
 								'code' => '964',
 								'name_ar' => 'عين بودينار',
-								'name' => 'Ain-Boudinar',
+								'name' => 'Ain Boudinar',
 							),
 							'975' => array(
 								'id' => '975',
 								'code' => '975',
 								'name_ar' => 'خير الدين',
-								'name' => 'Kheir-Eddine',
+								'name' => 'Kheir Eddine',
 							),
 							'985' => array(
 								'id' => '985',
@@ -8856,7 +8856,7 @@ include('../conn.php') ;
 								'id' => '983',
 								'code' => '983',
 								'name_ar' => 'أولاد مع الله',
-								'name' => 'Ouled-Maalah',
+								'name' => 'Ouled Maalah',
 							),
 							'986' => array(
 								'id' => '986',
@@ -8894,7 +8894,7 @@ include('../conn.php') ;
 								'id' => '988',
 								'code' => '988',
 								'name_ar' => 'سيدي لخضر',
-								'name' => 'Sidi-Lakhdar',
+								'name' => 'Sidi Lakhdar',
 							),
 						),
 					),
@@ -8972,7 +8972,7 @@ include('../conn.php') ;
 								'id' => '966',
 								'code' => '966',
 								'name_ar' => 'عين سيدي الشريف',
-								'name' => 'Ain-Sidi Cherif',
+								'name' => 'Ain Sidi Cherif',
 							),
 							'976' => array(
 								'id' => '976',
@@ -9000,19 +9000,19 @@ include('../conn.php') ;
 				'id' => '28',
 				'code' => '28',
 				'name_ar' => 'المسيلة',
-				'name' => 'M\'Sila',
+				'name' => 'MSila',
 				'dairas' => array(
 					'2801' => array(
 						'id' => '2801',
 						'code' => '2801',
 						'name_ar' => 'المسيلة',
-						'name' => 'M\'sila',
+						'name' => 'Msila',
 						'communes' => array(
 							'1023' => array(
 								'id' => '1023',
 								'code' => '1023',
 								'name_ar' => 'المسيلة',
-								'name' => 'M\'sila',
+								'name' => 'Msila',
 							),
 						),
 					),
@@ -9064,7 +9064,7 @@ include('../conn.php') ;
 								'id' => '1024',
 								'code' => '1024',
 								'name_ar' => 'المطارفة',
-								'name' => 'M\'tarfa',
+								'name' => 'Mtarfa',
 							),
 							'1026' => array(
 								'id' => '1026',
@@ -9108,7 +9108,7 @@ include('../conn.php') ;
 								'id' => '1019',
 								'code' => '1019',
 								'name_ar' => 'مسيف',
-								'name' => 'M\'cif',
+								'name' => 'Mcif',
 							),
 						),
 					),
@@ -9128,7 +9128,7 @@ include('../conn.php') ;
 								'id' => '1014',
 								'code' => '1014',
 								'name_ar' => 'خطوطي سد الجير',
-								'name' => 'Khettouti Sed-El-Jir',
+								'name' => 'Khettouti Sed El Jir',
 							),
 							'1017' => array(
 								'id' => '1017',
@@ -9360,7 +9360,7 @@ include('../conn.php') ;
 								'id' => '1036',
 								'code' => '1036',
 								'name_ar' => 'سيدي امحمد',
-								'name' => 'Sidi M\'hamed',
+								'name' => 'Sidi Mhamed',
 							),
 						),
 					),
@@ -9800,7 +9800,7 @@ include('../conn.php') ;
 								'id' => '1071',
 								'code' => '1071',
 								'name_ar' => 'مقطع الدوز',
-								'name' => 'Mocta-Douz',
+								'name' => 'Mocta Douz',
 							),
 							'1072' => array(
 								'id' => '1072',
@@ -9854,13 +9854,13 @@ include('../conn.php') ;
 						'id' => '3003',
 						'code' => '3003',
 						'name_ar' => 'انقوسة',
-						'name' => 'N\'goussa',
+						'name' => 'Ngoussa',
 						'communes' => array(
 							'1100' => array(
 								'id' => '1100',
 								'code' => '1100',
 								'name_ar' => 'انقوسة',
-								'name' => 'N\'goussa',
+								'name' => 'Ngoussa',
 							),
 						),
 					),
@@ -9940,7 +9940,7 @@ include('../conn.php') ;
 						'id' => '3014',
 						'code' => '3014',
 						'name_ar' => 'الحجيرة',
-						'name' => 'El-Hadjira',
+						'name' => 'El Hadjira',
 						'communes' => array(
 							'1092' => array(
 								'id' => '1092',
@@ -9952,7 +9952,7 @@ include('../conn.php') ;
 								'id' => '1094',
 								'code' => '1094',
 								'name_ar' => 'الحجيرة',
-								'name' => 'El-Hadjira',
+								'name' => 'El Hadjira',
 							),
 						),
 					),
@@ -9972,7 +9972,7 @@ include('../conn.php') ;
 								'id' => '1098',
 								'code' => '1098',
 								'name_ar' => 'المنقر',
-								'name' => 'M\'naguer',
+								'name' => 'Mnaguer',
 							),
 							'1105' => array(
 								'id' => '1105',
@@ -10040,7 +10040,7 @@ include('../conn.php') ;
 						'id' => '301330',
 						'code' => '301330',
 						'name_ar' => 'تقرت (ولاية منتدبة)',
-						'name' => 'Touggourt (Wilaya Déléguée)',
+						'name' => 'Touggourt',
 					),
 				),
 			),
@@ -10512,7 +10512,7 @@ include('../conn.php') ;
 						'id' => '330233',
 						'code' => '330233',
 						'name_ar' => 'جانت (ولاية منتدبة)',
-						'name' => 'Djanet (Wilaya Déléguée)',
+						'name' => 'Djanet',
 					),
 				),
 			),
@@ -10532,7 +10532,7 @@ include('../conn.php') ;
 								'id' => '1166',
 								'code' => '1166',
 								'name_ar' => 'برج بوعريرج',
-								'name' => 'B. B. Arreridj',
+								'name' => 'Bordj Bou Arreridj',
 							),
 						),
 					),
@@ -10604,7 +10604,7 @@ include('../conn.php') ;
 								'id' => '1179',
 								'code' => '1179',
 								'name_ar' => 'المهير',
-								'name' => 'El M\'hir',
+								'name' => 'El Mhir',
 							),
 							'1181' => array(
 								'id' => '1181',
@@ -10622,7 +10622,7 @@ include('../conn.php') ;
 								'id' => '1189',
 								'code' => '1189',
 								'name_ar' => 'أولاد سيدي ابراهيم',
-								'name' => 'Ouled Sidi-Brahim',
+								'name' => 'Ouled Sidi Brahim',
 							),
 						),
 					),
@@ -10802,7 +10802,7 @@ include('../conn.php') ;
 								'id' => '1192',
 								'code' => '1192',
 								'name_ar' => 'سيدي أمبارك',
-								'name' => 'Sidi-Embarek',
+								'name' => 'Sidi Embarek',
 							),
 						),
 					),
@@ -10812,7 +10812,7 @@ include('../conn.php') ;
 				'id' => '35',
 				'code' => '35',
 				'name_ar' => 'بومرداس',
-				'name' => 'Boumerdès',
+				'name' => 'Boumerdes',
 				'dairas' => array(
 					'3501' => array(
 						'id' => '3501',
@@ -11154,13 +11154,13 @@ include('../conn.php') ;
 						'id' => '3603',
 						'code' => '3603',
 						'name_ar' => 'بن مهيدي',
-						'name' => 'Ben M\'hidi',
+						'name' => 'Ben Mhidi',
 						'communes' => array(
 							'1233' => array(
 								'id' => '1233',
 								'code' => '1233',
 								'name_ar' => 'بن مهيدي',
-								'name' => 'Ben M Hidi',
+								'name' => 'Ben Mhidi',
 							),
 							'1234' => array(
 								'id' => '1234',
@@ -11536,7 +11536,7 @@ include('../conn.php') ;
 								'id' => '1285',
 								'code' => '1285',
 								'name_ar' => 'الوادي',
-								'name' => 'El-Oued',
+								'name' => 'El Oued',
 							),
 							'1290' => array(
 								'id' => '1290',
@@ -11748,7 +11748,7 @@ include('../conn.php') ;
 								'id' => '1284',
 								'code' => '1284',
 								'name_ar' => 'المغير',
-								'name' => 'El-M\'ghaier',
+								'name' => 'El Mghaier',
 							),
 							'1296' => array(
 								'id' => '1296',
@@ -11786,7 +11786,7 @@ include('../conn.php') ;
 								'id' => '1293',
 								'code' => '1293',
 								'name_ar' => 'المرارة',
-								'name' => 'M\'rara',
+								'name' => 'Mrara',
 							),
 							'1300' => array(
 								'id' => '1300',
@@ -11806,7 +11806,7 @@ include('../conn.php') ;
 						'id' => '392739',
 						'code' => '392739',
 						'name_ar' => 'المغير (ولاية منتدبة)',
-						'name' => 'El Meghaier (Wilaya Déléguée)',
+						'name' => 'El Meghaier',
 					),
 				),
 			),
@@ -11904,7 +11904,7 @@ include('../conn.php') ;
 								'id' => '1323',
 								'code' => '1323',
 								'name_ar' => 'متوسة',
-								'name' => 'M\'toussa',
+								'name' => 'Mtoussa',
 							),
 						),
 					),
@@ -11930,7 +11930,7 @@ include('../conn.php') ;
 								'id' => '1322',
 								'code' => '1322',
 								'name_ar' => 'مصارة',
-								'name' => 'M\'sara',
+								'name' => 'Msara',
 							),
 							'1328' => array(
 								'id' => '1328',
@@ -12202,13 +12202,13 @@ include('../conn.php') ;
 						'id' => '4115',
 						'code' => '4115',
 						'name_ar' => 'مداوروش',
-						'name' => 'M\'daourouche',
+						'name' => 'Mdaourouche',
 						'communes' => array(
 							'1338' => array(
 								'id' => '1338',
 								'code' => '1338',
 								'name_ar' => 'مداوروش',
-								'name' => 'M\'daourouche',
+								'name' => 'Mdaourouche',
 							),
 							'1345' => array(
 								'id' => '1345',
@@ -12314,7 +12314,7 @@ include('../conn.php') ;
 								'id' => '1381',
 								'code' => '1381',
 								'name_ar' => 'سيدي عامر',
-								'name' => 'Sidi-Amar',
+								'name' => 'Sidi Amar',
 							),
 						),
 					),
@@ -12816,7 +12816,7 @@ include('../conn.php') ;
 				'id' => '44',
 				'code' => '44',
 				'name_ar' => 'عين الدفلة',
-				'name' => 'Aïn Defla',
+				'name' => 'Ain Defla',
 				'dairas' => array(
 					'4401' => array(
 						'id' => '4401',
@@ -12828,7 +12828,7 @@ include('../conn.php') ;
 								'id' => '1417',
 								'code' => '1417',
 								'name_ar' => 'عين الدفلى',
-								'name' => 'Ain-Defla',
+								'name' => 'Ain Defla',
 							),
 						),
 					),
@@ -12882,13 +12882,13 @@ include('../conn.php') ;
 								'id' => '1440',
 								'code' => '1440',
 								'name_ar' => 'خميس مليانة',
-								'name' => 'Khemis-Miliana',
+								'name' => 'Khemis Miliana',
 							),
 							'1446' => array(
 								'id' => '1446',
 								'code' => '1446',
 								'name_ar' => 'سيدي الأخضر',
-								'name' => 'Sidi-Lakhdar',
+								'name' => 'Sidi Lakhdar',
 							),
 						),
 					),
@@ -12902,19 +12902,19 @@ include('../conn.php') ;
 								'id' => '1415',
 								'code' => '1415',
 								'name_ar' => 'عين البنيان',
-								'name' => 'Ain-Benian',
+								'name' => 'Ain Benian',
 							),
 							'1420' => array(
 								'id' => '1420',
 								'code' => '1420',
 								'name_ar' => 'عين التركي',
-								'name' => 'Ain-Torki',
+								'name' => 'Ain Torki',
 							),
 							'1437' => array(
 								'id' => '1437',
 								'code' => '1437',
 								'name_ar' => 'حمام ريغة',
-								'name' => 'Hammam-Righa',
+								'name' => 'Hammam Righa',
 							),
 						),
 					),
@@ -12960,7 +12960,7 @@ include('../conn.php') ;
 								'id' => '1434',
 								'code' => '1434',
 								'name_ar' => 'العامرة',
-								'name' => 'El-Amra',
+								'name' => 'El Amra',
 							),
 							'1441' => array(
 								'id' => '1441',
@@ -12980,7 +12980,7 @@ include('../conn.php') ;
 								'id' => '1435',
 								'code' => '1435',
 								'name_ar' => 'العطاف',
-								'name' => 'El-Attaf',
+								'name' => 'El Attaf',
 							),
 							'1449' => array(
 								'id' => '1449',
@@ -13000,13 +13000,13 @@ include('../conn.php') ;
 								'id' => '1416',
 								'code' => '1416',
 								'name_ar' => 'عين بويحيى',
-								'name' => 'Ain-Bouyahia',
+								'name' => 'Ain Bouyahia',
 							),
 							'1433' => array(
 								'id' => '1433',
 								'code' => '1433',
 								'name_ar' => 'العبادية',
-								'name' => 'El-Abadia',
+								'name' => 'El Abadia',
 							),
 							'1447' => array(
 								'id' => '1447',
@@ -13052,13 +13052,13 @@ include('../conn.php') ;
 								'id' => '1418',
 								'code' => '1418',
 								'name_ar' => 'عين الاشياخ',
-								'name' => 'Ain-Lechiakh',
+								'name' => 'Ain Lechiakh',
 							),
 							'1419' => array(
 								'id' => '1419',
 								'code' => '1419',
 								'name_ar' => 'عين السلطان',
-								'name' => 'Ain-Soltane',
+								'name' => 'Ain Soltane',
 							),
 							'1444' => array(
 								'id' => '1444',
@@ -13078,7 +13078,7 @@ include('../conn.php') ;
 								'id' => '1436',
 								'code' => '1436',
 								'name_ar' => 'الماين',
-								'name' => 'El-Maine',
+								'name' => 'El Maine',
 							),
 							'1445' => array(
 								'id' => '1445',
@@ -13104,19 +13104,19 @@ include('../conn.php') ;
 								'id' => '1426',
 								'code' => '1426',
 								'name_ar' => 'بئر ولد خليفة',
-								'name' => 'Bir-Ould-Khelifa',
+								'name' => 'Bir Ould Khelifa',
 							),
 							'1427' => array(
 								'id' => '1427',
 								'code' => '1427',
 								'name_ar' => 'برج الأمير خالد',
-								'name' => 'Bordj-Emir-Khaled',
+								'name' => 'Bordj Emir Khaled',
 							),
 							'1448' => array(
 								'id' => '1448',
 								'code' => '1448',
 								'name_ar' => 'طارق بن زياد',
-								'name' => 'Tarik-Ibn-Ziad',
+								'name' => 'Tarik Ibn Ziad',
 							),
 						),
 					),
@@ -13152,7 +13152,7 @@ include('../conn.php') ;
 				'id' => '45',
 				'code' => '45',
 				'name_ar' => 'النعامة',
-				'name' => 'Naâma',
+				'name' => 'Naama',
 				'dairas' => array(
 					'4501' => array(
 						'id' => '4501',
@@ -13288,7 +13288,7 @@ include('../conn.php') ;
 				'id' => '46',
 				'code' => '46',
 				'name_ar' => 'عين تيموشنت',
-				'name' => 'Aïn Témouchent',
+				'name' => 'Ain Temouchent',
 				'dairas' => array(
 					'4601' => array(
 						'id' => '4601',
@@ -13378,7 +13378,7 @@ include('../conn.php') ;
 						'id' => '4614',
 						'code' => '4614',
 						'name_ar' => 'المالح',
-						'name' => 'El Maleh',
+						'name' => 'El Malah',
 						'communes' => array(
 							'1471' => array(
 								'id' => '1471',
@@ -13528,7 +13528,7 @@ include('../conn.php') ;
 				'id' => '47',
 				'code' => '47',
 				'name_ar' => 'غرداية',
-				'name' => 'Ghardaïa',
+				'name' => 'Ghardaia',
 				'dairas' => array(
 					'4701' => array(
 						'id' => '4701',
@@ -13683,8 +13683,8 @@ include('../conn.php') ;
 					'470247' => array(
 						'id' => '470247',
 						'code' => '470247',
-						'name_ar' => 'المنيعة (ولاية منتدبة)',
-						'name' => 'El Menia (Wilaya Déléguée)',
+						'name_ar' => ' منتدبة)',
+						'name' => 'El Menia',
 					),
 				),
 			),
@@ -13742,7 +13742,7 @@ include('../conn.php') ;
 								'id' => '1529',
 								'code' => '1529',
 								'name_ar' => 'وادي رهيو',
-								'name' => 'Oued-Rhiou',
+								'name' => 'Oued Rhiou',
 							),
 						),
 					),
@@ -13750,13 +13750,13 @@ include('../conn.php') ;
 						'id' => '4807',
 						'code' => '4807',
 						'name_ar' => 'الحمادنة',
-						'name' => 'El H\'madna',
+						'name' => 'El Hmadna',
 						'communes' => array(
 							'1514' => array(
 								'id' => '1514',
 								'code' => '1514',
 								'name_ar' => 'الحمادنة',
-								'name' => 'El H\'madna',
+								'name' => 'El Hmadna',
 							),
 							'1527' => array(
 								'id' => '1527',
@@ -13770,7 +13770,7 @@ include('../conn.php') ;
 						'id' => '4808',
 						'code' => '4808',
 						'name_ar' => 'سيدي أمحمد بن علي',
-						'name' => 'Sidi M\'hamed Ben Ali',
+						'name' => 'Sidi Mhamed Ben Ali',
 						'communes' => array(
 							'1510' => array(
 								'id' => '1510',
@@ -13788,7 +13788,7 @@ include('../conn.php') ;
 								'id' => '1536',
 								'code' => '1536',
 								'name_ar' => 'سيدي أمحمد بن علي',
-								'name' => 'Sidi M\'hamed Benali',
+								'name' => 'Sidi Mhamed Benali',
 							),
 						),
 					),
@@ -13892,7 +13892,7 @@ include('../conn.php') ;
 								'id' => '1517',
 								'code' => '1517',
 								'name_ar' => 'المطمر',
-								'name' => 'El-Matmar',
+								'name' => 'El Matmar',
 							),
 							'1534' => array(
 								'id' => '1534',
@@ -13904,7 +13904,7 @@ include('../conn.php') ;
 								'id' => '1537',
 								'code' => '1537',
 								'name_ar' => 'سيدي امحمد بن عودة',
-								'name' => 'Sidi M\'hamed Benaouda',
+								'name' => 'Sidi Mhamed Benaouda',
 							),
 						),
 					),
@@ -13918,7 +13918,7 @@ include('../conn.php') ;
 								'id' => '1505',
 								'code' => '1505',
 								'name_ar' => 'عين طارق',
-								'name' => 'Ain-Tarek',
+								'name' => 'Ain Tarek',
 							),
 							'1518' => array(
 								'id' => '1518',
@@ -13938,7 +13938,7 @@ include('../conn.php') ;
 								'id' => '1516',
 								'code' => '1516',
 								'name_ar' => 'القطار',
-								'name' => 'El-Guettar',
+								'name' => 'El Guettar',
 							),
 							'1522' => array(
 								'id' => '1522',
@@ -14031,6 +14031,7 @@ include('../conn.php') ;
 		),
 	);
 
+
 $ar = array ( 
   array("Architecture","مهندس معماري"),
   array("audiovisuelles","تقنيات السمعي البصري"),
@@ -14054,135 +14055,26 @@ $ar = array (
   array("Produits alimentaires generaux","مواد غذائية عامة"),     
   array("Soudeur","التلحيم"),
   array("sport","رياضة"),  
-  array("vetements","محل ألبسة")  
+  array("vetements","محل ألبسة")
+    
 
 ); 
 
-
-
-$x=0;
-
-
-$filex ="Medecin"; 
-$jobx ="طبيب خاص";
-
-$f = fopen("py/noneWilaya.txt","a") ;
-$myfile = fopen("py/".$filex.".txt","r");
-
- 
- while(!feof($myfile)) {	
- //while($x<11) {
+$n=0;
+//$f = fopen("py/0001.txt","a") ;
+foreach($ar as $x){ 
+$filex =$x[0];
+$myfile = fopen("py/1NEW".$filex.".txt","r");
   
-  
+   while(!feof($myfile)) {	
+	 
+
+
   $name =  fgets($myfile);
   $phone =  fgets($myfile);
-  
-  $str=fgets($myfile);
-  $words = explode(" ",$str) ;
-  $location="";
-   
-  for($i=1;$i<count($words);$i++){ 
-  if($i==1){ 
-  $location =$location.$words[$i]; 
-  }    
-  else{ 
-  $location = $location." ".$words[$i]; 
-  }   
- }
-  $location= rtrim($location); 
-  
-  // $communescode = array_keys($arr['wilayas']['01']['dairas']['101']['communes']); 
-   //foreach($communescode as $commune)
-   //echo $arr['wilayas']['01']['dairas']['101']['communes'][$commune]['name'];
-   
-             
-                $Profile_Pic = 'default.png';
-                $Type = 'worker'; 
-                $Wilaya = 'none'; 
-			    $Daira = 'none'; 
-			    $Commune = 'none'; 
-  $wilayascode = array_keys($arr['wilayas']); 
-  
-  foreach($wilayascode as $wilaya) {  
-         //$wilaya = $arr['wilayas'][$wilaya]['code'] ;
-         //echo $arr['wilayas'][$wilaya]['name'] ;
-		 
-         similar_text($location,$arr['wilayas'][$wilaya]['name'],$perc);
-		
-         if($perc > 66){
-			  
-               $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ; 
-			   $Daira = 'none'; 
-			   $Commune = 'none'; 
-			   
-			  
-			           }
-			 
-         else{
-              $dairascode = array_keys($arr['wilayas'][$wilaya]['dairas']); 
-            foreach($dairascode as $daira)
-			{ 
-              // $daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['code'] ;
-              similar_text($location,$arr['wilayas'][$wilaya]['dairas'][$daira]['name'],$perc);
-			  
-              if($perc > 66){ 
-                      $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ;
-			          $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name_ar']; 
-					  $Commune = 'none'; 
-					       
-
-        
-						   }
-  
-              else  { 
-			        if (isset($arr['wilayas'][$wilaya]['dairas'][$daira]['communes'])) {
-                     $communescode = array_keys($arr['wilayas'][$wilaya]['dairas'][$daira]['communes']);
-                    }
-                   
-					
-                    foreach($communescode as $commune){ 
-                     if (isset($arr['wilayas'][$wilaya]['dairas'][$daira]['communes'])) {
-                     similar_text($location,$arr['wilayas'][$wilaya]['dairas'][$daira]['communes'][$commune]['name'],$perc);
-                    }
-                     
-					 
-                     if($perc > 66){ 
-                      $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ;
-			          $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name_ar']; 
-					  $Commune = $arr['wilayas'][$wilaya]['dairas'][$daira]['communes'][$commune]['name_ar'];
-					               
-								   
-								   
-								  
-								   }
-								   
-			                       }
-  
-			        }
-		    }  
-
-  }
-  
-  } 
-  
-  /* echo " ***wilaya = " . $Wilaya ." ***daira = " .$Daira."  ***commune =   ".$Commune. "<br>" ; 
- 
- 
-  echo " name =  " .$name  ." phone =  " .$phone. "<br>" ; 
-  
+  $location=fgets($myfile);
   $job = fgets($myfile);
-  $job='طبيب خاص';
-  echo " job =  " .$job  . "<br>" ; 
-  $description =  fgets($myfile) ."////" .fgets($myfile)."////";
-  echo " description =  " .$description . "<br>" ; 
-  */
-  $job = fgets($myfile);
-  $job=$jobx; 
   $description =  fgets($myfile) ;
-  $description = fgets($myfile)." ".$description;
-  
-  if($phone == "no")
-   $phone =  "لا يوجد رقم هاتف ";
   
   $name= str_replace(array("\n", "\r"), '', $name);
   $phone= str_replace(array("\n", "\r"), '', $phone);
@@ -14190,38 +14082,73 @@ $myfile = fopen("py/".$filex.".txt","r");
   $job= str_replace(array("\n", "\r"), '', $job);
   $description = str_replace(array("\n", "\r"), '', $description);
   
+             
+                $Profile_Pic = 'default.png';
+                $Type = 'worker'; 
+                $Wilaya = 'none'; 
+			    $Daira = 'none'; 
+			    $Commune = 'none'; 
+				
+   $wilayascode = array_keys($arr['wilayas']); 
+	    foreach($wilayascode as $wilaya) {  
+	        $dairascode = array_keys($arr['wilayas'][$wilaya]['dairas']); 
+            foreach($dairascode as $daira){
+			   if (isset($arr['wilayas'][$wilaya]['dairas'][$daira]['communes'])) {
+                      $communescode = array_keys($arr['wilayas'][$wilaya]['dairas'][$daira]['communes']);
+			          foreach($communescode as $commune){ 
+			                if($location == $arr['wilayas'][$wilaya]['dairas'][$daira]['communes'][$commune]['name']  ){ 
+                            $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ;
+			                $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name_ar']; 
+					        $Commune = $arr['wilayas'][$wilaya]['dairas'][$daira]['communes'][$commune]['name_ar'];
+					               
+								   }
+				            else  $n++; 
+	        	        }
+			   
+			   
+			   }
+			   else {  if($location == $arr['wilayas'][$wilaya]['dairas'][$daira]['name']){ 
+                            $Wilaya = $arr['wilayas'][$wilaya]['name_ar'] ;
+			                $Daira = $arr['wilayas'][$wilaya]['dairas'][$daira]['name_ar']; 
+								   }
+				      else  $n++; 
+                    }			   
+			         
+			   
+			   
+		}
+		}
+		
+		
 if($Wilaya=="none"){ 
-fwrite($f, $name.PHP_EOL);
+/* fwrite($f, $name.PHP_EOL);
 fwrite($f, $phone.PHP_EOL);
 fwrite($f, $location.PHP_EOL);
 fwrite($f, $job.PHP_EOL);
 fwrite($f, $description.PHP_EOL);  
+*/
 } 
-//.PHP_EOL
-else { 
-  
-if($Daira=="none"  &&  $Commune=="none" )
- $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Type,Description,Profile_Pic,Ad)
-  			  VALUES('$name','$phone','$job','$Wilaya','$Type','$description','$Profile_Pic','yes')";
-if($Commune=="none" &&   $Daira!="none"  )
-  $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Daira,Type,Description,Profile_Pic,Ad)
-  			  VALUES('$name','$phone','$job','$Wilaya','$Daira','$Type','$description','$Profile_Pic','yes')";
-if($Commune!="none" &&   $Daira!="none"  )
-  $query = "INSERT INTO Users (First_Name,Phone,Job,Wilaya,Daira,Commune,Type,Description,Profile_Pic,Ad)
+
+
+ else {
+  $query = "INSERT INTO users (First_Name,Phone,Job,Wilaya,Daira,Commune,Type,Description,Profile_Pic,Ad)
   			  VALUES('$name','$phone','$job','$Wilaya','$Daira','$Commune','$Type','$description','$Profile_Pic','yes')";
 			  
   	mysqli_query($db, $query); 
-	} 
-	
+	}
  
- $x++; 
+  
 }
     
 	fclose($myfile);
-	fclose($f);
-    mysqli_close ($db);	
-	echo "     ALL DONE 	<br>".$x  ; 
 
+    
+	
+}
+     
+	 echo "     ALL DONE 	<br>".$n ; 
+     mysqli_close ($db);	
+	 //fclose($f);
     exit();
 
 

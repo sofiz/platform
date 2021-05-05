@@ -127,22 +127,25 @@ $in = in_array($detectedType, $allowedTypes);
  }
 
 if(isset($_POST['submitcomment'])){
-
+$Post_id = $_POST['submitcomment'];
+$Comment = mysqli_real_escape_string($db, $_POST[$Post_id]);
+if (!empty($Comment)) {
+	
+	
 $User=$_SESSION['Username'];
 $res=mysqli_query($db,"SELECT id FROM users WHERE Username='$User'");
 while($row=mysqli_fetch_array($res)){
 $Commentor_id=$row['id'] ;
         }
 
-$Post_id = $_POST['submitcomment'];
 
-$Comment = mysqli_real_escape_string($db, $_POST[$Post_id]);
+
 
 
 $query = "INSERT INTO posts_comments (Post_id,Commentor_id,Comment) VALUES('$Post_id', '$Commentor_id', '$Comment') ";
 mysqli_query($db, $query);
 
-
+}
 
 }
 
@@ -167,10 +170,6 @@ mysqli_query($db, $query);
 
   <?php
 include('topbar.php');
-
-
-
-
 
 ?>
   <body>
@@ -262,9 +261,9 @@ include('topbar.php');
 
 
 
-        <div  class="wilayadrop"  id="myDIV2">
-     <input type="text" name="Wilaya"  value="" class="searchbtn" id="Wilaya" hidden>
-    </div>
+     <div  class="wilayadrop"  id="myDIV2">
+     <input type="hidden" name="Wilaya"  value="" class="searchbtn" id="Wilaya2" hidden>
+     </div>
 
 
 
@@ -327,37 +326,55 @@ include('topbar.php');
 
     echo '<div class="posttxtdiv">';
     echo '<p class="posttxt">'.$row['Txt'].'</p>';
-	echo '
-
-  <div class="slideshow-container">
+	
+	
+	
+	
+	 
+if($row['Photo_1']!=""){
+  echo '<div class="slideshow-container">  '; 
+  echo '
+   
     <div class="mySlides fade">
-      <div class="numbertext">1 / 3</div>
       <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_1'].'" style="width:100%">
-
     </div>
-
-    <div class="mySlides fade">
-      <div class="numbertext">2 / 3</div>
+	 ';
+	  }
+	 
+if($row['Photo_2']!="")
+  echo '  <div class="mySlides fade">
       <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_2'].'" style="width:100%">
 
     </div>
-
-    <div class="mySlides fade">
-      <div class="numbertext">3 / 3</div>
+	
+	 ';
+if($row['Photo_3']!="")
+    echo '  <div class="mySlides fade">
       <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_3'].'" style="width:100%">
-
-    </div>
-
-
+      </div>
+	 ';
+	 
+if($row['Photo_2']!="")
+echo '
 
     <a class="prev">&#10094;</a>
     <a class="next">&#10095;</a>
+';
 
-  <div style="text-align:center">
-    <span class="dot"></span>
-    <span class="dot" ></span>
-    <span class="dot" ></span>
+  echo ' <div style="text-align:center"> '; 
+    if($row['Photo_1']!="")
+    echo ' <span class="dot"></span>  ';
+	if($row['Photo_2']!="")
+    echo '<span class="dot" ></span>   '; 
+	if($row['Photo_3']!="")
+   echo ' <span class="dot" ></span>     '; 
+	
+	 echo '
   </div>
+  ';
+  
+if($row['Photo_1']!="")
+   echo '
   </div>
 
   ';
@@ -425,7 +442,7 @@ else
 echo '<img src="imgs/default.png" alt="">';
 
 echo '</div>';
-echo '<input type="text" name="'.$Post_id.'" class="inputcom"> ';
+echo '<input type="text" name="'.$Post_id.'" class="inputcom" > ';
 
 echo '<button type="submit" name="submitcomment" class="submitcom" value="'.$Post_id.'"><i class="material-icons">&#xe163;</i>  </button>';
 

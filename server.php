@@ -347,7 +347,7 @@ echo "error".mysqli_error($db);
 if (isset($_POST['login'])) {
   $Username = mysqli_real_escape_string($db, $_POST['Username']);
   $Password = mysqli_real_escape_string($db, $_POST['Password']);
-
+  
   if (empty($Username)) {
   	array_push($errors, "Username is required");
   }
