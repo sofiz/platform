@@ -3,7 +3,7 @@
     body{
       padding-top: 0em;
       margin: 0;
-      font-family: 'Roboto', 'jf flat';
+      font-family: 'Roboto', 'DroidArabicKufiRegular';
       background: #f3f2f2c4;
       transition: all .4s ease-in-out;
 
@@ -283,7 +283,7 @@ cursor: pointer;
       transition: all .4s ease-in-out;
       margin: auto;
       display: block;
-      font-family: 'jf flat';
+      font-family: 'DroidArabicKufiRegular';
       padding: 6px 9px;
       position: relative;
       margin-top: 10px;
@@ -584,7 +584,7 @@ transition: all .4s ease-in-out;
         -o-transition: all .4s ease-in-out;
         -webkit-transition: all .4s ease-in-out;
         transition: all .4s ease-in-out;
-        font-family: 'JF Flat';
+        font-family: 'DroidArabicKufiRegular';
         padding: 1px 9px;
 }
 
@@ -619,7 +619,7 @@ transition: all .4s ease-in-out;
         background-color: #00000000;
         border-bottom: solid 2px grey;
         border-color: #9d9898;
-        font-family: 'jf flat';
+        font-family: 'DroidArabicKufiRegular';
   }
   .inputinf2{
     width: 80%;
@@ -711,7 +711,7 @@ outline: none;
           color: #ffffffeb;
           position: absolute;
           margin-top: -10px;
-          font-family: 'jf flat';
+          font-family: 'DroidArabicKufiRegular';
       }
 
   #picsbtn:hover{
@@ -958,7 +958,7 @@ moz-transition: all .4s ease-in-out;
 -webkit-transition: all .4s ease-in-out;
 transition: all .4s ease-in-out;
 border: none;
-font-family: 'JF Flat';
+font-family: 'DroidArabicKufiRegular';
 
 }
 
@@ -1012,7 +1012,7 @@ transition: all .4s ease-in-out;
     background: linear-gradient(135deg, #0077B6, #0096C7,#03AFD1,#4896E4);
         border:none;
         border-radius: 0.25em;
-        font-family: 'jf flat';
+        font-family: 'DroidArabicKufiRegular';
         font-size: inherit;
         cursor: pointer;
         color: #ffffffeb;

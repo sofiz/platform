@@ -13,10 +13,59 @@ a{
 }
 
 
+.fa-sign-out:before {
+    content: "\f08b";
+    background: #f35176;
+    padding: 9px 10px;
+    border-radius: 35px;
+    font-size: 22px;
+}
+.fa-search:before {
+    content: "\f002";
+    margin-right: 0px;
+    background: #ff9beeed;
+    padding: 7px 9px;
+    border-radius: 35px;
+    font-size: 22px;
+}
+.fa-briefcase:before {
+    content: "\f0b1";
+    background: #91bdff;
+    padding: 7px 8px;
+    border-radius: 35px;
+    font-size: 21px;
+}
+.fa-user:before {
+    content: "\f007";
+    background: #7ad87e;
+    padding: 5px 9px;
+    border-radius: 35px;
+}
+.fa-user:before {
+    content: "\f007";
+    background: #7ad87e;
+    padding: 5px 9px;
+    border-radius: 35px;
+}
+.fa-user-plus:before {
+    content: "\f234";
+    background: #ffba89;
+    padding: 8px 7px;
+    border-radius: 35px;
+    font-size: 21px;
+}
+
+.fa-sign-in:before {
+    content: "\f090";
+    background: #7ad87e;
+    padding: 6px 9px;
+    border-radius: 35px;
+}
+
 .topbar{
 
   background: #008ffb;
-  font-family: 'jf flat';
+  font-family: 'DroidArabicKufiRegular';
       width: 200px;
       height: 100%;
       top: 0px;
@@ -159,7 +208,7 @@ margin:0;
 
   color: #edf6fc;
       font-size: 20px;
-      font-family: 'jf flat';
+      font-family: 'DroidArabicKufiRegular';
       margin-left: 15px;
       text-decoration: none;
 }
@@ -237,7 +286,7 @@ moz-transition: all .4s ease-in-out;
 -webkit-transition: all .4s ease-in-out;
 transition: all .4s ease-in-out;
 border: none;
-font-family: 'JF Flat';
+font-family: 'DroidArabicKufiRegular';
 
 }
 
@@ -259,7 +308,7 @@ font-family: 'JF Flat';
       background-color: #00000000;
       border-bottom: grey 2px solid;
       border-color: #9d9898;
-      font-family: 'jf flat';
+      font-family: 'DroidArabicKufiRegular';
 }
 
 @media only screen and (max-width: 920px) {
