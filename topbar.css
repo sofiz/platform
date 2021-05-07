@@ -65,7 +65,7 @@ a{
 .topbar{
 
   background: #008ffb;
-  font-family: 'DroidArabicKufiRegular';
+  font-family: 'DroidArabicKufiRegular', 'jf flat';
       width: 200px;
       height: 100%;
       top: 0px;
@@ -140,7 +140,7 @@ a{
       margin-top: 10px;
 }
 .logo_txt{
-  font-style: 'jf flat';
+  font-style: 'Jf Flat';
   font-size: 18px;
   color: white;
 text-align: center;

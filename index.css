@@ -8,7 +8,7 @@
 
 body{
   background: #d0d0ea;
-  font-family:  'DroidArabicKufiRegular';
+  font-family:  'DroidArabicKufiRegular' ,'jf flat';
   margin: 0;
   padding: 0;
 }
@@ -21,7 +21,7 @@ body{
 }
 
 .footer {
-    height: 78px;
+    height: 81px;
     background:#034dd4d9;
     width: 100%;
     text-align: center;
