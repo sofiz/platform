@@ -190,22 +190,30 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 
 
 </div>
-
+<!--
 <div id="square3">
 <button type="button" id="picsbtn">تعديل الصور</button>
 
-  <!-- Trigger/Open The Modal -->
+  
 
 <strong id="photostitle" class="titles">الصور</strong>
 
   <div class="photocontainer">
 		<?php
-$c->Show_Three_Photos();
+//$c->Show_Three_Photos();
 ?>
   </div>
 
 
 </div>
+-->
+
+
+
+
+
+
+
 </div>
 
 <div class="btns">
@@ -223,16 +231,17 @@ $c->Show_Three_Photos();
 </div>
 
 <!-- The Modal -->
+<!--
 <div id="myModal" class="modal">
 
-  <!-- Modal content -->
+  
   <div class="modal-content">
     <span class="close">&times;</span>
     <div class="photocontainermodal">
     <?php
 
 	// -------------show photos in window and save (Photos_ids) in array if user click on X -----------------------
-	$c->Show_All_Photos_In_Edit();
+	//$c->Show_All_Photos_In_Edit();
 	 ?>
 
     </div>
@@ -254,7 +263,7 @@ $c->Show_Three_Photos();
 
 
 </div>
-
+-->
 
 
 

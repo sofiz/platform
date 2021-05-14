@@ -1,3 +1,138 @@
+
+
+<?php
+
+
+session_start();
+include('../conn.php');
+
+
+
+function compressImage($source, $destination, $quality) {
+
+  $info = getimagesize($source);
+
+  if ($info['mime'] == 'image/jpeg')
+    $image = imagecreatefromjpeg($source);
+
+  elseif ($info['mime'] == 'image/gif')
+    $image = imagecreatefromgif($source);
+
+  elseif ($info['mime'] == 'image/png')
+    $image = imagecreatefrompng($source);
+
+    elseif ($info['mime'] == 'image/jpg')
+      $image = imagecreatefromjpeg($source);
+
+
+
+
+  imagejpeg($image, $destination, $quality);
+
+}
+
+
+
+if (isset($_POST['submitpost'] ) && !empty($_POST['posttextarea'])){
+
+$posttextarea = $_POST['posttextarea'];
+
+
+
+    
+    $Date = date("m.d.y");
+    $Time = date("H:i"); 
+
+
+
+
+
+$User=$_SESSION['Username'];
+$res=mysqli_query($db,"SELECT id FROM users WHERE Username='$User'");
+while($row=mysqli_fetch_array($res)){
+$id=$row['id'] ;
+        }
+
+
+$query = "INSERT INTO posts (Txt,User_id,Date,Time,Myprofile) VALUES('$posttextarea', '$id', '$Date', '$Time','yes') ";
+mysqli_query($db, $query);
+
+$getmaxid = mysqli_query($db," SELECT MAX(Post_id) AS id FROM posts");
+$rowx = mysqli_fetch_array($getmaxid);
+$Post_id=$rowx["id"];
+
+
+
+$x=0;
+if(count($_FILES['upload']['name']) < 4 )
+foreach($_FILES['upload']['name'] as $key=>$val){
+
+
+	$x++;
+	if ($_FILES['upload']['size'][$key] != 0 	&& $_FILES['upload']['size'][$key] < 6097152 ){
+
+
+		if (!file_exists('imgs/'.$id)) {
+
+    mkdir('imgs/'.$id, 0777, true);
+
+}
+	/////-------------------- Get id -------------------
+
+$getmaxid = mysqli_query($db," SELECT MAX(Post_id) AS id FROM posts");
+$row77 = mysqli_fetch_array($getmaxid);
+$maxid=$row77["id"];
+
+$maxid++;
+
+
+$newname = "POST_".strval($id).strval($maxid).strval($x);
+
+
+  $tar='imgs/'.$id.'/';
+  //$tar=$tar.basename($_FILES['uploadpic']['name']) ;
+
+  $extension = pathinfo($_FILES["upload"]["name"][$key], PATHINFO_EXTENSION);
+
+
+  //$pic=($_FILES['uploadpic']['name']) ;
+  $pic=$newname.".".$extension;
+
+
+  $allowedTypes = array(IMAGETYPE_JPEG ,IMAGETYPE_PNG );
+
+$detectedType = exif_imagetype($_FILES['upload']['tmp_name'][$key]);
+$in = in_array($detectedType, $allowedTypes);
+  if($in){
+
+
+  $query = "UPDATE posts SET Photo_$x='$pic' where Post_id=$Post_id  ";
+	if ($pic!=""){
+  mysqli_query($db, $query);
+			  //move_uploaded_file ($_FILES['uploadpic']['tmp_name'],$tar);
+
+			  //compressImage($_FILES['uploadpic']['tmp_name'],$tar,60);
+			  compressImage($_FILES['upload']['tmp_name'][$key],$tar.$newname.".".$extension,15);
+			          }
+
+
+  }
+	}
+  }
+
+
+
+
+
+
+ }
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -32,8 +167,7 @@
 
 <?php
 
-session_start();
-include('../conn.php');
+
 
 $sSQL= 'SET CHARACTER SET utf8';
 mysqli_query($db,$sSQL)
@@ -189,26 +323,64 @@ mysqli_query($db, $q);
 <div class="s1s2">
 
 
-<div id="square2">
-
-<strong class="titles">الوصف</strong>
-  <div class="description">
-
-    <span><?php echo $c->Description ; ?></span>
-  </div>
-
-</div>
-
+<!--
 <div id="square3">
     <strong id="photostitle" class="titles">الصور</strong>
     <div class="photocontainer">
 	<?php
-	$c->Show_Three_Photos();
+	//$c->Show_Three_Photos();
 	 ?>
     </div>
     <button id="viewallpic" type="button" name="button">مشاهدة الكل </button>
 </div>
+
+-->
 </div>
+
+<?php   if (isset($_SESSION['Username'])) { ?>
+	
+<div class="newpostcontain">
+
+
+	<form action="my-profile.php" method="post" enctype="multipart/form-data">
+
+
+
+
+
+
+      <textarea name="posttextarea" class="posttextarea" placeholder="write your text here"></textarea>
+      <input type="file" name="upload[]" class="button" id="upload" multiple>
+     
+
+
+
+
+        <!-- <button type="button" name="upload" class="button" id="upload">upload</button> -->
+
+
+
+
+
+
+
+     
+      <div class="filterscontain">
+      
+        <button type="submit" name="submitpost" class="button" id="submitpost">نشر</button>
+
+      </div>
+
+
+
+	   </form>
+</div>
+
+
+
+<?php }
+   ?>
+
 
 <div>
 <?php
@@ -220,24 +392,27 @@ echo '<div> ' ;
     $res=mysqli_query($db,"SELECT * FROM posts where User_id='$c->id'");
 	while($row=mysqli_fetch_array($res)){
 
-    echo '<div class="post"> ';
+         echo '<div class="post"> ';
 
 	      // get user info
 		 $User_id = $row['User_id'];
 
 		 $res1=mysqli_query($db,"SELECT * FROM users where id ='$User_id' ");
 		 while($row1=mysqli_fetch_array($res1)){
+
 		    $First_Name = $row1['First_Name'];
 			$Last_Name = $row1['Last_Name'];
 			$Profile_Pic = $row1['Profile_Pic'];
-
 		 }
 
 
+
     echo '<div class="imgcontain">' ;
-	if($Profile_Pic!="default.png")
-    echo ' <img src="imgs/'.$User_id.'/'.$Profile_Pic.'" alt="">';
+	if($Profile_Pic!="default.png") { echo ' <img src="imgs/'.$User_id.'/'.$Profile_Pic.'" alt="">'; }
+    
 	else echo '<img src="imgs/default.png" alt=""> ';
+	
+	echo '<h3>'.$row['Date'].' '.$row['Time'].'</h3>' ;
     echo '</div>' ;
 
     echo '<div class="name">' ;
@@ -246,40 +421,59 @@ echo '<div> ' ;
 
     echo '<div class="posttxtdiv">';
     echo '<p class="posttxt">'.$row['Txt'].'</p>';
-    echo '
-
-    <div class="slideshow-container">
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
-        <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_1'].'" style="width:100%">
-
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 3</div>
-        <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_2'].'" style="width:100%">
-
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 3</div>
-        <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_3'].'" style="width:100%">
-
-      </div>
-
-
-
-      <a class="prev">&#10094;</a>
-      <a class="next">&#10095;</a>
-
-    <div style="text-align:center">
-      <span class="dot"></span>
-      <span class="dot" ></span>
-      <span class="dot" ></span>
+	
+	
+	
+	
+	 
+if($row['Photo_1']!=""){
+  echo '<div class="slideshow-container">  '; 
+  echo '
+   
+    <div class="mySlides fade">
+      <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_1'].'" style="width:100%">
     </div>
-    </div>
+	 ';
+	  }
+	 
+if($row['Photo_2']!="")
+  echo '  <div class="mySlides fade">
+      <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_2'].'" style="width:100%">
 
-    ';
+    </div>
+	
+	 ';
+if($row['Photo_3']!="")
+    echo '  <div class="mySlides fade">
+      <img class="imageslide" src="imgs/'.$User_id.'/'.$row['Photo_3'].'" style="width:100%">
+      </div>
+	 ';
+	 
+if($row['Photo_2']!="")
+echo '
+
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+';
+
+  echo ' <div style="text-align:center"> '; 
+    if($row['Photo_1']!="")
+    echo ' <span class="dot"></span>  ';
+	if($row['Photo_2']!="")
+    echo '<span class="dot" ></span>   '; 
+	if($row['Photo_3']!="")
+   echo ' <span class="dot" ></span>     '; 
+	
+	 echo '
+  </div>
+  ';
+  
+if($row['Photo_1']!="")
+   echo '
+  </div>
+
+  ';
+
     echo '</div>' ;
 
 
@@ -361,15 +555,18 @@ echo '</div>' ;
 	   echo '</form>' ;
 ?>
 </div>
+
+
+<!--
 <div id="myModal" class="modal">
 
-  <!-- Modal content -->
+  
   <div class="modal-content">
     <span class="close">&times;</span>
     <div class="photocontainermodal">
     <?php
 
-$c->Show_All_Photos();
+     //$c->Show_All_Photos();
 
 	 ?>
 
@@ -378,7 +575,7 @@ $c->Show_All_Photos();
 
 
 </div>
-
+-->
 
 <!-- Trigger the Modal -->
 <img id="myImgx" src="" alt="" hidden>
