@@ -31,7 +31,7 @@ function compressImage($source, $destination, $quality) {
 
 
 
-if (isset($_POST['submitpost'])){
+if (isset($_POST['submitpost'] ) &&  isset($_POST['jobs'] ) && isset($_POST['offer'] )  && empty($_POST['posttextarea'])){
 
 $posttextarea = $_POST['posttextarea'];
 
@@ -40,7 +40,8 @@ $posttextarea = $_POST['posttextarea'];
     $Job = $_POST['jobs'];
 	$Wilaya = $_POST['Wilaya'];
 	$Category = $_POST['offer'];
-
+    $Date = date("m.d.y");
+    $Time = date("H:i"); 
 
 
 
@@ -53,7 +54,7 @@ $id=$row['id'] ;
         }
 
 
-$query = "INSERT INTO posts (Txt,User_id,Job,Wilaya,Category) VALUES('$posttextarea', '$id', '$Job', '$Wilaya', '$Category') ";
+$query = "INSERT INTO posts (Txt,User_id,Job,Wilaya,Category,Date,Time) VALUES('$posttextarea', '$id', '$Job', '$Wilaya', '$Category', '$Date', '$Time') ";
 mysqli_query($db, $query);
 
 $getmaxid = mysqli_query($db," SELECT MAX(Post_id) AS id FROM posts");
@@ -176,6 +177,10 @@ include('topbar.php');
   <body>
 
     <div class="container">
+	
+	
+<?php   if (isset($_SESSION['Username'])) { ?>
+	
 <div class="newpostcontain">
 
 
@@ -230,7 +235,7 @@ include('topbar.php');
           <p style="margin-left:10px;width:79px">تقديم عمل</p>
 
         </div>
-<input type="hidden" name="" value="">
+        <input type="hidden" name="" value="">
 
 
 
@@ -243,6 +248,15 @@ include('topbar.php');
 
 	   </form>
 </div>
+
+
+
+<?php }
+   ?>
+
+
+
+
 
 <div class="postscontain">
 <div class="poststitlediv">
@@ -275,7 +289,7 @@ include('topbar.php');
           <p style="margin-left:10px;width:73px">فرصة عمل</p>
         </div>
 
-<input type="radio" name="offer" value="offer" class="radio">
+        <input type="radio" name="offer" value="offer" class="radio">
         <div class="filtersradiotxt">
           <p style="margin-left:10px;width:79px">تقديم عمل</p>
         </div>
@@ -285,18 +299,18 @@ include('topbar.php');
 
 
 <?php
-    if (isset($_POST['sub']))
+    if (isset($_POST['sub']) &&  isset($_POST['jobs'] ) &&isset($_POST['offer'] ) )
 	{
 	$Job = $_POST['jobs'];
 	$Wilaya = $_POST['Wilaya'];
 	$Category = $_POST['offer'];
-	$res=mysqli_query($db,"SELECT * FROM posts where Job='$Job'  and Wilaya='$Wilaya' and Category='$Category' ");
+	$res=mysqli_query($db,"SELECT * FROM posts where Job='$Job'  and Wilaya='$Wilaya' and Category='$Category' and Myprofile<>'yes'");
 	 echo  $Job;
 	 echo  $Wilaya;
 	 echo  $Category;
 	 }
 	else
-    $res=mysqli_query($db,"SELECT * FROM posts ");
+    $res=mysqli_query($db,"SELECT * FROM posts where Myprofile<> 'yes' ");
 
 	while($row=mysqli_fetch_array($res)){
 
@@ -316,9 +330,11 @@ include('topbar.php');
 
 
     echo '<div class="imgcontain">' ;
-	if($Profile_Pic!="default.png")
-    echo ' <img src="imgs/'.$User_id.'/'.$Profile_Pic.'" alt="">';
+	if($Profile_Pic!="default.png") { echo ' <img src="imgs/'.$User_id.'/'.$Profile_Pic.'" alt="">'; }
+    
 	else echo '<img src="imgs/default.png" alt=""> ';
+	
+	echo '<h3>'.$row['Date'].' '.$row['Time'].'</h3>' ;
     echo '</div>' ;
 
     echo '<div class="name">' ;

@@ -277,18 +277,18 @@ business_center
    </div>
 
 </div>
+
+
+<!--
+
 <div class="s1s2">
-
-
-
-
 <div id="square3">
     <strong id="photostitle" class="titles">الصور</strong>
     <div class="photocontainer">
 
 
      <?php
-	$c->Show_Three_Photos();
+	//$c->Show_Three_Photos();
 	 ?>
     </div>
     <button id="viewallpic" type="button" name="button">See all</button>
@@ -298,6 +298,7 @@ business_center
 </div>
 </div>
 
+-->
 
 <?php
 echo '<form action="profile.php?id='.$c->id.'" method="post" enctype="multipart/form-data">' ;
@@ -448,16 +449,18 @@ echo '</div>' ;
 </div>
 </form>
 
+<!--
+
 <div id="myModal" class="modal">
 
-  <!-- Modal content -->
+  
   <div class="modal-content">
     <span class="close">&times;</span>
     <div class="photocontainermodal">
     <?php
 
 
-$c->Show_All_Photos();
+    //$c->Show_All_Photos();
 
 
 	 ?>
@@ -467,6 +470,7 @@ $c->Show_All_Photos();
 
 
 </div>
+-->
 
 
 <!-- Trigger the Modal -->
