@@ -57,7 +57,7 @@
 <?php
 
 
-echo '<div  class="topbar">
+echo '<div id="sidebar" class="sidebar">
 <a href="index.php"  >
 <img src="LOGO_back_white2.png" class="logo" alt="">
 <p class="logo_txt">Rondili</p>
@@ -122,6 +122,14 @@ echo '</div>
  </div>';
 
 ?>
+
+<div class="topbar">
+  <div class="hum"  onclick="showsidebar()">
+    <i class="fa fa-bars" aria-hidden="true" style="    font-size: 50px;
+    color: white;"></i>
+  </div>
+
+</div>
 <script type="text/javascript">
 
 
@@ -178,8 +186,25 @@ window.onclick = function(event) {
 
   }
 }
+var x = document.getElementById("sidebar");
+var c=0;
+function showsidebar() {
+  if (c==0){
+    console.log("none to block");
+    x.style.display = "block";
+    c=1;
+  }
+  else {
+    if (x.style.display == "none") {
+      console.log("none to block");
+      x.style.display = "block";
+    } else {
+      console.log("block to none");
+      x.style.display = "none";
+    }
+  }
 
-
+}
 </script>
 </body>
 </html>

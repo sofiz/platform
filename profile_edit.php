@@ -116,7 +116,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 
 		<div class="info2">
 			<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
-	    <select type="text" name="Job" id="jobinp"  class="dropdown2" required>
+	    <select type="text" name="Job" id="jobinp"  class="dropdown" required>
        <?php if($c->Job!="") { echo '<option value="'.$c->Job.'" selected>'.$c->Job.'</option>' ;  }
 	         else { echo '<option id="mihna" value=""  selected>المهنة</option>';   }
 

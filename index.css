@@ -225,14 +225,20 @@ margin: auto;
   color: white;
 }
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 460px){
   .logo{
     margin: 5px 0;
+    display: none;
 }
 
+
+.searchinput {
+  width: 85%;}
 }
 
 @media only screen and (max-width:600px){
+
+
 
   .footer{
 height: 128px;}

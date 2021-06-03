@@ -140,15 +140,20 @@ else  echo '<img id="pic" src="imgs/default.png" class="pictures" onclick="slide
 if($c->Ad =="yes") echo '<p class="msgclient">  هدا الحساب مضاف وليس شخصي </p>';
 ?>
 
+
     <strong id="name" ><?php echo $c->First_Name .' '. $c->Last_Name ; ?> </strong>
 
-    <div class="rating">
+    <div class="rating" >
 <?php
  $c->Show_Rating();
 ?>
 
     </div>
 
+    <div class="btn1" id="appointbtn" onclick="clickaplink()">
+      أخذ موعد
+    </div>
+<a href="appointment.php" id="aplink" hidden></a>
 		<!-- <div class="infocontainer">
 
       <div class="info">
@@ -502,7 +507,9 @@ mysqli_close($db);
  </body>
 
  <script type="text/javascript">
-
+function clickaplink() {
+  document.getElementById("aplink").click();
+}
  function stoperror() {
     return true;
  }
