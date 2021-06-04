@@ -1,4 +1,12 @@
-<?php  include('../conn.php');?>
+<?php  include('../conn.php');
+$id=$_GET['id'];
+
+$Appointments=mysqli_query($db,"SELECT * FROM appointments WHERE Worker_id='$id'");
+$ap= mysqli_num_rows($Appointments) ;
+
+
+
+    ?>
 
 <html lang="en" dir="ltr">
   <head>
@@ -30,31 +38,59 @@
   </head>
 	<?php  include('topbar.php');?>
   <body>
+<?php
+
+   if($ap==1)
+    while($r=mysqli_fetch_array($Appointments)){
+        $Daate=$r['Daate'] ;
+        $Note=$r['Note'] ;
+        $Ticket_Nbr=$r['Ticket_Nbr'] ;
+        $Client_id = $r['Client_id'] ;
+
+
+
+        $res=mysqli_query($db,"SELECT * FROM users WHERE id='$Client_id'");
+        while($row=mysqli_fetch_array($res))
+          {
+            $First_Name=$row['First_Name'];
+            $Last_Name=$row['Last_Name'];
+            $Profile_Pic=$row['Profile_Pic'];
+
+        }
+
+
+  echo '
     <div id="container">
-
-
     <div class="square">
       <div class="imgapparent">
-        <img src="imgs/default.png" alt="" class="imgap">
+';
+
+
+        if ($Profile_Pic!="default.png")  echo '<img class="imgap" src="imgs/'.$Client_id.'/'.$Profile_Pic .'" alt="" >';
+        else  echo '<img id="pic" src="imgs/default.png" class="imgap"  alt="" >';
+echo '
       </div>
       <div class="name1">
-        <p>name name</p>
+        <p>'.$First_Name .' '. $Last_Name.'</p>
       </div>
       <div style="text-align:center;">
 
 
       <p>رقم التذكرة</p>
-      <p style="font-size:25px; font-weight:bold;">10</p>
-      <p>الوقت المتوقع : 10-10-2022 10:45</p>
-      <p>ملاحظة : kda mena melhih</p>
+      <p style="font-size:25px; font-weight:bold;">'.$Ticket_Nbr.'</p>
+      <p>
+  الوقت المتوقع : 10-10-2022 10:45
+        '.$Daate.'
+       </p>
+      <p>ملاحظة : '.$Note.'</p>
+      <input type="submit" class="btn1" value="إنتهى">
       </div>
     </div>
-
-
-
-
-
         </div>
+';
+      }
+else echo 'No Appointments';
+      ?>
   </body>
 
 

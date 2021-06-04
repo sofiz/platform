@@ -153,7 +153,12 @@ if($c->Ad =="yes") echo '<p class="msgclient">  هدا الحساب مضاف و�
     <div class="btn1" id="appointbtn" onclick="clickaplink()">
       أخذ موعد
     </div>
-<a href="appointment.php" id="aplink" hidden></a>
+<?php
+ echo "<a href='appointment.php?id=".$c->id."' id='aplink' hidden></a>";
+
+?>
+
+
 		<!-- <div class="infocontainer">
 
       <div class="info">
@@ -453,7 +458,7 @@ echo '</div>' ;
 
 <div id="myModal" class="modal">
 
-  
+
   <div class="modal-content">
     <span class="close">&times;</span>
     <div class="photocontainermodal">

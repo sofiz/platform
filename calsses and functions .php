@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 
 class user {
       public $Mrating =0;
@@ -52,11 +52,6 @@ if (isset($_SESSION['Username'])) {
 
 //******************************************************************************
 function Get_Id_From_Session($db){
-
-
-
-
-
 	  if (isset($_SESSION['Username'])) {
 	  $user=$_SESSION['Username'];
 	  $res1=mysqli_query($db,"SELECT id FROM users WHERE Username='$user'");
@@ -68,7 +63,7 @@ function Get_Id_From_Session($db){
 }
 return $this->ids;
                                }
-							   
+
 //***********************************************************************
 
 function Get_Username_From_Session($db){
@@ -144,7 +139,7 @@ function Select_Information_Of_Profile($db){
 	  $this->Instagram=$row['Instagram'];
 	  $this->EmailCheck=$row['EmailCheck'];
 	  $this->Ad=$row['Ad'];
-	   
+
       }
 }
 
@@ -272,7 +267,7 @@ function For_My_Comment($db){
 
 
       if ($this->Check_Session_Isset() && $this->Type=="worker"){
-		  
+
 	  $user=$_SESSION['Username'];
 	  $res=mysqli_query($db,"SELECT Profile_Pic,Last_Name,First_Name,id FROM users WHERE Username='$user'");
       while($row=mysqli_fetch_array($res)) {
@@ -286,8 +281,8 @@ function For_My_Comment($db){
 	     if ($Profile_Pic!="default.png")
          echo'  <img src="imgs/'.$Commentor_id.'/'.$Profile_Pic.'" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
 		 else  echo'  <img src="imgs/default.png" class="commentimg" alt="" id="yourcommentpic" style="position: absolute;" > ';
-		 
-		 
+
+
          echo'    <form action="onsbmit.php" method="post">   ';
 
 
@@ -303,7 +298,7 @@ function For_My_Comment($db){
         echo '<input type= "hidden"  name="Commentor_id"  value="'.$Commentor_id.'" >   ';
         echo '<input type= "hidden"  name="User_id"  value="'.$this->id.'" > ';
         echo '<input type= "hidden"  name="rating"  value="" id="ratings" >   ';
-		
+
         echo' <input type="submit" name="commenter" value="commenter" id="submitreview" hidden><label for="submitreview" class="fa fa-send" id="submitreview2"></label></div>
       ';
                       echo'   </form>    ';
@@ -334,7 +329,7 @@ function Show_All_Comments($db){
 
 $res=mysqli_query($db,"SELECT * FROM comments WHERE User_id='$this->id'");
 $fortest = mysqli_num_rows($res) ;
-if($fortest>0){ 
+if($fortest>0){
 while($row=mysqli_fetch_array($res)){
 
 
@@ -359,7 +354,7 @@ while($row1=mysqli_fetch_array($rest))
    echo ' <div class="comment"> ' ;
    if ($Profile_Pic!="default.png")
    echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/'.$Commentor_id.'/'.   $Profile_Pic   .' " alt="" onerror="error(this)"> </a>' ;
-   else 
+   else
    echo'<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">   <img class="commentimg" src="imgs/default.png" alt="" onerror="error(this)"> </a>' ;
    echo '<div style="    display: inline-grid;">';
 	 echo '<a href="profile.php?id='.$Commentor_id.'" style="text-decoration: none; color: black;">  <span class="cousername">'. $First_Name.'  '.$Last_Name  . '</span> </a>'  ;
@@ -372,7 +367,7 @@ if($Commentor_id != $this->id){
    for($j=$row['rating'];$j<5;$j++)
    echo ' <span class="fa fa-star unchecked"></span>' ;
    echo "</div>";  }
-   
+
    echo ' <span class="commenttxt">  ' .  $row['Comment']  .'       </span> </div>  ' ;
    // -------------------------------DELETE CCOMMENT ----------------------------------------------
    if($this->Get_Id_From_Session($db)==$Commentor_id){
@@ -412,9 +407,9 @@ return $users ;
 	}
 
 function Count_All_Visitors(){
-	
+
 if (!isset($_COOKIE['page_visited_already'])){
-	
+
 $sql0="UPDATE visitors SET Allvisitors=Allvisitors+1 where id='1'";
 $res0=mysqli_query($db,$sql0);
 if(!$res0){

@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
   <link rel="stylesheet" href="profile.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="data.js"></script>
   <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/droid-arabic-kufi" type="text/css"/>
@@ -115,7 +116,9 @@ onclick="window.location.href = 'enter_email.php';" hidden>
   <div class="infocontain2">
 
 		<div class="info2">
-			<span class="fas fa-briefcase" style="font-family: 'FontAwesome';margin-right: 10px;color: #036fa1;"></span>
+      <span class="material-icons" style="color: #036fa1;" >
+business_center
+</span>
 	    <select type="text" name="Job" id="jobinp"  class="dropdown" required>
        <?php if($c->Job!="") { echo '<option value="'.$c->Job.'" selected>'.$c->Job.'</option>' ;  }
 	         else { echo '<option id="mihna" value=""  selected>المهنة</option>';   }
@@ -127,7 +130,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 	  </div>
 
    <div id="dropdowns" style="position: relative;
-    top: 15px;
+    top: 24px;
     left: -10px;" >	<span class="fas fa-map-marker" style="font-family: 'FontAwesome';margin-right: 10px;font-size: 18px;color: #036fa1;margin-left: 11px;"></span></div>
 
  <div class="info2">
@@ -164,13 +167,13 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 //echo ' <input type="date" name="Birthday" id="birthday"  value="'.$c->Birthday.'"';
 ?>
 
- <?php echo '<input type="date" id="birthday" name="Birthday" value="'.$c->Birthday.'">'; ?>
+ <?php echo '<input class="inputdate" type="date" id="birthday" name="Birthday" value="'.$c->Birthday.'">'; ?>
 
 
   </div>
 
   </div>
-		<button type="button" name="button" class="uploadpicbtn" id="moreedite">المزيد</button>
+		<button type="button" name="button" class="btn1" id="moreedite">المزيد</button>
 </div>
 
 <?php include 'locationdata.html'; ?>
@@ -194,7 +197,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 <div id="square3">
 <button type="button" id="picsbtn">تعديل الصور</button>
 
-  
+
 
 <strong id="photostitle" class="titles">الصور</strong>
 
@@ -234,7 +237,7 @@ onclick="window.location.href = 'enter_email.php';" hidden>
 <!--
 <div id="myModal" class="modal">
 
-  
+
   <div class="modal-content">
     <span class="close">&times;</span>
     <div class="photocontainermodal">
@@ -360,7 +363,7 @@ $.ajax({
 
 });
 }
-
+/*
 // Get the modal
 var modal1 = document.getElementById("myModal");
 
@@ -388,7 +391,7 @@ window.onclick = function(event) {
   }
 }
 
-
+*/
 // Get the modal
 var modal = document.getElementById("myModalconfirm");
 

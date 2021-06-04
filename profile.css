@@ -187,7 +187,7 @@ border-right: solid 2px #c7c5c5;
   .info2{
    width:100%;
    height:1.25em;
-   margin-top:0.9375em;
+   margin-top:30px;
    font-size:1.125em;
 
   }
@@ -510,7 +510,7 @@ margin-right: -58px;
 
   .btns{
 
-    margin-left: 40.125em;
+    margin-left: 36.125em;
     margin-top: 0.9375em;
 
   }
@@ -518,26 +518,27 @@ margin-right: -58px;
 
   .btn{
 
-  padding-top:0.3125em;
-  padding-left:0.3125em;
-  padding-right:0.3125em;
-  padding-bottom:0.3125em;
-  background: linear-gradient(135deg, #C61117, #E13E3E,#C61117,#E13E3E);
-  margin-right:0.625em;
-  border-radius: 0.3125em;
-  box-shadow: 0px 3px 10px 0px #00000038;
-    border: none;
-    text-decoration: none;
-color: #ffffffeb;
-background-size: 300% 100%;
-moz-transition: all .4s ease-in-out;
--o-transition: all .4s ease-in-out;
--webkit-transition: all .4s ease-in-out;
-transition: all .4s ease-in-out;
+    padding-top: 3px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 3px;
+        background: #f75e5e;
+        margin-right: 0.625em;
+        border-radius: 20px;
+        box-shadow: 0px 3px 10px 0px #00000038;
+        border: none;
+        text-decoration: none;
+        color: #ffffffeb;
+        background-size: 300% 100%;
+        moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
 
 }
 
 .btn:hover {
+  background: red;
 background-position: 100% 0;
 moz-transition: all .4s ease-in-out;
 -o-transition: all .4s ease-in-out;
@@ -546,9 +547,18 @@ transition: all .4s ease-in-out;
 
   }
 
+.inputdate{
+  border: solid 2px #008ffb;
+    padding: 5px 12px 5px 19px;
+    border-radius: 28px;
+    color: #008ffb;
+
+}
   .btn1{
 
-padding: 0.625em;
+padding: 5px 15px;
+font-family: 'Droid Arabic Kufi';
+font-size: 13px;
   background: #008ffb;
   margin-right:0.625em;
   border-radius: 20px;
@@ -669,7 +679,7 @@ margin: auto;
         -webkit-transition: all .4s ease-in-out;
         transition: all .4s ease-in-out;
         font-family: 'DroidArabicKufiRegular';
-        padding: 1px 9px;
+        padding: 3px 20px;
 }
 
 #save:hover {
@@ -712,22 +722,17 @@ margin: auto;
 outline: none;
 
     }
-
-  .inputname{
-
-
-    margin-top: 0.4375em;
-    height: 2.1875em;
-    border: none;
-    width: 5em;
-
-    border: none;
-    background-color: #00000000;
-    border-bottom: solid 2px grey;
-    border-color: #9d9898;
-    text-align: center;
-    padding: 0 7px;
-  }
+    .inputname {
+        margin-top: 0.4375em;
+        height: 2.1875em;
+        border: none;
+        width: 12em;
+        background-color: #00000000;
+        border: solid 2px #008ffb;
+        text-align: center;
+        padding: 0 7px;
+        border-radius: 27px;
+    }
 .inputname:focus{
   outline: none;
 }
@@ -1167,7 +1172,7 @@ margin-top: 10px;
 }
 #settingselements{
   display: inline-grid;
-  margin-left: 58%;
+  margin-left: 600px;
   height: 0;
   overflow: hidden;
 }

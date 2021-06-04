@@ -268,15 +268,48 @@ font-weight:bold;
 }
 
 #mySelectwilaya{
-
+  width:30%;
+  height: 33px;
+  background: #008ffb;
+  border: none;
+  border-radius: 20px;
+  text-align-last: center;
+  margin-left: 10px;
+  width: 117px;
+  font-family: 'DroidArabicKufiRegular';
+  box-shadow: 0px 3px 10px 0px #00000038;
+  color: white;
+  outline: none;
 }
 
 #mySelectdaira{
-  width: 100px;
+width: 30%;
+  height: 33px;
+background: #008ffb;
+border: none;
+border-radius: 20px;
+text-align-last: center;
+margin-left: 10px;
+width: 117px;
+font-family: 'DroidArabicKufiRegular';
+box-shadow: 0px 3px 10px 0px #00000038;
+color: white;
+outline: none;
 }
 
 #mySelectcommune{
-
+  width: 30%;
+  height: 33px;
+  background: #008ffb;
+  border: none;
+  border-radius: 20px;
+  text-align-last: center;
+  margin-left: 10px;
+  width: 117px;
+  font-family: 'DroidArabicKufiRegular';
+  box-shadow: 0px 3px 10px 0px #00000038;
+  color: white;
+  outline: none;
 }
 
 
